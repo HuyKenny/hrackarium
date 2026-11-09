@@ -282,6 +282,7 @@ def main():
     if INDEXNOW_KEY:
         out.write(f"{INDEXNOW_KEY}.txt", INDEXNOW_KEY)
 
+    unlink_missing(out.seen)
     for k in list(out.hashes):
         if k not in out.seen:
             out.hashes.pop(k, None)
@@ -296,6 +297,23 @@ def main():
     json.dump(report, open(APP / "data/state/build-report.json", "w"), indent=1)
     log(json.dumps(report, ensure_ascii=False))
     log(f"built {out.files} files in {time.time() - t0:.0f}s")
+
+
+def unlink_missing(seen):
+    """Hand-written texts may link a page that this build does not have (too few products today): keep the words, drop the link."""
+    rx = re.compile(r'<a href="(/[^"#?]*)">(.*?)</a>')
+    fixed = 0
+    for f in DIST.rglob("index.html"):
+        if f.parts[len(DIST.parts)] == "produkt":
+            continue
+        html = f.read_text()
+        if 'class="prose"' not in html and 'class="faq"' not in html:
+            continue
+        new = rx.sub(lambda m: m.group(0) if (m.group(1) in seen or not m.group(1).endswith("/") or m.group(1) == "/") else m.group(2), html)
+        if new != html:
+            f.write_text(new)
+            fixed += 1
+    log(f"texts: removed dead internal links on {fixed} pages")
 
 
 def redirects_file(seen):
