@@ -160,6 +160,7 @@ def main():
     out.write("assets/" + css_name, css)
     out.write("assets/" + js_name, js)
     S = R.Site(BASE, ENV, GA4, css_name, js_name, shop_meta, stats)
+    S.nav_ok = {p["cat"].split("/")[0] for p in products}
 
     # ---------------- groupings
     by_cat, by_top = defaultdict(list), defaultdict(list)
@@ -309,7 +310,8 @@ def unlink_missing(seen):
         html = f.read_text()
         if 'class="prose"' not in html and 'class="faq"' not in html:
             continue
-        new = rx.sub(lambda m: m.group(0) if (m.group(1) in seen or not m.group(1).endswith("/") or m.group(1) == "/") else m.group(2), html)
+        fix = lambda part: rx.sub(lambda m: m.group(0) if (m.group(1) in seen or not m.group(1).endswith("/") or m.group(1) == "/") else m.group(2), part.group(0))
+        new = re.sub(r'<div class="prose">.*?</div><!--/prose-->|<div class="prose"[^>]*>.*?</div>|<section class="faq">.*?</section>', fix, html, flags=re.S)
         if new != html:
             f.write_text(new)
             fixed += 1

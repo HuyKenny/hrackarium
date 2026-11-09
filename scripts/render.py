@@ -125,7 +125,8 @@ class Site:
         content = body if full else f'<div class="wrap page">{cr}{body}</div>'
         if full and crumbs:
             content = content.replace("<!--crumbs-->", cr, 1)
-        nav = "".join(f'<li><a href="{u}"><img src="/img/ic/{i}.webp" alt="" width="40" height="40" loading="lazy">{n}</a></li>' for u, i, n in NAV)
+        ok = getattr(self, "nav_ok", None)
+        nav = "".join(f'<li><a href="{u}"><img src="/img/ic/{i}.webp" alt="" width="40" height="40" loading="lazy">{n}</a></li>' for u, i, n in NAV if ok is None or u.strip("/") in ok)
         og = og_img or f"{self.base}/img/ui/og.png"
         n_shops = self.stats["shops"]
         return f"""<!doctype html><html lang="cs"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
