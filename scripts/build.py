@@ -678,14 +678,14 @@ def search_page(S):
 
 def home_page(S, products, by_top, series, lic, gift):
     st = S.stats
-    hot = [p for p in products if len(p["offers"]) > 1 and p["img"]][:12] or products[:12]
-    sale = sorted([p for p in products if R.Site.discount(p) >= 15 and p["img"]], key=lambda p: -R.Site.discount(p))[:12]
+    hot = [p for p in products if len(p["offers"]) > 1 and p["img"]][:10] or products[:10]
+    sale = sorted([p for p in products if R.Site.discount(p) >= 15 and p["img"]], key=lambda p: -R.Site.discount(p))[:10]
     tiles = "".join(f'<li><a href="/{t}/"><img src="/img/ic/{R.ICON.get(t, "kostky")}.webp" alt="" width="72" height="72" loading="lazy">{E(cat_name(t))}<small>{len(by_top[t])}</small></a></li>'
                     for t in sorted([t for t in X.TOP if by_top.get(t)], key=lambda t: (t in ("fan-darky", "kostymy-a-party", "sberatelske-karty"), -len(by_top[t])))[:12])
     ages = "".join(f'<li><a href="{p}">{v[3][1]}<small>{"rok" if v[3][1] == 1 else "roky" if v[3][1] < 5 else "let"}</small></a></li>' for p, v in gift.items() if v[3][0] == "age")
     lego = S.chips([(f"/lego/{s}/", series_name(s), len(ps)) for s, ps in sorted(series.items(), key=lambda x: -len(x[1]))[:14]])
     chars = S.chips([(f"/hracky-{s}/", S.lic_name[s], len(ps)) for s, ps in sorted(lic.items(), key=lambda x: -len(x[1]))[:16]])
-    row = lambda ps: '<ul class="strip-row">' + "".join(S.card(p) for p in ps) + "</ul>"
+    row = lambda ps: '<ul class="grid grid--5">' + "".join(S.card(p) for p in ps) + "</ul>"
     body = f"""<section class="hero"><div class="wrap"><div><h1>Hračky za <em>nejlepší cenu</em>, bez běhání po obchodech</h1>
 <p class="lead">Porovnáváme ceny {R.plural(st['products'], 'hračky', 'hraček', 'hraček')} z {st['shops']} českých e‑shopů. Najděte LEGO, deskovku nebo dárek k Vánocům a kupte tam, kde je to nejlevnější.</p>
 <div class="row"><a class="btn btn--lg" href="/darky/">Dárky podle věku</a><a class="btn btn--g btn--lg" href="/lego/">LEGO sety</a></div>
