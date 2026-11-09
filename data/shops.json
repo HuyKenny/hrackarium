@@ -1,0 +1,71 @@
+{
+ "_doc": "Shops in the catalogue. No secrets here: CJ ids are public, feed URLs with tokens live in the FEEDS_JSON secret. include/exclude = regexes over the shop's own category path (productType / CATEGORYTEXT).",
+ "shops": [
+  {
+   "id": "bambule",
+   "name": "Bambule.cz",
+   "domain": "bambule.cz",
+   "network": "cj",
+   "advertiser": "4949011",
+   "color": "#E2402B",
+   "exclude": "^(E-knihy|Knihy|Dětské oblečení|Dětská kosmetika|Papírnictví|Akce a katalogy)"
+  },
+  {
+   "id": "4kids",
+   "name": "4kids.cz",
+   "domain": "4kids.cz",
+   "network": "cj",
+   "advertiser": "5153670",
+   "color": "#2C7BE5",
+   "exclude": "^(Knihy|Kojenecké zboží|Oděvy a kosmetika|Dětský pokoj|Škola a volný čas > Školní potřeby|Trenduje > Školní potřeby)",
+   "enabled": false,
+   "note": "9. 11. 2026: CJ feed is stale (shop moved platforms): ~50 % product URLs 404, image host img.4kids.cz does not resolve. Re-enable when the feed is fixed."
+  },
+  {
+   "id": "veselydrak",
+   "name": "Veselý drak",
+   "domain": "vesely-drak.cz",
+   "network": "cj",
+   "advertiser": "5417788",
+   "color": "#2E9D57",
+   "include": "(^|\\| )(Dětské zboží > (Hračky|Kreativní)|Hobby > Sběratel|Hračky)"
+  },
+  {
+   "id": "albi",
+   "name": "Albi.cz",
+   "domain": "albi.cz",
+   "network": "cj",
+   "advertiser": "5343940",
+   "color": "#F28C28",
+   "include": "(^|\\| )(Hry|Stavebnice|Hračky a tvoření|Kvído|Kouzelné čtení|Mementerra)"
+  },
+  {
+   "id": "feedo",
+   "name": "Feedo.cz",
+   "domain": "feedo.cz",
+   "network": "cj",
+   "advertiser": "4901154",
+   "color": "#7B4BC4",
+   "include": "Hračky"
+  },
+  {
+   "id": "bruderland",
+   "name": "Bruderland.cz",
+   "domain": "bruderland.cz",
+   "network": "cj",
+   "advertiser": "7424533",
+   "color": "#F2B705",
+   "exclude": "^(Náhradní díly)"
+  },
+  {
+   "id": "activa",
+   "name": "Activa.cz",
+   "domain": "activa.cz",
+   "network": "cj",
+   "advertiser": "5260576",
+   "color": "#0E8C8C",
+   "include": "Výtvarné potřeby > (Kreativní potřeby|Modelovací)",
+   "enabled": false
+  }
+ ]
+}

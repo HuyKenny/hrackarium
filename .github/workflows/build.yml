@@ -1,0 +1,85 @@
+name: build
+# Daily: fetch affiliate feeds -> build the static site -> check for leaked secrets -> deploy Workers static assets
+# (no Worker script = no billed requests) -> keep the encrypted state as a release asset.
+# PUBLIC repo: logs are public. Scripts print only shop ids and counts; feed URLs are masked; no `set -x` anywhere.
+on:
+  schedule:
+    - cron: "40 2 * * *"   # 03:40 CET
+  workflow_dispatch:
+    inputs:
+      fetch:
+        description: "Fetch fresh feeds (off = rebuild from the last saved feeds)"
+        type: boolean
+        default: true
+concurrency:
+  group: build
+  cancel-in-progress: false
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    permissions:
+      contents: write          # release asset with the encrypted state
+    env:
+      HRK_ENV: ${{ vars.HRK_ENV || 'staging' }}
+      HRK_MAX_PRODUCTS: ${{ vars.HRK_MAX_PRODUCTS || '0' }}
+      GA4_ID: ${{ vars.GA4_ID || '' }}
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683  # v4.2.2
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Secret scan of the repository history (gitleaks, pinned + checksum)
+        run: |
+          curl -sSL -o /tmp/gl.tgz https://github.com/gitleaks/gitleaks/releases/download/v8.30.1/gitleaks_8.30.1_linux_x64.tar.gz
+          echo "551f6fc83ea457d62a0d98237cbad105af8d557003051f41f3e7ca7b3f2470eb  /tmp/gl.tgz" | sha256sum -c -
+          tar xzf /tmp/gl.tgz -C /tmp gitleaks
+          /tmp/gitleaks detect --source . --redact --no-banner --exit-code 1
+      - name: Restore state (encrypted)
+        run: scripts/state.sh pull
+        env:
+          STATE_KEY: ${{ secrets.STATE_KEY }}
+      - name: Fetch feeds
+        if: github.event_name != 'workflow_dispatch' || inputs.fetch
+        timeout-minutes: 60
+        continue-on-error: true   # a stuck network falls back to the restored feeds
+        run: python3 scripts/fetch.py
+        env:
+          CJ_API_KEY: ${{ secrets.CJ_API_KEY }}
+          CJ_CID: ${{ secrets.CJ_CID }}
+          CJ_PID: ${{ secrets.CJ_PID }}
+          FEEDS_JSON: ${{ secrets.FEEDS_JSON }}
+      - name: Build site
+        run: python3 scripts/build.py
+        env:
+          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+      - name: Secret check of repo + build output
+        run: python3 scripts/verify_no_secrets.py
+        env:
+          CJ_API_KEY: ${{ secrets.CJ_API_KEY }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          STATE_KEY: ${{ secrets.STATE_KEY }}
+          FEEDS_JSON: ${{ secrets.FEEDS_JSON }}
+      - name: Deploy (static assets only)
+        run: python3 scripts/deploy.py "$HRK_ENV"
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      - name: Save state (encrypted)
+        if: always()
+        run: '[ -f data/state/state.json.gz ] && scripts/state.sh push || echo "no state to save"'
+        env:
+          STATE_KEY: ${{ secrets.STATE_KEY }}
+      - name: IndexNow
+        if: env.HRK_ENV == 'production'
+        run: python3 scripts/indexnow.py
+        env:
+          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+      - name: Summary
+        if: always()
+        run: |
+          { echo '### Fetch'; echo '```'; cat data/raw/fetch-report.json 2>/dev/null; echo '```'
+            echo '### Build'; echo '```'; cat data/state/build-report.json 2>/dev/null; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
