@@ -163,7 +163,8 @@ class Site:
         o = p["offers"][0]
         was = max(o.get("was") or 0, p.get("low30_prev") or 0)
         if o.get("was") and o["was"] > o["price"]:
-            return round((o["was"] - o["price"]) / o["was"] * 100)
+            d = round((o["was"] - o["price"]) / o["was"] * 100)
+            return d if d <= 80 else 0      # "−99 %" is a broken "was" price in the feed, not a real sale
         return 0
 
     def tag(self, price, prefix="", big=False):
