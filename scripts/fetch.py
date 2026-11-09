@@ -110,27 +110,35 @@ def cj_offers(shop):
               f'condition price{{ amount currency }} salePrice{{ amount }} linkCode(pid:"{pid}"){{ clickUrl }}')
     got = {}
 
-    def grab(lo, hi):
-        """One query returns both the total and the first 1 000 rows; split the price band only when it does not fit.
-        CJ fails for offset >= 10 000 and its paging order is unstable, so bands of <= 1 000 rows are the only safe way."""
+    def count(lo, hi):
+        x = cj_gql('{ shoppingProducts(%s, lowPrice:%s, highPrice:%s, limit:1){ totalCount } }' % (base, lo, hi))
+        time.sleep(0.3)
+        return x["totalCount"]
+
+    def grab(lo, hi, n=None):
+        """Count first (cheap), fetch only bands that fit one page of 1 000 rows. CJ fails for offset >= 10 000 and its
+        paging order is unstable, so bands of <= 1 000 rows are the only safe way. Big feeds (Bambule 40k+) would
+        otherwise download every oversized band once just to learn it has to be split."""
         if LIMIT and len(got) >= LIMIT:
             return
-        x = cj_gql('{ shoppingProducts(%s, lowPrice:%s, highPrice:%s, limit:1000){ totalCount resultList{ %s } } }' % (base, lo, hi, fields))
-        time.sleep(0.6)
-        n = x["totalCount"]
+        n = count(lo, hi) if n is None else n
+        if n == 0:
+            return
         if n <= 1000 or hi - lo < 0.02 or LIMIT:
+            x = cj_gql('{ shoppingProducts(%s, lowPrice:%s, highPrice:%s, limit:1000){ resultList{ %s } } }' % (base, lo, hi, fields))
             for p in x["resultList"]:
                 got[p["id"]] = p
-            if n > 1000 and hi - lo < 0.02:   # many items at one price: a second pass catches what the unstable order hid
+            if n > 1000 and hi - lo < 0.02:   # many items at one price: a second page catches part of the rest
                 x = cj_gql('{ shoppingProducts(%s, lowPrice:%s, highPrice:%s, limit:1000, offset:1000){ resultList{ %s } } }' % (base, lo, hi, fields))
                 for p in x["resultList"]:
                     got[p["id"]] = p
+            time.sleep(0.5)
             return
         mid = float(int((lo + hi) / 2)) if hi - lo >= 50 else round((lo + hi) / 2, 2)
         grab(lo, mid)
         grab(round(mid + 0.01, 2), hi)
 
-    edges = [0, 100, 200, 300, 400, 500, 650, 800, 1000, 1300, 1700, 2200, 3000, 4500, 7000, 500000]
+    edges = [0, 50, 100, 150, 200, 250, 300, 350, 400, 500, 650, 800, 1000, 1300, 1700, 2200, 3000, 4500, 7000, 500000]
     for lo, hi in zip(edges, edges[1:]):
         grab(lo if lo == 0 else lo + 0.01, hi)
     for p in got.values():
@@ -270,7 +278,7 @@ class Overtime(BaseException):  # not Exception: retry loops must not swallow it
 
 
 def _overtime(signum, frame):
-    raise Overtime(f"over {SHOP_BUDGET}s budget")
+    raise Overtime("over the time budget")
 
 
 def run(shop):
@@ -279,7 +287,7 @@ def run(shop):
     prev = count_lines(dest) if dest.exists() else 0
     t0 = time.time()
     signal.signal(signal.SIGALRM, _overtime)
-    signal.alarm(SHOP_BUDGET)
+    signal.alarm(int(shop.get("budget") or SHOP_BUDGET))
     try:
         n = 0
         seen = set()

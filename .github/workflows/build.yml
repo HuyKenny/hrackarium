@@ -19,7 +19,7 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    timeout-minutes: 170
     permissions:
       contents: write          # release asset with the encrypted state
     env:
@@ -44,7 +44,7 @@ jobs:
           STATE_KEY: ${{ secrets.STATE_KEY }}
       - name: Fetch feeds
         if: github.event_name != 'workflow_dispatch' || inputs.fetch
-        timeout-minutes: 60
+        timeout-minutes: 100
         continue-on-error: true   # a stuck network falls back to the restored feeds
         run: python3 scripts/fetch.py
         env:

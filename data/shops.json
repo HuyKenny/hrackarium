@@ -8,7 +8,8 @@
    "network": "cj",
    "advertiser": "4949011",
    "color": "#E2402B",
-   "exclude": "^(E-knihy|Knihy|Dětské oblečení|Dětská kosmetika|Papírnictví|Akce a katalogy)"
+   "exclude": "^(E-knihy|Knihy|Dětské oblečení|Dětská kosmetika|Papírnictví|Akce a katalogy)",
+   "budget": 2700
   },
   {
    "id": "4kids",
