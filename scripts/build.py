@@ -574,8 +574,18 @@ def gifts_index(S, gift):
     other = S.chips([(p, v[0], len(v[2])) for p, v in gift.items() if v[3][0] != "age"])
     body = (f'<h1>Dárky pro děti podle věku</h1><p class="lead">Vyberte věk dítěte. Ukážeme hračky, u kterých výrobce nebo obchod uvádí, že se pro ten věk hodí — od nejsrovnávanějších.</p>'
             f'<ul class="ages">{ages}</ul><h2 style="margin-top:34px">Další tipy na dárky</h2>{other}')
+    t = TX.get("darky:index") or {}
+    lds = []
+    if t.get("body"):
+        body += f'<div class="prose">{t["body"]}</div>'
+    if t.get("faq"):
+        fh, fl = S.faq(t["faq"])
+        body += fh
+        lds.append(fl)
+    if t.get("intro"):
+        body = body.replace('<p class="lead">Vyberte věk dítěte.', f'<p class="lead">{t["intro"]} Vyberte věk dítěte.', 1)
     return S.layout("/darky/", "Dárky pro děti podle věku – tipy a ceny" + SUFFIX, "Tipy na dárky pro děti od 1 do 12 let, dárky pro kluky i holky a hračky do 300, 500 a 1000 Kč se srovnáním cen.",
-                    body, crumbs=[("Hračkárium", "/"), ("Dárky", "/darky/")])
+                    body, crumbs=[("Hračkárium", "/"), ("Dárky", "/darky/")], jsonld=lds)
 
 
 def brands_index(S, pages, names):

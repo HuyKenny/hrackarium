@@ -15,6 +15,11 @@
   function words(q) { return fold(q).split(/[^a-z0-9]+/).filter(function (w) { return w.length > 1; }); }
   function shopsIn(n) { return n === 1 ? "v 1 obchodě" : (n < 5 ? "ve " : "v ") + n + " obchodech"; }
 
+  /* ---------- broken shop images -> our placeholder ---------- */
+  function fixImg(im) { if (im.tagName === "IMG" && !im.dataset.f && im.src.indexOf(location.host) < 0) { im.dataset.f = "1"; im.src = "/img/ui/placeholder.svg"; } }
+  document.addEventListener("error", function (e) { fixImg(e.target); }, true);
+  $$("img").forEach(function (im) { if (im.complete && !im.naturalWidth && im.getAttribute("loading") !== "lazy") fixImg(im); });
+
   /* ---------- product search over the 2-letter buckets ---------- */
   function searchProducts(q, limit) {
     var ws = words(q);

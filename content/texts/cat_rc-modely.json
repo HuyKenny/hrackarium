@@ -1,0 +1,27 @@
+{
+ "key": "cat:rc-modely",
+ "intro": "Auto na dálkové ovládání, drony a další RC modely z českých e-shopů. Frekvence, baterie a rozdíl mezi hraním doma a venku.",
+ "body": "<h2>Jaké RC modely existují</h2>\n<p>RC modely jsou hračky ovládané vysílačkou. Nejčastější jsou <a href=\"/rc-modely/auta/\">auta na dálkové ovládání</a>, dále <a href=\"/rc-modely/drony/\">drony</a>, lodě, tanky či vrtulníky. Každý typ má jiné nároky na prostor, zkušenost a bezpečnost. Auta se dají ovládat poměrně snadno, drony a vrtulníky vyžadují cvik.</p>\n<h2>Frekvence a ovládání</h2>\n<p>Většina moderních RC modelů pracuje na pásmu 2,4 GHz. Výhodou je, že se několik modelů nepřebije navzájem, takže mohou jezdit vedle sebe. U starších nebo levnějších modelů se používají frekvence, které se mohou rušit. Při koupi zkontrolujte, zda je v balení vysílačka a zda potřebuje baterie. Dosah vysílače bývá uvedený v popisu a je obvykle vyšší u dražších modelů.</p>\n<h2>Baterie a nabíjení</h2>\n<p>RC modely se napájejí tužkovými bateriemi nebo nabíjecími akumulátory. Nejčastější jsou NiMH a Li-Ion nebo Li-Po. Akumulátory NiMH jsou odolnější, lithiové baterie mají vyšší výkon, ale vyžadují opatrnost. Nabíjení by mělo probíhat pod dohledem dospělého, s originální nabíječkou a bez nabíjení přes noc. Poškozenou nebo nafouklou baterii nepoužívejte. Doba hry na jedno nabití bývá obvykle krátká, a proto se vyplatí zvážit náhradní baterii.</p>\n<h2>Doma, nebo venku</h2>\n<p>Auta se dělí na ta, která jsou určená do interiéru, a terénní. Interiérová bývají menší a hodí se na hladký povrch. Terénní mají větší kola a odpružení a poradí si s trávou a štěrkem. Pokud model nemá výslovně uvedenou odolnost vůči vodě, nejezděte s ním v mokru ani v kalužích. Drony pro začátečníky jsou malé a lehké, s ochrannými rámy kolem vrtulí, vhodné i do bytu. Větší drony s kamerou patří ven a řídí se pravidly pro létání, hlídejte je zvláště v okolí lidí, silnic a letišť.</p>\n<h2>Na co se zaměřit při výběru</h2>\n<ul>\n<li><strong>Věk.</strong> Pro menší děti jsou jednoduché ovladače a pomalejší modely, rychlé modely a drony jsou pro starší děti.</li>\n<li><strong>Rychlost a velikost.</strong> Rychlé modely potřebují prostor, malé se hodí pro byt.</li>\n<li><strong>Baterie.</strong> Zjistěte, zda je součástí balení a jak dlouho se nabíjí.</li>\n<li><strong>Náhradní díly.</strong> Dražší modely umožňují výměnu kol, motorů a rámů, což prodlužuje životnost.</li>\n<li><strong>Ovládání.</strong> Pro začátek stačí ovladač s plynem a řízením.</li>\n</ul>\n<p>Pro nezkušené jsou nejlepším začátkem jednoduché auto nebo malá dron. Ceny porovnáváme napříč obchody a nejlevnější nabídka je vždy první. Kdo hledá klasické autíčka bez ovládání, najde je v sekci <a href=\"/auta-a-vlacky/\">auta a vláčky</a>.</p>\n<h2>Bezpečnost</h2>\n<p>Hračky v EU musí mít označení CE a doporučený věk. Rychlé modely nepouštějte mezi lidi, drony nelétejte nad dětmi a zvířaty a baterie nenechávejte nabíjet bez dozoru.</p>",
+ "faq": [
+  [
+   "Co znamená 2,4 GHz u RC auta?",
+   "Je to frekvence, na které modely komunikují s ovladačem. Několik modelů pak může jezdit vedle sebe bez rušení."
+  ],
+  [
+   "Jak vybrat auto na dálkové ovládání pro dítě?",
+   "Podle věku a prostoru. Pro menší děti jsou vhodné pomalejší modely s jednoduchým ovládáním, pro větší terénní modely s výkonnějšími bateriemi."
+  ],
+  [
+   "Jaké baterie používají RC modely?",
+   "Tužkové baterie, NiMH akumulátory nebo lithiové akumulátory. Nabíjejte pod dohledem a s originální nabíječkou."
+  ],
+  [
+   "Může RC auto jezdit venku?",
+   "Pokud je určené do terénu, ano. Do vody a mokra jezdit s ním nemá smysl, pokud výrobce neuvádí vodotěsnost."
+  ],
+  [
+   "Je dron vhodný pro začátečníky?",
+   "Malý dron s ochrannými rámy kolem vrtulí se začátečníkům hodí. Větší drony s kamerou patří do venkovního prostoru a vyžadují cvik."
+  ]
+ ]
+}

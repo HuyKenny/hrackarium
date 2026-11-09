@@ -15,8 +15,10 @@ _T = None
 def _load():
     global _T
     if _T is None:
-        p = APP / "content/texts.json"
-        _T = json.loads(p.read_text()) if p.exists() else {}
+        _T = {}
+        for f in sorted((APP / "content/texts").glob("*.json")):   # one file per page: {"key", "intro", "body", "faq": [[q, a]]}
+            d = json.loads(f.read_text())
+            _T[d["key"]] = d
     return _T
 
 
