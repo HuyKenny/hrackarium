@@ -17,10 +17,14 @@ const page = await browser.newPage();
 await page.setRequestInterception(true);
 page.on("request", (r) => (r.url().startsWith(base) ? r.continue() : r.respond({ status: 204, body: "" })));   // shop images & GA stay offline (see check_images.mjs for the online check)
 const problems = [];
+let cur = { w: 0, p: "" };
+page.on("console", (m) => { const t = m.text(); if (/Content Security Policy|Refused to|violates the following/i.test(t)) problems.push({ w: cur.w, p: cur.p, issue: "CSP: " + t.slice(0, 160) }); });
+page.on("pageerror", (e) => problems.push({ w: cur.w, p: cur.p, issue: "JS error: " + String(e).slice(0, 160) }));
 for (const w of widths) {
   await page.setViewport({ width: w, height: 900, isMobile: w < 800, hasTouch: w < 800 });
   for (const p of pages) {
-    const res = await page.goto(base + p, { waitUntil: "load", timeout: 60000 }).catch((e) => null);
+    cur = { w, p };
+    const res = await page.goto(base + p, { waitUntil: "networkidle0", timeout: 60000 }).catch((e) => null);
     if (!res || res.status() >= 400) { problems.push({ w, p, issue: `HTTP ${res ? res.status() : "error"}` }); continue; }
     const over = await page.evaluate(() => {
       const W = document.documentElement.clientWidth, bad = [];

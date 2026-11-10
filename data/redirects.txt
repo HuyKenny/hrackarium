@@ -254,3 +254,4 @@
 /shop/page/795/ /kategorie/ 301
 /shop/page/796/ /kategorie/ 301
 /shop/page/797/ /kategorie/ 301
+/sitemap.xml /sitemap_index.xml 301

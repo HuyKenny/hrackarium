@@ -147,7 +147,7 @@ class Site:
 <title>{E(title)}</title><meta name="description" content="{E(desc)}"><link rel="canonical" href="{self.url(path)}"><meta name="robots" content="{robots}">
 <meta property="og:title" content="{E(title)}"><meta property="og:description" content="{E(desc)}"><meta property="og:url" content="{self.url(path)}"><meta property="og:type" content="website"><meta property="og:locale" content="cs_CZ"><meta property="og:site_name" content="Hračkárium"><meta property="og:image" content="{E(og)}"><meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#FF5A3C"><link rel="icon" href="/favicon.ico" sizes="48x48"><link rel="icon" href="/favicon-192.png" type="image/png" sizes="192x192"><link rel="apple-touch-icon" href="/favicon-180.png"><link rel="manifest" href="/site.webmanifest">
-<link rel="preload" href="/fonts/bricolage-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="/assets/{self.css}">{pre}{SPECULATION}{ga}{head_ld}</head><body>
+<link rel="preload" href="/fonts/bricolage-cs.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/fonts/figtree-cs.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="/assets/{self.css}">{pre}{SPECULATION}{ga}{head_ld}</head><body>
 <a class="skip" href="#main">Přeskočit na obsah</a>
 <div class="strip"><p>Ceny hraček {"z" if n_shops == 1 else "ze"} {n_shops} {plural(n_shops, "obchodu", "obchodů", "obchodů")} na jednom místě · ceny aktualizujeme každý týden · nakupujete přímo v e‑shopu</p></div>
 <header class="top"><div class="wrap"><a class="logo" href="/" aria-label="Hračkárium – úvod">{LOGO}</a>

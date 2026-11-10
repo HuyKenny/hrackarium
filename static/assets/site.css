@@ -1,9 +1,7 @@
 /* hrackarium.cz — „Hrací pokoj“. Ink outlines + hard offset shadows, pill buttons, price tags on a string, age stickers.
    One accent per job: tomato = action/price, sky = links/info, sun = stickers only, mint = success/savings. */
-@font-face{font-family:"Bricolage";src:url(/fonts/bricolage-latin.woff2) format("woff2");font-weight:200 800;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-@font-face{font-family:"Bricolage";src:url(/fonts/bricolage-ext.woff2) format("woff2");font-weight:200 800;font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1E00-1E9F,U+20A0-20AB,U+20AD-20C4,U+2C60-2C7F,U+A720-A7FF}
-@font-face{font-family:"Figtree";src:url(/fonts/figtree-latin.woff2) format("woff2");font-weight:300 900;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-@font-face{font-family:"Figtree";src:url(/fonts/figtree-ext.woff2) format("woff2");font-weight:300 900;font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1E00-1E9F,U+20A0-20AB,U+20AD-20C4,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"Bricolage";src:url(/fonts/bricolage-cs.woff2) format("woff2");font-weight:800;font-display:swap}
+@font-face{font-family:"Figtree";src:url(/fonts/figtree-cs.woff2) format("woff2");font-weight:400 800;font-display:swap}
 :root{--ink:#1D1B3A;--ink2:#4A4870;--mute:#6B6990;--paper:#fff;--wash:#F3F8FF;--wash2:#FFF4EE;--line:#1D1B3A;--tom:#FF5A3C;--tom-d:#E2401F;
 --sky:#2C8FE0;--sky-l:#DCEEFF;--sun:#FFC93C;--mint:#2FBF8C;--mint-l:#DDF7EC;--r:16px;--sh:4px 4px 0 var(--ink);--sh-s:3px 3px 0 var(--ink);
 --hd:"Bricolage",ui-rounded,system-ui,sans-serif;--tx:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif}

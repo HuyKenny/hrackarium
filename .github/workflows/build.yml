@@ -67,12 +67,15 @@ jobs:
         continue-on-error: true
         run: |
           npm i --no-save --silent puppeteer-core@23.11.1 >/dev/null
-          (cd dist && python3 -m http.server 8765 >/dev/null 2>&1 &)
+          (node scripts/serve.mjs 8765 >/dev/null 2>&1 &)
           sleep 2
           CHROME_PATH=$(command -v google-chrome || command -v chromium) node scripts/check_pages.mjs http://localhost:8765 /tmp/shots
       - name: Image check in real Chrome (shop images, CSP, placeholder swaps)
         continue-on-error: true
         run: CHROME_PATH=$(command -v google-chrome || command -v chromium) node scripts/check_images.mjs /tmp/shots
+      - name: SEO lint (structured data, canonicals, sitemaps, links)
+        continue-on-error: true      # report only until the first runs are clean; then make it a hard gate
+        run: mkdir -p /tmp/shots && python3 scripts/seo_lint.py dist /tmp/shots/seo-report.json
       - name: Upload screenshots
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02  # v4.6.2
@@ -109,4 +112,5 @@ jobs:
           { echo '### Fetch'; echo '```'; cat data/raw/fetch-report.json 2>/dev/null; echo '```'
             echo '### Build'; echo '```'; cat data/state/build-report.json 2>/dev/null; echo '```'
             echo '### Landing pages (path, products, index, group, from price)'; echo '```'; head -n 400 data/state/landings.tsv 2>/dev/null; echo '```'
-            echo '### Visual check'; echo '```'; cat /tmp/shots/report.json 2>/dev/null; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+            echo '### Visual check'; echo '```'; cat /tmp/shots/report.json 2>/dev/null; echo '```'
+            echo '### SEO lint'; echo '```'; python3 -c "import json;d=json.load(open('/tmp/shots/seo-report.json'));print(json.dumps({k:d[k] for k in ('pages','products','indexable','in_sitemap')}));[print('HARD',k,v['count'],v['examples'][:2]) for k,v in d['hard'].items()];[print('soft',k,v['count']) for k,v in d['soft'].items()]" 2>/dev/null; echo '```'; } >> "$GITHUB_STEP_SUMMARY"

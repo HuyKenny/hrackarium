@@ -8,6 +8,7 @@ Output is plain files: Workers static assets serve them for free. When the site 
 may hold (100 000), scripts/deploy.py moves /produkt/<x>… into shard Workers (routes per first letter).
 State (stable slugs, price history, gone products, content hashes) lives in data/state/state.json.gz.
 """
+import base64
 import hashlib
 import json
 import os
@@ -47,12 +48,16 @@ def log(m):
     print(m, file=sys.stderr, flush=True)
 
 
+INLINE_SCRIPT = re.compile(rb"<script>(.*?)</script>", re.S)
+
+
 class Out:
     def __init__(self, state):
         self.hashes = state.setdefault("hash", {})
         self.lastmod = state.setdefault("lastmod", {})
         self.changed, self.files, self.sitemap = [], 0, defaultdict(list)
         self.seen = set()
+        self.script_hashes = set()      # CSP: our few inline scripts (consent bootstrap, a diagnostic page) are allowed by hash, not 'unsafe-inline'
 
     def write(self, rel, content):
         p = DIST / rel.lstrip("/")
@@ -60,6 +65,9 @@ class Out:
         data = content.encode() if isinstance(content, str) else content
         p.write_bytes(data)
         self.files += 1
+        if rel.endswith(".html") and b"<script>" in data:
+            for m in INLINE_SCRIPT.finditer(data):
+                self.script_hashes.add(base64.b64encode(hashlib.sha256(m.group(1)).digest()).decode())
         return data
 
     def page(self, path, html, group=None, index=True):
@@ -304,16 +312,25 @@ def main():
     else:
         out.write("robots.txt", "User-agent: *\nDisallow: /\n")
     noidx = "" if ENV == "production" else "  X-Robots-Tag: noindex\n"
+    sec = ("  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n"
+           "  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload\n  X-Frame-Options: DENY\n"
+           "  Cross-Origin-Opener-Policy: same-origin\n  Cross-Origin-Resource-Policy: same-site\n  X-Permitted-Cross-Domain-Policies: none\n"
+           "  Permissions-Policy: accelerometer=(), autoplay=(), camera=(), display-capture=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), "
+           "midi=(), payment=(), usb=(), xr-spatial-tracking=(), interest-cohort=()\n")
+    csp = ("  Content-Security-Policy: default-src 'none'; img-src 'self' https: data:; "
+           "script-src 'self' 'inline-speculation-rules' https://www.googletagmanager.com " + " ".join(f"'sha256-{h}'" for h in sorted(out.script_hashes)) + "; "
+           "connect-src 'self' https://*.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com; style-src 'self' 'unsafe-inline'; "
+           "font-src 'self'; manifest-src 'self'; object-src 'none'; frame-src 'none'; worker-src 'none'; frame-ancestors 'none'; base-uri 'none'; form-action 'self'; "
+           "upgrade-insecure-requests\n")
+    preload = f"  Link: </assets/{css_name}>; rel=preload; as=style, </fonts/bricolage-cs.woff2>; rel=preload; as=font; type=font/woff2; crossorigin, </fonts/figtree-cs.woff2>; rel=preload; as=font; type=font/woff2; crossorigin\n"
+    html_cache = "  Cache-Control: public, max-age=300, stale-while-revalidate=86400\n"
     out.write("_headers", "/assets/*\n  Cache-Control: public, max-age=31536000, immutable\n/fonts/*\n  Cache-Control: public, max-age=31536000, immutable\n"
               "/data/*\n  Cache-Control: public, max-age=3600\n  X-Robots-Tag: noindex\n"
               "/img/*\n  Cache-Control: public, max-age=604800, stale-while-revalidate=2592000\n"
               "/favicon*\n  Cache-Control: public, max-age=604800\n"
-              "/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n"
-              "  Strict-Transport-Security: max-age=31536000; includeSubDomains\n  X-Frame-Options: SAMEORIGIN\n"
-              "  Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()\n"
-              "  Content-Security-Policy: default-src 'self'; img-src 'self' https: data:; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; "
-              "connect-src 'self' https://*.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; "
-              "font-src 'self'; frame-ancestors 'self'; base-uri 'self'; form-action 'self'\n" + noidx)
+              "/*.xml\n  Cache-Control: public, max-age=3600\n"
+              "/\n" + html_cache + preload + "/*/\n" + html_cache + preload +
+              "/*\n" + sec + csp + noidx)
     out.write("_redirects", redirects_file(out.seen))
     if INDEXNOW_KEY:
         out.write(f"{INDEXNOW_KEY}.txt", INDEXNOW_KEY)
