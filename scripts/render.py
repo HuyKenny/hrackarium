@@ -125,12 +125,15 @@ class Site:
         if self.ga and self.env == "production":
             # Consent Mode v2: Google Tag Manager is in the page source (so Google's tag check finds it) but every storage
             # type starts as denied; app.js switches analytics_storage to granted only after "Souhlasím" (remembered in localStorage).
-            ga = (f'<meta name="ga4" content="{self.ga}"><script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments)}}'
-                  f'var g="denied";try{{if(localStorage.getItem("hrk-consent")==="yes")g="granted"}}catch(e){{}}'
-                  f'gtag("consent","default",{{analytics_storage:g,ad_storage:"denied",ad_user_data:"denied",ad_personalization:"denied",wait_for_update:500}});'
-                  f'gtag("set","ads_data_redaction",true);gtag("set","url_passthrough",false);'
-                  f'dataLayer.push({{"gtm.start":Date.now(),event:"gtm.js"}});</script>'
-                  f'<script async src="https://www.googletagmanager.com/gtm.js?id={self.ga}"></script>')
+            boot = ('window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}'
+                    'var g="denied";try{if(localStorage.getItem("hrk-consent")==="yes")g="granted"}catch(e){}'
+                    'gtag("consent","default",{analytics_storage:g,ad_storage:"denied",ad_user_data:"denied",ad_personalization:"denied",wait_for_update:500});'
+                    'gtag("set","ads_data_redaction",true);')
+            if self.ga.startswith("GTM-"):      # Tag Manager container
+                lib = f'dataLayer.push({{"gtm.start":Date.now(),event:"gtm.js"}});</script><script async src="https://www.googletagmanager.com/gtm.js?id={self.ga}"></script>'
+            else:                                # plain GA4 measurement id (G-...), configured here, no container needed
+                lib = f'gtag("js",new Date());gtag("config","{self.ga}");</script><script async src="https://www.googletagmanager.com/gtag/js?id={self.ga}"></script>'
+            ga = f'<meta name="ga4" content="{self.ga}"><script>{boot}{lib}'
         content = body if full else f'<div class="wrap page">{cr}{body}</div>'
         if full and crumbs:
             content = content.replace("<!--crumbs-->", cr, 1)

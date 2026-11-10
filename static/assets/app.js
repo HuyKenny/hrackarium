@@ -177,6 +177,10 @@
   co && co.addEventListener("click", function (e) { e.preventDefault(); if (cbar) cbar.hidden = false; });
   document.addEventListener("click", function (e) {
     var a = e.target.closest("a[data-go]");
-    if (a && ga) window.dataLayer.push({ event: "click_shop", shop: a.dataset.go, page_path: location.pathname, link_url: a.href });
+    if (a && ga) {
+      var d = { shop: a.dataset.go, from_path: location.pathname, transport_type: "beacon" };
+      if (ga.content.indexOf("GTM-") === 0) { d.event = "click_shop"; window.dataLayer.push(d); }
+      else if (window.gtag) window.gtag("event", "click_shop", d);
+    }
   });
 })();
