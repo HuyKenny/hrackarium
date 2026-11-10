@@ -54,7 +54,7 @@ def mask_feed_urls():
         return
     for u in feeds.values():
         print(f"::add-mask::{u}", flush=True)
-        for part in re.findall(r"[A-Za-z0-9_\-]{12,}", u):   # tokens alone, in case a URL gets split or re-encoded
+        for part in re.findall(r"[A-Za-z0-9_\-]{20,}", u):   # tokens alone, in case a URL gets split or re-encoded
             print(f"::add-mask::{part}", flush=True)
 
 

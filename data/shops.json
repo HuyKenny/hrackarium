@@ -200,7 +200,9 @@
    "a_bid": "54c5ca6b",
    "feed_key": "eh14",
    "color": "#2E9D57",
-   "include": "Hračk"
+   "include": "Hračk",
+   "enabled": false,
+   "note": "0 toys in feed (school bags)"
   },
   {
    "id": "legenio",
@@ -306,7 +308,9 @@
    "a_bid": "33dde5ab",
    "feed_key": "eh26",
    "color": "#E2402B",
-   "include": "Hračk"
+   "include": "Hračk",
+   "enabled": false,
+   "note": "0 toys (clothes)"
   },
   {
    "id": "bergam",
@@ -316,7 +320,9 @@
    "a_bid": "26ca6ae4",
    "feed_key": "eh27",
    "color": "#2E9D57",
-   "include": "Hračk"
+   "include": "Hračk",
+   "enabled": false,
+   "note": "0 toys (clothes)"
   },
   {
    "id": "sparkys",
@@ -335,7 +341,9 @@
    "a_bid": "72bf9145",
    "feed_key": "eh30",
    "color": "#7B4BC4",
-   "include": "Modely|Hračk|Stavebnic|Puzzle|Hry"
+   "include": "Modely|Hračk|Stavebnic|Puzzle|Hry",
+   "enabled": false,
+   "note": "feed answers 403 to GitHub runners (10. 11. 2026)"
   },
   {
    "id": "gigamat",
@@ -355,7 +363,9 @@
    "a_bid": "0e8c19ab",
    "feed_key": "eh32",
    "color": "#D6336C",
-   "include": "Hračk"
+   "include": "Hračk",
+   "enabled": false,
+   "note": "0 toys (socks)"
   },
   {
    "id": "fyft",
