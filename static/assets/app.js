@@ -1,4 +1,4 @@
-/* hrackarium.cz — search, listing filters, gallery, consent + GA4 click events. No dependencies, no tracking without consent. */
+/* hrackarium.cz — search, listing filters, gallery, consent + GTM/GA4 click events. No dependencies, no tracking without consent. */
 (function () {
   "use strict";
   var $ = function (s, r) { return (r || document).querySelector(s); };
@@ -160,15 +160,24 @@
     b.addEventListener("click", function () { el.classList.remove("clamp"); b.remove(); });
   });
 
-  /* ---------- consent + GA4 (only after "yes") ---------- */
-  var ga = document.querySelector('meta[name="ga4"]'), cbar = $("#consent");
+  /* ---------- consent + Google Tag Manager / GA4 (loaded only after "yes") ---------- */
+  var ga = document.querySelector('meta[name="ga4"]'), cbar = $("#consent"), loaded = false;
+  window.dataLayer = window.dataLayer || [];
   function loadGA() {
-    if (!ga || window.gtag) return;
+    if (!ga || loaded) return;
+    loaded = true;
     var id = ga.content, s = document.createElement("script");
-    s.async = true; s.src = "https://www.googletagmanager.com/gtag/js?id=" + id; document.head.appendChild(s);
-    window.dataLayer = window.dataLayer || [];
     window.gtag = function () { window.dataLayer.push(arguments); };
-    window.gtag("js", new Date()); window.gtag("config", id, { anonymize_ip: true });
+    window.gtag("consent", "default", { analytics_storage: "granted", ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied" });
+    s.async = true;
+    if (id.indexOf("GTM-") === 0) {            // Tag Manager container: GA4 is configured inside GTM
+      window.dataLayer.push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+      s.src = "https://www.googletagmanager.com/gtm.js?id=" + id;
+    } else {                                    // plain GA4 measurement id
+      s.src = "https://www.googletagmanager.com/gtag/js?id=" + id;
+      window.gtag("js", new Date()); window.gtag("config", id);
+    }
+    document.head.appendChild(s);
   }
   var c = store("hrk-consent");
   if (c === "yes") loadGA(); else if (!c && ga && cbar) cbar.hidden = false;
@@ -179,6 +188,6 @@
   co && co.addEventListener("click", function (e) { e.preventDefault(); if (cbar) cbar.hidden = false; });
   document.addEventListener("click", function (e) {
     var a = e.target.closest("a[data-go]");
-    if (a && window.gtag) window.gtag("event", "click_shop", { shop: a.dataset.go, page_path: location.pathname, transport_type: "beacon" });
+    if (a && loaded) window.dataLayer.push({ event: "click_shop", shop: a.dataset.go, page_path: location.pathname, link_url: a.href });
   });
 })();
