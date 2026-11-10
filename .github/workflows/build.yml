@@ -63,6 +63,9 @@ jobs:
           (cd dist && python3 -m http.server 8765 >/dev/null 2>&1 &)
           sleep 2
           CHROME_PATH=$(command -v google-chrome || command -v chromium) node scripts/check_pages.mjs http://localhost:8765 /tmp/shots
+      - name: Image check in real Chrome (shop images, CSP, placeholder swaps)
+        continue-on-error: true
+        run: CHROME_PATH=$(command -v google-chrome || command -v chromium) node scripts/check_images.mjs /tmp/shots
       - name: Upload screenshots
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02  # v4.6.2
