@@ -121,7 +121,16 @@ class Site:
             cr = '<nav class="crumbs" aria-label="Drobečková navigace">' + "<i>/</i>".join(
                 f'<a href="{u}">{E(n)}</a>' if i < len(crumbs) - 1 else f"<span>{E(n)}</span>" for i, (n, u) in enumerate(crumbs)) + "</nav>"
         pre = f'<link rel="preload" as="image" href="{E(preload_img)}" fetchpriority="high">' if preload_img else ""
-        ga = f'<meta name="ga4" content="{self.ga}">' if self.ga and self.env == "production" else ""
+        ga = ""
+        if self.ga and self.env == "production":
+            # Consent Mode v2: Google Tag Manager is in the page source (so Google's tag check finds it) but every storage
+            # type starts as denied; app.js switches analytics_storage to granted only after "Souhlasím" (remembered in localStorage).
+            ga = (f'<meta name="ga4" content="{self.ga}"><script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments)}}'
+                  f'var g="denied";try{{if(localStorage.getItem("hrk-consent")==="yes")g="granted"}}catch(e){{}}'
+                  f'gtag("consent","default",{{analytics_storage:g,ad_storage:"denied",ad_user_data:"denied",ad_personalization:"denied",wait_for_update:500}});'
+                  f'gtag("set","ads_data_redaction",true);gtag("set","url_passthrough",false);'
+                  f'dataLayer.push({{"gtm.start":Date.now(),event:"gtm.js"}});</script>'
+                  f'<script async src="https://www.googletagmanager.com/gtm.js?id={self.ga}"></script>')
         content = body if full else f'<div class="wrap page">{cr}{body}</div>'
         if full and crumbs:
             content = content.replace("<!--crumbs-->", cr, 1)

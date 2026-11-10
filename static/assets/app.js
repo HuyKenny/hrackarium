@@ -160,34 +160,23 @@
     b.addEventListener("click", function () { el.classList.remove("clamp"); b.remove(); });
   });
 
-  /* ---------- consent + Google Tag Manager / GA4 (loaded only after "yes") ---------- */
-  var ga = document.querySelector('meta[name="ga4"]'), cbar = $("#consent"), loaded = false;
+  /* ---------- consent: Consent Mode v2 (GTM itself is in the page head, see render.py; here only the update) ---------- */
+  var ga = document.querySelector('meta[name="ga4"]'), cbar = $("#consent"), granted = false;
   window.dataLayer = window.dataLayer || [];
-  function loadGA() {
-    if (!ga || loaded) return;
-    loaded = true;
-    var id = ga.content, s = document.createElement("script");
-    window.gtag = function () { window.dataLayer.push(arguments); };
-    window.gtag("consent", "default", { analytics_storage: "granted", ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied" });
-    s.async = true;
-    if (id.indexOf("GTM-") === 0) {            // Tag Manager container: GA4 is configured inside GTM
-      window.dataLayer.push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
-      s.src = "https://www.googletagmanager.com/gtm.js?id=" + id;
-    } else {                                    // plain GA4 measurement id
-      s.src = "https://www.googletagmanager.com/gtag/js?id=" + id;
-      window.gtag("js", new Date()); window.gtag("config", id);
-    }
-    document.head.appendChild(s);
+  function setConsent(yes) {
+    if (!ga) return;
+    granted = yes;
+    if (window.gtag) window.gtag("consent", "update", { analytics_storage: yes ? "granted" : "denied" });
   }
   var c = store("hrk-consent");
-  if (c === "yes") loadGA(); else if (!c && ga && cbar) cbar.hidden = false;
+  if (c === "yes") granted = true; else if (!c && ga && cbar) cbar.hidden = false;
   $$("[data-consent]").forEach(function (b) {
-    b.addEventListener("click", function () { store("hrk-consent", b.dataset.consent); cbar.hidden = true; if (b.dataset.consent === "yes") loadGA(); });
+    b.addEventListener("click", function () { store("hrk-consent", b.dataset.consent); cbar.hidden = true; setConsent(b.dataset.consent === "yes"); });
   });
   var co = $("#consent-open");
   co && co.addEventListener("click", function (e) { e.preventDefault(); if (cbar) cbar.hidden = false; });
   document.addEventListener("click", function (e) {
     var a = e.target.closest("a[data-go]");
-    if (a && loaded) window.dataLayer.push({ event: "click_shop", shop: a.dataset.go, page_path: location.pathname, link_url: a.href });
+    if (a && ga) window.dataLayer.push({ event: "click_shop", shop: a.dataset.go, page_path: location.pathname, link_url: a.href });
   });
 })();

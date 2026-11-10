@@ -664,7 +664,7 @@ def about_page(S, present):
 def privacy_page(S):
     body = ('<div class="prose" style="margin-top:0"><h1>Ochrana osobních údajů a cookies</h1>'
             '<p>Hračkárium nemá registraci, účty ani formuláře. Neukládáme o vás žádné osobní údaje.</p>'
-            '<h2>Měření návštěvnosti</h2><p>Jen pokud k tomu dáte souhlas v liště, načteme Google Tag Manager a Google Analytics 4 (Google Ireland Ltd.), abychom viděli, které stránky lidé čtou a na které obchody klikají. Bez souhlasu se nic nenačítá. Souhlas můžete kdykoli změnit odkazem „Nastavení cookies“ v patičce.</p>'
+            '<h2>Měření návštěvnosti</h2><p>Google Tag Manager a Google Analytics 4 (Google Ireland Ltd.) jsou na stránce přítomné ve výchozím režimu „bez souhlasu“ (Google Consent Mode): dokud nedáte souhlas v liště, nenastavují cookies, neukládají identifikátory a o návštěvě se do Googlu posílá jen anonymní signál bez cookies. Po souhlasu měříme, které stránky lidé čtou a na které obchody klikají. Souhlas můžete kdykoli změnit odkazem „Nastavení cookies“ v patičce.</p>'
             '<h2>Odkazy do obchodů</h2><p>Odkazy do e‑shopů vedou přes partnerské sítě (např. CJ, eHub), které si mohou uložit cookie, aby obchod poznal, že jste přišli od nás. Řídí se zásadami té sítě a obchodu.</p>'
             '<h2>Kontakt</h2><p><a class="lnk" href="mailto:info@hrackarium.cz">info@hrackarium.cz</a></p></div>')
     return S.layout("/ochrana-osobnich-udaju/", "Ochrana osobních údajů" + SUFFIX, "Jak Hračkárium zachází s osobními údaji a cookies.", body,
