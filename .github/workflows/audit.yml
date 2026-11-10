@@ -26,6 +26,14 @@ jobs:
       - name: SEO lint
         continue-on-error: true
         run: mkdir -p /tmp/audit && python3 scripts/seo_lint.py dist /tmp/audit/seo-report.json
+      - name: Pages check with real headers (CSP violations, horizontal scroll)
+        continue-on-error: true
+        run: |
+          npm i --no-save --silent puppeteer-core@23.11.1 >/dev/null
+          (node scripts/serve.mjs 8765 >/dev/null 2>&1 &)
+          sleep 2
+          CHROME_PATH=$(command -v google-chrome || command -v chromium) node scripts/check_pages.mjs http://localhost:8765 /tmp/audit/shots | tee /tmp/audit/pages-check.txt
+          pkill -f "scripts/serve.mjs" || true
       - name: Lighthouse (mobile + desktop)
         continue-on-error: true
         run: |
@@ -58,6 +66,7 @@ jobs:
                   if v.get('score') is not None and v['score']<0.9 and v.get('scoreDisplayMode')=='numeric' and k not in seen:
                       seen.add(k); print(f"- **{k}** ({v['score']}): {v['title']} — {v.get('displayValue','')}")
           PY
+          { echo '### Pages check (CSP / overflow)'; echo '```'; cat /tmp/audit/pages-check.txt 2>/dev/null; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
           echo '### SEO lint' >> "$GITHUB_STEP_SUMMARY"; echo '```' >> "$GITHUB_STEP_SUMMARY"
           python3 -c "import json;d=json.load(open('/tmp/audit/seo-report.json'));print({k:d[k] for k in ('pages','products','indexable','in_sitemap')});[print('HARD',k,v['count'],v['examples'][:3]) for k,v in d['hard'].items()];[print('soft',k,v['count'],v['examples'][:2]) for k,v in d['soft'].items()]" >> "$GITHUB_STEP_SUMMARY" 2>&1 || true
           echo '```' >> "$GITHUB_STEP_SUMMARY"
