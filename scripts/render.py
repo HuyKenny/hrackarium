@@ -122,6 +122,7 @@ class Site:
         return self.base + path
 
     def layout(self, path, title, desc, body, crumbs=None, noindex=False, jsonld=None, preload_img=None, og_img=None, full=False):
+        title, desc = shorten(title, 68, " | Hračkárium"), shorten(desc, 160)      # BEFORE the " – strana N" suffix, so paginated titles stay distinct
         robots = "noindex,follow" if (noindex or getattr(self, "pg_noindex", False) or self.env != "production") else "index,follow,max-image-preview:large"
         if self.pg and self.pg[1] > 1:
             n = self.pg[1]
@@ -132,7 +133,6 @@ class Site:
             body = re.sub(r'<section class="faq">.*?</section>', "", body, flags=re.S)
             body = re.sub(r'<div class="prose">.*?</div><!--/prose-->', "", body, flags=re.S)
             body = re.sub(r"</h1>", f' <small class="pgn">strana {n}</small></h1>', body, count=1)
-        title, desc = shorten(title, 68, " | Hračkárium"), shorten(desc, 160)
         lds = list(jsonld or [])
         if self.pending_ld:
             lds.append(self.pending_ld)

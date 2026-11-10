@@ -40,6 +40,20 @@ def shop_fallback(shop, rec):
     return shop.get("fallback_cat") if shop.get("fallback_cat") and not X.veto(rec) else None
 
 
+# Image sources ranked by weight for the product's main photo (measured 10. 11. 2026): hosts whose renditions we can request small go first,
+# datadepo (fixed 688 px, 300-500 kB) last — a product sold by several shops should not get its heaviest photo.
+SMALL_IMG = ("lego.com/cdn", "cdn.myshoptet.com", "cdn.sevt.cz", "mrakyhracek.cz/data/tmp", "pompo.cz/data/tmp", "sparkys.cz/data/cache",
+             "i.actva.cz", "bruderland.cz/data/tmp")
+
+
+def img_rank(u):
+    if not u:
+        return 3
+    if any(h in u for h in SMALL_IMG):
+        return 0
+    return 2 if "images.datadepo.cz" in u else 1
+
+
 def load_offers(shops):
     out, dropped = [], Counter()
     for s in shops:
@@ -128,7 +142,7 @@ def cluster(offers, shop_rank):
         sexes = {o["sex"] for o in offs if o["sex"]}
         desc = max((o["desc"] for o in offs), key=len)
         # bambule.cz thumbnails do not show in some visitors' browsers (10. 11. 2026): use any other shop's picture first
-        img_order = sorted(offs, key=lambda o: (o["shop"] == "bambule", shop_rank.get(o["shop"], 99)))
+        img_order = sorted(offs, key=lambda o: (o["shop"] == "bambule", img_rank(o["img"]), shop_rank.get(o["shop"], 99)))
         img = next((o["img"] for o in img_order if o["img"]), "")
         imgs = []
         for o in offs:
