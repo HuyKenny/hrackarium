@@ -37,14 +37,19 @@ for (const mobile of [false, true]) {
   page.on("requestfailed", (r) => { if (r.resourceType() === "image") failed.push(`${r.failure()?.errorText} ${r.url().slice(0, 110)}`); });
   page.on("response", (r) => { if (r.request().resourceType() === "image" && r.status() >= 400) bad.push(`HTTP ${r.status()} ${r.url().slice(0, 110)}`); });
   page.on("console", (m) => { if (/Content Security Policy|Refused to load/i.test(m.text())) csp.push(m.text().slice(0, 160)); });
+  await page.evaluateOnNewDocument(() => {
+    window.__imgErr = [];
+    window.addEventListener("error", (e) => { const t = e.target; if (t && t.tagName === "IMG") window.__imgErr.push({ src: (t.currentSrc || t.src || "").slice(0, 120), complete: t.complete, w: t.naturalWidth, lazy: t.loading, cls: (t.parentElement && t.parentElement.className) || "", id: t.id }); }, true);
+  });
   for (const p of pages) {
     failed.length = bad.length = csp.length = 0;
     await page.goto(`http://localhost:8766${p}`, { waitUntil: "networkidle2", timeout: 90000 }).catch(() => null);
     await new Promise((r) => setTimeout(r, 4000));
     const imgs = await page.evaluate(() => [...document.querySelectorAll("img")].filter((i) => !i.src.startsWith(location.origin)).map((i) => ({ src: i.currentSrc || i.src, ok: i.complete && i.naturalWidth > 0, lazy: i.loading === "lazy" })));
     const placeholders = await page.evaluate(() => [...document.querySelectorAll("img")].filter((i) => i.src.includes("placeholder.svg")).length);
+    const errs = await page.evaluate(() => window.__imgErr || []);
     const notOk = imgs.filter((i) => !i.ok && !i.lazy);
-    report.push({ mobile, p, shopImages: imgs.length, notLoaded: notOk.length, placeholders, failed: [...failed], bad: [...bad], csp: [...csp] });
+    report.push({ mobile, p, shopImages: imgs.length, notLoaded: notOk.length, placeholders, errs, failed: [...failed], bad: [...bad], csp: [...csp] });
   }
   await page.close();
 }
@@ -56,5 +61,6 @@ for (const r of report) {
   if (flag !== "ok") problems++;
   console.log(`${flag} ${r.mobile ? "m" : "d"} ${r.p} images=${r.shopImages} notLoaded=${r.notLoaded} placeholders=${r.placeholders}`);
   for (const x of [...r.failed, ...r.bad, ...r.csp].slice(0, 6)) console.log("   ", x);
+  for (const e of (r.errs || []).slice(0, 6)) console.log("    img error event:", JSON.stringify(e));
 }
 console.log(`image check: ${report.length} page views, ${problems} with problems`);
