@@ -16,7 +16,20 @@
   function shopsIn(n) { return n === 1 ? "v 1 obchodě" : (n < 5 ? "ve " : "v ") + n + " obchodech"; }
 
   /* ---------- broken shop images -> our placeholder ---------- */
-  function fixImg(im) { if (im.tagName === "IMG" && !im.dataset.f && im.src.indexOf(location.host) < 0) { im.dataset.f = "1"; im.src = "/img/ui/placeholder.svg"; } }
+  /* A shop image that fails is retried once, then (product page) the next gallery image is tried; the placeholder is the last resort. */
+  function fixImg(im) {
+    if (im.tagName !== "IMG" || im.src.indexOf(location.host) >= 0) return;
+    var n = +(im.dataset.f || 0), u = im.currentSrc || im.src;
+    im.dataset.f = String(n + 1);
+    if (n === 0) { setTimeout(function () { im.src = ""; im.src = u; }, 1500); return; }
+    if (im.id === "gmain") {
+      var thumbs = $$(".thumbs button"), cur = thumbs.filter(function (b) { return b.dataset.src === u; })[0];
+      if (cur) cur.dataset.bad = "1";
+      var next = thumbs.filter(function (b) { return !b.dataset.bad; })[0];
+      if (next) { im.dataset.f = "0"; im.src = next.dataset.src; return; }
+    }
+    im.src = "/img/ui/placeholder.svg";
+  }
   document.addEventListener("error", function (e) { fixImg(e.target); }, true);
   $$("img").forEach(function (im) { if (im.complete && !im.naturalWidth && im.getAttribute("loading") !== "lazy") fixImg(im); });
 
@@ -54,7 +67,7 @@
         hits.push({ t: "Hledat „" + q + "“ ve všech hračkách", u: "/hledat/?q=" + encodeURIComponent(q), s: "" });
         sel = -1;
         sBox.innerHTML = hits.map(function (h, i) {
-          return '<a href="' + h.u + '" role="option">' + (h.img ? '<img src="' + esc(h.img) + '" alt="" loading="lazy">' : "") + "<span>" + esc(h.t) + "</span><small>" + esc(h.s) + "</small></a>";
+          return '<a href="' + h.u + '" role="option">' + (h.img ? '<img src="' + esc(h.img) + '" alt="" loading="lazy" referrerpolicy="no-referrer">' : "") + "<span>" + esc(h.t) + "</span><small>" + esc(h.s) + "</small></a>";
         }).join("");
         sBox.style.display = "block";
       });
@@ -89,7 +102,7 @@
     var sale = it[8] >= 10 ? '<span class="flag">−' + it[8] + " %</span>" : "";
     var brand = it[5] >= 0 && brands[it[5]] ? '<span class="pc__brand">' + esc(brands[it[5]]) + "</span>" : "";
     var href = "/produkt/" + it[1] + "/";
-    return '<li class="pc"><a class="pc__img" href="' + href + '" tabindex="-1" aria-hidden="true"><img src="' + esc(it[2] || "/img/ui/placeholder.svg") + '" alt="" loading="lazy" width="220" height="220">' + sale + age + "</a>" +
+    return '<li class="pc"><a class="pc__img" href="' + href + '" tabindex="-1" aria-hidden="true"><img src="' + esc(it[2] || "/img/ui/placeholder.svg") + '" alt="" loading="lazy" referrerpolicy="no-referrer" width="220" height="220">' + sale + age + "</a>" +
       '<div class="pc__b">' + brand + '<h3><a href="' + href + '">' + esc(it[0]) + '</a></h3><div class="pc__f"><span class="ptag"><i></i>' + (it[4] > 1 ? "<small>od</small>" : "") + kc(it[3]) + "</span>" +
       '<span class="pc__n">' + shopsIn(it[4]) + "</span></div></div></li>";
   }

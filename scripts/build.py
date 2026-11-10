@@ -371,10 +371,10 @@ def product_page(S, p):
     imgs = [p["img"]] + p["imgs"] if p["img"] else p["imgs"]
     imgs = [u for u in imgs if u][:6]
     main_img = E(imgs[0]) if imgs else "/img/ui/placeholder.svg"
-    thumbs = "".join(f'<button type="button" data-src="{E(u)}"{" class=on" if i == 0 else ""} aria-label="Obrázek {i + 1}"><img src="{E(u)}" alt="" loading="lazy" width="60" height="60"></button>'
+    thumbs = "".join(f'<button type="button" data-src="{E(u)}"{" class=on" if i == 0 else ""} aria-label="Obrázek {i + 1}"><img src="{E(u)}" alt="" loading="lazy" referrerpolicy="no-referrer" width="60" height="60"></button>'
                      for i, u in enumerate(imgs)) if len(imgs) > 1 else ""
     age = f'<span class="sticker" style="width:64px;height:64px;font-size:1.15rem">{R.age_label(p["age"])}</span>' if p["age"] is not None else ""
-    gal = f'<div class="gal"><div class="gal__main"><img id="gmain" src="{main_img}" alt="{E(p["name"])}" width="560" height="560" fetchpriority="high">{age}</div><div class="thumbs">{thumbs}</div></div>'
+    gal = f'<div class="gal"><div class="gal__main"><img id="gmain" src="{main_img}" alt="{E(p["name"])}" referrerpolicy="no-referrer" width="560" height="560" fetchpriority="high">{age}</div><div class="thumbs">{thumbs}</div></div>'
 
     meta = []
     if p["brand"] and X.slugify(p["brand"]) in S.ctx["brands"]:
