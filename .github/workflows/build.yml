@@ -4,7 +4,7 @@ name: build
 # PUBLIC repo: logs are public. Scripts print only shop ids and counts; feed URLs are masked; no `set -x` anywhere.
 on:
   schedule:
-    - cron: "40 1 * * 1"     # Monday 02:40 CET: fresh feeds + full build
+    - cron: "40 1 * * 3"     # Wednesday 02:40 CET: fresh feeds + full build
   push:
     branches: [main]         # every change to the site code/content: rebuild from the saved feeds (no download)
     paths: ["scripts/**", "static/**", "content/**", "data/**", ".github/workflows/build.yml"]
