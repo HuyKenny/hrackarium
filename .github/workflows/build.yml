@@ -35,7 +35,7 @@ jobs:
         with:
           persist-credentials: false
           fetch-depth: 0
-      - name: Cost guard (the repo must be public: private repos burn the shared 2 000 free minutes)
+      - name: "Cost guard - the repo must stay public (private repos burn the shared 2 000 free minutes)"
         run: |
           [ "$(gh api repos/${{ github.repository }} --jq .private)" = "false" ] || { echo "repo is private - stopping to protect free minutes"; exit 1; }
       - name: Secret scan of the repository history (gitleaks, pinned + checksum)
