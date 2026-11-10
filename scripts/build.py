@@ -389,7 +389,7 @@ def redirects_file(seen):
         src_seen.add(src)
         if to not in seen and (to.startswith("/darek-pro-") or to.startswith("/hracky-")):
             to = "/darky/" if to.startswith("/darek") else "/postavicky/"
-        while to != "/" and to not in seen:
+        while to != "/" and to not in seen and not to.endswith((".xml", ".txt")):      # sitemap_index.xml etc. are files, not pages
             to = to.rstrip("/").rsplit("/", 1)[0] + "/"
         rules.append(f"{src} {to} {code}")
     static = [r for r in rules if "*" not in r.split()[0]]
