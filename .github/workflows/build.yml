@@ -1,10 +1,13 @@
 name: build
-# Daily: fetch affiliate feeds -> build the static site -> check for leaked secrets -> deploy Workers static assets
+# Weekly (Mon) fetch of the affiliate feeds; every push to main rebuilds from the saved feeds. Pipeline: fetch affiliate feeds -> build the static site -> check for leaked secrets -> deploy Workers static assets
 # (no Worker script = no billed requests) -> keep the encrypted state as a release asset.
 # PUBLIC repo: logs are public. Scripts print only shop ids and counts; feed URLs are masked; no `set -x` anywhere.
 on:
   schedule:
-    - cron: "40 2 * * *"   # 03:40 CET
+    - cron: "40 2 * * 1"     # Monday 03:40 CET: fresh feeds + full build
+  push:
+    branches: [main]         # every change to the site code/content: rebuild from the saved feeds (no download)
+    paths: ["scripts/**", "static/**", "content/**", "data/**", ".github/workflows/build.yml"]
   workflow_dispatch:
     inputs:
       fetch:
@@ -43,7 +46,7 @@ jobs:
         env:
           STATE_KEY: ${{ secrets.STATE_KEY }}
       - name: Fetch feeds
-        if: github.event_name != 'workflow_dispatch' || inputs.fetch
+        if: github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.fetch)
         timeout-minutes: 100
         continue-on-error: true   # a stuck network falls back to the restored feeds
         run: python3 scripts/fetch.py
