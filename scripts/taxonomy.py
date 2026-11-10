@@ -390,4 +390,4 @@ def set_number(rec, brand):
     if m:
         return f"{brand.lower()}:{m.group(1)}"
     mpn = re.sub(r"\D", "", rec.get("mpn") or "")
-    return f"{brand.lower()}:{mpn}" if 4 <= len(mpn) <= 6 else ""
+    return f"{brand.lower()}:{mpn}" if 4 <= len(mpn) <= 7 else ""

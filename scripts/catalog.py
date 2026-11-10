@@ -35,6 +35,11 @@ def https(u):
     return "https://" + u[7:] if (u or "").startswith("http://") else (u or "")
 
 
+def shop_fallback(shop, rec):
+    """Single-brand shops (LEGO.com) name products without the brand ("Starter Kit"): their own category, unless vetoed."""
+    return shop.get("fallback_cat") if shop.get("fallback_cat") and not X.veto(rec) else None
+
+
 def load_offers(shops):
     out, dropped = [], Counter()
     for s in shops:
@@ -44,14 +49,14 @@ def load_offers(shops):
         with gzip.open(p, "rt", encoding="utf-8") as f:
             for line in f:
                 r = json.loads(line)
-                cat = X.classify(r)
+                cat = X.classify(r) or (shop_fallback(s, r))
                 if not cat:
                     dropped[s["id"]] += 1
                     continue
                 price = float(r["p"] or 0)
                 if price <= 0 or not r.get("go"):
                     continue
-                brand = X.brand_of(r)
+                brand = X.brand_of(r) or s.get("brand", "")
                 title = X.clean(r["t"])
                 out.append({
                     "shop": s["id"], "oid": r["id"], "title": title, "desc": X.clean(re.sub(r"<[^>]+>", " ", r.get("d") or "")),

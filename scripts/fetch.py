@@ -23,7 +23,8 @@ import time
 import urllib.error
 import urllib.request
 from pathlib import Path
-from urllib.parse import quote
+import html
+from urllib.parse import parse_qs, quote, unquote, urlparse
 from xml.etree import ElementTree as ET
 
 APP = Path(__file__).resolve().parent.parent
@@ -105,10 +106,12 @@ def cj_gql(query):
 
 def cj_offers(shop):
     pid = os.environ.get("CJ_PID") or ""
-    base = f'companyId:"{os.environ["CJ_CID"]}", partnerIds:["{shop["advertiser"]}"], currency:"CZK", availability:IN_STOCK'
+    base0 = f'companyId:"{os.environ["CJ_CID"]}", partnerIds:["{shop["advertiser"]}"], currency:"CZK", availability:IN_STOCK'
+    base = base0
     fields = ("id itemGroupId title description brand gtin mpn link imageLink additionalImageLink productType ageGroup gender color "
               f'condition price{{ amount currency }} salePrice{{ amount }} linkCode(pid:"{pid}"){{ clickUrl }}')
     got = {}
+    cap, start = 0, 0
 
     def count(lo, hi):
         x = cj_gql('{ shoppingProducts(%s, lowPrice:%s, highPrice:%s, limit:1){ totalCount } }' % (base, lo, hi))
@@ -119,7 +122,7 @@ def cj_offers(shop):
         """Count first (cheap), fetch only bands that fit one page of 1 000 rows. CJ fails for offset >= 10 000 and its
         paging order is unstable, so bands of <= 1 000 rows are the only safe way. Big feeds (Bambule 40k+) would
         otherwise download every oversized band once just to learn it has to be split."""
-        if LIMIT and len(got) >= LIMIT:
+        if (LIMIT and len(got) >= LIMIT) or (cap and len(got) - start >= cap):
             return
         n = count(lo, hi) if n is None else n
         if n == 0:
@@ -139,9 +142,24 @@ def cj_offers(shop):
         grab(round(mid + 0.01, 2), hi)
 
     edges = [0, 50, 100, 150, 200, 250, 300, 350, 400, 500, 650, 800, 1000, 1300, 1700, 2200, 3000, 4500, 7000, 500000]
-    for lo, hi in zip(edges, edges[1:]):
-        grab(lo if lo == 0 else lo + 0.01, hi)
-    for p in got.values():
+    # marketplaces (Allegro: 7.5 M offers) are only queried by keyword = brand, capped per brand, newest bands first
+    kws = shop.get("keywords") or [None]
+    cap = int(shop.get("per_keyword") or 0)
+    kw_of = {}
+    for kw in kws:
+        base = base0 + (", keywords:[" + json.dumps(kw, ensure_ascii=False) + "]" if kw else "")
+        start = len(got)
+        for lo, hi in (list(zip(edges, edges[1:]))[::-1] if kw else zip(edges, edges[1:])):
+            grab(lo if lo == 0 else lo + 0.01, hi)
+        for pid_ in list(got)[start:]:
+            kw_of[pid_] = kw
+        if kw:
+            log(f"  {kw}: {len(got) - start}")
+    fold = lambda t: re.sub(r"[^a-z0-9]", "", (t or "").lower())
+    for pid_, p in got.items():
+        kw = kw_of.get(pid_)
+        if kw and fold(kw) not in fold(p.get("title")):     # marketplace keyword search is fuzzy: the brand must be in the title
+            continue
         path = " | ".join(p.get("productType") or [])
         if not path_ok(shop, path):
             continue
@@ -178,11 +196,20 @@ def xml_items(resp):
 
 
 def xml_offers(shop, resp, link_of):
+    """Heureka SHOPITEM (incl. the datadepo variant with NAME/CATEGORY_FULL/IMAGE_MAIN used by eHub exports) and
+    Google Merchant RSS/Atom items -> slim offer records."""
     for kind, d, params, imgs in xml_items(resp):
+        pmap = {k: v for k, v in params}
         if kind == "SHOPITEM":
-            pid, title, url, img = d.get("ITEM_ID"), d.get("PRODUCTNAME") or d.get("PRODUCT"), d.get("URL"), d.get("IMGURL")
+            pid = d.get("ITEM_ID")
+            title = d.get("PRODUCTNAME") or d.get("PRODUCT") or d.get("NAME")
+            url, img = d.get("URL"), d.get("IMGURL") or d.get("IMAGE_MAIN")
             price, cur = price_of(d.get("PRICE_VAT") or d.get("PRICE"))
-            ean, brand, cat, desc = d.get("EAN", ""), d.get("MANUFACTURER", ""), d.get("CATEGORYTEXT", ""), d.get("DESCRIPTION", "")
+            cur = (d.get("CURRENCY") or cur or "").upper()
+            ean = d.get("EAN") or pmap.get("ean") or ""
+            brand, cat, desc = d.get("MANUFACTURER", ""), d.get("CATEGORYTEXT") or d.get("CATEGORY_FULL") or "", d.get("DESCRIPTION") or d.get("SHORTDESCRIPTION") or ""
+            if (d.get("STORE_STATE") or "").lower() in ("0", "false", "out of stock", "vyprodano", "nedostupne"):
+                continue
             was = 0
         else:
             pid, title, url, img = d.get("id"), d.get("title"), d.get("link"), d.get("image_link")
@@ -197,11 +224,17 @@ def xml_offers(shop, resp, link_of):
         if not (pid and title and url and price > 0) or not path_ok(shop, cat or ""):
             continue
         plain, go = link_of((url or "").replace("&amp;", "&"))
-        age = next((v for k, v in params if k in ("věk", "vek", "věk dítěte", "doporučený věk", "minimální věk")), "")
+        mpn = d.get("PRODUCTNO") or d.get("mpn") or ""
+        if shop.get("setno_from_url"):          # lego.com: the set number is only in the product URL (…-42115)
+            m = re.findall(r"-(\d{4,6})(?:[/?#&]|$)", unquote(plain))
+            mpn = m[-1] if m else mpn
+        age = next((v for k, v in params if k in ("věk", "vek", "věk dítěte", "doporučený věk", "minimální věk", "vhodné od")), "")
+        who = (pmap.get("určeno pro") or pmap.get("pohlaví") or "").lower()
+        sex = "male" if "kluk" in who and "holk" not in who else "female" if "holk" in who and "kluk" not in who else ""
         yield {"id": pid, "g": d.get("ITEMGROUP_ID") or d.get("item_group_id") or "", "t": title,
-               "d": re.sub(r"<[^>]+>", " ", desc or "")[:1500], "b": brand or "", "ean": ean or "", "mpn": d.get("PRODUCTNO") or d.get("mpn") or "",
+               "d": re.sub(r"<[^>]+>", " ", html.unescape(desc or ""))[:1500], "b": brand or "", "ean": ean or "", "mpn": mpn,
                "img": img or "", "imgs": [i for i in imgs if i][:5], "p": price, "was": was, "url": plain, "go": go,
-               "cat": cat or "", "age": age, "sex": ""}
+               "cat": html.unescape(cat or ""), "age": age, "sex": sex}
 
 
 def open_url(url):
@@ -245,8 +278,14 @@ def on_domain(shop, url):
 
 def ehub_offers(shop):
     pre = EHUB_CLICK.format(aid=EHUB_AID, bid=shop["a_bid"])
+
+    def link_of(u):
+        if "click.php" in u:                     # datadepo exports are already tracked: keep the link, show the shop URL
+            dest = (parse_qs(urlparse(u).query).get("desturl") or [u])[0]
+            return dest, u
+        return u, pre + quote(u, safe="")
     for url in feed_urls(shop):
-        for rec in xml_offers(shop, cached(url), lambda u: (u, u) if "click.php" in u else (u, pre + quote(u, safe=""))):
+        for rec in xml_offers(shop, cached(url), link_of):
             if on_domain(shop, rec["url"]):
                 yield rec
 
@@ -259,7 +298,22 @@ def dognet_offers(shop):
                 yield rec
 
 
-SOURCES = {"cj": cj_offers, "ehub": ehub_offers, "dognet": dognet_offers}
+AP_PARTNER = "5453"   # AffiliatePort partner id (public: part of every tracking link)
+
+
+def ap_offers(shop):
+    """AffiliatePort: the API refuses datacenter IPs, so read the public feed of the offer's creative and build the
+    tracking link ourselves: https://tracking.affiliateport.eu/click?o=<offer>&a=<partner>&deep_link=<product url>."""
+    def link_of(u):
+        if "tracking.affiliateport.eu" in u:
+            m = re.search(r"deep_link=([^&]+)", u)
+            return (unquote(m.group(1)) if m else u), u
+        return u, f"https://tracking.affiliateport.eu/click?o={shop['offer']}&a={AP_PARTNER}&deep_link=" + quote(u, safe="")
+    for url in feed_urls(shop):
+        yield from xml_offers(shop, cached(url), link_of)
+
+
+SOURCES = {"cj": cj_offers, "ehub": ehub_offers, "dognet": dognet_offers, "affiliateport": ap_offers}
 
 
 def count_lines(p):

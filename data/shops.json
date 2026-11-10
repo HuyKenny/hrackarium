@@ -67,6 +67,379 @@
    "color": "#0E8C8C",
    "include": "Výtvarné potřeby > (Kreativní potřeby|Modelovací)",
    "enabled": false
+  },
+  {
+   "id": "pidilidi",
+   "name": "Pidilidi.cz",
+   "domain": "pidilidi.cz",
+   "network": "ehub",
+   "a_bid": "1f76de4d",
+   "feed_key": "eh00",
+   "color": "#E2402B"
+  },
+  {
+   "id": "wikyhracky",
+   "name": "WikyHračky.cz",
+   "domain": "wikyhracky.cz",
+   "network": "ehub",
+   "a_bid": "36a77eb5",
+   "feed_key": "eh01",
+   "color": "#2E9D57"
+  },
+  {
+   "id": "sevt",
+   "name": "SEVT.cz",
+   "domain": "sevt.cz",
+   "network": "ehub",
+   "a_bid": "22691232",
+   "feed_key": "eh02",
+   "color": "#F28C28",
+   "include": "Hračk|Hry|Puzzle|Stavebnic|Kreativ|Výtvarn|Modelín|Omalov"
+  },
+  {
+   "id": "tlamagames",
+   "name": "TLAMA games",
+   "domain": "tlamagames.com",
+   "network": "ehub",
+   "a_bid": "3de0bfba",
+   "feed_key": "eh03",
+   "color": "#7B4BC4"
+  },
+  {
+   "id": "kidtown",
+   "name": "Kidtown.cz",
+   "domain": "kidtown.cz",
+   "network": "ehub",
+   "a_bid": "9f3c5814",
+   "feed_key": "eh04",
+   "color": "#2C7BE5",
+   "include": "Hračk|Hry|Puzzle|Stavebnic|Učení hrou|Kreativ"
+  },
+  {
+   "id": "littleshoes",
+   "name": "LittleShoes.cz",
+   "domain": "littleshoes.cz",
+   "network": "ehub",
+   "a_bid": "31e2654e",
+   "feed_key": "eh05",
+   "color": "#D6336C",
+   "include": "Hračk"
+  },
+  {
+   "id": "najada",
+   "name": "Najáda.games",
+   "domain": "najada.games",
+   "network": "ehub",
+   "a_bid": "23c81a0f",
+   "feed_key": "eh06",
+   "color": "#0E8C8C",
+   "include": "Společenské hry|Karetní|Sběratel|Doplňky ke|Miniatur|Puzzle|Hlavolam"
+  },
+  {
+   "id": "museumofbricks",
+   "name": "Museum of Bricks",
+   "domain": "eshop.museumofbricks.cz",
+   "network": "ehub",
+   "a_bid": "21a527e2",
+   "feed_key": "eh07",
+   "color": "#B45309"
+  },
+  {
+   "id": "ministerstvohracek",
+   "name": "Ministerstvo hraček",
+   "domain": "ministerstvohracek.cz",
+   "network": "ehub",
+   "a_bid": "bfe5db0e",
+   "feed_key": "eh08",
+   "color": "#5B5BD6"
+  },
+  {
+   "id": "detskeboty",
+   "name": "Dětskéboty.cz",
+   "domain": "detskeboty.cz",
+   "network": "ehub",
+   "a_bid": "1e2adf08",
+   "feed_key": "eh09",
+   "color": "#1D7A4C",
+   "include": "Hračk"
+  },
+  {
+   "id": "okhracky",
+   "name": "OK-Hračky.cz",
+   "domain": "ok-hracky.cz",
+   "network": "ehub",
+   "a_bid": "20372289",
+   "feed_key": "eh10",
+   "color": "#C2410C"
+  },
+  {
+   "id": "mrakyhracek",
+   "name": "Mraky hraček",
+   "domain": "mrakyhracek.cz",
+   "network": "ehub",
+   "a_bid": "dbc15c2d",
+   "feed_key": "eh12",
+   "color": "#0369A1",
+   "budget": 1500
+  },
+  {
+   "id": "balonkypraha",
+   "name": "BalonkyPraha.cz",
+   "domain": "balonkypraha.cz",
+   "network": "ehub",
+   "a_bid": "eacf1102",
+   "feed_key": "eh13",
+   "color": "#E2402B",
+   "include": "Hračk|Párty|Party|Karneval|Kostým"
+  },
+  {
+   "id": "baglik",
+   "name": "Báglík.cz",
+   "domain": "baglik.cz",
+   "network": "ehub",
+   "a_bid": "54c5ca6b",
+   "feed_key": "eh14",
+   "color": "#2E9D57",
+   "include": "Hračk"
+  },
+  {
+   "id": "legenio",
+   "name": "Legenio.cz",
+   "domain": "legenio.cz",
+   "network": "ehub",
+   "a_bid": "193ec796",
+   "feed_key": "eh15",
+   "color": "#F28C28"
+  },
+  {
+   "id": "kokiskashop",
+   "name": "Kokiskashop.cz",
+   "domain": "kokiskashop.cz",
+   "network": "ehub",
+   "a_bid": "21673a32",
+   "feed_key": "eh16",
+   "color": "#7B4BC4",
+   "include": "Hračk|Hry |Hry>|Dětsk.*hr|Puzzle|Stavebnic"
+  },
+  {
+   "id": "modadeti",
+   "name": "Modadeti.cz",
+   "domain": "modadeti.cz",
+   "network": "ehub",
+   "a_bid": "98fb9307",
+   "feed_key": "eh17",
+   "color": "#2C7BE5",
+   "include": "^Hračky"
+  },
+  {
+   "id": "pompo",
+   "name": "Pompo.cz",
+   "domain": "pompo.cz",
+   "network": "ehub",
+   "a_bid": "ce6cff81",
+   "feed_key": "eh18",
+   "color": "#D6336C"
+  },
+  {
+   "id": "bscom",
+   "name": "Bscom.cz",
+   "domain": "bscom.cz",
+   "network": "ehub",
+   "a_bid": "f4a2088a",
+   "feed_key": "eh19",
+   "color": "#0E8C8C",
+   "include": "Hračk|Hry a zábava|Stavebnic|Puzzle"
+  },
+  {
+   "id": "modroocko",
+   "name": "Modroočko.cz",
+   "domain": "modroocko.cz",
+   "network": "ehub",
+   "a_bid": "fc3b0ed1",
+   "feed_key": "eh20",
+   "color": "#B45309"
+  },
+  {
+   "id": "woodisio",
+   "name": "Woodisio.cz",
+   "domain": "woodisio.cz",
+   "network": "ehub",
+   "a_bid": "73b363cc",
+   "feed_key": "eh21",
+   "color": "#5B5BD6",
+   "include": "Hrač|Montessori|Piklerov|Hry|Stavebnic|Puzzle"
+  },
+  {
+   "id": "dvedeti",
+   "name": "Dvěděti.cz",
+   "domain": "dvedeti.cz",
+   "network": "ehub",
+   "a_bid": "4477a62d",
+   "feed_key": "eh22",
+   "color": "#1D7A4C"
+  },
+  {
+   "id": "ababu",
+   "name": "Ababu.cz",
+   "domain": "ababu.cz",
+   "network": "ehub",
+   "a_bid": "92f2453c",
+   "feed_key": "eh23",
+   "color": "#C2410C",
+   "include": "Hračk|Muchl|Hry"
+  },
+  {
+   "id": "chrusticek",
+   "name": "Chrustíček.cz",
+   "domain": "chrusticek.cz",
+   "network": "ehub",
+   "a_bid": "2542a903",
+   "feed_key": "eh24",
+   "color": "#0369A1",
+   "include": "^Hračky"
+  },
+  {
+   "id": "littleangel",
+   "name": "LittleAngel.cz",
+   "domain": "littleangel.cz",
+   "network": "ehub",
+   "a_bid": "33dde5ab",
+   "feed_key": "eh26",
+   "color": "#E2402B",
+   "include": "Hračk"
+  },
+  {
+   "id": "bergam",
+   "name": "Bergam.cz",
+   "domain": "bergam.cz",
+   "network": "ehub",
+   "a_bid": "26ca6ae4",
+   "feed_key": "eh27",
+   "color": "#2E9D57",
+   "include": "Hračk"
+  },
+  {
+   "id": "sparkys",
+   "name": "Sparkys.cz",
+   "domain": "sparkys.cz",
+   "network": "ehub",
+   "a_bid": "508c468c",
+   "feed_key": "eh28",
+   "color": "#F28C28"
+  },
+  {
+   "id": "zuriel",
+   "name": "Zuriel.cz",
+   "domain": "zuriel.cz",
+   "network": "ehub",
+   "a_bid": "72bf9145",
+   "feed_key": "eh30",
+   "color": "#7B4BC4",
+   "include": "Modely|Hračk|Stavebnic|Puzzle|Hry"
+  },
+  {
+   "id": "gigamat",
+   "name": "Gigamat.cz",
+   "domain": "gigamat.cz",
+   "network": "ehub",
+   "a_bid": "210c832b",
+   "feed_key": "eh31",
+   "color": "#2C7BE5",
+   "include": "Hračk|Dětské hry|Stavebnic|Puzzle"
+  },
+  {
+   "id": "benito",
+   "name": "Benito.cz",
+   "domain": "benito.cz",
+   "network": "ehub",
+   "a_bid": "0e8c19ab",
+   "feed_key": "eh32",
+   "color": "#D6336C",
+   "include": "Hračk"
+  },
+  {
+   "id": "fyft",
+   "name": "FYFT.cz",
+   "domain": "fyft.cz",
+   "network": "ehub",
+   "a_bid": "faf9efc5",
+   "feed_key": "eh33",
+   "color": "#0E8C8C",
+   "include": "HRY|STAVEBNICE|PUZZLE|MODEL|Hry|Stavebnic"
+  },
+  {
+   "id": "gengar",
+   "name": "Gengar.cz",
+   "domain": "gengar.cz",
+   "network": "ehub",
+   "a_bid": "07e497e9",
+   "feed_key": "eh34",
+   "color": "#B45309",
+   "exclude": "Kusové karty"
+  },
+  {
+   "id": "rcmodelarka",
+   "name": "RC-modelářka.cz",
+   "domain": "rc-modelarka.cz",
+   "network": "ehub",
+   "a_bid": "fefb6dc8",
+   "feed_key": "eh35",
+   "color": "#5B5BD6",
+   "exclude": "Náhradní díly|Příslušenství|Baterie|Nabíječ"
+  },
+  {
+   "id": "legocom",
+   "name": "LEGO.com",
+   "domain": "lego.com",
+   "network": "affiliateport",
+   "offer": "1736",
+   "feed_key": "ap_lego",
+   "color": "#E3000B",
+   "setno_from_url": true,
+   "fallback_cat": "lego",
+   "brand": "LEGO"
+  },
+  {
+   "id": "skibi",
+   "name": "Skibi.cz",
+   "domain": "skibi.cz",
+   "network": "affiliateport",
+   "offer": "483",
+   "feed_key": "ap_skibi",
+   "color": "#0F766E",
+   "include": "\\| Hračky"
+  },
+  {
+   "id": "allegro",
+   "name": "Allegro.cz",
+   "domain": "allegro.cz",
+   "network": "cj",
+   "advertiser": "6464420",
+   "color": "#FF5A00",
+   "keywords": [
+    "LEGO",
+    "Playmobil",
+    "Schleich",
+    "Ravensburger",
+    "Barbie",
+    "Hot Wheels",
+    "Bruder",
+    "Cobi",
+    "Clementoni",
+    "Trefl",
+    "Baby Born",
+    "Geomag",
+    "Siku",
+    "Tlapková patrola",
+    "Lena",
+    "Smoby",
+    "VTech",
+    "Fisher-Price",
+    "Magformers",
+    "Jellycat"
+   ],
+   "per_keyword": 2500,
+   "budget": 2700
   }
  ]
 }
