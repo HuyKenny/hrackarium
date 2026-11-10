@@ -53,14 +53,35 @@ def age_text(m):
     return f"od {y} {plural(y, 'roku', 'let', 'let')}" if y > 1 else "od 1 roku"
 
 
+def shorten(text, limit, keep_tail=""):
+    """Search engines cut long titles/descriptions anyway; cut at a word boundary ourselves (keeping the brand tail of a title)."""
+    text = re.sub(r"\s+", " ", text).strip()
+    if len(text) <= limit:
+        return text
+    tail = keep_tail if keep_tail and text.endswith(keep_tail) else ""
+    room = limit - len(tail) - 1
+    head = text[:len(text) - len(tail)][:room].rsplit(" ", 1)[0].rstrip(" ,;:-–—(")
+    return head + "…" + tail
+
+
 def img_url(u, size="card"):
-    """Smaller renditions straight from the shops' CDNs (no resizing on our side: it would cost Worker CPU)."""
+    """Smaller renditions straight from the shops' own image CDNs (measured 10. 11. 2026: LEGO.com 548 -> 17 kB, Myshoptet orig 380 -> 29 kB,
+    Sparkys 328 -> 101 kB, SEVT 77 -> 38 kB). No resizing on our side. size: "card" (~360 px wide) or "main" (product gallery, ~700 px)."""
     if not u:
         return u
-    if "bambule.cz/data/cache/thumb_" in u and size == "card":
+    card = size == "card"
+    if "bambule.cz/data/cache/thumb_" in u and card:
         return re.sub(r"thumb_\d+-\d+-\d+", "thumb_400-400-12", u)
-    if "i.actva.cz" in u and size == "card":
+    if "i.actva.cz" in u and card:
         return u.replace("/600x600/", "/300x300/")
+    if "cdn.myshoptet.com" in u and "/user/shop/orig/" in u:
+        return u.replace("/user/shop/orig/", "/user/shop/detail/" if card else "/user/shop/big/")
+    if "www.lego.com/cdn/" in u and "format=" in u:
+        return re.sub(r"&width=\d+", "", u) + ("&width=360" if card else "&width=720")
+    if "cdn.sevt.cz" in u and "width=" in u:
+        return re.sub(r"width=\d+", "width=360" if card else "width=600", u)
+    if "sparkys.cz/data/cache/thumb_" in u and card:
+        return re.sub(r"thumb_\d+-\d+-12-0", "thumb_300-300-12-0", u)
     return u
 
 
@@ -101,7 +122,7 @@ class Site:
         return self.base + path
 
     def layout(self, path, title, desc, body, crumbs=None, noindex=False, jsonld=None, preload_img=None, og_img=None, full=False):
-        robots = "noindex,follow" if (noindex or self.env != "production") else "index,follow,max-image-preview:large"
+        robots = "noindex,follow" if (noindex or getattr(self, "pg_noindex", False) or self.env != "production") else "index,follow,max-image-preview:large"
         if self.pg and self.pg[1] > 1:
             n = self.pg[1]
             path = f"{self.pg[0]}strana-{n}/"
@@ -111,6 +132,7 @@ class Site:
             body = re.sub(r'<section class="faq">.*?</section>', "", body, flags=re.S)
             body = re.sub(r'<div class="prose">.*?</div><!--/prose-->', "", body, flags=re.S)
             body = re.sub(r"</h1>", f' <small class="pgn">strana {n}</small></h1>', body, count=1)
+        title, desc = shorten(title, 68, " | Hračkárium"), shorten(desc, 160)
         lds = list(jsonld or [])
         if self.pending_ld:
             lds.append(self.pending_ld)

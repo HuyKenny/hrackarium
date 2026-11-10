@@ -20,9 +20,8 @@ BASE = "https://hrackarium.cz"
 
 pages = {}
 for f in DIST.rglob("index.html"):
-    rel = "/" + f.parent.relative_to(DIST).as_posix() + "/"
-    pages[rel.replace("//", "/")] = f
-pages["/"] = DIST / "index.html"
+    d = f.parent.relative_to(DIST).as_posix()
+    pages["/" if d == "." else "/" + d + "/"] = f
 files = {"/" + p.relative_to(DIST).as_posix() for p in DIST.rglob("*") if p.is_file()}
 
 RX = dict(

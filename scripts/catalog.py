@@ -118,7 +118,7 @@ def cluster(offers, shop_rank):
             best.setdefault(o["shop"], o)
         shop_offers = sorted(best.values(), key=lambda o: (o["price"], shop_rank.get(o["shop"], 99)))
         rep = sorted(offs, key=lambda o: (shop_rank.get(o["shop"], 99), -mixed(o["title"])))[0]
-        name = rep["title"]
+        name = re.sub(r"^(\S+(?:\s\S+)?)\s+\1\b", r"\1", rep["title"], flags=re.I)      # "PlanToys PlanToys Bobří hráz" -> "PlanToys Bobří hráz"
         brands = Counter(o["brand"] for o in offs if o["brand"])
         cats = Counter(o["cat"] for o in offs)
         cat = cats.most_common(1)[0][0]

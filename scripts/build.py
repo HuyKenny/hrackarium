@@ -48,7 +48,7 @@ def log(m):
     print(m, file=sys.stderr, flush=True)
 
 
-INLINE_SCRIPT = re.compile(rb"<script>(.*?)</script>", re.S)
+INLINE_SCRIPT = re.compile(rb'<script(?: type="speculationrules")?>(.*?)</script>', re.S)
 
 
 class Out:
@@ -65,7 +65,7 @@ class Out:
         data = content.encode() if isinstance(content, str) else content
         p.write_bytes(data)
         self.files += 1
-        if rel.endswith(".html") and b"<script>" in data:
+        if rel.endswith(".html") and b"<script" in data:
             for m in INLINE_SCRIPT.finditer(data):
                 self.script_hashes.add(base64.b64encode(hashlib.sha256(m.group(1)).digest()).decode())
         return data
@@ -113,8 +113,10 @@ def paged(out, S, path, items, render, group="listings", index=True):
     pages = max(1, min(-(-len(items) // R.PER_PAGE), MAX_PAGES))
     for k in range(1, pages + 1):
         S.pg = (path, k, pages)
+        S.pg_noindex = k == 1 and not index          # thin listing: noindex AND out of the sitemap (they must agree)
         out.page(path if k == 1 else f"{path}strana-{k}/", render(), group if k == 1 else None, index=index if k == 1 else False)
     S.pg = None
+    S.pg_noindex = False
 
 
 def price_stats(items):
@@ -151,6 +153,9 @@ def main():
         p["nkey"] = X.slugify(p["name"])            # computed once: product pages compare it 400x each
         p["page"] = not MAX_PRODUCTS or i < MAX_PRODUCTS
         p["index"] = len(p["offers"]) > 1 or len(p["desc"]) >= 120
+    name_count = Counter(p["nkey"] for p in products)           # different products (EAN) with one name -> titles must still differ
+    for p in products:
+        p["dup"] = name_count[p["nkey"]] > 1
     gone = C.gone_products(products, state, state.get("snap", {}))
 
     shop_meta = {s["id"]: {"name": s["name"], "color": s.get("color", "#888"), "domain": s["domain"]} for s in shops}
@@ -415,15 +420,19 @@ def product_page(S, p):
     n = len(p["offers"])
     best = p["offers"][0]
     bs = S.shop(best["shop"])
-    title = f"{p['name']} – srovnání cen" + (f" ({n} obchody)" if 1 < n < 5 else f" ({n} obchodů)" if n >= 5 else "") + SUFFIX
+    code = re.sub(r"\D", "", p["ean"])[-4:] or p["slug"][-4:]
+    uniq = f" (kód {code})" if p.get("dup") else ""
+    title = f"{p['name']}{uniq} – srovnání cen" + (f" ({n} obchody)" if 1 < n < 5 else f" ({n} obchodů)" if n >= 5 else "") + SUFFIX
     if len(title) > 75:
-        title = f"{p['name'][:55].rsplit(' ', 1)[0]} – ceny od {R.kc(p['price'])}" + SUFFIX
+        title = f"{p['name'][:50].rsplit(' ', 1)[0]}{uniq} – ceny od {R.kc(p['price'])}" + SUFFIX
     desc = (f"{p['name']}: {'nejnižší cena ' + R.kc(p['price']) + ' ze ' + str(n) + ' obchodů' if n > 1 else 'cena ' + R.kc(p['price']) + ' v obchodě ' + bs['name']}"
             f"{', ' + R.age_text(p['age']) if p['age'] is not None else ''}. Porovnejte nabídky a kupte přímo v e‑shopu.")
     imgs = [p["img"]] + p["imgs"] if p["img"] else p["imgs"]
     imgs = [u for u in imgs if u][:6]
+    thumb_srcs = [R.img_url(u, "card") for u in imgs]       # 60 px thumbnails need the small rendition
+    imgs = [R.img_url(u, "main") for u in imgs]
     main_img = E(imgs[0]) if imgs else "/img/ui/placeholder.svg"
-    thumbs = "".join(f'<button type="button" data-src="{E(u)}"{" class=on" if i == 0 else ""} aria-label="Obrázek {i + 1}"><img src="{E(u)}" alt="" loading="lazy" referrerpolicy="no-referrer" width="60" height="60"></button>'
+    thumbs = "".join(f'<button type="button" data-src="{E(u)}"{" class=on" if i == 0 else ""} aria-label="Obrázek {i + 1}"><img src="{E(thumb_srcs[i])}" alt="" loading="lazy" referrerpolicy="no-referrer" width="60" height="60"></button>'
                      for i, u in enumerate(imgs)) if len(imgs) > 1 else ""
     age = f'<span class="sticker" style="width:64px;height:64px;font-size:1.15rem">{R.age_label(p["age"])}</span>' if p["age"] is not None else ""
     gal = f'<div class="gal"><div class="gal__main"><img id="gmain" src="{main_img}" alt="{E(p["name"])}" referrerpolicy="no-referrer" width="560" height="560" fetchpriority="high">{age}</div><div class="thumbs">{thumbs}</div></div>'
