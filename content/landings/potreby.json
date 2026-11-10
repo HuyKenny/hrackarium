@@ -15,7 +15,8 @@
   "hubs": [
    "/pro-nejmensi/",
    "/drevene/"
-  ]
+  ],
+  "scope": "text"
  },
  {
   "slug": "senzoricke-hracky",
@@ -36,7 +37,8 @@
   "icon": "chrastitko",
   "hubs": [
    "/pro-nejmensi/"
-  ]
+  ],
+  "scope": "text"
  },
  {
   "slug": "antistresove-hracky",

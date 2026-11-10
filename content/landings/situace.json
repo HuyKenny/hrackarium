@@ -8,10 +8,10 @@
    "any": [
     "\\bdo vany\\b",
     "\\bkoupaci\\b",
-    "\\bstrikaci\\b",
     "\\bplovouci\\b",
     "\\bvanicka\\b",
-    "\\bhracky? do vody pro (nejmensi|miminka)"
+    "\\bhracky? do vody pro (nejmensi|miminka)",
+    "\\bstrikaci (hrack|zviratk|kachn|zvire|ryb)"
    ]
   },
   "icon": "kyblik",

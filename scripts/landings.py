@@ -1,7 +1,7 @@
 """Long-tail landing pages from declarative rules (content/landings/*.json) plus programmatic families.
 
 A record says WHAT the page is (slug, h1, rules) and the engine finds the matching products. Rules match a folded
-(lower-case, no diacritics) text built from the product title(s), description start and the shops' own category paths,
+(lower-case, no diacritics) text built from the product title(s) (default) or, with "scope": "text", also the description start and the shops' own category paths,
 so patterns are written without diacritics and with word boundaries:  {"any": ["\\\\bdo vany\\\\b"], "cat": ["pro-nejmensi"]}.
 
 Rule keys: any / all / none (regex lists on the text), cat (category prefixes), brand (names), age [lo, hi] in months (null = open),
@@ -35,6 +35,14 @@ def hay(p):
     return h
 
 
+def title_hay(p):
+    h = p.get("_t")
+    if h is None:
+        h = fold(p["name"] + " " + p["dry"])
+        p["_t"] = h
+    return h
+
+
 def kc(n):
     return f"{int(round(n)):,}".replace(",", " ") + " Kč"
 
@@ -45,6 +53,7 @@ def compile_rules(r):
     cats, brands = tuple(r.get("cat", [])), {fold(b) for b in r.get("brand", [])}
     age, price, sex, offers = r.get("age"), r.get("price"), r.get("sex"), r.get("offers", 0)
     lic, lego, age_unknown = r.get("lic"), r.get("lego"), r.get("age_unknown", False)
+    haystack = hay if r.get("scope") == "text" else title_hay     # default: product titles only; "scope": "text" adds description and the shops' category paths
 
     def pred(p):
         if cats and not p["cat"].startswith(cats):
@@ -69,7 +78,7 @@ def compile_rules(r):
             elif (age[0] is not None and a < age[0]) or (age[1] is not None and a > age[1]):
                 return False
         if any_ or all_ or none_:
-            h = hay(p)
+            h = haystack(p)
             if any_ and not any(x.search(h) for x in any_):
                 return False
             if all_ and not all(x.search(h) for x in all_):
@@ -165,10 +174,10 @@ def generated_records(products, by_cat, reserved):
     names = {}
     for ps in by_brand_cat.values():
         names.setdefault(X.slugify(ps[0]["brand"]), ps[0]["brand"])
-    ranked = sorted(((b, c, ps) for (b, c), ps in by_brand_cat.items() if len(ps) >= 8 and brand_total[b] > len(ps) + 5), key=lambda x: -len(x[2]))[:700]
+    ranked = sorted(((b, c, ps) for (b, c), ps in by_brand_cat.items() if len(ps) >= 8 and brand_total[b] > len(ps) + 5 and b != c), key=lambda x: -len(x[2]))[:700]
     for b, c, ps in ranked:
         recs.append({"slug": f"znacky/{b}/{c}", "h1": f"{names[b]} – {X.TREE[c][2].lower()}", "parent": f"/znacky/{b}/", "group": "brand-cat", "icon": None, "items": ps,
-                     "title": f"{names[b]} {X.TREE[c][0].lower()} – srovnání cen", "index_min": 10})
+                     "title": f"{names[b]} {X.TREE[c][0].lower()} – srovnání cen", "index_min": 15})
     return recs
 
 
