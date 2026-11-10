@@ -18,25 +18,22 @@
   /* ---------- broken shop images -> our placeholder ---------- */
   /* A shop image the browser cannot show (some shops refuse real browsers) never becomes the placeholder while another image exists:
      gallery thumbnail -> hidden; main image -> next gallery image; card -> its alternative image; placeholder only as the very last resort. */
+  function viaProxy(u) { return "https://wsrv.nl/?w=480&output=webp&url=" + encodeURIComponent(u); }
+  function unproxy(u) { var m = u.match(/[?&]url=([^&]+)/); return u.indexOf("wsrv.nl") >= 0 && m ? decodeURIComponent(m[1]) : u; }
+  /* A shop picture the browser cannot show: 1) the same picture through an image proxy, 2) the product's other pictures
+     (gallery / alternative), each also direct then proxied, 3) the box stays empty. Every address is tried at most once. */
   function fixImg(im) {
     if (im.tagName !== "IMG" || !im.src || im.src.indexOf(location.host) >= 0) return;
-    var u = im.currentSrc || im.src;
+    var t = im._t = im._t || {}, orig = unproxy(im.currentSrc || im.src);
+    t["d:" + orig] = 1;
+    if (!t["p:" + orig] && (im.currentSrc || im.src).indexOf("wsrv.nl") < 0) { t["p:" + orig] = 1; im.src = viaProxy(orig); return; }
+    t["p:" + orig] = 1;
     var th = im.closest ? im.closest(".thumbs button") : null;
-    if (th) {
-      th.dataset.bad = "1"; th.hidden = true;
-      var left = $$(".thumbs button").filter(function (b) { return !b.dataset.bad; });
-      if (left.length < 2) { var strip = $(".thumbs"); if (strip) strip.hidden = true; }
-      return;
-    }
-    if (im.id === "gmain") {
-      var thumbs = $$(".thumbs button");
-      thumbs.forEach(function (b) { if (b.dataset.src === u) { b.dataset.bad = "1"; b.hidden = true; } });
-      var next = thumbs.filter(function (b) { return !b.dataset.bad; })[0];
-      if (next) { im.src = next.dataset.src; return; }
-    } else if (im.dataset.alt && !im.dataset.altTried) {
-      im.dataset.altTried = "1"; im.src = im.dataset.alt; return;
-    }
-    im.style.visibility = "hidden";      // the shop image cannot be shown: leave the box empty, never a stand-in picture
+    if (th) { th.dataset.bad = "1"; th.hidden = true; var left = $$(".thumbs button").filter(function (b) { return !b.dataset.bad; }); if (left.length < 2) { var st = $(".thumbs"); if (st) st.hidden = true; } return; }
+    var cand = im.id === "gmain" ? $$(".thumbs button").map(function (b) { return b.dataset.src; }) : [im.dataset.alt];
+    var next = cand.filter(function (c) { return c && !t["d:" + c] && !t["p:" + c]; })[0];
+    if (next) { t["d:" + next] = 1; im.src = next; return; }
+    im.style.visibility = "hidden";     // nothing works: leave the box empty, never a stand-in picture
   }
   document.addEventListener("error", function (e) { fixImg(e.target); }, true);
   $$("img").forEach(function (im) { if (im.complete && !im.naturalWidth && im.getAttribute("loading") !== "lazy") fixImg(im); });

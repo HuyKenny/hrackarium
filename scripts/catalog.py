@@ -127,7 +127,9 @@ def cluster(offers, shop_rank):
         ages = [o["age"] for o in offs if o["age"] is not None]
         sexes = {o["sex"] for o in offs if o["sex"]}
         desc = max((o["desc"] for o in offs), key=len)
-        img = next((o["img"] for o in sorted(offs, key=lambda o: shop_rank.get(o["shop"], 99)) if o["img"]), "")
+        # bambule.cz thumbnails do not show in some visitors' browsers (10. 11. 2026): use any other shop's picture first
+        img_order = sorted(offs, key=lambda o: (o["shop"] == "bambule", shop_rank.get(o["shop"], 99)))
+        img = next((o["img"] for o in img_order if o["img"]), "")
         imgs = []
         for o in offs:
             for u in [o["img"]] + o["imgs"]:
