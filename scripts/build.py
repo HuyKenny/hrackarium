@@ -140,6 +140,7 @@ def main():
 
     products.sort(key=pop_key)
     for i, p in enumerate(products):
+        p["nkey"] = X.slugify(p["name"])            # computed once: product pages compare it 400x each
         p["page"] = not MAX_PRODUCTS or i < MAX_PRODUCTS
         p["index"] = len(p["offers"]) > 1 or len(p["desc"]) >= 120
     gone = C.gone_products(products, state, state.get("snap", {}))
@@ -467,9 +468,9 @@ def product_page(S, p):
     sim = [q for q in S.ctx["by_cat"].get(k, []) if q is not p and q["page"]]
     if p["lego"]:
         sim = [q for q in S.ctx["series"].get(p["lego"], []) if q is not p and q["page"]] + sim
-    seen_sim, uniq = {p["id"], X.slugify(p["name"])}, []
+    seen_sim, uniq = {p["id"], p["nkey"]}, []
     for q in sim:                       # series and category lists overlap; also skip a different listing with the same name
-        key = (q["id"], X.slugify(q["name"]))
+        key = (q["id"], q["nkey"])
         if key[0] in seen_sim or key[1] in seen_sim:
             continue
         seen_sim.update(key)
