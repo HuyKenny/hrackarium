@@ -250,7 +250,9 @@
    "a_bid": "f4a2088a",
    "feed_key": "eh19",
    "color": "#0E8C8C",
-   "include": "Hračk|Hry a zábava|Stavebnic|Puzzle"
+   "include": "Hračk|Hry a zábava|Stavebnic|Puzzle",
+   "no_images": true,
+   "note_images": "browsers cannot display bscom.cz images (decode error in Chrome, curl works) - 10. 11. 2026"
   },
   {
    "id": "modroocko",

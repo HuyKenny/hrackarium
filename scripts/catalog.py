@@ -61,7 +61,8 @@ def load_offers(shops):
                 out.append({
                     "shop": s["id"], "oid": r["id"], "title": title, "desc": X.clean(re.sub(r"<[^>]+>", " ", r.get("d") or "")),
                     "brand": brand, "ean": norm_ean(r.get("ean")), "setno": X.set_number(r, brand),
-                    "img": https(r.get("img")), "imgs": [https(u) for u in r.get("imgs") or [] if u][:4],
+                    "img": "" if s.get("no_images") else https(r.get("img")),
+                    "imgs": [] if s.get("no_images") else [https(u) for u in r.get("imgs") or [] if u][:4],
                     "price": round(price), "was": round(float(r.get("was") or 0)), "url": r.get("url") or "", "go": r["go"],
                     "cat": cat, "age": X.age_of(r), "sex": X.gender_of(r), "path": r.get("cat") or "",
                 })
