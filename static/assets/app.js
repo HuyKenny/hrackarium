@@ -36,7 +36,7 @@
     } else if (im.dataset.alt && !im.dataset.altTried) {
       im.dataset.altTried = "1"; im.src = im.dataset.alt; return;
     }
-    if (im.src.indexOf("placeholder.svg") < 0) im.src = "/img/ui/placeholder.svg";
+    im.style.visibility = "hidden";      // the shop image cannot be shown: leave the box empty, never a stand-in picture
   }
   document.addEventListener("error", function (e) { fixImg(e.target); }, true);
   $$("img").forEach(function (im) { if (im.complete && !im.naturalWidth && im.getAttribute("loading") !== "lazy") fixImg(im); });
