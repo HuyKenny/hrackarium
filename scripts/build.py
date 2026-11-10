@@ -465,7 +465,14 @@ def product_page(S, p):
     sim = [q for q in S.ctx["by_cat"].get(k, []) if q is not p and q["page"]]
     if p["lego"]:
         sim = [q for q in S.ctx["series"].get(p["lego"], []) if q is not p and q["page"]] + sim
-    sim = sorted(sim[:400], key=lambda q: (abs(q["price"] - p["price"]) / max(p["price"], 1) - 0.2 * len(q["offers"])))[:8]
+    seen_sim, uniq = {p["id"], X.slugify(p["name"])}, []
+    for q in sim:                       # series and category lists overlap; also skip a different listing with the same name
+        key = (q["id"], X.slugify(q["name"]))
+        if key[0] in seen_sim or key[1] in seen_sim:
+            continue
+        seen_sim.update(key)
+        uniq.append(q)
+    sim = sorted(uniq[:400], key=lambda q: (abs(q["price"] - p["price"]) / max(p["price"], 1) - 0.2 * len(q["offers"])))[:8]
     sim_html = f'<section class="sec"><div class="sec__h"><h2>Podobné hračky</h2><a href="/{k}/">Vše v kategorii {E(cat_name(k))} →</a></div>{S.grid(sim)}</section>' if sim else ""
 
     ld = {"@context": "https://schema.org", "@type": "Product", "name": p["name"], "image": imgs[:3] or None, "url": S.url(f"/produkt/{p['slug']}/"),
