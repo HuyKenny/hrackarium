@@ -422,9 +422,9 @@ def product_page(S, p):
     bs = S.shop(best["shop"])
     code = re.sub(r"\D", "", p["ean"])[-4:] or p["slug"][-4:]
     uniq = f" (kód {code})" if p.get("dup") else ""
-    title = f"{p['name']}{uniq} – srovnání cen" + (f" ({n} obchody)" if 1 < n < 5 else f" ({n} obchodů)" if n >= 5 else "") + SUFFIX
-    if len(title) > 75:
-        title = f"{p['name'][:50].rsplit(' ', 1)[0]}{uniq} – ceny od {R.kc(p['price'])}" + SUFFIX
+    core = f"{p['name']} – srovnání cen" + (f" ({n} obchody)" if 1 < n < 5 else f" ({n} obchodů)" if n >= 5 else "")
+    # shorten the descriptive part, never the distinguishing code: titles of same-named products must stay unique
+    title = R.shorten(core, 68 - len(SUFFIX) - len(uniq)) + uniq + SUFFIX
     desc = (f"{p['name']}: {'nejnižší cena ' + R.kc(p['price']) + ' ze ' + str(n) + ' obchodů' if n > 1 else 'cena ' + R.kc(p['price']) + ' v obchodě ' + bs['name']}"
             f"{', ' + R.age_text(p['age']) if p['age'] is not None else ''}. Porovnejte nabídky a kupte přímo v e‑shopu.")
     imgs = [p["img"]] + p["imgs"] if p["img"] else p["imgs"]
