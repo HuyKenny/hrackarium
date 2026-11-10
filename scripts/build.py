@@ -246,6 +246,7 @@ def main():
     out.page("/jak-srovnavame/", about_page(S, present), "pages")
     out.page("/ochrana-osobnich-udaju/", privacy_page(S), "pages")
     out.page("/hledat/", search_page(S), None, index=False)
+    out.page("/diagnostika-obrazku/", diag_page(S, products), None, index=False)
     out.page("/", home_page(S, products, by_top, series_pages, lic_pages, gift), "pages")
     out.write("404.html", S.layout("/404/", "Stránka nenalezena" + SUFFIX, "Tahle stránka neexistuje.",
                                    '<div class="e404"><div><h1>Tady nic není. Ani pod postelí.</h1><p class="lead">Hračka mohla zmizet z nabídky obchodů, nebo vedla stará adresa. '
@@ -669,6 +670,30 @@ def privacy_page(S):
             '<h2>Kontakt</h2><p><a class="lnk" href="mailto:info@hrackarium.cz">info@hrackarium.cz</a></p></div>')
     return S.layout("/ochrana-osobnich-udaju/", "Ochrana osobních údajů" + SUFFIX, "Jak Hračkárium zachází s osobními údaji a cookies.", body,
                     crumbs=[("Hračkárium", "/"), ("Ochrana osobních údajů", "/ochrana-osobnich-udaju/")])
+
+
+def diag_page(S, products):
+    """Self-service check for "images do not show in my browser": one real product image per image host, loaded live in the visitor's
+    browser (no referrer / default referrer) with the result next to it. noindex, not linked anywhere."""
+    seen, rows = {}, []
+    for p in products:
+        u = R.img_url(p["img"]) if p["img"] else ""
+        m = re.match(r"https://([^/]+)/", u or "")
+        if m and m.group(1) not in seen:
+            seen[m.group(1)] = u
+    for host, u in sorted(seen.items()):
+        rows.append(f'<tr data-u="{E(u)}"><td>{E(host)}</td><td class="r1">…</td><td><img alt="" width="48" height="48" style="object-fit:contain"></td></tr>')
+    js = ("<script>(function(){var rows=[].slice.call(document.querySelectorAll('tr[data-u]'));function t(u,pol,cb){var i=new Image();i.referrerPolicy=pol;var d=false;"
+          "var k=setTimeout(function(){if(!d){d=true;cb('časový limit')}},15000);i.onload=function(){if(!d){d=true;clearTimeout(k);cb('OK '+i.naturalWidth+'×'+i.naturalHeight)}};"
+          "i.onerror=function(){if(!d){d=true;clearTimeout(k);cb('CHYBA')}};i.src=u}"
+          "rows.forEach(function(r){var u=r.dataset.u;t(u,'no-referrer',function(x){r.querySelector('.r1').textContent=x;if(x.indexOf('OK')==0)r.querySelector('img').src=u;});"
+          "});"
+          "document.getElementById('ua').textContent=navigator.userAgent;"
+          "})();</script>")
+    body = ('<h1>Diagnostika obrázků</h1><p class="lead">Tahle stránka načte jednu fotku z každého obchodu přímo ve vašem prohlížeči. '
+            'Pošlete nám prosím screenshot celé tabulky. Řádky s „CHYBA“ ukazují obchody, jejichž fotky váš prohlížeč nebo síť nepustí.</p>'
+            f'<p class="muted" id="ua"></p><table class="spec"><tr><th>Server s fotkami</th><th>Výsledek</th><th>Náhled</th></tr>{"".join(rows)}</table>{js}')
+    return S.layout("/diagnostika-obrazku/", "Diagnostika obrázků" + SUFFIX, "Kontrola načítání obrázků v prohlížeči.", body, noindex=True)
 
 
 def search_page(S):
