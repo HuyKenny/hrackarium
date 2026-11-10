@@ -9,12 +9,13 @@ const [base, outDir] = [process.argv[2] || "http://localhost:8765", process.argv
 mkdirSync(outDir, { recursive: true });
 const sm = readFileSync("dist/sitemap-products-1.xml", "utf8").match(/<loc>[^<]+<\/loc>/g) || [];
 const products = sm.slice(0, 3).map((l) => new URL(l.slice(5, -6)).pathname);
-const pages = ["/", "/lego/", "/darky/", "/spolecenske-hry/", "/sberatelske-karty/", "/znacky/", "/postavicky/", "/jak-srovnavame/", "/hledat/?q=lego", ...products];
+const reported = ["/produkt/prebijena-drevena-stolni-hra-albi/", "/produkt/epee-stavebnicovy-model-katedrala-svateho-vita/", "/produkt/lego-harry-potter-76475-zapovezeny-les-expecto-patronum-2/"];   // pages reported by the owner
+const pages = [...reported, "/", "/lego/", "/darky/", "/spolecenske-hry/", "/sberatelske-karty/", "/znacky/", "/postavicky/", "/jak-srovnavame/", "/hledat/?q=lego", ...products];
 const widths = [360, 390, 820, 1366];
 const browser = await puppeteer.launch({ executablePath: process.env.CHROME_PATH || "/usr/bin/google-chrome", args: ["--no-sandbox", "--disable-gpu", "--hide-scrollbars"] });
 const page = await browser.newPage();
 await page.setRequestInterception(true);
-page.on("request", (r) => (r.url().startsWith(base) ? r.continue() : r.respond({ status: 204, body: "" })));   // shop images & GA stay offline
+page.on("request", (r) => (r.url().startsWith(base) ? r.continue() : r.respond({ status: 204, body: "" })));   // shop images & GA stay offline (see check_images.mjs for the online check)
 const problems = [];
 for (const w of widths) {
   await page.setViewport({ width: w, height: 900, isMobile: w < 800, hasTouch: w < 800 });

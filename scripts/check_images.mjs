@@ -27,7 +27,7 @@ const server = http.createServer((req, res) => {
 
 const sm = readFileSync(join(root, "sitemap-products-1.xml"), "utf8").match(/<loc>[^<]+<\/loc>/g) || [];
 const pick = sm.filter((_, i) => i % Math.max(1, Math.floor(sm.length / 14)) === 0).slice(0, 14).map((l) => new URL(l.slice(5, -6)).pathname);
-const pages = ["/produkt/epee-stavebnicovy-model-katedrala-svateho-vita/", "/produkt/lego-harry-potter-76475-zapovezeny-les-expecto-patronum-2/", "/lego/", "/stavebnice/", ...pick].filter((p) => existsSync(join(root, p, "index.html")));
+const pages = ["/produkt/prebijena-drevena-stolni-hra-albi/", "/produkt/epee-stavebnicovy-model-katedrala-svateho-vita/", "/produkt/lego-harry-potter-76475-zapovezeny-les-expecto-patronum-2/", "/lego/", "/stavebnice/", ...pick].filter((p) => existsSync(join(root, p, "index.html")));
 const browser = await puppeteer.launch({ executablePath: process.env.CHROME_PATH || "/usr/bin/google-chrome", args: ["--no-sandbox", "--disable-gpu"] });
 const report = [];
 for (const mobile of [false, true]) {
@@ -45,6 +45,7 @@ for (const mobile of [false, true]) {
     failed.length = bad.length = csp.length = 0;
     await page.goto(`http://localhost:8766${p}`, { waitUntil: "networkidle2", timeout: 90000 }).catch(() => null);
     await new Promise((r) => setTimeout(r, 4000));
+    if (p.startsWith("/produkt/") && !mobile) await page.screenshot({ path: `${out}/img_${p.replace(/[^a-z0-9]+/gi, "_")}.png`, clip: { x: 0, y: 0, width: 1366, height: 900 } }).catch(() => null);
     const imgs = await page.evaluate(() => [...document.querySelectorAll("img")].filter((i) => !i.src.startsWith(location.origin)).map((i) => ({ src: i.currentSrc || i.src, ok: i.complete && i.naturalWidth > 0, lazy: i.loading === "lazy" })));
     const placeholders = await page.evaluate(() => [...document.querySelectorAll("img")].filter((i) => i.src.includes("placeholder.svg")).length);
     const errs = await page.evaluate(() => window.__imgErr || []);
