@@ -277,6 +277,7 @@ def main():
     out.page("/kategorie/", categories_index(S, by_top, by_cat), "pages")
     out.page("/obchody/", shops_page(S, shops, present, products), "pages")
     out.page("/jak-srovnavame/", about_page(S, present), "pages")
+    out.page("/kontakt/", contact_page(S), "pages")
     out.page("/ochrana-osobnich-udaju/", privacy_page(S), "pages")
     out.page("/hledat/", search_page(S), None, index=False)
     out.page("/diagnostika-obrazku/", diag_page(S, products), None, index=False)
@@ -746,25 +747,38 @@ def shops_page(S, shops, present, products):
     cnt = Counter(o["shop"] for p in products for o in p["offers"])
     lis = "".join(f'<li style="--c:{s.get("color", "#888")}"><h3>{E(s["name"])}</h3><p class="muted">{cnt.get(s["id"], 0)} hraček skladem</p><p><a class="lnk" href="https://{s["domain"]}/" rel="nofollow noopener" target="_blank">{E(s["domain"])}</a></p></li>'
                   for s in shops if s["id"] in present)
-    body = f'<h1>Obchody, které srovnáváme</h1><p class="lead">Ceny a dostupnost bereme z produktových feedů těchto e‑shopů a aktualizujeme je každý den.</p><ul class="shoplist">{lis}</ul>'
+    body = f'<h1>Obchody, které srovnáváme</h1><p class="lead">Ceny a dostupnost bereme z produktových feedů těchto e‑shopů a aktualizujeme je jednou týdně.</p><ul class="shoplist">{lis}</ul>'
     return S.layout("/obchody/", "Obchody s hračkami, které srovnáváme" + SUFFIX, "Seznam českých e‑shopů s hračkami, jejichž ceny Hračkárium srovnává.", body,
                     crumbs=[("Hračkárium", "/"), ("Obchody", "/obchody/")])
 
 
 def about_page(S, present):
     body = (f'<div class="prose" style="margin-top:0"><h1>Jak srovnáváme ceny hraček</h1>'
-            f'<p>Hračkárium je srovnávač cen hraček. Nic neprodáváme a nesbíráme objednávky. Každý den stáhneme nabídky z {len(present)} českých e‑shopů, roztřídíme je do kategorií a stejné hračky z různých obchodů spojíme dohromady, abyste viděli, kde je nejlevnější.</p>'
+            f'<p>Hračkárium je srovnávač cen hraček. Nic neprodáváme a nesbíráme objednávky. Jednou týdně stáhneme nabídky z {len(present)} českých e‑shopů, roztřídíme je do kategorií a stejné hračky z různých obchodů spojíme dohromady, abyste viděli, kde je nejlevnější.</p>'
             '<h2>Jak poznáme, že jde o stejnou hračku</h2><p>Párujeme podle čárového kódu (EAN). U stavebnic LEGO, Playmobil, Cobi a Bruder navíc podle čísla setu, které mají v názvu. Když si nejsme jistí, necháme hračku zvlášť — raději dvě karty než špatné srovnání.</p>'
             '<h2>Odkud jsou ceny</h2><p>Ceny, dostupnost, obrázky a popisy posílají obchody v produktových feedech. Cena se v obchodě může mezi naší aktualizací a vaším nákupem změnit; platí vždy cena v e‑shopu. Vývoj ceny a „nejnižší cenu za 30 dní“ počítáme jen z hodnot, které jsme sami zaznamenali.</p>'
             '<h2>Doporučený věk</h2><p>Věk přebíráme od výrobce nebo obchodu (např. „od 3 let“, „3+“). Hračky s malými díly nejsou vhodné pro děti do 3 let — řiďte se vždy upozorněním na obalu.</p>'
             '<h2>Jak web vydělává</h2><p>Když přes náš odkaz nakoupíte, obchod nám může zaplatit provizi z partnerského programu (CJ, eHub a dalších sítí). Cenu pro vás to nemění a pořadí nabídek neovlivňuje: řadíme vždy od nejlevnější.</p>'
-            '<h2>Kontakt</h2><p>Chybu v ceně nebo zařazení nám napište na <a class="lnk" href="mailto:info@hrackarium.cz">info@hrackarium.cz</a>.</p></div>')
+            '<h2>Kontakt</h2><p>Chybu v ceně nebo zařazení nám napište na <a class="lnk" href="mailto:info@hrackarium.cz">info@hrackarium.cz</a>. Provozovatel a další údaje jsou na stránce <a class="lnk" href="/kontakt/">Kontakt</a>.</p></div>')
     return S.layout("/jak-srovnavame/", "Jak srovnáváme ceny hraček" + SUFFIX, "Jak Hračkárium získává ceny hraček, páruje stejné produkty mezi obchody a z čeho žije.", body,
                     crumbs=[("Hračkárium", "/"), ("Jak srovnáváme", "/jak-srovnavame/")])
 
 
+def contact_page(S):
+    o = R.OPERATOR
+    body = (f'<div class="prose" style="margin-top:0"><h1>Kontakt</h1><p>Hračkárium je srovnávač cen hraček. Nic neprodáváme, objednávky vyřizují e‑shopy, na které odkazujeme. '
+            f'S dotazem k objednávce se proto obracejte přímo na obchod.</p>'
+            f'<h2>Provozovatel webu</h2><table class="spec"><tr><th>Jméno</th><td>{o["name"]}</td></tr><tr><th>Sídlo</th><td>{o["address"]}</td></tr>'
+            f'<tr><th>IČO</th><td>{o["ico"]}</td></tr><tr><th>DPH</th><td>{o["vat"][0].upper() + o["vat"][1:]}</td></tr>'
+            f'<tr><th>Datová schránka</th><td>{o["ds"]}</td></tr><tr><th>E‑mail</th><td><a class="lnk" href="mailto:{o["email"]}">{o["email"]}</a></td></tr></table>'
+            '<h2>Co nám napsat</h2><p>Chybná cena nebo zařazení hračky, nefunkční odkaz, nevhodný popis, nebo návrh obchodu, který bychom měli srovnávat. U chyby prosím pošlete odkaz na stránku.</p></div>')
+    return S.layout("/kontakt/", "Kontakt a provozovatel" + SUFFIX, "Kontakt na provozovatele srovnávače cen hraček Hračkárium.", body,
+                    crumbs=[("Hračkárium", "/"), ("Kontakt", "/kontakt/")])
+
+
 def privacy_page(S):
     body = ('<div class="prose" style="margin-top:0"><h1>Ochrana osobních údajů a cookies</h1>'
+            f'<h2>Správce údajů</h2><p>{R.OPERATOR["name"]}, {R.OPERATOR["address"]}, IČO {R.OPERATOR["ico"]}, {R.OPERATOR["vat"]}. Kontakt: <a class="lnk" href="mailto:{R.OPERATOR["email"]}">{R.OPERATOR["email"]}</a>. Dozorovým úřadem je Úřad pro ochranu osobních údajů (uoou.cz), u kterého můžete podat stížnost.</p>'
             '<p>Hračkárium nemá registraci, účty ani formuláře. Neukládáme o vás žádné osobní údaje.</p>'
             '<h2>Měření návštěvnosti</h2><p>Google Analytics 4 (Google Ireland Ltd.) je na stránce přítomná ve výchozím režimu „bez souhlasu“ (Google Consent Mode): dokud nedáte souhlas v liště, nenastavují cookies, neukládají identifikátory a o návštěvě se do Googlu posílá jen anonymní signál bez cookies. Po souhlasu měříme, které stránky lidé čtou a na které obchody klikají. Souhlas můžete kdykoli změnit odkazem „Nastavení cookies“ v patičce.</p>'
             '<h2>Odkazy do obchodů</h2><p>Odkazy do e‑shopů vedou přes partnerské sítě (např. CJ, eHub), které si mohou uložit cookie, aby obchod poznal, že jste přišli od nás. Řídí se zásadami té sítě a obchodu.</p>'
@@ -818,7 +832,7 @@ def home_page(S, products, by_top, series, lic, gift):
     body = f"""<section class="hero"><div class="wrap"><div><h1>Hračky za <em>nejlepší cenu</em>, bez běhání po obchodech</h1>
 <p class="lead">Porovnáváme ceny {R.plural(st['products'], 'hračky', 'hraček', 'hraček')} z {st['shops']} českých e‑shopů. Najděte LEGO, deskovku nebo dárek k Vánocům a kupte tam, kde je to nejlevnější.</p>
 <div class="row"><a class="btn btn--lg" href="/darky/">Dárky podle věku</a><a class="btn btn--g btn--lg" href="/lego/">LEGO sety</a></div>
-<div class="hero__stats"><div><b>{R.kc(st['products']).replace(chr(160) + 'Kč', '')}</b><span>hraček skladem</span></div><div><b>{st['shops']}</b><span>obchodů</span></div><div><b>denně</b><span>nové ceny</span></div></div></div>
+<div class="hero__stats"><div><b>{R.kc(st['products']).replace(chr(160) + 'Kč', '')}</b><span>hraček skladem</span></div><div><b>{st['shops']}</b><span>obchodů</span></div><div><b>týdně</b><span>nové ceny</span></div></div></div>
 <div class="hero__art"><img src="/img/ui/hero-1200.webp" srcset="/img/ui/hero-640.webp 640w, /img/ui/hero-1200.webp 1200w" sizes="(max-width:980px) 92vw, 600px" alt="Police plná hraček s cenovkami" width="1200" height="631" fetchpriority="high"><span class="note" style="right:4%;bottom:-6px">ceny z {st['shops']} obchodů!</span></div></div></section>
 <div class="wrap"><section class="sec"><div class="sec__h"><h2>Co hledáte?</h2><a href="/kategorie/">Všechny kategorie →</a></div><ul class="tiles">{tiles}</ul></section>
 <section class="sec"><div class="sec__h"><h2>Dárek podle věku</h2><a href="/darky/">Další tipy →</a></div><ul class="ages">{ages}</ul></section>
@@ -862,7 +876,7 @@ def write_search(out, products, by_top, series, brands, brand_name, lic, landing
 
 
 def llms_txt(stats, by_top, series):
-    lines = ["# Hračkárium (hrackarium.cz)", "", f"> Srovnávač cen hraček z {stats['shops']} českých e-shopů ({stats['products']} hraček skladem, aktualizace denně).", "",
+    lines = ["# Hračkárium (hrackarium.cz)", "", f"> Srovnávač cen hraček z {stats['shops']} českých e-shopů ({stats['products']} hraček skladem, ceny aktualizujeme týdně).", "",
              "## Kategorie"] + [f"- [{cat_name(t)}]({BASE}/{t}/)" for t in X.TOP if by_top.get(t)] + ["", "## LEGO řady"] + \
             [f"- [{series_name(s)}]({BASE}/lego/{s}/)" for s in series] + ["", "## O webu", f"- [Jak srovnáváme]({BASE}/jak-srovnavame/)", f"- [Dárky podle věku]({BASE}/darky/)"]
     return "\n".join(lines) + "\n"

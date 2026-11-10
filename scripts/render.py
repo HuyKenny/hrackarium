@@ -84,6 +84,8 @@ def ld(x):
     return f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False, separators=(",", ":"))}</script>'
 
 
+OPERATOR = {"name": "Ha Duy Huy", "address": "Bartáková 36, 140 00 Praha", "ico": "07876823", "ds": "dxmsrdt",
+            "vat": "není plátce DPH", "email": "info@hrackarium.cz"}   # public business-register data (ARES), used as site operator on legal pages
 LOGO = ('<img src="/img/ui/robot-96.webp" alt="" width="44" height="44"><span class="wm">Hračk<b>árium</b></span>')
 
 
@@ -147,7 +149,7 @@ class Site:
 <meta name="theme-color" content="#FF5A3C"><link rel="icon" href="/favicon.ico" sizes="48x48"><link rel="icon" href="/favicon-192.png" type="image/png" sizes="192x192"><link rel="apple-touch-icon" href="/favicon-180.png"><link rel="manifest" href="/site.webmanifest">
 <link rel="preload" href="/fonts/bricolage-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="/assets/{self.css}">{pre}{SPECULATION}{ga}{head_ld}</head><body>
 <a class="skip" href="#main">Přeskočit na obsah</a>
-<div class="strip"><p>Ceny hraček {"z" if n_shops == 1 else "ze"} {n_shops} {plural(n_shops, "obchodu", "obchodů", "obchodů")} na jednom místě · aktualizujeme každý den · nakupujete přímo v e‑shopu</p></div>
+<div class="strip"><p>Ceny hraček {"z" if n_shops == 1 else "ze"} {n_shops} {plural(n_shops, "obchodu", "obchodů", "obchodů")} na jednom místě · ceny aktualizujeme každý týden · nakupujete přímo v e‑shopu</p></div>
 <header class="top"><div class="wrap"><a class="logo" href="/" aria-label="Hračkárium – úvod">{LOGO}</a>
 <form class="search" role="search" action="/hledat/" method="get"><label class="sr" for="q">Hledat hračku, značku nebo LEGO set</label>{SEARCH_ICON}<input id="q" name="q" type="search" placeholder="Hledat hračku, značku nebo číslo LEGO setu" autocomplete="off"><button type="submit">Hledat</button><div class="sugg" id="sugg" role="listbox"></div></form>
 <nav class="hl" aria-label="Rychlé odkazy"><a href="/darky/"><img src="/img/ic/party.webp" alt="" width="28" height="28">Dárky</a><a href="/slevy/"><img src="/img/ui/tag.svg" alt="" width="28" height="28">Slevy</a></nav></div></header>
@@ -156,8 +158,9 @@ class Site:
 <footer><div class="wrap cols"><div class="fabout"><a class="logo" href="/">{LOGO}</a><p>Srovnáváme ceny hraček v českých e‑shopech. Nic neprodáváme: koupíte přímo v obchodě a za stejnou cenu. Když nakoupíte přes náš odkaz, obchod nám může zaplatit malou provizi — z ní web žije.</p></div>
 <div><h3>Kategorie</h3><ul><li><a href="/lego/">LEGO</a></li><li><a href="/stavebnice/">Stavebnice</a></li><li><a href="/spolecenske-hry/">Společenské hry</a></li><li><a href="/puzzle/">Puzzle</a></li><li><a href="/panenky/">Panenky</a></li><li><a href="/auta-a-vlacky/">Auta a vláčky</a></li><li><a href="/plysaci/">Plyšáci</a></li><li><a href="/kategorie/">Všechny kategorie</a></li></ul></div>
 <div><h3>Dárky</h3><ul><li><a href="/darky/">Dárky podle věku</a></li><li><a href="/darek-pro-kluka/">Dárek pro kluka</a></li><li><a href="/darek-pro-holku/">Dárek pro holku</a></li><li><a href="/hracky-do-300-kc/">Hračky do 300 Kč</a></li><li><a href="/hracky-do-500-kc/">Hračky do 500 Kč</a></li><li><a href="/slevy/">Slevy na hračky</a></li>{"".join(f'<li><a href="{u}">{E(t)}</a></li>' for u, t in getattr(self, "footer_links", []))}</ul></div>
-<div><h3>Hračkárium</h3><ul><li><a href="/jak-srovnavame/">Jak srovnáváme</a></li>{'<li><a href="/pruvodce/">Průvodce výběrem</a></li>' if getattr(self, "has_guides", False) else ""}<li><a href="/obchody/">Obchody</a></li><li><a href="/znacky/">Značky</a></li><li><a href="/postavicky/">Hračky podle postaviček</a></li><li><a href="/ochrana-osobnich-udaju/">Ochrana osobních údajů</a></li><li><a href="#" id="consent-open">Nastavení cookies</a></li></ul></div></div>
-<div class="wrap fine"><p>Ceny a dostupnost se mohou v obchodě změnit; platí údaj v e‑shopu v okamžiku nákupu. Poslední aktualizace {self.stats["updated"]}.</p></div></footer>
+<div><h3>Hračkárium</h3><ul><li><a href="/jak-srovnavame/">Jak srovnáváme</a></li><li><a href="/kontakt/">Kontakt</a></li>{'<li><a href="/pruvodce/">Průvodce výběrem</a></li>' if getattr(self, "has_guides", False) else ""}<li><a href="/obchody/">Obchody</a></li><li><a href="/znacky/">Značky</a></li><li><a href="/postavicky/">Hračky podle postaviček</a></li><li><a href="/ochrana-osobnich-udaju/">Ochrana osobních údajů</a></li><li><a href="#" id="consent-open">Nastavení cookies</a></li></ul></div></div>
+<div class="wrap fine"><p>Ceny a dostupnost se mohou v obchodě změnit; platí údaj v e‑shopu v okamžiku nákupu. Poslední aktualizace {self.stats["updated"]}.</p>
+<p>Provozovatel: {OPERATOR["name"]}, {OPERATOR["address"]}, IČO {OPERATOR["ico"]}, {OPERATOR["vat"]}. <a href="/kontakt/">Kontakt</a> · <a href="mailto:{OPERATOR["email"]}">{OPERATOR["email"]}</a></p></div></footer>
 <div class="consent" id="consent" role="dialog" aria-label="Cookies" hidden><p>Smíme měřit návštěvnost (Google Analytics)? Bez souhlasu nic neměříme.</p>
 <div class="row"><button class="btn" data-consent="yes">Souhlasím</button><button class="btn btn--g" data-consent="no">Nesouhlasím</button><a href="/ochrana-osobnich-udaju/" class="lnk">Více</a></div></div>
 <script src="/assets/{self.js}" defer></script></body></html>"""
