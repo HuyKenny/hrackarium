@@ -119,6 +119,8 @@ def price_stats(items):
 # ======================================================================= main
 
 def main():
+    import faulthandler
+    faulthandler.dump_traceback_later(int(os.environ.get("HRK_BUILD_WATCHDOG", "1200")), exit=True)   # a hung build prints where it is stuck, then stops
     t0 = time.time()
     shops = [s for s in json.load(open(APP / "data/shops.json"))["shops"] if s.get("enabled", True)]
     rank = {s["id"]: i for i, s in enumerate(shops)}
