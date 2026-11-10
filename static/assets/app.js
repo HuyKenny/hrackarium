@@ -16,19 +16,27 @@
   function shopsIn(n) { return n === 1 ? "v 1 obchodě" : (n < 5 ? "ve " : "v ") + n + " obchodech"; }
 
   /* ---------- broken shop images -> our placeholder ---------- */
-  /* A shop image that fails is retried once, then (product page) the next gallery image is tried; the placeholder is the last resort. */
+  /* A shop image the browser cannot show (some shops refuse real browsers) never becomes the placeholder while another image exists:
+     gallery thumbnail -> hidden; main image -> next gallery image; card -> its alternative image; placeholder only as the very last resort. */
   function fixImg(im) {
-    if (im.tagName !== "IMG" || im.src.indexOf(location.host) >= 0) return;
-    var n = +(im.dataset.f || 0), u = im.currentSrc || im.src;
-    im.dataset.f = String(n + 1);
-    if (n === 0) { setTimeout(function () { im.src = ""; im.src = u; }, 1500); return; }
-    if (im.id === "gmain") {
-      var thumbs = $$(".thumbs button"), cur = thumbs.filter(function (b) { return b.dataset.src === u; })[0];
-      if (cur) cur.dataset.bad = "1";
-      var next = thumbs.filter(function (b) { return !b.dataset.bad; })[0];
-      if (next) { im.dataset.f = "0"; im.src = next.dataset.src; return; }
+    if (im.tagName !== "IMG" || !im.src || im.src.indexOf(location.host) >= 0) return;
+    var u = im.currentSrc || im.src;
+    var th = im.closest ? im.closest(".thumbs button") : null;
+    if (th) {
+      th.dataset.bad = "1"; th.hidden = true;
+      var left = $$(".thumbs button").filter(function (b) { return !b.dataset.bad; });
+      if (left.length < 2) { var strip = $(".thumbs"); if (strip) strip.hidden = true; }
+      return;
     }
-    im.src = "/img/ui/placeholder.svg";
+    if (im.id === "gmain") {
+      var thumbs = $$(".thumbs button");
+      thumbs.forEach(function (b) { if (b.dataset.src === u) { b.dataset.bad = "1"; b.hidden = true; } });
+      var next = thumbs.filter(function (b) { return !b.dataset.bad; })[0];
+      if (next) { im.src = next.dataset.src; return; }
+    } else if (im.dataset.alt && !im.dataset.altTried) {
+      im.dataset.altTried = "1"; im.src = im.dataset.alt; return;
+    }
+    if (im.src.indexOf("placeholder.svg") < 0) im.src = "/img/ui/placeholder.svg";
   }
   document.addEventListener("error", function (e) { fixImg(e.target); }, true);
   $$("img").forEach(function (im) { if (im.complete && !im.naturalWidth && im.getAttribute("loading") !== "lazy") fixImg(im); });

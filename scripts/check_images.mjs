@@ -26,7 +26,7 @@ const server = http.createServer((req, res) => {
 }).listen(8766);
 
 const sm = readFileSync(join(root, "sitemap-products-1.xml"), "utf8").match(/<loc>[^<]+<\/loc>/g) || [];
-const pick = sm.filter((_, i) => i % Math.max(1, Math.floor(sm.length / 6)) === 0).slice(0, 6).map((l) => new URL(l.slice(5, -6)).pathname);
+const pick = sm.filter((_, i) => i % Math.max(1, Math.floor(sm.length / 14)) === 0).slice(0, 14).map((l) => new URL(l.slice(5, -6)).pathname);
 const pages = ["/produkt/epee-stavebnicovy-model-katedrala-svateho-vita/", "/produkt/lego-harry-potter-76475-zapovezeny-les-expecto-patronum-2/", "/lego/", "/stavebnice/", ...pick].filter((p) => existsSync(join(root, p, "index.html")));
 const browser = await puppeteer.launch({ executablePath: process.env.CHROME_PATH || "/usr/bin/google-chrome", args: ["--no-sandbox", "--disable-gpu"] });
 const report = [];
@@ -63,4 +63,7 @@ for (const r of report) {
   for (const x of [...r.failed, ...r.bad, ...r.csp].slice(0, 6)) console.log("   ", x);
   for (const e of (r.errs || []).slice(0, 6)) console.log("    img error event:", JSON.stringify(e));
 }
+const hosts = {};
+for (const r of report) for (const e of r.errs || []) { const h = (e.src.match(/^https?:\/\/([^/]+)/) || [])[1] || "?"; hosts[h] = (hosts[h] || 0) + 1; }
+console.log("img error events by host:", JSON.stringify(hosts));
 console.log(`image check: ${report.length} page views, ${problems} with problems`);

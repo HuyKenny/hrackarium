@@ -192,7 +192,9 @@ class Site:
         d = self.discount(p)
         sale = f'<span class="flag">−{d} %</span>' if d >= 10 else ""
         where = shops_in(n)
-        return (f'<li class="pc"><a class="pc__img" href="{href}" tabindex="-1" aria-hidden="true"><img src="{img}" alt=""{load} referrerpolicy="no-referrer" width="220" height="220">{sale}{age}</a>'
+        alt_u = next((img_url(u) for u in p.get("imgs") or [] if u and u != p["img"]), "")
+        alt = f' data-alt="{E(alt_u)}"' if alt_u and p["img"] else ""
+        return (f'<li class="pc"><a class="pc__img" href="{href}" tabindex="-1" aria-hidden="true"><img src="{img}" alt=""{load}{alt} referrerpolicy="no-referrer" width="220" height="220">{sale}{age}</a>'
                 f'<div class="pc__b">{f"<span class=pc__brand>{E(p["brand"])}</span>" if p["brand"] else ""}<h3><a href="{href}">{E(p["name"])}</a></h3>'
                 f'<div class="pc__f">{self.tag(p["price"], "od" if n > 1 else "")}<span class="pc__n">{where}</span></div></div></li>')
 
