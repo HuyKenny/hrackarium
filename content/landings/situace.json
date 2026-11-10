@@ -1,0 +1,236 @@
+[
+ {
+  "slug": "hracky-do-vany",
+  "h1": "Hračky do vany",
+  "parent": "/kategorie/",
+  "group": "hracky-do-vany",
+  "rules": {
+   "any": [
+    "\\bdo vany\\b",
+    "\\bkoupaci\\b",
+    "\\bstrikaci\\b",
+    "\\bplovouci\\b",
+    "\\bvanicka\\b",
+    "\\bhracky? do vody pro (nejmensi|miminka)"
+   ]
+  },
+  "icon": "kyblik",
+  "hubs": [
+   "/pro-nejmensi/",
+   "/venku/"
+  ]
+ },
+ {
+  "slug": "hracky-do-vody",
+  "h1": "Hračky do vody",
+  "parent": "/kategorie/",
+  "group": "hracky-do-vody",
+  "rules": {
+   "any": [
+    "\\bdo vody\\b",
+    "\\bbazen",
+    "\\bnafukovac",
+    "\\bplavac",
+    "\\bvodni (pistol|delo|hra|hrack|svet|kolotoc|dráha|draha)",
+    "\\brukavky\\b",
+    "\\bplovouci\\b"
+   ]
+  },
+  "icon": "kyblik",
+  "hubs": [
+   "/venku/"
+  ]
+ },
+ {
+  "slug": "hracky-na-pisek",
+  "h1": "Hračky na písek",
+  "parent": "/kategorie/",
+  "group": "hracky-na-pisek",
+  "rules": {
+   "any": [
+    "\\bna pisek\\b",
+    "\\bpiskov",
+    "\\bbabovk",
+    "\\bkyblik",
+    "\\bhrabick",
+    "\\blopatk",
+    "\\bpisek\\b"
+   ],
+   "none": [
+    "\\bkinetick"
+   ]
+  },
+  "icon": "kyblik",
+  "hubs": [
+   "/venku/"
+  ]
+ },
+ {
+  "slug": "kineticky-pisek",
+  "h1": "Kinetický písek",
+  "parent": "/kategorie/",
+  "group": "kineticky-pisek",
+  "rules": {
+   "any": [
+    "\\bkinetick\\w* pisek",
+    "\\bkinetic sand",
+    "\\bmagicky pisek",
+    "\\bpisek\\b.*\\b(forma|set|sada)\\b"
+   ]
+  },
+  "icon": "pastelky",
+  "hubs": [
+   "/kreativni/"
+  ]
+ },
+ {
+  "slug": "hracky-na-zahradu",
+  "h1": "Hračky na zahradu",
+  "parent": "/kategorie/",
+  "group": "hracky-na-zahradu",
+  "rules": {
+   "any": [
+    "\\bzahrad",
+    "\\bskluzavk",
+    "\\bhoupack",
+    "\\bprolezack",
+    "\\btrampolin",
+    "\\bpiskoviste",
+    "\\bdomecek na zahrad"
+   ],
+   "cat": [
+    "venku",
+    "hrajeme-si-na",
+    "auta-a-vlacky",
+    "stavebnice"
+   ]
+  },
+  "icon": "kyblik",
+  "hubs": [
+   "/venku/"
+  ]
+ },
+ {
+  "slug": "hracky-na-plaz",
+  "h1": "Hračky na pláž",
+  "parent": "/kategorie/",
+  "group": "hracky-na-plaz",
+  "rules": {
+   "any": [
+    "\\bplaz",
+    "\\bna pisek\\b",
+    "\\bnafukovac",
+    "\\bbabovk",
+    "\\bvodni (pistol|delo|hra)"
+   ]
+  },
+  "icon": "kyblik",
+  "hubs": [
+   "/venku/"
+  ]
+ },
+ {
+  "slug": "hracky-do-auta",
+  "h1": "Hračky do auta a na cesty",
+  "parent": "/kategorie/",
+  "group": "hracky-do-auta",
+  "rules": {
+   "any": [
+    "\\bdo auta\\b",
+    "\\bna cesty\\b",
+    "\\bna cestu\\b",
+    "\\bcestovn",
+    "\\bdo letadla\\b"
+   ],
+   "none": [
+    "\\bdo auta\\b.*\\bdalkov"
+   ]
+  },
+  "icon": "auto"
+ },
+ {
+  "slug": "hracky-do-kocarku",
+  "h1": "Hračky do kočárku",
+  "parent": "/kategorie/",
+  "group": "hracky-do-kocarku",
+  "rules": {
+   "any": [
+    "\\bdo kocarku\\b",
+    "\\bna kocarek\\b",
+    "\\bzaves\\w* hracka\\b",
+    "\\bhracka na kocarek"
+   ]
+  },
+  "icon": "chrastitko",
+  "hubs": [
+   "/pro-nejmensi/"
+  ]
+ },
+ {
+  "slug": "hracky-do-postylky",
+  "h1": "Hračky do postýlky a nad postýlku",
+  "parent": "/kategorie/",
+  "group": "hracky-do-postylky",
+  "rules": {
+   "any": [
+    "\\bdo postylky\\b",
+    "\\bnad postylku\\b",
+    "\\bkolotoc nad\\b",
+    "\\businac",
+    "\\bhrazdick",
+    "\\bhrajici (kolotoc|zviratk)"
+   ]
+  },
+  "icon": "chrastitko",
+  "hubs": [
+   "/pro-nejmensi/"
+  ]
+ },
+ {
+  "slug": "hracky-na-snih",
+  "h1": "Hračky na sníh a do zimy",
+  "parent": "/kategorie/",
+  "group": "hracky-na-snih",
+  "rules": {
+   "any": [
+    "\\bsnih\\b",
+    "\\bsnehov",
+    "\\bsane\\b",
+    "\\bbob\\b",
+    "\\bklouzac",
+    "\\bzimni (hra|hrack)",
+    "\\bsnehulak"
+   ]
+  },
+  "icon": "kyblik",
+  "hubs": [
+   "/venku/"
+  ]
+ },
+ {
+  "slug": "hracky-pro-deti-na-ven",
+  "h1": "Hračky pro děti na ven",
+  "parent": "/kategorie/",
+  "group": "hracky-pro-deti-na-ven",
+  "rules": {
+   "any": [
+    "\\bvenku\\b",
+    "\\bna ven\\b",
+    "\\bzahrad",
+    "\\bfrisbee",
+    "\\bbublifuk",
+    "\\bkolobezk",
+    "\\bodrazedl",
+    "\\bletajici",
+    "\\bpisek"
+   ],
+   "cat": [
+    "venku"
+   ]
+  },
+  "icon": "kyblik",
+  "hubs": [
+   "/venku/"
+  ]
+ }
+]

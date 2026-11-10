@@ -139,6 +139,7 @@ def cluster(offers, shop_rank):
             "id": pid, "name": name, "brand": brands.most_common(1)[0][0] if brands else "", "ean": eans[0] if eans else "",
             "cat": cat, "age": min(ages) if ages else None, "sex": sexes.pop() if len(sexes) == 1 else "", "desc": desc,
             "img": img, "imgs": imgs[:6], "dry": " ".join(o["title"] for o in offs).lower(),
+            "paths": " ".join(sorted({o["path"] for o in offs if o["path"]}))[:500],
             "offers": [{"shop": o["shop"], "price": o["price"], "was": o["was"], "go": o["go"], "url": o["url"]} for o in shop_offers],
             "price": shop_offers[0]["price"],
             "lego": X.lego_series(name) if (brands.most_common(1)[0][0] if brands else "") == "LEGO" or cat == "lego" else "",

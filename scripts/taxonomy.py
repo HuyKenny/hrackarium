@@ -251,6 +251,12 @@ LICENCES = [
     ("wednesday", "Wednesday", r"wednesday"), ("jednorozci", "Jednorožci", r"jednorož|unicorn"), ("ninjago", "Ninjago", r"ninjago"),
     ("mimoni", "Mimoni", r"mimoň|minion"), ("pat-a-mat", "Pat a Mat", r"pat a mat"), ("tomas-a-pratele", "Tomáš a přátelé", r"tomáš a přátelé|thomas"),
     ("kapybara", "Kapybara", r"kapybar|capybar"), ("squishmallows", "Squishmallows", r"squishmallow"),
+    ("bakugan", "Bakugan", r"bakugan"), ("lol-surprise", "L.O.L. Surprise", r"l\.?o\.?l\.? surprise|\blol surprise"), ("rainbow-high", "Rainbow High", r"rainbow high"),
+    ("nerf", "Nerf", r"\bnerf\b"), ("gravitrax", "GraviTrax", r"gravitrax"), ("tonies", "Tonies", r"\btonies\b|toniebox"), ("monster-high", "Monster High", r"monster high"),
+    ("roblox", "Roblox", r"\broblox"), ("five-nights-at-freddys", "Five Nights at Freddy's", r"five nights|\bfnaf\b"), ("kpop-demon-hunters", "K-Pop Demon Hunters", r"k-?pop demon hunters|demon hunters"),
+    ("dragon-ball", "Dragon Ball", r"dragon ball"), ("naruto", "Naruto", r"\bnaruto\b"), ("cocomelon", "Cocomelon", r"cocomelon"), ("spidey", "Spidey a jeho úžasní přátelé", r"\bspidey\b"),
+    ("kuromi", "Kuromi a My Melody", r"\bkuromi\b|my melody"), ("pikachu", "Pikachu", r"\bpikachu\b"), ("baby-born", "Baby Born", r"baby born"), ("polly-pocket", "Polly Pocket", r"polly pocket"),
+    ("hello-kitty-friends", "Sanrio", r"\bsanrio\b|cinnamoroll"), ("bing", "Bing", r"\bbing\b"), ("sam-hasic", "Požárník Sam", r"pozarnik sam|hasic sam"), ("masha-medved", "Máša a medvěd", r"\bmasa a medved|masha"),
 ]
 LICENCES_RX = [(s, n, re.compile(rx, I)) for s, n, rx in LICENCES]
 

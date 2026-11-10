@@ -1,0 +1,384 @@
+[
+ {
+  "slug": "montessori-hracky",
+  "h1": "Montessori hračky",
+  "parent": "/kategorie/",
+  "group": "potreby",
+  "rules": {
+   "any": [
+    "montessori",
+    "\\bpikler",
+    "\\bwaldorf"
+   ]
+  },
+  "icon": "vlak",
+  "hubs": [
+   "/pro-nejmensi/",
+   "/drevene/"
+  ]
+ },
+ {
+  "slug": "senzoricke-hracky",
+  "h1": "Senzorické hračky",
+  "parent": "/kategorie/",
+  "group": "potreby",
+  "rules": {
+   "any": [
+    "senzoric",
+    "\\bsmyslov",
+    "\\bsensory",
+    "\\bkinetick\\w* pisek",
+    "\\bfidget",
+    "\\bsquish",
+    "\\btaktiln"
+   ]
+  },
+  "icon": "chrastitko",
+  "hubs": [
+   "/pro-nejmensi/"
+  ]
+ },
+ {
+  "slug": "antistresove-hracky",
+  "h1": "Antistresové hračky",
+  "parent": "/kategorie/",
+  "group": "potreby",
+  "rules": {
+   "any": [
+    "antistres",
+    "\\bfidget",
+    "\\bpop it\\b",
+    "\\bsquish",
+    "\\bslime\\b",
+    "\\bsliz\\b",
+    "\\bmackaci",
+    "\\bspinner"
+   ]
+  },
+  "icon": "hra"
+ },
+ {
+  "slug": "hracky-pro-deti-s-adhd",
+  "h1": "Hračky pro děti s ADHD a neklidné děti",
+  "parent": "/kategorie/",
+  "group": "potreby",
+  "rules": {
+   "any": [
+    "\\bfidget",
+    "antistres",
+    "\\bsenzoric",
+    "\\bpop it\\b",
+    "\\bspinner",
+    "\\bkinetick",
+    "\\bzaclonk",
+    "\\bmackaci"
+   ]
+  },
+  "icon": "hra",
+  "lead": "Hračky, které děti často používají k uklidnění rukou a soustředění. Nejde o léčbu ani odbornou pomoc."
+ },
+ {
+  "slug": "hracky-na-jemnou-motoriku",
+  "h1": "Hračky na jemnou motoriku",
+  "parent": "/kategorie/",
+  "group": "potreby",
+  "rules": {
+   "any": [
+    "motorick",
+    "\\bnavlek",
+    "\\bnavlec",
+    "\\bvkladack",
+    "\\bprovlek",
+    "\\bpropichov",
+    "\\bmozaik",
+    "\\bkoralk",
+    "\\bsnurov",
+    "\\bzipy\\b",
+    "\\bprovlekac"
+   ]
+  },
+  "icon": "pastelky",
+  "hubs": [
+   "/pro-nejmensi/",
+   "/naucne/"
+  ]
+ },
+ {
+  "slug": "hracky-na-hrubou-motoriku",
+  "h1": "Hračky na hrubou motoriku a pohyb",
+  "parent": "/kategorie/",
+  "group": "potreby",
+  "rules": {
+   "any": [
+    "\\bodrazedl",
+    "\\bkolobezk",
+    "\\bhoupac",
+    "\\bskakac",
+    "\\bprolezac",
+    "\\btricykl",
+    "\\btrampol",
+    "\\bbalanc",
+    "\\bhopsadl",
+    "\\bhrazd"
+   ]
+  },
+  "icon": "kyblik",
+  "hubs": [
+   "/venku/"
+  ]
+ },
+ {
+  "slug": "hracky-na-rozvoj-logickeho-mysleni",
+  "h1": "Hračky na rozvoj logického myšlení",
+  "parent": "/kategorie/",
+  "group": "potreby",
+  "rules": {
+   "any": [
+    "logick",
+    "hlavolam",
+    "\\bsmart games\\b",
+    "\\brubik",
+    "\\bstrategick",
+    "\\bsudoku",
+    "\\bkodovani",
+    "\\bprogramov",
+    "\\blabyrint"
+   ]
+  },
+  "icon": "puzzle",
+  "hubs": [
+   "/naucne/",
+   "/spolecenske-hry/"
+  ]
+ },
+ {
+  "slug": "stem-hracky-a-programovani",
+  "h1": "STEM hračky a programování pro děti",
+  "parent": "/kategorie/",
+  "group": "potreby",
+  "rules": {
+   "any": [
+    "\\bstem\\b",
+    "programov",
+    "\\bexperiment",
+    "\\bmikroskop",
+    "\\bchemick",
+    "\\belektronick\\w* (stavebnic|obvod)",
+    "\\bgravitrax",
+    "\\brobot\\w* (stavebnic|program)",
+    "\\bcoding"
+   ]
+  },
+  "icon": "mikroskop",
+  "hubs": [
+   "/naucne/"
+  ]
+ },
+ {
+  "slug": "naucne-hracky-pro-predskolaky",
+  "h1": "Naučné hračky pro předškoláky",
+  "parent": "/kategorie/",
+  "group": "potreby",
+  "rules": {
+   "cat": [
+    "naucne",
+    "pro-nejmensi",
+    "hrajeme-si-na",
+    "spolecenske-hry",
+    "kreativni",
+    "puzzle"
+   ],
+   "age": [
+    36,
+    84
+   ]
+  },
+  "icon": "mikroskop",
+  "hubs": [
+   "/naucne/"
+  ]
+ },
+ {
+  "slug": "prvni-deskovky-pro-deti",
+  "h1": "První deskové hry pro děti",
+  "parent": "/spolecenske-hry/",
+  "group": "potreby",
+  "rules": {
+   "cat": [
+    "spolecenske-hry"
+   ],
+   "age": [
+    24,
+    72
+   ],
+   "offers": 2
+  },
+  "icon": "hra",
+  "hubs": [
+   "/spolecenske-hry/"
+  ]
+ },
+ {
+  "slug": "rodinne-deskove-hry",
+  "h1": "Rodinné deskové hry",
+  "parent": "/spolecenske-hry/",
+  "group": "hry",
+  "rules": {
+   "cat": [
+    "spolecenske-hry"
+   ],
+   "any": [
+    "\\brodinn",
+    "\\bpro cele rodin",
+    "\\bpro cele",
+    "\\bpro 2\\s*-\\s*[4-9]\\s*hrac"
+   ]
+  },
+  "icon": "hra",
+  "hubs": [
+   "/spolecenske-hry/"
+  ]
+ },
+ {
+  "slug": "deskove-hry-pro-dva",
+  "h1": "Deskové hry pro dva hráče",
+  "parent": "/spolecenske-hry/",
+  "group": "hry",
+  "rules": {
+   "cat": [
+    "spolecenske-hry"
+   ],
+   "any": [
+    "\\bpro dva\\b",
+    "\\bpro 2 hrace",
+    "\\b2 hrac",
+    "\\bduel\\b"
+   ]
+  },
+  "icon": "hra",
+  "hubs": [
+   "/spolecenske-hry/"
+  ]
+ },
+ {
+  "slug": "cestovni-hry",
+  "h1": "Cestovní hry",
+  "parent": "/spolecenske-hry/",
+  "group": "hry",
+  "rules": {
+   "cat": [
+    "spolecenske-hry",
+    "puzzle"
+   ],
+   "any": [
+    "\\bcestovn",
+    "\\bmini hra\\b",
+    "\\bkapesni"
+   ]
+  },
+  "icon": "hra"
+ },
+ {
+  "slug": "party-hry-pro-dospele",
+  "h1": "Párty hry pro dospělé",
+  "parent": "/spolecenske-hry/",
+  "group": "hry",
+  "rules": {
+   "cat": [
+    "spolecenske-hry"
+   ],
+   "age": [
+    180,
+    216
+   ],
+   "offers": 1
+  },
+  "icon": "party"
+ },
+ {
+  "slug": "puzzle-pro-dospele-1000-dilku",
+  "h1": "Puzzle 1000 dílků",
+  "parent": "/puzzle/",
+  "group": "puzzle",
+  "rules": {
+   "cat": [
+    "puzzle"
+   ],
+   "any": [
+    "\\b1000\\b",
+    "\\b1 000\\b"
+   ]
+  },
+  "icon": "puzzle"
+ },
+ {
+  "slug": "drevene-puzzle",
+  "h1": "Dřevěné puzzle",
+  "parent": "/puzzle/",
+  "group": "puzzle",
+  "rules": {
+   "cat": [
+    "puzzle"
+   ],
+   "any": [
+    "\\bdreven"
+   ]
+  },
+  "icon": "puzzle"
+ },
+ {
+  "slug": "puzzle-pro-nejmensi",
+  "h1": "Puzzle pro nejmenší",
+  "parent": "/puzzle/",
+  "group": "puzzle",
+  "rules": {
+   "cat": [
+    "puzzle"
+   ],
+   "age": [
+    12,
+    48
+   ]
+  },
+  "icon": "puzzle"
+ },
+ {
+  "slug": "penove-puzzle",
+  "h1": "Pěnové puzzle",
+  "parent": "/puzzle/",
+  "group": "puzzle",
+  "rules": {
+   "cat": [
+    "puzzle",
+    "pro-nejmensi",
+    "venku"
+   ],
+   "any": [
+    "\\bpenov\\w* puzzle",
+    "\\bpenove podlozk",
+    "\\bpuzzle\\b.*\\bpena\\b"
+   ]
+  },
+  "icon": "puzzle"
+ },
+ {
+  "slug": "kostky-a-vkladacky-pro-miminka",
+  "h1": "Kostky a vkládačky pro miminka",
+  "parent": "/pro-nejmensi/",
+  "group": "kostky-a-vkladacky-pro-miminka",
+  "rules": {
+   "cat": [
+    "pro-nejmensi",
+    "stavebnice",
+    "drevene"
+   ],
+   "any": [
+    "\\bvkladack",
+    "\\bmekke kostky",
+    "\\bkostky pro (miminka|nejmensi)",
+    "\\bhraci kostka\\b"
+   ]
+  },
+  "icon": "chrastitko"
+ }
+]

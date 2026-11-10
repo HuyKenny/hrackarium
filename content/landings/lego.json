@@ -1,0 +1,390 @@
+[
+ {
+  "slug": "lego/pro-dospele",
+  "h1": "LEGO pro dospělé",
+  "parent": "/lego/",
+  "group": "lego-motiv",
+  "rules": {
+   "cat": [
+    "lego"
+   ],
+   "any": [
+    "\\bbotanical",
+    "\\bicons\\b",
+    "\\barchitecture\\b",
+    "\\bideas\\b",
+    "\\bart\\b",
+    "\\b18\\+",
+    "pro dospele",
+    "\\bcreator expert",
+    "\\btitanic",
+    "\\bminas tirith",
+    "\\bbarad",
+    "\\bdiorama"
+   ],
+   "price": [
+    500,
+    null
+   ]
+  },
+  "icon": "kostky",
+  "hubs": [
+   "/darky/"
+  ]
+ },
+ {
+  "slug": "lego/technic-na-ovladani",
+  "h1": "LEGO Technic na ovládání",
+  "parent": "/lego/",
+  "group": "lego-motiv",
+  "rules": {
+   "cat": [
+    "lego"
+   ],
+   "all": [
+    "\\btechnic\\b"
+   ],
+   "any": [
+    "ovlad",
+    "\\bcontrol\\+",
+    "powered up",
+    "\\brc\\b",
+    "dalkov"
+   ]
+  },
+  "icon": "kostky"
+ },
+ {
+  "slug": "lego/technic-auta",
+  "h1": "LEGO Technic auta a závodní vozy",
+  "parent": "/lego/",
+  "group": "lego-motiv",
+  "rules": {
+   "cat": [
+    "lego"
+   ],
+   "all": [
+    "\\btechnic\\b"
+   ],
+   "any": [
+    "\\bauto\\b",
+    "zavodni",
+    "\\bferrari",
+    "\\bporsche",
+    "\\blamborghini",
+    "\\bbugatti",
+    "\\bmonster jam",
+    "\\bformule",
+    "\\bmclaren",
+    "\\bbmw\\b",
+    "\\bchevrolet"
+   ]
+  },
+  "icon": "kostky"
+ },
+ {
+  "slug": "lego/auta",
+  "h1": "LEGO auta",
+  "parent": "/lego/",
+  "group": "lego-motiv",
+  "rules": {
+   "cat": [
+    "lego"
+   ],
+   "any": [
+    "\\bauto\\b",
+    "\\bauta\\b",
+    "\\bcar\\b",
+    "\\bspeed champions\\b",
+    "\\bformule",
+    "\\bporsche",
+    "\\bferrari",
+    "\\blamborghini",
+    "\\bmclaren",
+    "\\bpickup\\b",
+    "\\bzavodni"
+   ]
+  },
+  "icon": "kostky"
+ },
+ {
+  "slug": "lego/vlaky",
+  "h1": "LEGO vlaky a koleje",
+  "parent": "/lego/",
+  "group": "lego-motiv",
+  "rules": {
+   "cat": [
+    "lego"
+   ],
+   "any": [
+    "\\bvlak",
+    "\\blokomotiv",
+    "\\bkolej",
+    "\\bnadrazi"
+   ]
+  },
+  "icon": "kostky"
+ },
+ {
+  "slug": "lego/letadla-a-vrtulniky",
+  "h1": "LEGO letadla a vrtulníky",
+  "parent": "/lego/",
+  "group": "lego-motiv",
+  "rules": {
+   "cat": [
+    "lego"
+   ],
+   "any": [
+    "\\bletadl",
+    "\\bvrtulnik",
+    "\\bhelikopt",
+    "\\bkrizn",
+    "\\bconcorde",
+    "\\bairbus"
+   ]
+  },
+  "icon": "kostky"
+ },
+ {
+  "slug": "lego/lode-a-ponorky",
+  "h1": "LEGO lodě a ponorky",
+  "parent": "/lego/",
+  "group": "lego-motiv",
+  "rules": {
+   "cat": [
+    "lego"
+   ],
+   "any": [
+    "\\blod\\b",
+    "\\blode\\b",
+    "\\bponork",
+    "\\bplachetnic",
+    "\\bpiratsk\\w* lod"
+   ]
+  },
+  "icon": "kostky"
+ },
+ {
+  "slug": "lego/hrady-a-zamky",
+  "h1": "LEGO hrady a zámky",
+  "parent": "/lego/",
+  "group": "lego-motiv",
+  "rules": {
+   "cat": [
+    "lego"
+   ],
+   "any": [
+    "\\bhrad\\b",
+    "\\bzamek\\b",
+    "\\brytir",
+    "\\bkrale\\b",
+    "\\bhogwarts|bradavic"
+   ]
+  },
+  "icon": "kostky"
+ },
+ {
+  "slug": "lego/zviratka",
+  "h1": "LEGO zvířátka",
+  "parent": "/lego/",
+  "group": "lego-motiv",
+  "rules": {
+   "cat": [
+    "lego"
+   ],
+   "any": [
+    "\\bzviratk",
+    "\\bkocic",
+    "\\bkocka\\b",
+    "\\bpes\\b",
+    "\\bstenat",
+    "\\bkun\\b",
+    "\\bkone\\b",
+    "\\bdinosaur",
+    "\\bpanda\\b",
+    "\\blev\\b",
+    "\\bkralik",
+    "\\bptack",
+    "\\bnosoroz",
+    "\\bzirafa\\b"
+   ]
+  },
+  "icon": "kostky"
+ },
+ {
+  "slug": "lego/dinosauri",
+  "h1": "LEGO dinosauři",
+  "parent": "/lego/",
+  "group": "lego-motiv",
+  "rules": {
+   "cat": [
+    "lego"
+   ],
+   "any": [
+    "\\bdinosaur",
+    "\\bjurassic",
+    "\\bt-?rex",
+    "\\bvelociraptor"
+   ]
+  },
+  "icon": "kostky"
+ },
+ {
+  "slug": "lego/hasici-a-policie",
+  "h1": "LEGO hasiči a policie",
+  "parent": "/lego/",
+  "group": "lego-motiv",
+  "rules": {
+   "cat": [
+    "lego"
+   ],
+   "any": [
+    "\\bhasic",
+    "\\bpolici",
+    "\\bzachran",
+    "\\bsanitk"
+   ]
+  },
+  "icon": "kostky"
+ },
+ {
+  "slug": "lego/stavebni-stroje-a-traktory",
+  "h1": "LEGO bagry, traktory a stavební stroje",
+  "parent": "/lego/",
+  "group": "lego-motiv",
+  "rules": {
+   "cat": [
+    "lego"
+   ],
+   "any": [
+    "\\bbagr",
+    "\\btraktor",
+    "\\bnakladac",
+    "\\bstavebni",
+    "\\bjerab",
+    "\\bbuldozer",
+    "\\bnakladni auto"
+   ]
+  },
+  "icon": "kostky"
+ },
+ {
+  "slug": "lego/vesmir",
+  "h1": "LEGO vesmír a rakety",
+  "parent": "/lego/",
+  "group": "lego-motiv",
+  "rules": {
+   "cat": [
+    "lego"
+   ],
+   "any": [
+    "\\bvesmir",
+    "\\brakety?\\b",
+    "\\bnasa\\b",
+    "\\bastronaut",
+    "\\bkosmick",
+    "\\bmesic\\b",
+    "\\bmars\\b"
+   ]
+  },
+  "icon": "kostky"
+ },
+ {
+  "slug": "lego/kvetiny-a-kytice",
+  "h1": "LEGO květiny a kytice",
+  "parent": "/lego/",
+  "group": "lego-motiv",
+  "rules": {
+   "cat": [
+    "lego"
+   ],
+   "any": [
+    "\\bkvet",
+    "\\bkytic",
+    "\\bkytk",
+    "\\borchide",
+    "\\bbonsai",
+    "\\bbotanical",
+    "\\bruze",
+    "\\bslunecnic",
+    "\\bpivon"
+   ]
+  },
+  "icon": "kostky",
+  "hubs": [
+   "/darky/"
+  ]
+ },
+ {
+  "slug": "lego/minifigurky",
+  "h1": "LEGO minifigurky",
+  "parent": "/lego/",
+  "group": "lego-motiv",
+  "rules": {
+   "cat": [
+    "lego"
+   ],
+   "any": [
+    "\\bminifig",
+    "\\bsberatelske figurky",
+    "\\bcmf\\b"
+   ]
+  },
+  "icon": "kostky"
+ },
+ {
+  "slug": "lego/pro-holky",
+  "h1": "LEGO pro holky",
+  "parent": "/lego/",
+  "group": "lego-motiv",
+  "rules": {
+   "cat": [
+    "lego"
+   ],
+   "any": [
+    "\\bfriends\\b",
+    "\\bdisney\\b",
+    "\\bdreamzzz\\b",
+    "\\bprincezn",
+    "\\bgabby"
+   ]
+  },
+  "icon": "kostky"
+ },
+ {
+  "slug": "lego/pro-kluky",
+  "h1": "LEGO pro kluky",
+  "parent": "/lego/",
+  "group": "lego-motiv",
+  "rules": {
+   "cat": [
+    "lego"
+   ],
+   "any": [
+    "\\bcity\\b",
+    "\\bninjago\\b",
+    "\\bstar wars\\b",
+    "\\bminecraft\\b",
+    "\\btechnic\\b",
+    "\\bspeed champions\\b",
+    "\\bmarvel\\b"
+   ]
+  },
+  "icon": "kostky"
+ },
+ {
+  "slug": "lego/pro-nejmensi",
+  "h1": "LEGO pro nejmenší (DUPLO)",
+  "parent": "/lego/",
+  "group": "lego-motiv",
+  "rules": {
+   "cat": [
+    "lego"
+   ],
+   "any": [
+    "\\bduplo\\b"
+   ]
+  },
+  "icon": "kostky"
+ }
+]

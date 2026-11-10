@@ -1,0 +1,145 @@
+[
+ {
+  "slug": "sberatelske-karty/pokemon",
+  "h1": "Pokémon karty",
+  "parent": "/sberatelske-karty/",
+  "group": "karty",
+  "rules": {
+   "cat": [
+    "sberatelske-karty"
+   ],
+   "any": [
+    "pokemon"
+   ]
+  },
+  "icon": "hra"
+ },
+ {
+  "slug": "sberatelske-karty/magic-the-gathering",
+  "h1": "Magic: The Gathering",
+  "parent": "/sberatelske-karty/",
+  "group": "karty",
+  "rules": {
+   "cat": [
+    "sberatelske-karty"
+   ],
+   "any": [
+    "\\bmagic\\b",
+    "\\bmtg\\b",
+    "the gathering"
+   ]
+  },
+  "icon": "hra"
+ },
+ {
+  "slug": "sberatelske-karty/lorcana",
+  "h1": "Disney Lorcana",
+  "parent": "/sberatelske-karty/",
+  "group": "karty",
+  "rules": {
+   "cat": [
+    "sberatelske-karty"
+   ],
+   "any": [
+    "lorcana"
+   ]
+  },
+  "icon": "hra"
+ },
+ {
+  "slug": "sberatelske-karty/one-piece",
+  "h1": "One Piece karty",
+  "parent": "/sberatelske-karty/",
+  "group": "karty",
+  "rules": {
+   "cat": [
+    "sberatelske-karty"
+   ],
+   "any": [
+    "one piece"
+   ]
+  },
+  "icon": "hra"
+ },
+ {
+  "slug": "sberatelske-karty/yu-gi-oh",
+  "h1": "Yu-Gi-Oh! karty",
+  "parent": "/sberatelske-karty/",
+  "group": "karty",
+  "rules": {
+   "cat": [
+    "sberatelske-karty"
+   ],
+   "any": [
+    "yu-?gi-?oh"
+   ]
+  },
+  "icon": "hra"
+ },
+ {
+  "slug": "sberatelske-karty/fotbalove-karty-a-samolepky",
+  "h1": "Fotbalové karty a samolepky",
+  "parent": "/sberatelske-karty/",
+  "group": "karty",
+  "rules": {
+   "cat": [
+    "sberatelske-karty"
+   ],
+   "any": [
+    "\\bpanini\\b",
+    "\\bfotbal",
+    "\\bfutbal",
+    "match attax",
+    "\\badrenalyn",
+    "\\bturnaj\\b",
+    "\\btopps\\b",
+    "\\beuro 20",
+    "\\bmistrovstvi"
+   ]
+  },
+  "icon": "hra"
+ },
+ {
+  "slug": "sberatelske-karty/prislusenstvi",
+  "h1": "Obaly, alba a příslušenství ke kartám",
+  "parent": "/sberatelske-karty/",
+  "group": "karty",
+  "rules": {
+   "cat": [
+    "sberatelske-karty"
+   ],
+   "any": [
+    "\\bobal",
+    "\\balbum\\b",
+    "\\bsleeves?\\b",
+    "\\bdeck box\\b",
+    "\\bbinder\\b",
+    "\\bultra pro\\b",
+    "\\bsberatelske album",
+    "\\btoploader",
+    "\\bkrabicka na karty"
+   ]
+  },
+  "icon": "hra"
+ },
+ {
+  "slug": "sberatelske-karty/starter-decky-a-boostery",
+  "h1": "Boostery a starter decky",
+  "parent": "/sberatelske-karty/",
+  "group": "karty",
+  "rules": {
+   "cat": [
+    "sberatelske-karty"
+   ],
+   "any": [
+    "\\bbooster",
+    "\\bstarter deck",
+    "\\belite trainer",
+    "\\bstarter set",
+    "\\bblister",
+    "\\btin\\b"
+   ]
+  },
+  "icon": "hra"
+ }
+]

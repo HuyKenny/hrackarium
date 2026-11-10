@@ -24,6 +24,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import catalog as C  # noqa: E402
 import render as R  # noqa: E402
 import taxonomy as X  # noqa: E402
+import landings as LD  # noqa: E402
 import texts as TX  # noqa: E402
 
 APP = Path(__file__).resolve().parent.parent
@@ -189,6 +190,19 @@ def main():
                 cat_age[(top, slug)] = sel
     S.ctx = {"by_cat": by_cat, "series": series_pages, "lic": lic_pages, "brands": brand_pages, "cat_age": cat_age, "brand_name": brand_name}
     S.lic_name = lic_name
+    # ---------------- long-tail landing pages (rules in content/landings/*.json + families in landings.py)
+    gift = gift_pages(products)
+    reserved = ({f"/{k}/" for k in X.TREE} | {f"/lego/{x}/" for x in series_pages} | {f"/znacky/{b}/" for b in brand_pages} | {f"/hracky-{x}/" for x in lic_pages}
+                | set(gift) | {f"/{t}/{ab}/" for (t, ab) in cat_age} | {"/", "/kategorie/", "/znacky/", "/postavicky/", "/darky/", "/slevy/", "/obchody/", "/jak-srovnavame/", "/hledat/"})
+    landings, dropped = LD.plan(products, reserved)
+    S.landings = {L["path"]: L for L in landings}
+    S.kids = LD.kids_map(landings)
+    S.footer_links = [(L["path"], L["h1"]) for L in landings if L["slug"] in ("adventni-kalendare", "vanocni-darky")]
+    (APP / "data/state").mkdir(parents=True, exist_ok=True)
+    (APP / "data/state/landings.tsv").write_text("\n".join(f"{L['path']}\t{L['n']}\t{'index' if L['index'] else 'noindex'}\t{L['group']}\t{L['lo']}" for L in landings))
+    dup_titles = Counter((L.get("title") or L["h1"]) for L in landings)
+    log(f"landings: duplicate titles: {[t for t, c in dup_titles.items() if c > 1][:8]}")
+    log(f"landings: {len(landings)} pages ({sum(1 for L in landings if L['index'])} indexable), dropped {dropped}")
 
     # ---------------- product pages
     for p in products:
@@ -233,12 +247,15 @@ def main():
     out.page("/postavicky/", licences_index(S, lic_pages), "pages")
 
     # ---------------- gifts, price pages, sale
-    gift = gift_pages(products)
     for path, (h1, lead, ps, kind) in gift.items():
         ps = sorted(ps, key=pop_key)
         j = write_json(out, S, "g-" + path.strip("/").replace("/", "-"), ps)
         paged(out, S, path, ps, lambda: gift_page(S, path, h1, lead, ps, j, kind), "pages")
     out.page("/darky/", gifts_index(S, gift), "pages")
+    for L in landings:
+        ps = sorted(L["items"], key=pop_key)
+        j = write_json(out, S, "x-" + L["slug"].replace("/", "-"), ps)
+        paged(out, S, L["path"], ps, lambda: landing_page(S, L, ps, j), "landings", index=L["index"])
 
     # ---------------- static pages, search, home, 404
     out.page("/kategorie/", categories_index(S, by_top, by_cat), "pages")
@@ -252,7 +269,7 @@ def main():
                                    '<div class="e404"><div><h1>Tady nic není. Ani pod postelí.</h1><p class="lead">Hračka mohla zmizet z nabídky obchodů, nebo vedla stará adresa. '
                                    'Zkuste ji vyhledat nahoře, nebo začněte <a class="lnk" href="/">na úvodní stránce</a>.</p>'
                                    '<p><a class="btn" href="/kategorie/">Všechny kategorie</a></p></div><img src="/img/ui/404.webp" alt="Robot nakukuje do prázdné truhly na hračky" width="640" height="472"></div>', noindex=True))
-    write_search(out, products, by_top, series_pages, brand_pages, brand_name, lic_pages)
+    write_search(out, products, by_top, series_pages, brand_pages, brand_name, lic_pages, landings)
 
     # ---------------- sitemaps, robots, headers, redirects
     sm = []
@@ -470,6 +487,9 @@ def listing_body(S, path, h1, lead, items, jsn, icon, chips="", texts_key=None, 
     t = TX.get(texts_key) if texts_key else None
     intro = t["intro"] if t and t.get("intro") else ""
     lead_html = intro or lead
+    kids = [k for k in getattr(S, "kids", {}).get(path, []) if k[0] != path]
+    if kids:
+        chips = (chips or "") + S.chips([(u, t, n) for u, t, n in sorted(kids, key=lambda k: -k[2])[:24]])
     band = S.band(h1, lead_html, icon, chips)
     prose, qa = TX.generated(texts_key, items, h1, S) if texts_key else ("", [])
     if t and t.get("body"):
@@ -551,6 +571,32 @@ def licence_page(S, s, items, jsn):
     return S.layout(f"/hracky-{s}/", title, desc, body, crumbs=[("Hračkárium", "/"), ("Postavičky", "/postavicky/"), (name, f"/hracky-{s}/")], jsonld=lds, full=True)
 
 
+def landing_page(S, L, items, jsn):
+    h1, path = L["h1"], L["path"]
+    lo, med, hi = price_stats(items)
+    n = len(items)
+    shops = len({o["shop"] for p in items for o in p["offers"]})
+    title = (L.get("title") or f"{h1} – srovnání cen od {R.kc(lo)}") + (SUFFIX if "Hračkárium" not in (L.get("title") or "") else "")
+    if len(title) > 72 and not L.get("title"):
+        title = f"{h1} – ceny od {R.kc(lo)}" + SUFFIX
+    desc = L.get("desc") or f"{h1}: {n} {R.plural(n, 'hračka', 'hračky', 'hraček')} z {shops} českých e‑shopů, ceny od {R.kc(lo)}. Porovnejte nabídky a kupte nejlevněji."
+    lead = L.get("lead") or f"{n} {R.plural(n, 'hračka', 'hračky', 'hraček')} z {shops} {R.plural(shops, 'obchodu', 'obchodů', 'obchodů')}, ceny od {R.kc(lo)} do {R.kc(hi)}."
+    sibs = [k for k in S.kids.get(L["parent"], []) if k[0] != path] if L["parent"] and L["parent"] != "/kategorie/" else []
+    chips = S.chips([(u, t, c) for u, t, c in sorted(sibs, key=lambda k: -k[2])[:16]]) if sibs else ""
+    icon = L.get("icon") or (R.ICON.get(path.strip("/").split("/")[0]) if L["parent"] in (None, "/kategorie/") else None)
+    body, lds = listing_body(S, path, h1, lead, items, jsn, icon, chips, texts_key="landing:" + L["slug"])
+    cr = [("Hračkárium", "/")]
+    par = L["parent"]
+    if par and par != "/kategorie/":
+        pname = S.landings[par]["h1"] if par in S.landings else (cat_name(par.strip("/")) if par.strip("/") in X.TREE else {"/darky/": "Dárky", "/lego/": "LEGO", "/znacky/": "Značky"}.get(par, None))
+        if pname is None and par.startswith("/znacky/"):
+            pname = S.ctx["brand_name"].get(par.strip("/").split("/")[1], par.strip("/").split("/")[1])
+        if pname:
+            cr.append((pname, par))
+    cr.append((h1, path))
+    return S.layout(path, title, desc, body, crumbs=cr, jsonld=lds, full=True)
+
+
 def gift_pages(products):
     """Gift landings from what people search: by age (1–12), boy/girl (only where the shop says so), price caps, sale."""
     out = {}
@@ -592,7 +638,7 @@ def gift_page(S, path, h1, lead, items, jsn, kind):
 
 def gifts_index(S, gift):
     ages = "".join(f'<li><a href="{p}">{v[3][1]}<small>{"rok" if v[3][1] == 1 else "roky" if v[3][1] < 5 else "let"}</small></a></li>' for p, v in gift.items() if v[3][0] == "age")
-    other = S.chips([(p, v[0], len(v[2])) for p, v in gift.items() if v[3][0] != "age"])
+    other = S.chips([(p, v[0], len(v[2])) for p, v in gift.items() if v[3][0] != "age"] + [(u, t, n) for u, t, n in sorted(S.kids.get("/darky/", []), key=lambda k: -k[2])[:40]])
     body = (f'<h1>Dárky pro děti podle věku</h1><p class="lead">Vyberte věk dítěte. Ukážeme hračky, u kterých výrobce nebo obchod uvádí, že se pro ten věk hodí — od nejsrovnávanějších.</p>'
             f'<ul class="ages">{ages}</ul><h2 style="margin-top:34px">Další tipy na dárky</h2>{other}')
     t = TX.get("darky:index") or {}
@@ -636,7 +682,12 @@ def categories_index(S, by_top, by_cat):
                     for t in X.TOP if by_top.get(t))
     subs = "".join(f'<h2 style="margin-top:28px"><a href="/{t}/" style="color:inherit;text-decoration:none">{E(cat_name(t))}</a></h2>' + S.chips(
         [(f"/{k}/", cat_name(k), len(by_cat[k])) for k in X.TREE if X.TREE[k][1] == t and by_cat.get(k)]) for t in X.TOP if by_top.get(t))
-    body = f'<h1>Všechny kategorie hraček</h1><ul class="tiles">{tiles}</ul>{subs}'
+    topics = ""
+    groups = [("Hračky podle věku", "vek"), ("Kam a na co", None), ("Podle potřeb dítěte", "potreby"), ("Dárky a příležitosti", "prilezitosti"), ("Vánoce a advent", "vanoce")]
+    kid = sorted(S.kids.get("/kategorie/", []), key=lambda k: -k[2])
+    if kid:
+        topics = '<h2 style="margin-top:34px">Další témata a nápady</h2>' + S.chips([(u, t, n) for u, t, n in kid[:120]])
+    body = f'<h1>Všechny kategorie hraček</h1><ul class="tiles">{tiles}</ul>{subs}{topics}'
     return S.layout("/kategorie/", "Kategorie hraček" + SUFFIX, "Přehled všech kategorií hraček: LEGO, stavebnice, panenky, společenské hry, puzzle, plyšáci a další.",
                     body, crumbs=[("Hračkárium", "/"), ("Kategorie", "/kategorie/")])
 
@@ -710,6 +761,8 @@ def home_page(S, products, by_top, series, lic, gift):
     ages = "".join(f'<li><a href="{p}">{v[3][1]}<small>{"rok" if v[3][1] == 1 else "roky" if v[3][1] < 5 else "let"}</small></a></li>' for p, v in gift.items() if v[3][0] == "age")
     lego = S.chips([(f"/lego/{s}/", series_name(s), len(ps)) for s, ps in sorted(series.items(), key=lambda x: -len(x[1]))[:14]])
     chars = S.chips([(f"/hracky-{s}/", S.lic_name[s], len(ps)) for s, ps in sorted(lic.items(), key=lambda x: -len(x[1]))[:16]])
+    feat = [L for L in S.landings.values() if L["home"]]
+    featured = (f'<section class="sec"><div class="sec__h"><h2>Hledáte nejčastěji</h2></div>' + S.chips([(L["path"], L["h1"], L["n"]) for L in sorted(feat, key=lambda L: -L["n"])[:12]]) + "</section>") if feat else ""
     row = lambda ps: '<ul class="grid grid--5">' + "".join(S.card(p) for p in ps) + "</ul>"
     body = f"""<section class="hero"><div class="wrap"><div><h1>Hračky za <em>nejlepší cenu</em>, bez běhání po obchodech</h1>
 <p class="lead">Porovnáváme ceny {R.plural(st['products'], 'hračky', 'hraček', 'hraček')} z {st['shops']} českých e‑shopů. Najděte LEGO, deskovku nebo dárek k Vánocům a kupte tam, kde je to nejlevnější.</p>
@@ -718,6 +771,7 @@ def home_page(S, products, by_top, series, lic, gift):
 <div class="hero__art"><img src="/img/ui/hero-1200.webp" srcset="/img/ui/hero-640.webp 640w, /img/ui/hero-1200.webp 1200w" sizes="(max-width:980px) 92vw, 600px" alt="Police plná hraček s cenovkami" width="1200" height="631" fetchpriority="high"><span class="note" style="right:4%;bottom:-6px">ceny z {st['shops']} obchodů!</span></div></div></section>
 <div class="wrap"><section class="sec"><div class="sec__h"><h2>Co hledáte?</h2><a href="/kategorie/">Všechny kategorie →</a></div><ul class="tiles">{tiles}</ul></section>
 <section class="sec"><div class="sec__h"><h2>Dárek podle věku</h2><a href="/darky/">Další tipy →</a></div><ul class="ages">{ages}</ul></section>
+{featured}
 <section class="sec"><div class="sec__h"><h2>Nejvíc srovnávané</h2><a href="/kategorie/">Procházet →</a></div>{row(hot)}</section>
 <section class="sec"><div class="sec__h"><h2>LEGO podle řady</h2><a href="/lego/">Všechno LEGO →</a></div>{lego}</section>
 {f'<section class="sec"><div class="sec__h"><h2>Teď ve slevě</h2><a href="/slevy/">Všechny slevy →</a></div>{row(sale)}</section>' if sale else ''}
@@ -732,13 +786,14 @@ def home_page(S, products, by_top, series, lic, gift):
                     body, jsonld=ld, preload_img="/img/ui/hero-1200.webp", full=True)
 
 
-def write_search(out, products, by_top, series, brands, brand_name, lic):
+def write_search(out, products, by_top, series, brands, brand_name, lic, landings=()):
     """Header suggestions: categories/series/brands/characters (small, loaded on focus) + product index split by the
     first two letters of each word, so a query loads one small file."""
     sug = [[cat_name(t), f"/{t}/", "kategorie"] for t in X.TOP if by_top.get(t)]
     sug += [[series_name(s), f"/lego/{s}/", "LEGO řada"] for s in series]
     sug += [[brand_name[b], f"/znacky/{b}/", "značka"] for b in sorted(brands, key=lambda b: -len(brands[b]))]
     sug += [[f"Hračky {n}", f"/hracky-{s}/", "postavička"] for s, n, _ in X.LICENCES if s in lic]
+    sug += [[L["h1"], L["path"], "téma"] for L in landings if L["index"] and L["n"] >= 15][:900]
     out.write("data/sug.json", json.dumps(sug, ensure_ascii=False, separators=(",", ":")))
     buckets = defaultdict(list)
     for i, p in enumerate(products):

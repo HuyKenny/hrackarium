@@ -1,0 +1,334 @@
+[
+ {
+  "slug": "adventni-kalendare",
+  "h1": "Adventní kalendáře 2026",
+  "parent": "/darky/",
+  "group": "advent-hub",
+  "home": true,
+  "icon": "party",
+  "hubs": [
+   "/darky/"
+  ],
+  "index_min": 6,
+  "lead": "Adventní kalendáře pro děti z českých e‑shopů: LEGO, Playmobil, Barbie, Hot Wheels i dřevěné a kreativní. Porovnejte ceny a kupte nejlevněji.",
+  "rules": {
+   "any": [
+    "\\badventni\\s+kalend",
+    "\\badvent\\b.*\\bkalend",
+    "\\bkalend\\w*\\s+advent"
+   ]
+  }
+ },
+ {
+  "slug": "adventni-kalendare/lego",
+  "h1": "Adventní kalendáře LEGO 2026",
+  "parent": "/adventni-kalendare/",
+  "group": "advent",
+  "icon": "party",
+  "index_min": 6,
+  "rules": {
+   "all": [
+    "\\badventni\\s+kalend"
+   ],
+   "any": [
+    "\\blego\\b"
+   ]
+  }
+ },
+ {
+  "slug": "adventni-kalendare/playmobil",
+  "h1": "Adventní kalendáře Playmobil",
+  "parent": "/adventni-kalendare/",
+  "group": "advent",
+  "icon": "party",
+  "index_min": 6,
+  "rules": {
+   "all": [
+    "\\badventni\\s+kalend"
+   ],
+   "any": [
+    "\\bplaymobil\\b"
+   ]
+  }
+ },
+ {
+  "slug": "adventni-kalendare/barbie",
+  "h1": "Adventní kalendáře Barbie",
+  "parent": "/adventni-kalendare/",
+  "group": "advent",
+  "icon": "party",
+  "index_min": 6,
+  "rules": {
+   "all": [
+    "\\badventni\\s+kalend"
+   ],
+   "any": [
+    "\\bbarbie\\b"
+   ]
+  }
+ },
+ {
+  "slug": "adventni-kalendare/hot-wheels",
+  "h1": "Adventní kalendáře Hot Wheels",
+  "parent": "/adventni-kalendare/",
+  "group": "advent",
+  "icon": "party",
+  "index_min": 6,
+  "rules": {
+   "all": [
+    "\\badventni\\s+kalend"
+   ],
+   "any": [
+    "\\bhot wheels\\b"
+   ]
+  }
+ },
+ {
+  "slug": "adventni-kalendare/disney",
+  "h1": "Disney adventní kalendáře",
+  "parent": "/adventni-kalendare/",
+  "group": "advent",
+  "icon": "party",
+  "index_min": 6,
+  "rules": {
+   "all": [
+    "\\badventni\\s+kalend"
+   ],
+   "any": [
+    "\\bdisney\\b",
+    "\\bfrozen\\b",
+    "ledove kralovstvi",
+    "\\bstitch\\b",
+    "\\bmickey\\b",
+    "princezn"
+   ]
+  }
+ },
+ {
+  "slug": "adventni-kalendare/harry-potter",
+  "h1": "Adventní kalendáře Harry Potter",
+  "parent": "/adventni-kalendare/",
+  "group": "advent",
+  "icon": "party",
+  "index_min": 6,
+  "rules": {
+   "all": [
+    "\\badventni\\s+kalend"
+   ],
+   "any": [
+    "harry potter",
+    "bradavic"
+   ]
+  }
+ },
+ {
+  "slug": "adventni-kalendare/star-wars",
+  "h1": "Adventní kalendáře Star Wars",
+  "parent": "/adventni-kalendare/",
+  "group": "advent",
+  "icon": "party",
+  "index_min": 6,
+  "rules": {
+   "all": [
+    "\\badventni\\s+kalend"
+   ],
+   "any": [
+    "star wars"
+   ]
+  }
+ },
+ {
+  "slug": "adventni-kalendare/minecraft",
+  "h1": "Adventní kalendáře Minecraft",
+  "parent": "/adventni-kalendare/",
+  "group": "advent",
+  "icon": "party",
+  "index_min": 6,
+  "rules": {
+   "all": [
+    "\\badventni\\s+kalend"
+   ],
+   "any": [
+    "minecraft"
+   ]
+  }
+ },
+ {
+  "slug": "adventni-kalendare/pokemon",
+  "h1": "Adventní kalendáře Pokémon",
+  "parent": "/adventni-kalendare/",
+  "group": "advent",
+  "icon": "party",
+  "index_min": 6,
+  "rules": {
+   "all": [
+    "\\badventni\\s+kalend"
+   ],
+   "any": [
+    "pokemon"
+   ]
+  }
+ },
+ {
+  "slug": "adventni-kalendare/schleich",
+  "h1": "Adventní kalendáře Schleich",
+  "parent": "/adventni-kalendare/",
+  "group": "advent",
+  "icon": "party",
+  "index_min": 6,
+  "rules": {
+   "all": [
+    "\\badventni\\s+kalend"
+   ],
+   "any": [
+    "\\bschleich\\b"
+   ]
+  }
+ },
+ {
+  "slug": "adventni-kalendare/tlapkova-patrola",
+  "h1": "Adventní kalendáře Tlapková patrola",
+  "parent": "/adventni-kalendare/",
+  "group": "advent",
+  "icon": "party",
+  "index_min": 6,
+  "rules": {
+   "all": [
+    "\\badventni\\s+kalend"
+   ],
+   "any": [
+    "tlapkova patrola",
+    "paw patrol"
+   ]
+  }
+ },
+ {
+  "slug": "adventni-kalendare/pro-holky",
+  "h1": "Adventní kalendáře pro holky",
+  "parent": "/adventni-kalendare/",
+  "group": "advent",
+  "icon": "party",
+  "index_min": 6,
+  "rules": {
+   "all": [
+    "\\badventni\\s+kalend"
+   ],
+   "any": [
+    "\\bholk",
+    "\\bbarbie\\b",
+    "\\bfriends\\b",
+    "\\bunicorn|jednoroz",
+    "\\bkreativ"
+   ]
+  }
+ },
+ {
+  "slug": "adventni-kalendare/pro-kluky",
+  "h1": "Adventní kalendáře pro kluky",
+  "parent": "/adventni-kalendare/",
+  "group": "advent",
+  "icon": "party",
+  "index_min": 6,
+  "rules": {
+   "all": [
+    "\\badventni\\s+kalend"
+   ],
+   "any": [
+    "\\bkluk",
+    "\\bhot wheels\\b",
+    "star wars",
+    "\\bcity\\b",
+    "\\bninjago\\b",
+    "\\bminecraft\\b",
+    "\\bdinosaur"
+   ]
+  }
+ },
+ {
+  "slug": "adventni-kalendare/drevene",
+  "h1": "Dřevěné adventní kalendáře",
+  "parent": "/adventni-kalendare/",
+  "group": "advent",
+  "icon": "party",
+  "index_min": 6,
+  "rules": {
+   "all": [
+    "\\badventni\\s+kalend"
+   ],
+   "any": [
+    "\\bdreven"
+   ]
+  }
+ },
+ {
+  "slug": "adventni-kalendare/kreativni",
+  "h1": "Kreativní adventní kalendáře",
+  "parent": "/adventni-kalendare/",
+  "group": "advent",
+  "icon": "party",
+  "index_min": 6,
+  "rules": {
+   "all": [
+    "\\badventni\\s+kalend"
+   ],
+   "any": [
+    "kreativ",
+    "\\btvoren",
+    "\\bvyrob",
+    "\\bmodelin",
+    "\\bkoralk"
+   ]
+  }
+ },
+ {
+  "slug": "adventni-kalendare/do-500-kc",
+  "h1": "Adventní kalendáře do 500 Kč",
+  "parent": "/adventni-kalendare/",
+  "group": "advent",
+  "icon": "party",
+  "index_min": 6,
+  "rules": {
+   "all": [
+    "\\badventni\\s+kalend"
+   ],
+   "price": [
+    null,
+    500
+   ]
+  }
+ },
+ {
+  "slug": "adventni-kalendare/do-1000-kc",
+  "h1": "Adventní kalendáře do 1 000 Kč",
+  "parent": "/adventni-kalendare/",
+  "group": "advent",
+  "icon": "party",
+  "index_min": 6,
+  "rules": {
+   "all": [
+    "\\badventni\\s+kalend"
+   ],
+   "price": [
+    null,
+    1000
+   ]
+  }
+ },
+ {
+  "slug": "adventni-kalendare/nad-1000-kc",
+  "h1": "Velké adventní kalendáře nad 1 000 Kč",
+  "parent": "/adventni-kalendare/",
+  "group": "advent",
+  "icon": "party",
+  "index_min": 6,
+  "rules": {
+   "all": [
+    "\\badventni\\s+kalend"
+   ],
+   "price": [
+    1000,
+    null
+   ]
+  }
+ }
+]
