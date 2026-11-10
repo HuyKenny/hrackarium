@@ -1,0 +1,44 @@
+// Visual check of the built site inside GitHub Actions (nothing runs on the Raspberry Pi):
+// serves dist/ on localhost (no Cloudflare in between), opens key pages at phone, tablet and desktop widths,
+// fails on horizontal scrolling (any element wider than the viewport) and saves screenshots as a build artifact.
+//   CHROME_PATH=/usr/bin/google-chrome node scripts/check_pages.mjs http://localhost:8765 /tmp/shots
+import puppeteer from "puppeteer-core";
+import { readFileSync, mkdirSync, writeFileSync } from "node:fs";
+
+const [base, outDir] = [process.argv[2] || "http://localhost:8765", process.argv[3] || "/tmp/shots"];
+mkdirSync(outDir, { recursive: true });
+const sm = readFileSync("dist/sitemap-products-1.xml", "utf8").match(/<loc>[^<]+<\/loc>/g) || [];
+const products = sm.slice(0, 3).map((l) => new URL(l.slice(5, -6)).pathname);
+const pages = ["/", "/lego/", "/darky/", "/spolecenske-hry/", "/sberatelske-karty/", "/znacky/", "/postavicky/", "/jak-srovnavame/", "/hledat/?q=lego", ...products];
+const widths = [360, 390, 820, 1366];
+const browser = await puppeteer.launch({ executablePath: process.env.CHROME_PATH || "/usr/bin/google-chrome", args: ["--no-sandbox", "--disable-gpu", "--hide-scrollbars"] });
+const page = await browser.newPage();
+await page.setRequestInterception(true);
+page.on("request", (r) => (r.url().startsWith(base) ? r.continue() : r.respond({ status: 204, body: "" })));   // shop images & GA stay offline
+const problems = [];
+for (const w of widths) {
+  await page.setViewport({ width: w, height: 900, isMobile: w < 800, hasTouch: w < 800 });
+  for (const p of pages) {
+    const res = await page.goto(base + p, { waitUntil: "load", timeout: 60000 }).catch((e) => null);
+    if (!res || res.status() >= 400) { problems.push({ w, p, issue: `HTTP ${res ? res.status() : "error"}` }); continue; }
+    const over = await page.evaluate(() => {
+      const W = document.documentElement.clientWidth, bad = [];
+      if (document.documentElement.scrollWidth > W + 1) bad.push(`page scrollWidth ${document.documentElement.scrollWidth} > ${W}`);
+      for (const e of document.querySelectorAll("body *")) {
+        const r = e.getBoundingClientRect();
+        if (r.width && r.right > W + 1 && getComputedStyle(e).position !== "fixed") { bad.push(`${e.tagName}.${String(e.className).slice(0, 40)} right=${Math.round(r.right)}`); }
+        const s = getComputedStyle(e);
+        if ((s.overflowX === "auto" || s.overflowX === "scroll") && e.scrollWidth > e.clientWidth + 2) bad.push(`scroller ${e.tagName}.${String(e.className).slice(0, 40)}`);
+        if (bad.length > 5) break;
+      }
+      return bad;
+    });
+    if (over.length) problems.push({ w, p, issue: over.join(" | ") });
+    if (w === 390 || w === 1366) await page.screenshot({ path: `${outDir}/${w}${p.replace(/[^a-z0-9]+/gi, "_") || "_home"}.png` });
+  }
+}
+await browser.close();
+writeFileSync(`${outDir}/report.json`, JSON.stringify({ pages: pages.length, widths, problems }, null, 1));
+console.log(`checked ${pages.length} pages x ${widths.length} widths, problems: ${problems.length}`);
+for (const x of problems.slice(0, 30)) console.log(`  ${x.w}px ${x.p}: ${x.issue}`);
+process.exit(problems.length ? 1 : 0);

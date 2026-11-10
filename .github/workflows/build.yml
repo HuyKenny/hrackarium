@@ -56,6 +56,21 @@ jobs:
         run: python3 scripts/build.py
         env:
           INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+      - name: Visual check (no horizontal scrolling; screenshots as artifact)
+        continue-on-error: true
+        run: |
+          npm i --no-save --silent puppeteer-core@23.11.1 >/dev/null
+          (cd dist && python3 -m http.server 8765 >/dev/null 2>&1 &)
+          sleep 2
+          CHROME_PATH=$(command -v google-chrome || command -v chromium) node scripts/check_pages.mjs http://localhost:8765 /tmp/shots
+      - name: Upload screenshots
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02  # v4.6.2
+        with:
+          name: screenshots
+          path: /tmp/shots
+          retention-days: 7
+          if-no-files-found: ignore
       - name: Secret check of repo + build output
         run: python3 scripts/verify_no_secrets.py
         env:
@@ -82,4 +97,5 @@ jobs:
         if: always()
         run: |
           { echo '### Fetch'; echo '```'; cat data/raw/fetch-report.json 2>/dev/null; echo '```'
-            echo '### Build'; echo '```'; cat data/state/build-report.json 2>/dev/null; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+            echo '### Build'; echo '```'; cat data/state/build-report.json 2>/dev/null; echo '```'
+            echo '### Visual check'; echo '```'; cat /tmp/shots/report.json 2>/dev/null; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
