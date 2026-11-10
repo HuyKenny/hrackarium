@@ -231,3 +231,30 @@ def kids_map(landings):
         for hub in set(([L["parent"]] if L["parent"] else []) + list(L["hubs"])):
             kids[hub].append((L["path"], L["h1"], L["n"]))
     return kids
+
+
+# ---------------------------------------------------------------- guides (content/guides): index = metadata + product-pick rules, <slug>.json = text
+def load_guides():
+    gd = APP / "content/guides"
+    if not (gd / "_index.json").exists():
+        return []
+    meta = {g["slug"]: g for g in json.loads((gd / "_index.json").read_text())}
+    out = []
+    for slug, g in meta.items():
+        f = gd / f"{slug}.json"
+        if f.exists():
+            t = json.loads(f.read_text())
+            out.append({**g, "intro": t.get("intro", ""), "body": t.get("body", ""), "faq": t.get("faq", []), "description": t.get("description")})
+    return out
+
+
+def guide_picks(products, g, limit=8):
+    rules = dict(g.get("rules") or {})
+    if g.get("cat"):
+        rules["cat"] = g["cat"]
+    pred = compile_rules(rules)
+    cats = tuple(rules.get("cat", []))
+    pool = [p for p in products if p["cat"].startswith(cats)] if cats else products
+    items = [p for p in pool if pred(p) and p["img"] and p.get("page", True)]
+    items.sort(key=lambda p: (-len(p["offers"]), p["price"]))
+    return items[:limit]

@@ -28,7 +28,7 @@ def words(html):
 def main():
     strict = "--strict" in sys.argv
     bad = 0
-    files = sorted((APP / "content/texts").glob("*.json"))
+    files = sorted((APP / "content/texts").glob("*.json")) + sorted(f for f in (APP / "content/guides").glob("*.json") if f.name != "_index.json")
     for f in files:
         issues = []
         try:
@@ -37,19 +37,22 @@ def main():
             print(f"{f.name}: INVALID JSON {e}")
             bad += 1
             continue
-        key = d.get("key", "")
+        is_guide = f.parent.name == "guides"
+        key = d.get("key", "") or ("guide:" + d.get("slug", ""))
         body = d.get("body", "")
         n = words(body)
         slug = key.split(":", 1)[1] if ":" in key else ""
         hub = key.endswith(":adventni-kalendare") or "hub" in d
         if len(d.get("intro", "")) > 220:
             issues.append(f"intro {len(d['intro'])} chars")
+        if is_guide and len(d.get("description", "")) > 160:
+            issues.append("description too long")
         if len(d.get("faq", [])) < 3:
             issues.append("faq < 3")
-        if n < (380 if not hub else 550):
+        if n < (600 if is_guide else 380 if not hub else 550):
             issues.append(f"{n} words")
         links = LINK.findall(body)
-        if len(links) > 4:
+        if len(links) > (5 if is_guide else 4):
             issues.append(f"{len(links)} links")
         if any(l.strip("/") == slug.strip("/") for l in links if slug):
             issues.append("self link")

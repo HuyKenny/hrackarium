@@ -1,0 +1,786 @@
+[
+ {
+  "slug": "jak-vybrat-lego-podle-veku",
+  "h1": "Jak vybrat LEGO podle věku dítěte",
+  "related": [
+   "/lego/",
+   "/lego/pro-nejmensi/",
+   "/lego/pro-dospele/"
+  ],
+  "rules": {
+   "cat": [
+    "lego"
+   ]
+  }
+ },
+ {
+  "slug": "lego-technic-nebo-lego-city-rozdily",
+  "h1": "LEGO Technic, City nebo Creator: v čem se liší",
+  "related": [
+   "/lego/technic/",
+   "/lego/city/"
+  ],
+  "rules": {
+   "cat": [
+    "lego"
+   ],
+   "any": [
+    "\\btechnic\\b",
+    "\\bcity\\b",
+    "\\bcreator\\b"
+   ]
+  }
+ },
+ {
+  "slug": "lego-nebo-kompatibilni-stavebnice",
+  "h1": "LEGO, nebo kompatibilní stavebnice (Cobi, Cada, Sluban)?",
+  "related": [
+   "/lego/",
+   "/stavebnice/"
+  ],
+  "rules": {
+   "cat": [
+    "stavebnice/kostky-a-kompatibilni"
+   ]
+  }
+ },
+ {
+  "slug": "jak-poznat-originalni-lego-a-padelky",
+  "h1": "Jak poznat originální LEGO a padělky",
+  "related": [
+   "/lego/"
+  ],
+  "rules": {
+   "cat": [
+    "lego"
+   ]
+  }
+ },
+ {
+  "slug": "lego-pro-dospele-jak-zacit",
+  "h1": "LEGO pro dospělé: jak začít se sbíráním a stavěním",
+  "related": [
+   "/lego/pro-dospele/",
+   "/lego/botanicals/"
+  ],
+  "rules": {
+   "cat": [
+    "lego"
+   ],
+   "any": [
+    "\\bbotanical",
+    "\\bicons\\b",
+    "\\barchitecture\\b",
+    "\\bideas\\b"
+   ]
+  }
+ },
+ {
+  "slug": "jak-skladovat-a-trizdit-lego",
+  "h1": "Jak třídit, skladovat a čistit LEGO",
+  "related": [
+   "/lego/"
+  ],
+  "rules": {
+   "cat": [
+    "lego"
+   ]
+  }
+ },
+ {
+  "slug": "lego-vs-playmobil-rozdily",
+  "h1": "LEGO vs. Playmobil: kterou stavebnici vybrat",
+  "related": [
+   "/lego/",
+   "/stavebnice/playmobil/"
+  ],
+  "rules": {
+   "cat": [
+    "lego",
+    "stavebnice/playmobil"
+   ]
+  }
+ },
+ {
+  "slug": "jak-vybrat-stavebnici-pro-deti",
+  "h1": "Jak vybrat stavebnici pro děti podle věku",
+  "related": [
+   "/stavebnice/",
+   "/lego/"
+  ],
+  "rules": {
+   "cat": [
+    "stavebnice",
+    "lego"
+   ]
+  }
+ },
+ {
+  "slug": "magneticke-stavebnice-jak-vybrat",
+  "h1": "Magnetické stavebnice: jak vybrat a na co si dát pozor",
+  "related": [
+   "/stavebnice/magneticke/"
+  ],
+  "rules": {
+   "cat": [
+    "stavebnice/magneticke"
+   ]
+  }
+ },
+ {
+  "slug": "jak-vybrat-deskovou-hru-pro-deti",
+  "h1": "Jak vybrat deskovou hru pro děti",
+  "related": [
+   "/spolecenske-hry/",
+   "/prvni-deskovky-pro-deti/"
+  ],
+  "rules": {
+   "cat": [
+    "spolecenske-hry"
+   ],
+   "age": [
+    24,
+    120
+   ],
+   "offers": 2
+  }
+ },
+ {
+  "slug": "nejlepsi-deskove-hry-pro-dva",
+  "h1": "Deskové hry pro dva: jak vybrat a co hrát",
+  "related": [
+   "/deskove-hry-pro-dva/",
+   "/spolecenske-hry/"
+  ],
+  "rules": {
+   "cat": [
+    "spolecenske-hry"
+   ],
+   "any": [
+    "\\bpro dva\\b",
+    "\\b2 hrac"
+   ]
+  }
+ },
+ {
+  "slug": "rodinne-deskovky-jak-vybrat",
+  "h1": "Rodinné deskovky: jak vybrat hru pro děti i dospělé",
+  "related": [
+   "/rodinne-deskove-hry/",
+   "/spolecenske-hry/"
+  ],
+  "rules": {
+   "cat": [
+    "spolecenske-hry"
+   ],
+   "offers": 3
+  }
+ },
+ {
+  "slug": "jak-vybrat-puzzle-podle-veku",
+  "h1": "Jak vybrat puzzle podle věku a počtu dílků",
+  "related": [
+   "/puzzle/",
+   "/puzzle-pro-nejmensi/"
+  ],
+  "rules": {
+   "cat": [
+    "puzzle"
+   ],
+   "offers": 2
+  }
+ },
+ {
+  "slug": "jak-poskladat-puzzle-tipy",
+  "h1": "Jak skládat velké puzzle: tipy pro začátečníky",
+  "related": [
+   "/puzzle-pro-dospele-1000-dilku/",
+   "/puzzle/pro-dospele/"
+  ],
+  "rules": {
+   "cat": [
+    "puzzle"
+   ],
+   "any": [
+    "\\b1000\\b",
+    "\\b1500\\b"
+   ]
+  }
+ },
+ {
+  "slug": "jak-vybrat-panenku-pro-holcicku",
+  "h1": "Jak vybrat panenku: Barbie, Baby Born a další",
+  "related": [
+   "/panenky/",
+   "/panenky/miminka/"
+  ],
+  "rules": {
+   "cat": [
+    "panenky"
+   ],
+   "offers": 2
+  }
+ },
+ {
+  "slug": "jak-vybrat-plysaka-a-jak-ho-prat",
+  "h1": "Plyšáci: jak vybrat bezpečného a jak ho vyprat",
+  "related": [
+   "/plysaci/"
+  ],
+  "rules": {
+   "cat": [
+    "plysaci"
+   ],
+   "offers": 2
+  }
+ },
+ {
+  "slug": "jak-vybrat-odrazedlo",
+  "h1": "Jak vybrat odrážedlo podle věku a výšky dítěte",
+  "related": [
+   "/venku/",
+   "/hracky-na-hrubou-motoriku/"
+  ],
+  "rules": {
+   "cat": [
+    "venku/odrazedla"
+   ]
+  }
+ },
+ {
+  "slug": "jak-vybrat-autodrahu",
+  "h1": "Jak vybrat autodráhu pro děti",
+  "related": [
+   "/auta-a-vlacky/",
+   "/auta-a-vlacky/autodrahy/"
+  ],
+  "rules": {
+   "cat": [
+    "auta-a-vlacky/autodrahy"
+   ]
+  }
+ },
+ {
+  "slug": "jak-vybrat-rc-auto-pro-dite",
+  "h1": "Jak vybrat auto na dálkové ovládání pro dítě",
+  "related": [
+   "/rc-modely/",
+   "/rc-modely/auta/"
+  ],
+  "rules": {
+   "cat": [
+    "rc-modely"
+   ],
+   "offers": 2
+  }
+ },
+ {
+  "slug": "jak-vybrat-vlackodrahu",
+  "h1": "Jak vybrat vláčkodráhu: dřevěná, plastová nebo LEGO",
+  "related": [
+   "/auta-a-vlacky/vlacky/",
+   "/lego/vlaky/"
+  ],
+  "rules": {
+   "cat": [
+    "auta-a-vlacky/vlacky"
+   ]
+  }
+ },
+ {
+  "slug": "jak-vybrat-detskou-kuchynku",
+  "h1": "Jak vybrat dětskou kuchyňku a nádobí na hraní",
+  "related": [
+   "/hrajeme-si-na/",
+   "/hrajeme-si-na/kuchynky/"
+  ],
+  "rules": {
+   "cat": [
+    "hrajeme-si-na/kuchynky"
+   ]
+  }
+ },
+ {
+  "slug": "jak-vybrat-interaktivni-hracky",
+  "h1": "Interaktivní hračky: jak vybrat a co s bateriemi",
+  "related": [
+   "/elektronika/"
+  ],
+  "rules": {
+   "cat": [
+    "elektronika"
+   ]
+  }
+ },
+ {
+  "slug": "jak-vybrat-kostym-na-karneval",
+  "h1": "Jak vybrat dětský kostým na karneval a Halloween",
+  "related": [
+   "/kostymy-a-party/"
+  ],
+  "rules": {
+   "cat": [
+    "kostymy-a-party"
+   ]
+  }
+ },
+ {
+  "slug": "hracky-pro-miminka-podle-mesicu",
+  "h1": "Hračky pro miminka podle měsíců: co dává smysl",
+  "related": [
+   "/hracky-pro-miminka/",
+   "/pro-nejmensi/"
+  ],
+  "rules": {
+   "cat": [
+    "pro-nejmensi"
+   ],
+   "age": [
+    0,
+    12
+   ]
+  }
+ },
+ {
+  "slug": "hracky-podle-vyvoje-ditete-1-3-roky",
+  "h1": "Hračky podle vývoje dítěte od 1 do 3 let",
+  "related": [
+   "/hracky-pro-batolata/",
+   "/hracky-na-jemnou-motoriku/"
+  ],
+  "rules": {
+   "age": [
+    12,
+    36
+   ],
+   "offers": 3
+  }
+ },
+ {
+  "slug": "hracky-podle-vyvoje-ditete-3-6-let",
+  "h1": "Hračky podle vývoje dítěte od 3 do 6 let",
+  "related": [
+   "/hracky-pro-predskolaky/",
+   "/naucne-hracky-pro-predskolaky/"
+  ],
+  "rules": {
+   "age": [
+    36,
+    72
+   ],
+   "offers": 3
+  }
+ },
+ {
+  "slug": "hracky-pro-dvoulete-deti-co-vybrat",
+  "h1": "Hračky pro dvouleté děti: co koupit",
+  "related": [
+   "/hracky-pro-deti-od-2-let/",
+   "/hracky-pro-batolata/"
+  ],
+  "rules": {
+   "age": [
+    18,
+    30
+   ],
+   "offers": 2
+  }
+ },
+ {
+  "slug": "hracky-pro-tri-lete-dite-co-koupit",
+  "h1": "Hračky pro tříleté dítě: na co si dát pozor a co vybrat",
+  "related": [
+   "/hracky-pro-deti-od-3-let/",
+   "/darky/3-let/"
+  ],
+  "rules": {
+   "age": [
+    30,
+    42
+   ],
+   "offers": 3
+  }
+ },
+ {
+  "slug": "hracky-pro-sourozence-co-koupit",
+  "h1": "Hračky pro sourozence: co koupit, aby se nehádali",
+  "related": [
+   "/spolecenske-hry/",
+   "/stavebnice/"
+  ],
+  "rules": {
+   "offers": 4
+  }
+ },
+ {
+  "slug": "co-koupit-diteti-k-1-narozeninam",
+  "h1": "Co koupit dítěti k 1. narozeninám",
+  "related": [
+   "/darek-k-1-narozeninam/",
+   "/hracky-pro-rocni-dite/"
+  ],
+  "rules": {
+   "age": [
+    6,
+    18
+   ],
+   "offers": 2
+  }
+ },
+ {
+  "slug": "co-koupit-diteti-k-3-narozeninam",
+  "h1": "Co koupit dítěti ke 3. narozeninám",
+  "related": [
+   "/darky/3-let/",
+   "/hracky-pro-deti-od-3-let/"
+  ],
+  "rules": {
+   "age": [
+    30,
+    42
+   ],
+   "offers": 3
+  }
+ },
+ {
+  "slug": "co-koupit-diteti-k-5-narozeninam",
+  "h1": "Co koupit dítěti k 5. narozeninám",
+  "related": [
+   "/darky/5-let/",
+   "/hracky-pro-deti-od-5-let/"
+  ],
+  "rules": {
+   "age": [
+    54,
+    66
+   ],
+   "offers": 3
+  }
+ },
+ {
+  "slug": "darek-pro-kluka-10-let-tipy",
+  "h1": "Dárek pro kluka 10 let: tipy podle zájmů",
+  "related": [
+   "/darky/10-let/",
+   "/darek-pro-kluka/"
+  ],
+  "rules": {
+   "age": [
+    108,
+    132
+   ],
+   "offers": 3
+  }
+ },
+ {
+  "slug": "darek-pro-holku-10-let-tipy",
+  "h1": "Dárek pro holku 10 let: tipy podle zájmů",
+  "related": [
+   "/darky/10-let/",
+   "/darek-pro-holku/"
+  ],
+  "rules": {
+   "age": [
+    108,
+    132
+   ],
+   "offers": 3
+  }
+ },
+ {
+  "slug": "darek-pro-kluka-12-let-tipy",
+  "h1": "Dárek pro kluka 12 let: co mu udělá radost",
+  "related": [
+   "/darky/12-let/",
+   "/hracky-pro-teenagery/"
+  ],
+  "rules": {
+   "age": [
+    132,
+    156
+   ],
+   "offers": 2
+  }
+ },
+ {
+  "slug": "darek-pro-dite-6-let-tipy",
+  "h1": "Dárek pro dítě 6 let: tipy, když nastupuje do školy",
+  "related": [
+   "/darky/6-let/",
+   "/darek-pro-prvnacka/"
+  ],
+  "rules": {
+   "age": [
+    66,
+    84
+   ],
+   "offers": 3
+  }
+ },
+ {
+  "slug": "jak-vybrat-adventni-kalendar-pro-dite",
+  "h1": "Jak vybrat adventní kalendář pro dítě",
+  "related": [
+   "/adventni-kalendare/",
+   "/hracky-do-adventniho-kalendare/"
+  ],
+  "rules": {
+   "any": [
+    "\\badventni\\s+kalend"
+   ]
+  }
+ },
+ {
+  "slug": "jak-naplanovat-vanocni-darky-pro-deti",
+  "h1": "Vánoční dárky pro děti: jak naplánovat rozpočet a nákup",
+  "related": [
+   "/vanocni-darky/",
+   "/darky/"
+  ],
+  "rules": {
+   "offers": 4
+  }
+ },
+ {
+  "slug": "black-friday-hracky-jak-poznat-slevu",
+  "h1": "Black Friday a hračky: jak poznat skutečnou slevu",
+  "related": [
+   "/slevy/",
+   "/jak-srovnavame/"
+  ],
+  "rules": {
+   "offers": 3
+  }
+ },
+ {
+  "slug": "jak-porovnat-ceny-hracek",
+  "h1": "Jak porovnat ceny hraček a nenaletět na falešnou slevu",
+  "related": [
+   "/jak-srovnavame/",
+   "/slevy/"
+  ],
+  "rules": {
+   "offers": 4
+  }
+ },
+ {
+  "slug": "levne-hracky-jak-neplytvat",
+  "h1": "Levné hračky, které se vyplatí: jak neplýtvat",
+  "related": [
+   "/hracky-do-300-kc/",
+   "/hracky-do-500-kc/"
+  ],
+  "rules": {
+   "price": [
+    null,
+    300
+   ],
+   "offers": 3
+  }
+ },
+ {
+  "slug": "jak-poznat-padelek-pokemon-karet",
+  "h1": "Jak poznat padělek Pokémon karet",
+  "related": [
+   "/sberatelske-karty/pokemon/"
+  ],
+  "rules": {
+   "cat": [
+    "sberatelske-karty"
+   ],
+   "any": [
+    "pokemon"
+   ]
+  }
+ },
+ {
+  "slug": "jak-zacit-sbirat-pokemon-karty",
+  "h1": "Pokémon karty: jak začít sbírat a hrát",
+  "related": [
+   "/sberatelske-karty/pokemon/",
+   "/sberatelske-karty/starter-decky-a-boostery/"
+  ],
+  "rules": {
+   "cat": [
+    "sberatelske-karty"
+   ],
+   "any": [
+    "pokemon"
+   ]
+  }
+ },
+ {
+  "slug": "jak-zacit-hrat-magic-the-gathering",
+  "h1": "Magic: The Gathering: jak začít hrát",
+  "related": [
+   "/sberatelske-karty/magic-the-gathering/"
+  ],
+  "rules": {
+   "cat": [
+    "sberatelske-karty"
+   ],
+   "any": [
+    "\\bmagic\\b",
+    "\\bmtg\\b"
+   ]
+  }
+ },
+ {
+  "slug": "jak-chranit-sberatelske-karty",
+  "h1": "Jak chránit sběratelské karty: obaly, alba, uložení",
+  "related": [
+   "/sberatelske-karty/prislusenstvi/"
+  ],
+  "rules": {
+   "cat": [
+    "sberatelske-karty"
+   ],
+   "any": [
+    "\\bobal",
+    "\\balbum",
+    "\\bsleeves?",
+    "\\bdeck box",
+    "\\bbinder"
+   ]
+  }
+ },
+ {
+  "slug": "jak-poznat-bezpecnou-hracku-ce-znaceni",
+  "h1": "Bezpečná hračka: značení CE, věk a malé díly",
+  "related": [
+   "/hracky-pro-miminka/",
+   "/jak-srovnavame/"
+  ],
+  "rules": {
+   "offers": 3
+  }
+ },
+ {
+  "slug": "male-dily-a-hracky-pro-deti-do-3-let",
+  "h1": "Malé díly a hračky pro děti do 3 let: bezpečnost",
+  "related": [
+   "/hracky-pro-batolata/",
+   "/hracky-pro-miminka/"
+  ],
+  "rules": {
+   "age": [
+    0,
+    36
+   ],
+   "offers": 3
+  }
+ },
+ {
+  "slug": "hracky-do-vany-bezpecnost-a-cisteni",
+  "h1": "Hračky do vany: bezpečnost a jak je čistit od plísně",
+  "related": [
+   "/hracky-do-vany/"
+  ],
+  "rules": {
+   "any": [
+    "\\bdo vany\\b",
+    "\\bkoupaci\\b"
+   ]
+  }
+ },
+ {
+  "slug": "montessori-hracky-podle-veku",
+  "h1": "Montessori hračky podle věku: co vybrat",
+  "related": [
+   "/montessori-hracky/",
+   "/pro-nejmensi/"
+  ],
+  "rules": {
+   "any": [
+    "montessori",
+    "\\bpikler"
+   ],
+   "scope": "text"
+  }
+ },
+ {
+  "slug": "drevene-hracky-nebo-plastove",
+  "h1": "Dřevěné, nebo plastové hračky: v čem se liší",
+  "related": [
+   "/drevene/",
+   "/montessori-hracky/"
+  ],
+  "rules": {
+   "cat": [
+    "drevene"
+   ]
+  }
+ },
+ {
+  "slug": "jak-organizovat-detsky-pokoj-a-hracky",
+  "h1": "Jak uklidit hračky: organizace dětského pokoje",
+  "related": [
+   "/kategorie/",
+   "/darky/"
+  ],
+  "rules": {
+   "offers": 3
+  }
+ },
+ {
+  "slug": "hracky-na-cesty-s-detmi",
+  "h1": "Hračky na cesty: auto, vlak a letadlo s dětmi",
+  "related": [
+   "/hracky-do-auta/",
+   "/cestovni-hry/"
+  ],
+  "rules": {
+   "any": [
+    "\\bcestovn",
+    "\\bdo auta\\b",
+    "\\bmagnetick\\w* (hra|tabulk)"
+   ]
+  }
+ },
+ {
+  "slug": "hracky-na-rozvoj-reci",
+  "h1": "Hračky na rozvoj řeči: co dítěti pomůže mluvit",
+  "related": [
+   "/hracky-pro-batolata/",
+   "/naucne/"
+  ],
+  "rules": {
+   "offers": 2
+  }
+ },
+ {
+  "slug": "jak-vybrat-hracky-na-zahradu-a-ven",
+  "h1": "Hračky na zahradu: jak vybrat bezpečně",
+  "related": [
+   "/hracky-na-zahradu/",
+   "/venku/"
+  ],
+  "rules": {
+   "cat": [
+    "venku"
+   ]
+  }
+ },
+ {
+  "slug": "hracky-pro-holky-a-kluky-bez-stereotypu",
+  "h1": "Hračky pro holky a kluky bez stereotypů",
+  "related": [
+   "/darek-pro-kluka/",
+   "/darek-pro-holku/"
+  ],
+  "rules": {
+   "offers": 4
+  }
+ },
+ {
+  "slug": "jak-vybrat-hracku-podle-povahy-ditete",
+  "h1": "Jak vybrat hračku podle povahy a zájmů dítěte",
+  "related": [
+   "/darky/",
+   "/kategorie/"
+  ],
+  "rules": {
+   "offers": 4
+  }
+ }
+]
