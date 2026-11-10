@@ -28,7 +28,18 @@ def count(d):
     return sum(1 for p in d.rglob("*") if p.is_file())
 
 
+FORBIDDEN = ("main", "d1_databases", "kv_namespaces", "r2_buckets", "durable_objects", "queues", "services", "ai", "browser",
+             "vectorize", "hyperdrive", "analytics_engine_datasets", "triggers", "cron", "workflows")
+
+
 def wrangler(cfg, name):
+    """Cost guard: this site must stay assets-only (no Worker script, no D1/KV/R2/AI binding, no cron) — static asset
+    requests are free, anything with code or storage is billed on the shared Cloudflare account."""
+    bad = [k for k in FORBIDDEN if k in cfg]
+    if bad:
+        sys.exit(f"refusing to deploy {name}: billed features in config: {bad}")
+    if set(cfg.get("assets", {})) - {"directory", "html_handling", "not_found_handling"}:
+        sys.exit(f"refusing to deploy {name}: unexpected assets options")
     path = APP / f".wrangler-{name}.json"
     path.write_text(json.dumps(cfg, indent=1))
     r = subprocess.run(["npx", "--yes", WRANGLER, "deploy", "--config", str(path)], cwd=APP)

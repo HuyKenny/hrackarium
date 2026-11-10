@@ -35,6 +35,9 @@ jobs:
         with:
           persist-credentials: false
           fetch-depth: 0
+      - name: Cost guard (the repo must be public: private repos burn the shared 2 000 free minutes)
+        run: |
+          [ "$(gh api repos/${{ github.repository }} --jq .private)" = "false" ] || { echo "repo is private - stopping to protect free minutes"; exit 1; }
       - name: Secret scan of the repository history (gitleaks, pinned + checksum)
         run: |
           curl -sSL -o /tmp/gl.tgz https://github.com/gitleaks/gitleaks/releases/download/v8.30.1/gitleaks_8.30.1_linux_x64.tar.gz
