@@ -627,6 +627,20 @@ def licence_page(S, s, items, jsn):
     return S.layout(f"/hracky-{s}/", title, desc, body, crumbs=[("Hračkárium", "/"), ("Postavičky", "/postavicky/"), (name, f"/hracky-{s}/")], jsonld=lds, full=True)
 
 
+BLOG_PHOTOS = json.loads((APP / "content/guides/photos.json").read_text()) if (APP / "content/guides/photos.json").exists() else {}
+
+
+def blog_photo(g, size):
+    """Feature photo of an article (downloaded into static/img/blog by scripts/blog_photos.py); None when it is not there."""
+    ph = BLOG_PHOTOS.get(g["slug"])
+    return (ph, f"/img/blog/{g['slug']}-{size}.jpg") if ph and (APP / f"static/img/blog/{g['slug']}-{size}.jpg").exists() else (None, None)
+
+
+def reading_min(g):
+    words = len(re.sub(r"<[^>]+>", " ", g["intro"] + " " + g["body"]).split())
+    return max(2, round(words / 190))
+
+
 def guide_page(S, g, picks, seen):
     path = f"/pruvodce/{g['slug']}/"
     title = (g.get("title") or g["h1"]) + SUFFIX
@@ -636,19 +650,35 @@ def guide_page(S, g, picks, seen):
     rel += [(r, cat_name(r.strip("/"))) for r in g.get("related", []) if r.strip("/") in X.TREE]
     rel_html = ("<h2>Související stránky</h2>" + S.chips([(u, t, 0) for u, t in rel[:8]])) if rel else ""
     picks_html = (f'<section class="sec"><div class="sec__h"><h2>Výběr z nabídky</h2></div>{S.grid(picks)}</section>') if len(picks) >= 4 else ""
-    body = (f'<article><div class="prose" style="margin-top:0"><h1>{E(g["h1"])}</h1><p class="lead">{g["intro"]}</p>{g["body"]}</div>'
-            f'{picks_html}{rel_html}{faq_html}</article>')
-    art = {"@context": "https://schema.org", "@type": "Article", "headline": g["h1"], "description": desc, "mainEntityOfPage": S.url(path),
+    ph, img = blog_photo(g, "1200")
+    fig = ""
+    if ph:
+        fig = (f'<figure class="post__img"><img src="{img}" srcset="{blog_photo(g, "640")[1]} 640w, {img} 1200w" sizes="(max-width:800px) 92vw, 760px" width="1200" height="750" alt="{E(ph["alt"])}" fetchpriority="high">'
+               f'<figcaption>Foto: <a href="{E(ph["page"])}" rel="noopener" target="_blank">{E(ph["by"])} / Pexels</a></figcaption></figure>')
+    body = (f'<article class="post"><header class="post__h"><p class="post__meta"><a href="/pruvodce/">Blog</a> · {reading_min(g)} min čtení</p><h1>{E(g["h1"])}</h1>'
+            f'<p class="lead">{g["intro"]}</p></header>{fig}<div class="prose">{g["body"]}</div>'
+            f'{picks_html}<div class="post__rel">{rel_html}</div>{faq_html}</article>')
+    art = {"@context": "https://schema.org", "@type": "BlogPosting", "headline": g["h1"], "description": desc, "mainEntityOfPage": S.url(path),
            "datePublished": g.get("date", "2026-11-10"), "dateModified": TODAY.isoformat(),
            "author": {"@type": "Organization", "name": "Hračkárium", "url": BASE + "/"}, "publisher": {"@type": "Organization", "name": "Hračkárium", "url": BASE + "/", "logo": {"@type": "ImageObject", "url": BASE + "/favicon-512.png"}}}
-    return S.layout(path, title, desc, body, crumbs=[("Hračkárium", "/"), ("Průvodce", "/pruvodce/"), (g["h1"], path)], jsonld=[art, faq_ld])
+    if ph:
+        art["image"] = [S.url(img)]
+    return S.layout(path, title, desc, body, crumbs=[("Hračkárium", "/"), ("Blog", "/pruvodce/"), (g["h1"], path)], jsonld=[art, faq_ld], preload_img=img if ph else None, og_img=S.url(img) if ph else None)
 
 
 def guides_index(S, guides):
-    lis = "".join(f'<li style="--c:#FF5A3C"><h3><a href="{p}" style="color:inherit;text-decoration:none">{E(g["h1"])}</a></h3><p class="muted">{re.sub(r"<[^>]+>", "", g["intro"])[:150]}</p></li>' for p, g in guides.items())
-    body = f'<h1>Průvodce výběrem hraček</h1><p class="lead">Jak vybrat, co koupit a na co si dát pozor. Praktické rady podle věku dítěte, typu hračky a příležitosti.</p><ul class="shoplist">{lis}</ul>'
-    return S.layout("/pruvodce/", "Průvodce výběrem hraček – rady a tipy" + SUFFIX, "Průvodce výběrem hraček: jak vybrat LEGO, deskové hry, puzzle, hračky podle věku a dárky pro děti.", body,
-                    crumbs=[("Hračkárium", "/"), ("Průvodce", "/pruvodce/")])
+    cards = []
+    for i, (p, g) in enumerate(guides.items()):
+        ph, img = blog_photo(g, "640")
+        pic = f'<img src="{img}" width="640" height="400" alt="{E(ph["alt"])}"{"" if i < 3 else " loading=lazy"}>' if ph else ""
+        ex = re.sub(r"<[^>]+>", "", g["intro"])
+        ex = ex if len(ex) <= 140 else ex[:140].rsplit(" ", 1)[0] + "…"
+        cards.append(f'<li class="bc"><a class="bc__img" href="{p}" tabindex="-1" aria-hidden="true">{pic}</a><div class="bc__b"><p class="post__meta">{reading_min(g)} min čtení</p>'
+                     f'<h2><a href="{p}">{E(g["h1"])}</a></h2><p>{E(ex)}</p></div></li>')
+    body = ('<div class="blogh"><h1>Blog Hračkária</h1><p class="lead">Jak vybrat, co koupit a na co si dát pozor. Praktické rady podle věku dítěte, typu hračky a příležitosti.</p></div>'
+            f'<ul class="blog">{"".join(cards)}</ul>')
+    return S.layout("/pruvodce/", "Blog o hračkách – rady, tipy a průvodce výběrem" + SUFFIX, "Blog Hračkária: jak vybrat LEGO, deskové hry, puzzle, hračky podle věku a dárky pro děti. Praktické rady a tipy pro rodiče.", body,
+                    crumbs=[("Hračkárium", "/"), ("Blog", "/pruvodce/")])
 
 
 def landing_page(S, L, items, jsn):
@@ -856,7 +886,7 @@ def home_page(S, products, by_top, series, lic, gift):
     chars = S.chips([(f"/hracky-{s}/", S.lic_name[s], len(ps)) for s, ps in sorted(lic.items(), key=lambda x: -len(x[1]))[:16]])
     feat = [L for L in S.landings.values() if L["home"]]
     featured = (f'<section class="sec"><div class="sec__h"><h2>Hledáte nejčastěji</h2></div>' + S.chips([(L["path"], L["h1"], L["n"]) for L in sorted(feat, key=lambda L: -L["n"])[:12]]) + "</section>") if feat else ""
-    guides_sec = (f'<section class="sec"><div class="sec__h"><h2>Rady a průvodce</h2><a href="/pruvodce/">Všechny →</a></div>' + S.chips([(p, g["h1"], 0) for p, g in list(S.guides.items())[:8]]) + "</section>") if getattr(S, "guides", None) else ""
+    guides_sec = (f'<section class="sec"><div class="sec__h"><h2>Z blogu</h2><a href="/pruvodce/">Všechny články →</a></div>' + S.chips([(p, g["h1"], 0) for p, g in list(S.guides.items())[:8]]) + "</section>") if getattr(S, "guides", None) else ""
     row = lambda ps: '<ul class="grid grid--5">' + "".join(S.card(p) for p in ps) + "</ul>"
     body = f"""<section class="hero"><div class="wrap"><div><h1>Hračky za <em>nejlepší cenu</em>, bez běhání po obchodech</h1>
 <p class="lead">Porovnáváme ceny {R.plural(st['products'], 'hračky', 'hraček', 'hraček')} z {st['shops']} českých e‑shopů. Najděte LEGO, deskovku nebo dárek k Vánocům a kupte tam, kde je to nejlevnější.</p>

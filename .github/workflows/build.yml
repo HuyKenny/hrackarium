@@ -66,6 +66,8 @@ jobs:
       - name: Freeze the product range (full run, or first run without a snapshot)
         run: |
           if [ "$HRK_FULL" = 1 ] || [ ! -d data/weekly ]; then rm -rf data/weekly; cp -r data/raw data/weekly; echo "range frozen"; else echo "range kept from the last weekly run"; fi
+      - name: Blog feature photos (Pexels CDN)
+        run: python3 scripts/blog_photos.py
       - name: Build site
         timeout-minutes: 30
         run: python3 scripts/build.py

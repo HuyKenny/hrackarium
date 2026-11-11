@@ -223,3 +223,15 @@ footer .fine{font-size:.8rem;color:#a9a8c4;margin-top:24px;border-top:1px solid 
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 
 .qf{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px}.qf button{font:600 .9rem var(--bd,inherit);border:2px solid var(--ink);border-radius:999px;background:#fff;color:var(--ink);padding:6px 13px;cursor:pointer}.qf button:hover{background:var(--sun)}.qf button.on{background:var(--ink);color:#fff}
+
+/* ---------- blog ---------- */
+.post{max-width:760px;margin:28px auto 10px}.post__h{text-align:center;margin-bottom:18px}.post__h h1{margin:.15em 0 .3em}.post__h .lead{font-size:1.1rem;color:var(--ink2);margin:0 auto}
+.post__meta{margin:0;font:700 .82rem var(--tx);letter-spacing:.04em;text-transform:uppercase;color:var(--mute)}.post__meta a{color:var(--tom-d);text-decoration:none}
+.post__img{margin:0 0 22px}.post__img img{width:100%;height:auto;aspect-ratio:1200/750;object-fit:cover;border:2px solid var(--ink);border-radius:18px;display:block;background:#eee}
+.post__img figcaption{font-size:.78rem;color:var(--mute);margin-top:6px;text-align:right}.post__img a{color:inherit}
+.post .prose{max-width:none;margin:0 auto 10px;font-size:1.04rem;line-height:1.7}.post .faq{max-width:none}.post__rel{margin-top:24px}
+.blogh{text-align:center;max-width:720px;margin:30px auto 24px}.blogh .lead{color:var(--ink2);margin:0 auto}
+.blog{list-style:none;margin:0 auto 40px;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:20px;max-width:1100px}
+.bc{border:2px solid var(--ink);border-radius:18px;background:#fff;overflow:hidden;display:flex;flex-direction:column;box-shadow:4px 4px 0 var(--ink)}
+.bc__img{display:block;aspect-ratio:16/10;background:#eee}.bc__img img{width:100%;height:100%;object-fit:cover;display:block}
+.bc__b{padding:14px 16px 18px}.bc__b h2{font-size:1.12rem;line-height:1.25;margin:.2em 0 .4em}.bc__b h2 a{color:var(--ink);text-decoration:none}.bc__b h2 a:hover{color:var(--tom-d)}.bc__b p:last-child{margin:0;color:var(--ink2);font-size:.93rem}
