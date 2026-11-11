@@ -205,7 +205,7 @@
     return a.slice(0, k) === b.slice(0, k) && Math.abs(a.length - b.length) <= 3;
   }
   function nearest(idx, url) {
-    var ut = fold(url.replace(/strana-\d+/g, " ")).split(/[^a-z0-9]+/).filter(function (w) { return w.length > 1 && !/^\d+$/.test(w); });
+    var ut = fold(url.replace(/strana-\d+/g, " ").replace(/^\/(produkt|znacky|hracky)\//, "/")).split(/[^a-z0-9]+/).filter(function (w) { return w.length > 1 && !/^\d+$/.test(w); });
     var best = null, part = [];
     idx.forEach(function (e, i) {
       var ct = words(e[0]).filter(function (w) { return w.length > 2 && !STOP[w]; });

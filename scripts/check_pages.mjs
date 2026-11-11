@@ -46,8 +46,12 @@ for (const w of widths) {
 await page.setViewport({ width: 390, height: 900, isMobile: true, hasTouch: true });
 for (const [bad, want] of [["/produkt/lego-creator-neexistuje-xyz-123/", "/lego/"], ["/produkt/odrazedlo-neexistuje-xyz-77/", "/venku/"], ["/qwzxv-nic-takoveho/", null]]) {
   cur = { w: 390, p: bad };
-  const r = await page.goto(base + bad, { waitUntil: "networkidle0", timeout: 60000 }).catch(() => null);
-  if (!r || r.status() !== 404) problems.push({ w: 390, p: bad, issue: `404 page returned ${r ? r.status() : "error"}` });
+  let first = null;
+  const onRes = (x) => { if (first === null && x.url() === base + bad) first = x.status(); };
+  page.on("response", onRes);
+  await page.goto(base + bad, { waitUntil: "networkidle0", timeout: 60000 }).catch(() => null);
+  page.off("response", onRes);
+  if (first !== 404) problems.push({ w: 390, p: bad, issue: `dead URL answered ${first} (must stay 404)` });
   await new Promise((x) => setTimeout(x, 2500));
   const path = new URL(page.url()).pathname;
   if (want && !path.startsWith(want)) problems.push({ w: 390, p: bad, issue: `404 redirect went to ${path}, expected ${want}…` });
