@@ -57,3 +57,32 @@ jobs:
               done
             done
           done
+      - name: Summary
+        if: always()
+        run: |
+          python3 - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json,glob
+          print("### Lighthouse (local, real headers)\n\n| page | mode | perf | a11y | best | seo | LCP s | CLS | TBT ms | FCP s | KB |\n|---|---|---|---|---|---|---|---|---|---|---|")
+          for f in sorted(glob.glob('/tmp/audit/lh-*.json')):
+              d=json.load(open(f)); c=d['categories']; a=d['audits']
+              g=lambda k:(a.get(k) or {}).get('numericValue') or 0
+              print(f"| {d['requestedUrl'].replace('http://localhost:8765','')} | {f.split('lh-')[1].split('-')[0]} | {round((c['performance']['score'] or 0)*100)} | {round(c['accessibility']['score']*100)} | {round(c['best-practices']['score']*100)} | {round(c['seo']['score']*100)} | {g('largest-contentful-paint')/1000:.1f} | {g('cumulative-layout-shift'):.3f} | {g('total-blocking-time'):.0f} | {g('first-contentful-paint')/1000:.1f} | {g('total-byte-weight')/1024:.0f} |")
+          print("\n### Failing audits (score < 0.9)\n")
+          seen=set()
+          for f in sorted(glob.glob('/tmp/audit/lh-mobile-*.json')):
+              d=json.load(open(f))
+              for k,v in d['audits'].items():
+                  if v.get('score') is not None and v['score']<0.9 and v.get('scoreDisplayMode')=='numeric' and k not in seen:
+                      seen.add(k); print(f"- **{k}** ({v['score']}): {v['title']} — {v.get('displayValue','')}")
+          PY
+          { echo '### Pages check (CSP / overflow)'; echo '```'; cat /tmp/audit/pages-check.txt 2>/dev/null; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+          echo '### SEO lint' >> "$GITHUB_STEP_SUMMARY"; echo '```' >> "$GITHUB_STEP_SUMMARY"
+          python3 -c "import json;d=json.load(open('/tmp/audit/seo-report.json'));print({k:d[k] for k in ('pages','products','indexable','in_sitemap')});[print('HARD',k,v['count'],v['examples'][:3]) for k,v in d['hard'].items()];[print('soft',k,v['count'],v['examples'][:2]) for k,v in d['soft'].items()]" >> "$GITHUB_STEP_SUMMARY" 2>&1 || true
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02  # v4.6.2
+        if: always()
+        with:
+          name: audit
+          path: /tmp/audit
+          retention-days: 7
+          if-no-files-found: ignore
