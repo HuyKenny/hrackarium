@@ -585,7 +585,7 @@ def cat_age_page(S, top, ab, items, jsn):
     desc = f"{h1}: {len(items)} hraček s doporučeným věkem v tomto rozmezí, ceny od {R.kc(lo)} v českých e‑shopech."
     lead = f"Vybrali jsme hračky, u kterých výrobce nebo obchod uvádí doporučený věk v rozmezí {band[1].replace('pro děti ', '').replace('pro ', '')}."
     others = [(f"/{top}/{b[0]}/", b[1].replace("pro děti ", "").replace("pro ", ""), 0) for b in X.AGE_BANDS if (top, b[0]) in S.ctx["cat_age"] and b[0] != ab]
-    body, lds = listing_body(S, f"/{top}/{ab}/", h1, lead, items, jsn, R.ICON.get(top), S.chips(others), texts_key=f"age:{top}:{ab}")
+    body, lds = listing_body(S, f"/{top}/{ab}/", h1, lead, items, jsn, R.ICON.get(top), "", texts_key=f"age:{top}:{ab}", links=others)
     return S.layout(f"/{top}/{ab}/", title, desc, body, crumbs=crumbs_for(top) + [(band[1], f"/{top}/{ab}/")], jsonld=lds, full=True)
 
 
@@ -600,7 +600,7 @@ def series_page(S, s, items, jsn):
     desc = f"{name}: {len(items)} setů z českých e‑shopů, ceny od {R.kc(lo)}. Porovnejte ceny jednotlivých setů a kupte nejlevněji."
     lead = f"{len(items)} {R.plural(len(items), 'set', 'sety', 'setů')} řady {name.replace('LEGO ', '')} skladem v českých obchodech, ceny od {R.kc(lo)} do {R.kc(hi)}."
     others = [(f"/lego/{k}/", series_name(k), 0) for k, ps in sorted(S.ctx["series"].items(), key=lambda x: -len(x[1])) if k != s][:14]
-    body, lds = listing_body(S, f"/lego/{s}/", name, lead, items, jsn, "kostky", S.chips(others), texts_key=f"lego:{s}")
+    body, lds = listing_body(S, f"/lego/{s}/", name, lead, items, jsn, "kostky", "", texts_key=f"lego:{s}", links=others)
     return S.layout(f"/lego/{s}/", title, desc, body, crumbs=[("Hračkárium", "/"), ("LEGO", "/lego/"), (name, f"/lego/{s}/")], jsonld=lds, full=True)
 
 
@@ -662,9 +662,9 @@ def landing_page(S, L, items, jsn):
     desc = L.get("desc") or f"{h1}: {n} {R.plural(n, 'hračka', 'hračky', 'hraček')} z {shops} českých e‑shopů, ceny od {R.kc(lo)}. Porovnejte nabídky a kupte nejlevněji."
     lead = L.get("lead") or f"{n} {R.plural(n, 'hračka', 'hračky', 'hraček')} z {shops} {R.plural(shops, 'obchodu', 'obchodů', 'obchodů')}, ceny od {R.kc(lo)} do {R.kc(hi)}."
     sibs = [k for k in S.kids.get(L["parent"], []) if k[0] != path] if L["parent"] and L["parent"] != "/kategorie/" else []
-    chips = S.chips([(u, t, c) for u, t, c in sorted(sibs, key=lambda k: -k[2])[:16]]) if sibs else ""
+    chips = [(u, t, c) for u, t, c in sorted(sibs, key=lambda k: -k[2])[:16]]
     icon = L.get("icon") or (R.ICON.get(path.strip("/").split("/")[0]) if L["parent"] in (None, "/kategorie/") else None)
-    body, lds = listing_body(S, path, h1, lead, items, jsn, icon, chips, texts_key="landing:" + L["slug"])
+    body, lds = listing_body(S, path, h1, lead, items, jsn, icon, "", texts_key="landing:" + L["slug"], links=chips)
     cr = [("Hračkárium", "/")]
     par = L["parent"]
     if par and par != "/kategorie/":
@@ -865,11 +865,11 @@ def home_page(S, products, by_top, series, lic, gift):
 <div class="hero__art"><img src="/img/ui/hero-1200.webp" srcset="/img/ui/hero-640.webp 640w, /img/ui/hero-1200.webp 1200w" sizes="(max-width:980px) 92vw, 600px" alt="Police plná hraček s cenovkami" width="1200" height="631" fetchpriority="high"><span class="note" style="right:4%;bottom:-6px">ceny z {st['shops']} obchodů!</span></div></div></section>
 <div class="wrap"><section class="sec"><div class="sec__h"><h2>Co hledáte?</h2><a href="/kategorie/">Všechny kategorie →</a></div><ul class="tiles">{tiles}</ul></section>
 <section class="sec"><div class="sec__h"><h2>Dárek podle věku</h2><a href="/darky/">Další tipy →</a></div><ul class="ages">{ages}</ul></section>
-{featured}{guides_sec}
 <section class="sec"><div class="sec__h"><h2>Nejvíc srovnávané</h2><a href="/kategorie/">Procházet →</a></div>{row(hot)}</section>
-<section class="sec"><div class="sec__h"><h2>LEGO podle řady</h2><a href="/lego/">Všechno LEGO →</a></div>{lego}</section>
 {f'<section class="sec"><div class="sec__h"><h2>Teď ve slevě</h2><a href="/slevy/">Všechny slevy →</a></div>{row(sale)}</section>' if sale else ''}
+{featured}<section class="sec"><div class="sec__h"><h2>LEGO podle řady</h2><a href="/lego/">Všechno LEGO →</a></div>{lego}</section>
 <section class="sec"><div class="sec__h"><h2>Oblíbené postavičky</h2><a href="/postavicky/">Všechny →</a></div>{chars}</section>
+{guides_sec}
 <section class="sec"><h2>Jak to funguje</h2><ol class="steps"><li><h3>Najdete hračku</h3><p>Podle kategorie, věku dítěte, značky nebo postavičky. Nebo ji prostě napíšete do hledání.</p></li>
 <li><h3>Porovnáte obchody</h3><p>Stejnou hračku z různých e‑shopů dáme vedle sebe, od nejlevnější. Vidíte i vývoj ceny.</p></li>
 <li><h3>Koupíte v e‑shopu</h3><p>Odkaz vás pošle rovnou do obchodu. Platíte tam, za stejnou cenu jako bez nás.</p></li></ol></section></div>"""
