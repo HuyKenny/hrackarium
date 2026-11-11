@@ -259,6 +259,11 @@ class Site:
 
     def filters(self, items, facets):
         h = '<form class="card filters" id="filters" aria-label="Filtry">'
+        cats = facets.get("cats")
+        if cats:      # subcategories, series and themes: plain links (crawlable), not a wall of chips in the header
+            srch = '<input class="fsearch" type="search" placeholder="Hledat podkategorii" aria-label="Hledat podkategorii">' if len(cats) > 10 else ""
+            h += (f'<fieldset class="fcats"><legend>Podkategorie</legend>{srch}<div class="flinks">' + "".join(
+                f'<a href="{u}">{E(t)}{f"<span class=count>{n}</span>" if n else ""}</a>' for u, t, n in cats) + "</div></fieldset>")
         ages = facets.get("age")
         if ages:
             h += '<fieldset><legend>Věk dítěte</legend>' + "".join(

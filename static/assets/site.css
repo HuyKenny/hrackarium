@@ -105,6 +105,8 @@ font:800 .9rem/1 var(--hd);transform:rotate(8deg);box-shadow:2px 2px 0 var(--ink
 .fquick button.on,.fquick button:hover{background:var(--sun)}
 .fsearch{width:100%;border:2px solid var(--ink);border-radius:10px;padding:6px 9px;margin:0 0 6px;font:inherit;clear:both}
 .flinks{max-height:260px;overflow:auto;clear:both}
+.flinks a{display:flex;align-items:center;gap:8px;font-size:.92rem;padding:4px 0;color:var(--ink);text-decoration:none;font-weight:600}.flinks a:hover{color:var(--tom-d);text-decoration:underline}
+.fcats .flinks{max-height:300px}
 .freset{margin-top:12px;width:100%}.fbar,.ftoggle{display:none}
 .listhead{display:flex;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:wrap}.listhead p{margin:0;margin-right:auto}
 .sort select{border:2px solid var(--ink);border-radius:999px;padding:6px 10px;font:600 .9rem var(--tx);background:#fff;margin-left:4px}

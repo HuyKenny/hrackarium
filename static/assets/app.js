@@ -160,8 +160,9 @@
       b.addEventListener("click", function () { form.pmax.value = b.classList.contains("on") ? "" : b.dataset.pmax; $$(".fquick button", form).forEach(function (x) { x.classList.toggle("on", x === b && form.pmax.value); }); apply(); });
     });
     reset.addEventListener("click", function () { form.reset(); sortSel.value = list.dataset.order || "pop"; location.reload(); });
-    var fs = $(".fsearch", form);
-    fs && fs.addEventListener("input", function () { var w = fold(fs.value); $$(".flinks label", form).forEach(function (l) { l.style.display = fold(l.textContent).indexOf(w) >= 0 ? "" : "none"; }); });
+    $$(".fsearch", form).forEach(function (fs) {
+      fs.addEventListener("input", function () { var w = fold(fs.value); $$(".flinks label, .flinks a", fs.parentNode).forEach(function (l) { l.style.display = fold(l.textContent).indexOf(w) >= 0 ? "" : "none"; }); });
+    });
     var tg = $(".ftoggle"), close = $(".fclose", form);
     tg && tg.addEventListener("click", function () { form.classList.add("open"); document.body.style.overflow = "hidden"; });
     close && close.addEventListener("click", function () { form.classList.remove("open"); document.body.style.overflow = ""; });

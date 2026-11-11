@@ -534,13 +534,15 @@ def gone_page(S, g):
                     body, crumbs=crumbs_for(k) + [(g["name"][:60], f"/produkt/{g['slug']}/")], noindex=True)
 
 
-def listing_body(S, path, h1, lead, items, jsn, icon, chips="", texts_key=None, extra_ld=None):
+def listing_body(S, path, h1, lead, items, jsn, icon, chips="", texts_key=None, extra_ld=None, links=None):
     t = TX.get(texts_key) if texts_key else None
     intro = t["intro"] if t and t.get("intro") else ""
     lead_html = intro or lead
     kids = [k for k in getattr(S, "kids", {}).get(path, []) if k[0] != path]
+    cats = list(links or [])
     if kids:
-        chips = (chips or "") + S.chips([(u, t, n) for u, t, n in sorted(kids, key=lambda k: -k[2])[:24]])
+        seen = {u for u, _, _ in cats}
+        cats += [k for k in sorted(kids, key=lambda k: -k[2])[:24] if k[0] not in seen]
     gl = getattr(S, "guide_links", {}).get(path, [])
     if gl:
         chips = (chips or "") + '<p class="muted" style="margin:8px 0 4px;font-weight:700">Průvodce</p>' + S.chips(gl[:4])
@@ -551,7 +553,7 @@ def listing_body(S, path, h1, lead, items, jsn, icon, chips="", texts_key=None, 
     if t and t.get("faq"):
         qa = t["faq"]
     faq_html, faq_ld = S.faq(qa)
-    body = band + f'<div class="wrap">{S.listing(items, jsn, facets=facets(items, S))}' + \
+    body = band + f'<div class="wrap">{S.listing(items, jsn, facets=dict(facets(items, S), cats=cats))}' + \
         (f'<div class="prose">{prose}</div><!--/prose-->' if prose else "") + faq_html + "</div>"
     return body, [faq_ld] + (extra_ld or [])
 
@@ -571,7 +573,7 @@ def category_page(S, k, items, subs, jsn):
     if k == "lego":
         chips = [(f"/lego/{s}/", series_name(s), len(ps)) for s, ps in sorted(S.ctx["series"].items(), key=lambda x: -len(x[1]))] + chips
     lead = f"{blurb or h1}. {n} {R.plural(n, 'hračka', 'hračky', 'hraček')}, ceny od {R.kc(lo)}."
-    body, lds = listing_body(S, f"/{k}/", h1, lead, items, jsn, R.ICON.get(top), S.chips(chips), texts_key=f"cat:{k}")
+    body, lds = listing_body(S, f"/{k}/", h1, lead, items, jsn, R.ICON.get(top), "", texts_key=f"cat:{k}", links=chips)
     return S.layout(f"/{k}/", title, desc, body, crumbs=crumbs_for(k), jsonld=lds, full=True)
 
 
