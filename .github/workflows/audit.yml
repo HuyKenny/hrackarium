@@ -42,40 +42,18 @@ jobs:
           (node scripts/serve.mjs 8765 >/dev/null 2>&1 &)
           sleep 2
           PROD=$(grep -o '<loc>[^<]*' dist/sitemap-products-1.xml | sed 's/<loc>https:\/\/hrackarium.cz//' | sed -n '1p;40p')
+          flags="--headless=new --no-sandbox --disable-gpu"
+          # warm-up (the first Lighthouse run after npx install is slow and sometimes fails with NO_NAVSTART): result thrown away
+          npx --yes lighthouse@12.8.2 "http://localhost:8765/darky/" --quiet --output=json --output-path=/tmp/audit/warmup.json --chrome-flags="$flags" --only-categories=seo || true
           for u in / /lego/ /spolecenske-hry/ /darky/ $PROD; do
             n=$(echo "$u" | tr -c 'a-z0-9' '_' | cut -c1-40)
             for mode in mobile desktop; do
               extra=""; [ "$mode" = desktop ] && extra="--preset=desktop"
-              npx --yes lighthouse@12.8.2 "http://localhost:8765$u" $extra --quiet --output=json --output-path="/tmp/audit/lh-$mode-$n.json" \
-                --chrome-flags="--headless=new --no-sandbox --disable-gpu" --only-categories=performance,accessibility,best-practices,seo || true
+              for try in 1 2 3; do
+                npx --yes lighthouse@12.8.2 "http://localhost:8765$u" $extra --quiet --output=json --output-path="/tmp/audit/lh-$mode-$n.json" \
+                  --chrome-flags="$flags" --only-categories=performance,accessibility,best-practices,seo || true
+                python3 -c "import json,sys;d=json.load(open('/tmp/audit/lh-$mode-$n.json'));sys.exit(0 if d['categories']['performance']['score'] is not None else 1)" && break
+                echo "lighthouse $mode $u failed (try $try), repeating"
+              done
             done
           done
-      - name: Summary
-        if: always()
-        run: |
-          python3 - <<'PY' >> "$GITHUB_STEP_SUMMARY"
-          import json,glob
-          print("### Lighthouse (local, real headers)\n\n| page | mode | perf | a11y | best | seo | LCP s | CLS | TBT ms | FCP s | KB |\n|---|---|---|---|---|---|---|---|---|---|---|")
-          for f in sorted(glob.glob('/tmp/audit/lh-*.json')):
-              d=json.load(open(f)); c=d['categories']; a=d['audits']
-              g=lambda k:a[k]['numericValue']
-              print(f"| {d['requestedUrl'].replace('http://localhost:8765','')} | {f.split('lh-')[1].split('-')[0]} | {round(c['performance']['score']*100)} | {round(c['accessibility']['score']*100)} | {round(c['best-practices']['score']*100)} | {round(c['seo']['score']*100)} | {g('largest-contentful-paint')/1000:.1f} | {g('cumulative-layout-shift'):.3f} | {g('total-blocking-time'):.0f} | {g('first-contentful-paint')/1000:.1f} | {g('total-byte-weight')/1024:.0f} |")
-          print("\n### Failing audits (score < 0.9)\n")
-          seen=set()
-          for f in sorted(glob.glob('/tmp/audit/lh-mobile-*.json')):
-              d=json.load(open(f))
-              for k,v in d['audits'].items():
-                  if v.get('score') is not None and v['score']<0.9 and v.get('scoreDisplayMode')=='numeric' and k not in seen:
-                      seen.add(k); print(f"- **{k}** ({v['score']}): {v['title']} — {v.get('displayValue','')}")
-          PY
-          { echo '### Pages check (CSP / overflow)'; echo '```'; cat /tmp/audit/pages-check.txt 2>/dev/null; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
-          echo '### SEO lint' >> "$GITHUB_STEP_SUMMARY"; echo '```' >> "$GITHUB_STEP_SUMMARY"
-          python3 -c "import json;d=json.load(open('/tmp/audit/seo-report.json'));print({k:d[k] for k in ('pages','products','indexable','in_sitemap')});[print('HARD',k,v['count'],v['examples'][:3]) for k,v in d['hard'].items()];[print('soft',k,v['count'],v['examples'][:2]) for k,v in d['soft'].items()]" >> "$GITHUB_STEP_SUMMARY" 2>&1 || true
-          echo '```' >> "$GITHUB_STEP_SUMMARY"
-      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02  # v4.6.2
-        if: always()
-        with:
-          name: audit
-          path: /tmp/audit
-          retention-days: 7
-          if-no-files-found: ignore
