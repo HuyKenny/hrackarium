@@ -221,3 +221,5 @@ footer .fine{font-size:.8rem;color:#a9a8c4;margin-top:24px;border-top:1px solid 
  .cn a{min-width:0;font-size:.68rem;white-space:normal;line-height:1.15;padding:4px 2px}.cn img{width:32px;height:32px}.cn .dots{width:32px;height:32px}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+.qf{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px}.qf button{font:600 .9rem var(--bd,inherit);border:2px solid var(--ink);border-radius:999px;background:#fff;color:var(--ink);padding:6px 13px;cursor:pointer}.qf button:hover{background:var(--sun)}.qf button.on{background:var(--ink);color:#fff}

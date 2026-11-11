@@ -159,6 +159,23 @@
     $$(".fquick button", form).forEach(function (b) {
       b.addEventListener("click", function () { form.pmax.value = b.classList.contains("on") ? "" : b.dataset.pmax; $$(".fquick button", form).forEach(function (x) { x.classList.toggle("on", x === b && form.pmax.value); }); apply(); });
     });
+    var qf = $$(".qf button");
+    var qsync = function () {
+      qf.forEach(function (b) {
+        var q = b.dataset.q, on = q === "pmax" ? +form.pmax.value === +b.dataset.v : q === "sort" ? sortSel.value === b.dataset.v : form.elements[q].checked;
+        b.classList.toggle("on", on); b.setAttribute("aria-pressed", on);
+      });
+    };
+    qf.forEach(function (b) {
+      b.addEventListener("click", function () {
+        var q = b.dataset.q, on = b.classList.contains("on");
+        if (q === "pmax") form.pmax.value = on ? "" : b.dataset.v;
+        else if (q === "sort") sortSel.value = on ? (list.dataset.order || "pop") : b.dataset.v;
+        else form.elements[q].checked = !on;
+        shown = 36; qsync(); apply();
+      });
+    });
+    form.addEventListener("change", qsync); sortSel && sortSel.addEventListener("change", qsync);
     reset.addEventListener("click", function () { form.reset(); sortSel.value = list.dataset.order || "pop"; location.reload(); });
     $$(".fsearch", form).forEach(function (fs) {
       fs.addEventListener("input", function () { var w = fold(fs.value); $$(".flinks label, .flinks a", fs.parentNode).forEach(function (l) { l.style.display = fold(l.textContent).indexOf(w) >= 0 ? "" : "none"; }); });

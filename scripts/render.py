@@ -254,6 +254,8 @@ class Site:
                 f'<button class="btn btn--g ftoggle" type="button" aria-controls="filters">Filtry</button>'
                 f'<label class="sort">Řadit <select id="sort"><option value="pop">nejvíc obchodů</option><option value="price"{" selected" if order == "price" else ""}>nejlevnější</option>'
                 f'<option value="pricedesc">nejdražší</option><option value="sale">největší sleva</option></select></label></div>'
+                f'<div class="qf" role="group" aria-label="Rychlé filtry"><button type="button" data-q="sale">Ve slevě</button><button type="button" data-q="multi">Ve více obchodech</button>'
+                f'<button type="button" data-q="pmax" data-v="500">do 500 Kč</button><button type="button" data-q="pmax" data-v="1000">do 1 000 Kč</button><button type="button" data-q="sort" data-v="price">Nejlevnější</button></div>'
                 f'<ul class="grid" id="plist" data-json="{json_url}" data-page="{cur}" data-order="{order}">{"".join(self.card(p, lazy=i > 3) for i, p in enumerate(chunk))}</ul>'
                 f'{pager_html(path, cur, pages) if path else ""}</div></div>')
 
