@@ -6,6 +6,7 @@ live in data/state/state.json.gz (CI keeps it encrypted as a release asset).
 """
 import gzip
 import json
+import os
 import re
 import statistics
 from collections import Counter, defaultdict
@@ -16,6 +17,7 @@ import taxonomy as X
 
 APP = Path(__file__).resolve().parent.parent
 RAW = APP / "data/raw"
+WEEKLY = APP / "data/weekly"   # offers frozen by the last weekly (full) run: the product range changes only then
 STATE = APP / "data/state"
 TODAY = date.today()
 DAY = TODAY.toordinal()
@@ -54,15 +56,38 @@ def img_rank(u):
     return 2 if "images.datadepo.cz" in u else 1
 
 
+def full_mode():
+    """Full run = the range comes straight from the fresh feeds (new products appear, vanished ones go).
+    Otherwise (daily/push runs) the range is the weekly snapshot and today's feeds only refresh price and link."""
+    return os.environ.get("HRK_FULL") == "1" or not WEEKLY.exists()
+
+
+def todays_prices(path):
+    over = {}
+    if path.exists():
+        with gzip.open(path, "rt", encoding="utf-8") as f:
+            for line in f:
+                r = json.loads(line)
+                if float(r.get("p") or 0) > 0 and r.get("go"):
+                    over[r["id"]] = (r["p"], r.get("was"), r["go"], r.get("url"))
+    return over
+
+
 def load_offers(shops):
     out, dropped = [], Counter()
+    full = full_mode()
     for s in shops:
-        p = RAW / f"{s['id']}.jsonl.gz"
+        p = (RAW if full else WEEKLY) / f"{s['id']}.jsonl.gz"
         if not p.exists():
             continue
+        over = {} if full else todays_prices(RAW / f"{s['id']}.jsonl.gz")
         with gzip.open(p, "rt", encoding="utf-8") as f:
             for line in f:
                 r = json.loads(line)
+                o = over.get(r["id"])
+                if o:
+                    r["p"], r["was"], r["go"] = o[0], o[1], o[2]
+                    r["url"] = o[3] or r.get("url")
                 cat = X.classify(r) or (shop_fallback(s, r))
                 if not cat:
                     dropped[s["id"]] += 1

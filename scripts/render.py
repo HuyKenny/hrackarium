@@ -171,7 +171,7 @@ class Site:
 <meta name="theme-color" content="#FF5A3C"><link rel="icon" href="/favicon.ico" sizes="48x48"><link rel="icon" href="/favicon-192.png" type="image/png" sizes="192x192"><link rel="apple-touch-icon" href="/favicon-180.png"><link rel="manifest" href="/site.webmanifest">
 <link rel="preload" href="/fonts/bricolage-cs.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/fonts/figtree-cs.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="/assets/{self.css}">{pre}{SPECULATION}{ga}{head_ld}</head><body>
 <a class="skip" href="#main">Přeskočit na obsah</a>
-<div class="strip"><p>Ceny hraček {"z" if n_shops == 1 else "ze"} {n_shops} {plural(n_shops, "obchodu", "obchodů", "obchodů")} na jednom místě · ceny aktualizujeme každý týden · nakupujete přímo v e‑shopu</p></div>
+<div class="strip"><p>Ceny hraček {"z" if n_shops == 1 else "ze"} {n_shops} {plural(n_shops, "obchodu", "obchodů", "obchodů")} na jednom místě · ceny aktualizujeme každý den · nakupujete přímo v e‑shopu</p></div>
 <header class="top"><div class="wrap"><a class="logo" href="/" aria-label="Hračkárium – úvod">{LOGO}</a>
 <form class="search" role="search" action="/hledat/" method="get"><label class="sr" for="q">Hledat hračku, značku nebo LEGO set</label>{SEARCH_ICON}<input id="q" name="q" type="search" placeholder="Hledat hračku, značku nebo číslo LEGO setu" autocomplete="off"><button type="submit">Hledat</button><div class="sugg" id="sugg" role="listbox"></div></form>
 <nav class="hl" aria-label="Rychlé odkazy"><a href="/darky/"><img src="/img/ic/party.webp" alt="" width="28" height="28">Dárky</a><a href="/slevy/"><img src="/img/ui/tag.svg" alt="" width="28" height="28">Slevy</a></nav></div></header>
