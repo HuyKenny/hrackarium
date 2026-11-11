@@ -109,8 +109,8 @@ def write_json(out, S, key, items):
     return f"/data/l/{key}.json"
 
 
-def paged(out, S, path, items, render, group="listings", index=True):
-    pages = max(1, min(-(-len(items) // R.PER_PAGE), MAX_PAGES))
+def paged(out, S, path, items, render, group="listings", index=True, per=None):
+    pages = max(1, min(-(-len(items) // (per or R.PER_PAGE)), MAX_PAGES))
     for k in range(1, pages + 1):
         S.pg = (path, k, pages)
         S.pg_noindex = k == 1 and not index          # thin listing: noindex AND out of the sitemap (they must agree)
@@ -285,7 +285,7 @@ def main():
     for path, g in S.guides.items():
         out.page(path, guide_page(S, g, LD.guide_picks(products, g), out.seen), "guides")
     if S.guides:
-        out.page("/pruvodce/", guides_index(S, S.guides), "pages")
+        paged(out, S, "/pruvodce/", list(S.guides.items()), lambda: guides_index(S, S.guides), "pages", per=BLOG_PER_PAGE)
 
     # ---------------- static pages, search, home, 404
     out.page("/kategorie/", categories_index(S, by_top, by_cat), "pages")
@@ -666,9 +666,14 @@ def guide_page(S, g, picks, seen):
     return S.layout(path, title, desc, body, crumbs=[("Hračkárium", "/"), ("Blog", "/pruvodce/"), (g["h1"], path)], jsonld=[art, faq_ld], preload_img=img if ph else None, og_img=S.url(img) if ph else None)
 
 
+BLOG_PER_PAGE = 12
+
+
 def guides_index(S, guides):
+    path, cur, pages = S.pg or ("/pruvodce/", 1, 1)
+    chunk = list(guides.items())[(cur - 1) * BLOG_PER_PAGE:cur * BLOG_PER_PAGE]
     cards = []
-    for i, (p, g) in enumerate(guides.items()):
+    for i, (p, g) in enumerate(chunk):
         ph, img = blog_photo(g, "640")
         pic = f'<img src="{img}" width="640" height="400" alt="{E(ph["alt"])}"{"" if i < 3 else " loading=lazy"}>' if ph else ""
         ex = re.sub(r"<[^>]+>", "", g["intro"])
@@ -676,7 +681,7 @@ def guides_index(S, guides):
         cards.append(f'<li class="bc"><a class="bc__img" href="{p}" tabindex="-1" aria-hidden="true">{pic}</a><div class="bc__b"><p class="post__meta">{reading_min(g)} min čtení</p>'
                      f'<h2><a href="{p}">{E(g["h1"])}</a></h2><p>{E(ex)}</p></div></li>')
     body = ('<div class="blogh"><h1>Blog Hračkária</h1><p class="lead">Jak vybrat, co koupit a na co si dát pozor. Praktické rady podle věku dítěte, typu hračky a příležitosti.</p></div>'
-            f'<ul class="blog">{"".join(cards)}</ul>')
+            f'<ul class="blog">{"".join(cards)}</ul>{R.pager_html(path, cur, pages)}')
     return S.layout("/pruvodce/", "Blog o hračkách – rady, tipy a průvodce výběrem" + SUFFIX, "Blog Hračkária: jak vybrat LEGO, deskové hry, puzzle, hračky podle věku a dárky pro děti. Praktické rady a tipy pro rodiče.", body,
                     crumbs=[("Hračkárium", "/"), ("Blog", "/pruvodce/")])
 
