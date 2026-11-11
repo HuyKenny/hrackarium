@@ -42,6 +42,20 @@ for (const w of widths) {
     if (w === 390 || w === 1366) await page.screenshot({ path: `${outDir}/${w}${p.replace(/[^a-z0-9]+/gi, "_") || "_home"}.png` });
   }
 }
+// 404 helper: a dead address must land on the nearest category (the server still answers 404), nonsense must stay on the 404 page with suggestions
+await page.setViewport({ width: 390, height: 900, isMobile: true, hasTouch: true });
+for (const [bad, want] of [["/produkt/lego-creator-neexistuje-xyz-123/", "/lego/"], ["/produkt/odrazedlo-neexistuje-xyz-77/", "/venku/"], ["/qwzxv-nic-takoveho/", null]]) {
+  cur = { w: 390, p: bad };
+  const r = await page.goto(base + bad, { waitUntil: "networkidle0", timeout: 60000 }).catch(() => null);
+  if (!r || r.status() !== 404) problems.push({ w: 390, p: bad, issue: `404 page returned ${r ? r.status() : "error"}` });
+  await new Promise((x) => setTimeout(x, 2500));
+  const path = new URL(page.url()).pathname;
+  if (want && !path.startsWith(want)) problems.push({ w: 390, p: bad, issue: `404 redirect went to ${path}, expected ${want}…` });
+  if (!want) {
+    const n = await page.evaluate(() => document.querySelectorAll("#nf-sugg li").length);
+    if (path !== bad || n < 1) problems.push({ w: 390, p: bad, issue: `nonsense URL: path ${path}, suggestions ${n}` });
+  }
+}
 await browser.close();
 writeFileSync(`${outDir}/report.json`, JSON.stringify({ pages: pages.length, widths, problems }, null, 1));
 console.log(`checked ${pages.length} pages x ${widths.length} widths, problems: ${problems.length}`);

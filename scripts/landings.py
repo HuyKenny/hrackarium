@@ -125,6 +125,21 @@ def generated_records(products, by_cat, reserved):
         for cap in (300, 500, 1000, 2000):
             recs.append({"slug": f"darky-pro-{who}-do-{cap}-kc", "h1": f"Dárky pro {who} do {cap} Kč", "parent": f"/darek-pro-{'kluka' if sex == 'm' else 'holku'}/", "group": f"darky-{sex}-cap",
                          "hubs": ["/darky/"], "icon": "party", "rules": {"sex": sex, "price": [None, cap]}, "lead": f"Hračky, které obchody řadí pro {noun}, do {cap} Kč."})
+    # ---- sex x top category and sex x age (what parents type: "stavebnice pro kluky", "hračky pro holky od 5 let")
+    sex_name = (("m", "kluky"), ("f", "holky"))
+    for top in X.TOP:
+        items = by_cat.get(top, [])
+        if len(items) < 60:
+            continue
+        for sex, who in sex_name:
+            sel = [p for p in items if p["sex"] == sex]
+            if 12 <= len(sel) < len(items) * 0.97:
+                recs.append({"slug": f"{top}/pro-{who}", "h1": f"{X.TREE[top][2]} pro {who}", "parent": f"/{top}/", "group": f"{top}-sex", "icon": None, "items": sel,
+                             "title": f"{X.TREE[top][2]} pro {who} – srovnání cen"})
+    for sex, who in sex_name:
+        for n in range(2, 13):
+            sel = [p for p in products if p["sex"] == sex and p["age"] is not None and n * 12 - 6 <= p["age"] <= n * 12 + 5]
+            recs.append({"slug": f"hracky-pro-{who}-od-{n}-let", "h1": f"Hračky pro {who} od {n} let", "parent": f"/hracky-pro-{who}/", "group": f"vek-{sex}", "icon": "party", "items": sel})
     # ---- Christmas, curated by what is compared in many shops (popular = safe gift)
     xm = {"parent": "/vanocni-darky/", "group": "vanoce", "icon": "party", "hubs": ["/darky/"]}
     recs += [

@@ -1,0 +1,1358 @@
+[
+ {
+  "slug": "hracky-pro-holky",
+  "h1": "Hračky pro holky",
+  "parent": "/kategorie/",
+  "group": "hracky-pro-holky",
+  "rules": {
+   "sex": "f"
+  },
+  "min": 12,
+  "index_min": 24,
+  "hubs": [
+   "/darky/"
+  ],
+  "home": true,
+  "icon": "panenka",
+  "lead": "Hračky, které obchody řadí pro holky: panenky, kreativní sady, LEGO Friends, plyšáci. Porovnejte ceny a vyberte podle věku."
+ },
+ {
+  "slug": "hracky-pro-kluky",
+  "h1": "Hračky pro kluky",
+  "parent": "/kategorie/",
+  "group": "hracky-pro-kluky",
+  "rules": {
+   "sex": "m"
+  },
+  "min": 12,
+  "index_min": 24,
+  "hubs": [
+   "/darky/"
+  ],
+  "home": true,
+  "icon": "auto",
+  "lead": "Hračky, které obchody řadí pro kluky: auta, stavebnice, LEGO, RC modely. Porovnejte ceny a vyberte podle věku."
+ },
+ {
+  "slug": "hracky-pro-deti",
+  "h1": "Hračky pro děti",
+  "parent": "/kategorie/",
+  "group": "hracky-pro-deti",
+  "rules": {
+   "offers": 3
+  },
+  "min": 24,
+  "index_min": 48,
+  "home": true,
+  "icon": "party",
+  "lead": "Nejčastěji srovnávané hračky pro děti: ty, které najdete ve třech a více obchodech, takže si snadno ohlídáte nejlepší cenu."
+ },
+ {
+  "slug": "odrazedlo-motorka",
+  "h1": "Odrážedlo motorka",
+  "parent": "/venku/odrazedla/",
+  "group": "odrazedlo-motorka",
+  "rules": {
+   "any": [
+    "\\bodrazedl\\w*"
+   ],
+   "all": [
+    "\\b(motork\\w*|motocykl\\w*|motorbike)\\b"
+   ]
+  },
+  "min": 6,
+  "index_min": 12
+ },
+ {
+  "slug": "odrazedla-auto",
+  "h1": "Odrážedla ve tvaru auta",
+  "parent": "/venku/odrazedla/",
+  "group": "odrazedla-auto",
+  "rules": {
+   "any": [
+    "\\bodrazedl\\w*"
+   ],
+   "all": [
+    "\\b(aut\\w+|autic\\w+|traktor\\w*|mini cooper|beetle)\\b"
+   ]
+  },
+  "min": 6,
+  "index_min": 12
+ },
+ {
+  "slug": "odrazedla-pro-nejmensi",
+  "h1": "Odrážedla pro nejmenší",
+  "parent": "/venku/odrazedla/",
+  "group": "odrazedla-pro-nejmensi",
+  "rules": {
+   "any": [
+    "\\bodrazedl\\w*"
+   ],
+   "age": [
+    null,
+    36
+   ],
+   "age_unknown": true
+  },
+  "min": 6,
+  "index_min": 12,
+  "lead": "Odrážedla pro děti od 1 roku: nižší sedátko, měkká kola a lehká konstrukce."
+ },
+ {
+  "slug": "hasicska-auta",
+  "h1": "Hasičská auta pro děti",
+  "parent": "/auta-a-vlacky/",
+  "group": "hasicska-auta",
+  "rules": {
+   "any": [
+    "\\bhasic\\w*",
+    "\\bhasici\\b"
+   ],
+   "all": [
+    "\\b(aut\\w+|autic\\w+|vuz|vozidl\\w+|zebrik\\w*|stanic\\w+)\\b"
+   ]
+  },
+  "min": 6,
+  "index_min": 12
+ },
+ {
+  "slug": "policejni-auta-a-stanice",
+  "h1": "Policejní auta a stanice",
+  "parent": "/auta-a-vlacky/",
+  "group": "policejni-auta-a-stanice",
+  "rules": {
+   "any": [
+    "\\bpolicejn\\w*",
+    "\\bpolicie\\b"
+   ]
+  },
+  "min": 6,
+  "index_min": 12
+ },
+ {
+  "slug": "popelarska-auta",
+  "h1": "Popelářská auta",
+  "parent": "/auta-a-vlacky/",
+  "group": "popelarska-auta",
+  "rules": {
+   "any": [
+    "\\bpopelar\\w*"
+   ]
+  },
+  "min": 6,
+  "index_min": 12
+ },
+ {
+  "slug": "bagry-pro-deti",
+  "h1": "Bagry pro děti",
+  "parent": "/auta-a-vlacky/stroje-a-traktory/",
+  "group": "bagry-pro-deti",
+  "rules": {
+   "any": [
+    "\\bbagr\\w*",
+    "\\bnakladac\\w*"
+   ]
+  },
+  "min": 6,
+  "index_min": 12
+ },
+ {
+  "slug": "traktory-pro-deti",
+  "h1": "Traktory pro děti",
+  "parent": "/auta-a-vlacky/stroje-a-traktory/",
+  "group": "traktory-pro-deti",
+  "rules": {
+   "any": [
+    "\\btraktor\\w*"
+   ]
+  },
+  "min": 6,
+  "index_min": 12
+ },
+ {
+  "slug": "motorky-pro-deti",
+  "h1": "Motorky pro děti",
+  "parent": "/kategorie/",
+  "group": "motorky-pro-deti",
+  "rules": {
+   "any": [
+    "\\bmotork\\w*",
+    "\\bmotocykl\\w*"
+   ],
+   "none": [
+    "\\bodrazedl\\w*"
+   ]
+  },
+  "min": 8,
+  "index_min": 16
+ },
+ {
+  "slug": "ctyrkolky-pro-deti",
+  "h1": "Čtyřkolky pro děti",
+  "parent": "/kategorie/",
+  "group": "ctyrkolky-pro-deti",
+  "rules": {
+   "any": [
+    "\\bctyrkol\\w*"
+   ]
+  },
+  "min": 6,
+  "index_min": 12
+ },
+ {
+  "slug": "slapaci-auta",
+  "h1": "Šlapací auta a vozítka",
+  "parent": "/venku/",
+  "group": "slapaci-auta",
+  "rules": {
+   "any": [
+    "\\bslapaci\\b",
+    "\\bslapadl\\w*"
+   ]
+  },
+  "min": 6,
+  "index_min": 12
+ },
+ {
+  "slug": "elektricka-vozitka-pro-deti",
+  "h1": "Elektrická auta a vozítka pro děti",
+  "parent": "/venku/",
+  "group": "elektricka-vozitka-pro-deti",
+  "rules": {
+   "any": [
+    "\\belektrick\\w* (aut\\w+|vozitk\\w+|motork\\w+|ctyrkol\\w+|traktor\\w*)"
+   ]
+  },
+  "min": 6,
+  "index_min": 12
+ },
+ {
+  "slug": "hot-wheels-drahy",
+  "h1": "Hot Wheels dráhy",
+  "parent": "/auta-a-vlacky/autodrahy/",
+  "group": "hot-wheels-drahy",
+  "rules": {
+   "any": [
+    "\\bhot wheels\\b"
+   ],
+   "all": [
+    "\\b(draha|drahy|dráha|track|trasa|set|souprava|garaz\\w*)\\b"
+   ]
+  },
+  "min": 6,
+  "index_min": 12
+ },
+ {
+  "slug": "drevene-vlacky",
+  "h1": "Dřevěné vláčky a vláčkodráhy",
+  "parent": "/auta-a-vlacky/vlacky/",
+  "group": "drevene-vlacky",
+  "rules": {
+   "any": [
+    "\\bvlac\\w*",
+    "\\bvlak\\w*",
+    "\\bvlackodrah\\w*"
+   ],
+   "all": [
+    "\\bdrev\\w*"
+   ]
+  },
+  "min": 6,
+  "index_min": 12
+ },
+ {
+  "slug": "retro-kocarky-pro-panenky",
+  "h1": "Retro kočárky pro panenky",
+  "parent": "/panenky/kocarky/",
+  "group": "retro-kocarky-pro-panenky",
+  "rules": {
+   "any": [
+    "\\bretro\\b"
+   ],
+   "all": [
+    "\\bkocar\\w*"
+   ]
+  },
+  "min": 6,
+  "index_min": 12
+ },
+ {
+  "slug": "domecky-pro-barbie",
+  "h1": "Domečky a karavany pro Barbie",
+  "parent": "/panenky/domecky/",
+  "group": "domecky-pro-barbie",
+  "rules": {
+   "any": [
+    "\\bdomec\\w*",
+    "\\bkaravan\\w*",
+    "\\bdream ?house\\b"
+   ],
+   "all": [
+    "\\b(barbie|panenk\\w+|polly|lol|l\\.o\\.l)\\b"
+   ]
+  },
+  "min": 6,
+  "index_min": 12
+ },
+ {
+  "slug": "karavany-pro-panenky",
+  "h1": "Karavany pro panenky",
+  "parent": "/panenky/",
+  "group": "karavany-pro-panenky",
+  "rules": {
+   "any": [
+    "\\bkaravan\\w*",
+    "\\bcamper\\b"
+   ]
+  },
+  "min": 6,
+  "index_min": 12
+ },
+ {
+  "slug": "dreveny-domecek-pro-panenky",
+  "h1": "Dřevěné domečky pro panenky",
+  "parent": "/panenky/domecky/",
+  "group": "dreveny-domecek-pro-panenky",
+  "rules": {
+   "any": [
+    "\\bdomec\\w*"
+   ],
+   "all": [
+    "\\bdrev\\w*"
+   ]
+  },
+  "min": 6,
+  "index_min": 12
+ },
+ {
+  "slug": "postylky-pro-panenky",
+  "h1": "Postýlky a kolébky pro panenky",
+  "parent": "/panenky/",
+  "group": "postylky-pro-panenky",
+  "rules": {
+   "any": [
+    "\\bpostylk\\w*",
+    "\\bkolebk\\w*"
+   ]
+  },
+  "min": 6,
+  "index_min": 12
+ },
+ {
+  "slug": "detske-pokladny",
+  "h1": "Dětské pokladny",
+  "parent": "/hrajeme-si-na/obchod-a-domacnost/",
+  "group": "detske-pokladny",
+  "rules": {
+   "any": [
+    "\\bpokladn\\w*"
+   ],
+   "none": [
+    "\\bpokladnick\\w*"
+   ]
+  },
+  "min": 6,
+  "index_min": 12
+ },
+ {
+  "slug": "detske-vysavace",
+  "h1": "Dětské vysavače",
+  "parent": "/hrajeme-si-na/",
+  "group": "detske-vysavace",
+  "rules": {
+   "any": [
+    "\\bvysavac\\w*"
+   ]
+  },
+  "min": 6,
+  "index_min": 12
+ },
+ {
+  "slug": "detske-sici-stroje",
+  "h1": "Dětské šicí stroje",
+  "parent": "/hrajeme-si-na/",
+  "group": "detske-sici-stroje",
+  "rules": {
+   "any": [
+    "\\bsici (stroj\\w*)\\b",
+    "\\bsiti\\b"
+   ],
+   "all": [
+    "\\bstroj\\w*"
+   ]
+  },
+  "min": 5,
+  "index_min": 12
+ },
+ {
+  "slug": "detske-mikrofony",
+  "h1": "Dětské mikrofony a karaoke",
+  "parent": "/hudebni/",
+  "group": "detske-mikrofony",
+  "rules": {
+   "any": [
+    "\\bmikrofon\\w*",
+    "\\bkaraoke\\b"
+   ]
+  },
+  "min": 6,
+  "index_min": 12
+ },
+ {
+  "slug": "detske-kytary",
+  "h1": "Dětské kytary",
+  "parent": "/hudebni/",
+  "group": "detske-kytary",
+  "rules": {
+   "any": [
+    "\\bkytar\\w*"
+   ]
+  },
+  "min": 6,
+  "index_min": 12
+ },
+ {
+  "slug": "vysilacky-walkie-talkie",
+  "h1": "Vysílačky pro děti",
+  "parent": "/elektronika/",
+  "group": "vysilacky-walkie-talkie",
+  "rules": {
+   "any": [
+    "\\bwalkie\\b",
+    "\\bvysilack\\w*"
+   ]
+  },
+  "min": 6,
+  "index_min": 12
+ },
+ {
+  "slug": "interaktivni-stolky",
+  "h1": "Interaktivní stolečky",
+  "parent": "/pro-nejmensi/",
+  "group": "interaktivni-stolky",
+  "rules": {
+   "any": [
+    "\\binteraktivni\\b"
+   ],
+   "all": [
+    "\\b(stolek|stolecek|stoleck\\w*|stolky)\\b"
+   ]
+  },
+  "min": 6,
+  "index_min": 12
+ },
+ {
+  "slug": "vodni-pistole",
+  "h1": "Vodní pistole",
+  "parent": "/venku/do-vody/",
+  "group": "vodni-pistole",
+  "rules": {
+   "any": [
+    "\\bvodni pistol\\w*",
+    "\\bstrikaci pistol\\w*",
+    "\\bvodni (strikack\\w*|kulomet\\w*)",
+    "\\bsuper soaker\\b"
+   ]
+  },
+  "min": 6,
+  "index_min": 12
+ },
+ {
+  "slug": "detske-bazeny",
+  "h1": "Dětské bazény",
+  "parent": "/venku/do-vody/",
+  "group": "detske-bazeny",
+  "rules": {
+   "any": [
+    "\\bbazen\\w*",
+    "\\bbazenek\\b"
+   ],
+   "none": [
+    "\\bkulicky\\b",
+    "\\bbazen na kulicky\\b",
+    "\\bplast\\w+ kulick\\w+"
+   ]
+  },
+  "min": 6,
+  "index_min": 12
+ },
+ {
+  "slug": "skluzavky",
+  "h1": "Dětské skluzavky",
+  "parent": "/venku/zahrada/",
+  "group": "skluzavky",
+  "rules": {
+   "any": [
+    "\\bskluzavk\\w*",
+    "\\bklouzack\\w*"
+   ]
+  },
+  "min": 6,
+  "index_min": 12
+ },
+ {
+  "slug": "piskoviste",
+  "h1": "Pískoviště pro děti",
+  "parent": "/venku/na-pisek/",
+  "group": "piskoviste",
+  "rules": {
+   "any": [
+    "\\bpiskovist\\w*"
+   ]
+  },
+  "min": 6,
+  "index_min": 12
+ },
+ {
+  "slug": "detske-stany",
+  "h1": "Dětské stany a tee-pee",
+  "parent": "/venku/",
+  "group": "detske-stany",
+  "rules": {
+   "any": [
+    "\\bstan\\b",
+    "\\bstany\\b",
+    "\\bteepee\\b",
+    "\\btee pee\\b",
+    "\\btipi\\b"
+   ],
+   "none": [
+    "\\bstanice\\b"
+   ]
+  },
+  "min": 6,
+  "index_min": 12
+ },
+ {
+  "slug": "nafukovaci-kresla-pro-deti",
+  "h1": "Nafukovací křesla a lehátka pro děti",
+  "parent": "/venku/",
+  "group": "nafukovaci-kresla-pro-deti",
+  "rules": {
+   "any": [
+    "\\bnafukovaci (kresl\\w*|pohov\\w*|lehatk\\w*|zidl\\w*)"
+   ]
+  },
+  "min": 6,
+  "index_min": 12
+ },
+ {
+  "slug": "bublifuky",
+  "h1": "Bublifuky",
+  "parent": "/venku/",
+  "group": "bublifuky",
+  "rules": {
+   "any": [
+    "\\bbublifuk\\w*",
+    "\\bmydlove bubliny\\b"
+   ]
+  },
+  "min": 6,
+  "index_min": 12
+ },
+ {
+  "slug": "stolni-fotbal",
+  "h1": "Stolní fotbal",
+  "parent": "/spolecenske-hry/",
+  "group": "stolni-fotbal",
+  "rules": {
+   "any": [
+    "\\bstolni fotbal\\w*",
+    "\\bfotbalek\\b"
+   ]
+  },
+  "min": 5,
+  "index_min": 12
+ },
+ {
+  "slug": "stolni-hokej",
+  "h1": "Stolní hokej",
+  "parent": "/spolecenske-hry/",
+  "group": "stolni-hokej",
+  "rules": {
+   "any": [
+    "\\bstolni hokej\\w*",
+    "\\bair ?hockey\\b"
+   ]
+  },
+  "min": 5,
+  "index_min": 12
+ },
+ {
+  "slug": "pop-it",
+  "h1": "Pop it – praskací bubliny",
+  "parent": "/kategorie/",
+  "group": "pop-it",
+  "rules": {
+   "any": [
+    "\\bpop[ -]?it\\b",
+    "\\bpraskaci bubl\\w*"
+   ]
+  },
+  "min": 6,
+  "index_min": 12,
+  "lead": "Pop it hračky: praskání bublin jako antistresová pomůcka i společenská hra. Porovnejte ceny a tvary."
+ },
+ {
+  "slug": "clovece-nezlob-se",
+  "h1": "Člověče, nezlob se",
+  "parent": "/spolecenske-hry/",
+  "group": "clovece-nezlob-se",
+  "rules": {
+   "any": [
+    "\\bclovece[ ,]*nezlob se\\b",
+    "\\bnezlob se\\b"
+   ]
+  },
+  "min": 5,
+  "index_min": 12,
+  "lead": "Člověče, nezlob se v klasickém, dřevěném i velkém provedení. Porovnejte ceny a velikosti hrací desky."
+ },
+ {
+  "slug": "karetni-hra-uno",
+  "h1": "UNO a podobné karetní hry",
+  "parent": "/spolecenske-hry/karetni/",
+  "group": "karetni-hra-uno",
+  "rules": {
+   "any": [
+    "\\buno\\b"
+   ]
+  },
+  "min": 5,
+  "index_min": 12
+ },
+ {
+  "slug": "tech-deck-fingerboardy",
+  "h1": "Tech Deck a fingerboardy",
+  "parent": "/kategorie/",
+  "group": "tech-deck-fingerboardy",
+  "rules": {
+   "any": [
+    "\\btech deck\\b",
+    "\\bfingerboard\\w*"
+   ]
+  },
+  "min": 5,
+  "index_min": 12
+ },
+ {
+  "slug": "kreslici-tabulky",
+  "h1": "Kreslicí a magnetické tabulky",
+  "parent": "/kreativni/",
+  "group": "kreslici-tabulky",
+  "rules": {
+   "any": [
+    "\\bkreslic\\w* tabul\\w*",
+    "\\bmagneticka tabul\\w*",
+    "\\btabule pro deti\\b",
+    "\\bkreslici tabule\\b",
+    "\\bkridova tabul\\w*"
+   ]
+  },
+  "min": 6,
+  "index_min": 12
+ },
+ {
+  "slug": "plysovi-medvedi",
+  "h1": "Plyšoví medvědi",
+  "parent": "/plysaci/",
+  "group": "plysovi-medvedi",
+  "rules": {
+   "any": [
+    "\\bmedved\\w*",
+    "\\bmedvidek\\b",
+    "\\bteddy\\b"
+   ],
+   "cat": [
+    "plysaci"
+   ]
+  },
+  "min": 6,
+  "index_min": 12
+ },
+ {
+  "slug": "usinacci",
+  "h1": "Usínáčci",
+  "parent": "/pro-nejmensi/",
+  "group": "usinacci",
+  "rules": {
+   "any": [
+    "\\businac\\w*"
+   ]
+  },
+  "min": 5,
+  "index_min": 12
+ },
+ {
+  "slug": "choditka",
+  "h1": "Chodítka pro děti",
+  "parent": "/pro-nejmensi/tahaci-a-odstrkovadla/",
+  "group": "choditka",
+  "rules": {
+   "any": [
+    "\\bchoditk\\w*"
+   ]
+  },
+  "min": 6,
+  "index_min": 12
+ },
+ {
+  "slug": "odstrkovadla",
+  "h1": "Odstrkovadla pro děti",
+  "parent": "/pro-nejmensi/tahaci-a-odstrkovadla/",
+  "group": "odstrkovadla",
+  "rules": {
+   "any": [
+    "\\bodstrkovadl\\w*"
+   ]
+  },
+  "min": 5,
+  "index_min": 12
+ },
+ {
+  "slug": "pokladnicky",
+  "h1": "Pokladničky pro děti",
+  "parent": "/kategorie/",
+  "group": "pokladnicky",
+  "rules": {
+   "any": [
+    "\\bpokladnick\\w*"
+   ]
+  },
+  "min": 6,
+  "index_min": 12
+ },
+ {
+  "slug": "hracky-enchantimals",
+  "h1": "Hračky Enchantimals",
+  "parent": "/panenky/",
+  "group": "hracky-enchantimals",
+  "rules": {
+   "any": [
+    "\\benchantimal\\w*"
+   ]
+  },
+  "min": 6,
+  "index_min": 12
+ },
+ {
+  "slug": "hracky-vip-pets",
+  "h1": "Hračky VIP Pets",
+  "parent": "/figurky-a-zviratka/",
+  "group": "hracky-vip-pets",
+  "rules": {
+   "any": [
+    "\\bvip pets\\b"
+   ]
+  },
+  "min": 6,
+  "index_min": 12
+ },
+ {
+  "slug": "hracky-mala-morska-vila",
+  "h1": "Hračky Malá mořská víla",
+  "parent": "/kategorie/",
+  "group": "hracky-mala-morska-vila",
+  "rules": {
+   "any": [
+    "\\bmala morska vila\\b",
+    "\\bariel\\b",
+    "\\blittle mermaid\\b"
+   ]
+  },
+  "min": 6,
+  "index_min": 12
+ },
+ {
+  "slug": "hracky-grogu-mandalorian",
+  "h1": "Grogu a Mandalorian: hračky a LEGO",
+  "parent": "/kategorie/",
+  "group": "hracky-grogu-mandalorian",
+  "rules": {
+   "any": [
+    "\\bgrogu\\b",
+    "\\bmandalorian\\w*",
+    "\\bbaby yoda\\b"
+   ]
+  },
+  "min": 6,
+  "index_min": 12
+ },
+ {
+  "slug": "hracky-seva-stavebnice",
+  "h1": "Stavebnice Seva",
+  "parent": "/stavebnice/kovove-a-technicke/",
+  "group": "hracky-seva-stavebnice",
+  "rules": {
+   "any": [
+    "\\bseva\\b"
+   ]
+  },
+  "min": 6,
+  "index_min": 12
+ },
+ {
+  "slug": "lego/avatar",
+  "h1": "LEGO Avatar",
+  "parent": "/lego/",
+  "group": "lego-avatar",
+  "rules": {
+   "any": [
+    "\\bavatar\\w*"
+   ],
+   "cat": [
+    "lego"
+   ]
+  },
+  "min": 5,
+  "index_min": 12
+ },
+ {
+  "slug": "lego/stranger-things",
+  "h1": "LEGO Stranger Things",
+  "parent": "/lego/",
+  "group": "lego-stranger-things",
+  "rules": {
+   "any": [
+    "\\bstranger things\\b"
+   ],
+   "cat": [
+    "lego"
+   ]
+  },
+  "min": 3,
+  "index_min": 5
+ },
+ {
+  "slug": "lego/stitch",
+  "h1": "LEGO Stitch",
+  "parent": "/lego/",
+  "group": "lego-stitch",
+  "rules": {
+   "any": [
+    "\\bstitch\\b"
+   ],
+   "cat": [
+    "lego"
+   ]
+  },
+  "min": 3,
+  "index_min": 5
+ },
+ {
+  "slug": "lego/spiderman",
+  "h1": "LEGO Spider-Man",
+  "parent": "/lego/",
+  "group": "lego-spiderman",
+  "rules": {
+   "any": [
+    "\\bspider[ -]?man\\b",
+    "\\bspidey\\b"
+   ],
+   "cat": [
+    "lego"
+   ]
+  },
+  "min": 6,
+  "index_min": 12
+ },
+ {
+  "slug": "lego/batman",
+  "h1": "LEGO Batman",
+  "parent": "/lego/",
+  "group": "lego-batman",
+  "rules": {
+   "any": [
+    "\\bbatman\\b"
+   ],
+   "cat": [
+    "lego"
+   ]
+  },
+  "min": 6,
+  "index_min": 12
+ },
+ {
+  "slug": "lego/ferrari",
+  "h1": "LEGO Ferrari",
+  "parent": "/lego/",
+  "group": "lego-ferrari",
+  "rules": {
+   "any": [
+    "\\bferrari\\b"
+   ],
+   "cat": [
+    "lego"
+   ]
+  },
+  "min": 3,
+  "index_min": 4
+ },
+ {
+  "slug": "lego/porsche",
+  "h1": "LEGO Porsche",
+  "parent": "/lego/",
+  "group": "lego-porsche",
+  "rules": {
+   "any": [
+    "\\bporsche\\b"
+   ],
+   "cat": [
+    "lego"
+   ]
+  },
+  "min": 3,
+  "index_min": 4
+ },
+ {
+  "slug": "lego/lamborghini",
+  "h1": "LEGO Lamborghini",
+  "parent": "/lego/",
+  "group": "lego-lamborghini",
+  "rules": {
+   "any": [
+    "\\blamborghini\\b"
+   ],
+   "cat": [
+    "lego"
+   ]
+  },
+  "min": 3,
+  "index_min": 4
+ },
+ {
+  "slug": "lego/titanic",
+  "h1": "LEGO Titanic",
+  "parent": "/lego/",
+  "group": "lego-titanic",
+  "rules": {
+   "any": [
+    "\\btitanic\\b"
+   ],
+   "cat": [
+    "lego"
+   ]
+  },
+  "min": 1,
+  "index_min": 1
+ },
+ {
+  "slug": "lego/motorky",
+  "h1": "LEGO motorky",
+  "parent": "/lego/",
+  "group": "lego-motorky",
+  "rules": {
+   "any": [
+    "\\bmotork\\w*",
+    "\\bmotocykl\\w*",
+    "\\bkawasaki\\b",
+    "\\bducati\\b",
+    "\\bharley\\b",
+    "\\bbmw r\\b"
+   ],
+   "cat": [
+    "lego"
+   ]
+  },
+  "min": 5,
+  "index_min": 12
+ },
+ {
+  "slug": "lego/duplo-vlacky",
+  "h1": "LEGO Duplo vláčky",
+  "parent": "/lego/duplo/",
+  "group": "lego-duplo-vlacky",
+  "rules": {
+   "any": [
+    "\\bvlac\\w*",
+    "\\bvlak\\w*",
+    "\\bparni\\b"
+   ],
+   "all": [
+    "\\bduplo\\b"
+   ],
+   "cat": [
+    "lego"
+   ]
+  },
+  "min": 4,
+  "index_min": 6
+ },
+ {
+  "slug": "lego/domy-a-domky",
+  "h1": "LEGO domy a domečky",
+  "parent": "/lego/",
+  "group": "lego-domy-a-domky",
+  "rules": {
+   "any": [
+    "\\bdom\\b",
+    "\\bdomek\\b",
+    "\\bdomec\\w*",
+    "\\bdum\\b",
+    "\\brodinny dum\\b"
+   ],
+   "none": [
+    "\\bkostky\\b"
+   ],
+   "cat": [
+    "lego"
+   ]
+  },
+  "min": 6,
+  "index_min": 12
+ },
+ {
+  "slug": "lego/fotbal",
+  "h1": "LEGO fotbal",
+  "parent": "/lego/",
+  "group": "lego-fotbal",
+  "rules": {
+   "any": [
+    "\\bfotbal\\w*",
+    "\\bworld cup\\b",
+    "\\bfifa\\b"
+   ],
+   "cat": [
+    "lego"
+   ]
+  },
+  "min": 3,
+  "index_min": 4
+ },
+ {
+  "slug": "lego/kostky",
+  "h1": "LEGO kostky a boxy s kostkami",
+  "parent": "/lego/classic/",
+  "group": "lego-kostky",
+  "rules": {
+   "any": [
+    "\\bklasick\\w+ kostk\\w+",
+    "\\bclassic\\b",
+    "\\bkostky\\b",
+    "\\bstavebni kostky\\b"
+   ],
+   "cat": [
+    "lego"
+   ]
+  },
+  "min": 6,
+  "index_min": 12
+ },
+ {
+  "slug": "hracky-na-baterie",
+  "h1": "Hračky na baterie",
+  "parent": "/kategorie/",
+  "group": "hracky-na-baterie",
+  "rules": {
+   "any": [
+    "\\bna baterie\\b",
+    "\\bna baterky\\b",
+    "\\bbateriov\\w*"
+   ],
+   "offers": 2
+  },
+  "min": 20,
+  "index_min": 40,
+  "icon": "rc"
+ },
+ {
+  "slug": "svitici-hracky",
+  "h1": "Svítící hračky",
+  "parent": "/kategorie/",
+  "group": "svitici-hracky",
+  "rules": {
+   "any": [
+    "\\bsvitic\\w*",
+    "\\bsviti\\b",
+    "\\bled\\b",
+    "\\bs led\\b"
+   ]
+  },
+  "min": 12,
+  "index_min": 24
+ },
+ {
+  "slug": "hracky-se-zvukem",
+  "h1": "Hračky se zvukem a světlem",
+  "parent": "/kategorie/",
+  "group": "hracky-se-zvukem",
+  "rules": {
+   "any": [
+    "\\bse zvuk\\w*",
+    "\\bzvukov\\w*",
+    "\\bs efekt\\w*"
+   ],
+   "offers": 2
+  },
+  "min": 20,
+  "index_min": 40
+ },
+ {
+  "slug": "drevena-auta",
+  "h1": "Dřevěná autíčka a auta",
+  "parent": "/auta-a-vlacky/",
+  "group": "drevena-auta",
+  "rules": {
+   "any": [
+    "\\bdrev\\w*"
+   ],
+   "all": [
+    "\\b(aut\\w+|autic\\w+|nakladak\\w*)\\b"
+   ]
+  },
+  "min": 6,
+  "index_min": 12
+ },
+ {
+  "slug": "drevene-spolecenske-hry",
+  "h1": "Dřevěné společenské hry",
+  "parent": "/spolecenske-hry/",
+  "group": "drevene-spolecenske-hry",
+  "rules": {
+   "any": [
+    "\\bdrev\\w*"
+   ],
+   "cat": [
+    "spolecenske-hry"
+   ]
+  },
+  "min": 6,
+  "index_min": 12
+ },
+ {
+  "slug": "drevene-kuchynky",
+  "h1": "Dřevěné kuchyňky pro děti",
+  "parent": "/hrajeme-si-na/kuchynky/",
+  "group": "drevene-kuchynky",
+  "rules": {
+   "any": [
+    "\\bdrev\\w*"
+   ],
+   "all": [
+    "\\bkuchyn\\w*"
+   ],
+   "cat": [
+    "hrajeme-si-na"
+   ]
+  },
+  "min": 5,
+  "index_min": 12
+ },
+ {
+  "slug": "hadrove-panenky",
+  "h1": "Hadrové panenky",
+  "parent": "/panenky/",
+  "group": "hadrove-panenky",
+  "rules": {
+   "any": [
+    "\\bhadrov\\w*",
+    "\\btextiln\\w+ panenk\\w*"
+   ]
+  },
+  "min": 6,
+  "index_min": 12
+ },
+ {
+  "slug": "retro-hracky",
+  "h1": "Retro hračky",
+  "parent": "/kategorie/",
+  "group": "retro-hracky",
+  "rules": {
+   "any": [
+    "\\bretro\\b",
+    "\\bvintage\\b",
+    "\\bnostalg\\w*"
+   ]
+  },
+  "min": 10,
+  "index_min": 20
+ },
+ {
+  "slug": "boxy-na-hracky",
+  "h1": "Boxy a úložné koše na hračky",
+  "parent": "/kategorie/",
+  "group": "boxy-na-hracky",
+  "rules": {
+   "any": [
+    "\\b(box|boxy|kos|kose|truhla|truhlicka|organizer|regal\\w*) na hracky\\b",
+    "\\bulozn\\w+ (box|kos|prostor|regal)\\w*"
+   ]
+  },
+  "min": 5,
+  "index_min": 12
+ },
+ {
+  "slug": "darek-pro-muze",
+  "h1": "Dárek pro muže",
+  "parent": "/darky/",
+  "group": "darek-pro-muze",
+  "rules": {
+   "any": [
+    "\\btechnic\\b",
+    "\\bicons\\b",
+    "\\bspeed champions\\b",
+    "\\bferrari\\b",
+    "\\bporsche\\b",
+    "\\bstar wars\\b",
+    "\\bharry potter\\b",
+    "\\bformule\\b",
+    "\\bbugatti\\b",
+    "\\blamborghini\\b",
+    "\\bmclaren\\b"
+   ],
+   "cat": [
+    "lego"
+   ],
+   "price": [
+    800,
+    null
+   ],
+   "age": [
+    168,
+    null
+   ]
+  },
+  "min": 10,
+  "index_min": 20,
+  "home": false,
+  "icon": "party",
+  "lead": "Dárky pro muže, kteří rádi staví: LEGO Technic, Icons, Speed Champions a auta, Star Wars a Harry Potter pro dospělé."
+ },
+ {
+  "slug": "darek-pro-zenu",
+  "h1": "Dárek pro ženu",
+  "parent": "/darky/",
+  "group": "darek-pro-zenu",
+  "rules": {
+   "any": [
+    "\\bbotanic\\w*",
+    "\\bkvet\\w+",
+    "\\bkytic\\w*",
+    "\\bruze\\b",
+    "\\borchid\\w*",
+    "\\bbonsai\\b",
+    "\\bsakura\\b",
+    "\\bfriends\\b",
+    "\\bicons\\b"
+   ],
+   "cat": [
+    "lego"
+   ],
+   "price": [
+    500,
+    null
+   ],
+   "age": [
+    168,
+    null
+   ]
+  },
+  "min": 10,
+  "index_min": 20,
+  "icon": "party",
+  "lead": "Dárky pro ženy: LEGO květiny, Botanicals, bonsaje a dekorace, které vydrží na polici."
+ },
+ {
+  "slug": "darek-pro-maminku",
+  "h1": "Dárek pro maminku",
+  "parent": "/darky/",
+  "group": "darek-pro-maminku",
+  "rules": {
+   "any": [
+    "\\bbotanic\\w*",
+    "\\bkvet\\w+",
+    "\\bkytic\\w*",
+    "\\bruze\\b",
+    "\\borchid\\w*",
+    "\\bbonsai\\b",
+    "\\bpuzzle\\b"
+   ],
+   "all": [
+    "\\b(botanic\\w*|kvet\\w+|kytic\\w*|ruze|orchid\\w*|bonsai|puzzle)\\b"
+   ],
+   "price": [
+    300,
+    3000
+   ],
+   "offers": 2
+  },
+  "min": 10,
+  "index_min": 20,
+  "icon": "party",
+  "lead": "Dárky pro maminku, které potěší: LEGO květiny, relaxační puzzle a hry na večery."
+ },
+ {
+  "slug": "darek-pro-tatu",
+  "h1": "Dárek pro tátu",
+  "parent": "/darky/",
+  "group": "darek-pro-tatu",
+  "rules": {
+   "any": [
+    "\\btechnic\\b",
+    "\\bicons\\b",
+    "\\bformule\\b",
+    "\\bstar wars\\b",
+    "\\bferrari\\b",
+    "\\bporsche\\b",
+    "\\bspeed champions\\b",
+    "\\bmodel\\w* aut\\w*",
+    "\\brc\\b"
+   ],
+   "price": [
+    600,
+    null
+   ],
+   "offers": 2
+  },
+  "min": 10,
+  "index_min": 20,
+  "icon": "party"
+ },
+ {
+  "slug": "darek-pro-kamaradku",
+  "h1": "Dárek pro kamarádku",
+  "parent": "/darky/",
+  "group": "darek-pro-kamaradku",
+  "rules": {
+   "any": [
+    "\\bbotanic\\w*",
+    "\\bkvet\\w+",
+    "\\bfriends\\b",
+    "\\bpuzzle\\b",
+    "\\bkoralk\\w*",
+    "\\bsperk\\w*"
+   ],
+   "price": [
+    150,
+    1200
+   ],
+   "offers": 2
+  },
+  "min": 10,
+  "index_min": 20,
+  "icon": "party"
+ },
+ {
+  "slug": "darek-pro-ucitelku",
+  "h1": "Dárek pro učitelku",
+  "parent": "/darky/",
+  "group": "darek-pro-ucitelku",
+  "rules": {
+   "any": [
+    "\\bpuzzle\\b",
+    "\\bspolecenska hra\\b",
+    "\\bkoralk\\w*",
+    "\\bsada\\b"
+   ],
+   "price": [
+    100,
+    600
+   ],
+   "offers": 3
+  },
+  "min": 10,
+  "index_min": 20,
+  "icon": "party",
+  "lead": "Drobné dárky pro paní učitelku do 600 Kč: kreativní sady, hry a hlavolamy, které potěší i po škole."
+ }
+]

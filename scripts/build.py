@@ -299,8 +299,8 @@ def main():
     out.write("404.html", S.layout("/404/", "Stránka nenalezena" + SUFFIX, "Tahle stránka neexistuje.",
                                    '<div class="e404"><div><h1>Tady nic není. Ani pod postelí.</h1><p class="lead">Hračka mohla zmizet z nabídky obchodů, nebo vedla stará adresa. '
                                    'Zkuste ji vyhledat nahoře, nebo začněte <a class="lnk" href="/">na úvodní stránce</a>.</p>'
-                                   '<p><a class="btn" href="/kategorie/">Všechny kategorie</a></p></div><img src="/img/ui/404.webp" alt="Robot nakukuje do prázdné truhly na hračky" width="640" height="472"></div>', noindex=True))
-    write_search(out, products, by_top, series_pages, brand_pages, brand_name, lic_pages, landings)
+                                   '<p><a class="btn" href="/kategorie/">Všechny kategorie</a></p><div id="nf-sugg" class="nf-sugg" hidden></div></div><img src="/img/ui/404.webp" alt="Robot nakukuje do prázdné truhly na hračky" width="640" height="472"></div>', noindex=True))
+    write_search(out, products, by_top, series_pages, brand_pages, brand_name, lic_pages, landings, list(by_cat))
 
     # ---------------- sitemaps, robots, headers, redirects
     sm = []
@@ -915,7 +915,7 @@ def home_page(S, products, by_top, series, lic, gift):
                     body, jsonld=ld, preload_img="/img/ui/hero-1200.webp", full=True)
 
 
-def write_search(out, products, by_top, series, brands, brand_name, lic, landings=()):
+def write_search(out, products, by_top, series, brands, brand_name, lic, landings=(), cats=()):
     """Header suggestions: categories/series/brands/characters (small, loaded on focus) + product index split by the
     first two letters of each word, so a query loads one small file."""
     sug = [[cat_name(t), f"/{t}/", "kategorie"] for t in X.TOP if by_top.get(t)]
@@ -924,6 +924,14 @@ def write_search(out, products, by_top, series, brands, brand_name, lic, landing
     sug += [[f"Hračky {n}", f"/hracky-{s}/", "postavička"] for s, n, _ in X.LICENCES if s in lic]
     sug += [[L["h1"], L["path"], "téma"] for L in landings if L["index"] and L["n"] >= 15][:900]
     out.write("data/sug.json", json.dumps(sug, ensure_ascii=False, separators=(",", ":")))
+    # index for the 404 page (loaded only there): label + path, most general first; the script sends a dead URL to the best match
+    r404 = [[cat_name(t), f"/{t}/"] for t in X.TOP if by_top.get(t)]
+    r404 += [[cat_name(k), f"/{k}/"] for k in cats if "/" in k and k in X.TREE]
+    r404 += [[series_name(s), f"/lego/{s}/"] for s in series]
+    r404 += [[n, f"/hracky-{s}/"] for s, n, _ in X.LICENCES if s in lic]
+    r404 += [[brand_name[b], f"/znacky/{b}/"] for b in sorted(brands, key=lambda b: -len(brands[b]))]
+    r404 += [[L["h1"], L["path"]] for L in landings if L["index"]]
+    out.write("data/r404.json", json.dumps(r404, ensure_ascii=False, separators=(",", ":")))
     buckets = defaultdict(list)
     for i, p in enumerate(products):
         if not p["page"]:
