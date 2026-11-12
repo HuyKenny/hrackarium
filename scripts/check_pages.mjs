@@ -10,7 +10,7 @@ mkdirSync(outDir, { recursive: true });
 const sm = readFileSync("dist/sitemap-products-1.xml", "utf8").match(/<loc>[^<]+<\/loc>/g) || [];
 const products = sm.slice(0, 3).map((l) => new URL(l.slice(5, -6)).pathname);
 const reported = ["/produkt/prebijena-drevena-stolni-hra-albi/", "/produkt/epee-stavebnicovy-model-katedrala-svateho-vita/", "/produkt/lego-harry-potter-76475-zapovezeny-les-expecto-patronum-2/"];   // pages reported by the owner
-const pages = [...reported, "/", "/lego/", "/darky/", "/spolecenske-hry/", "/sberatelske-karty/", "/znacky/", "/postavicky/", "/jak-srovnavame/", "/kontakt/", "/ochrana-osobnich-udaju/", "/hledat/?q=lego", ...products];
+const pages = [...reported, "/", "/lego/", "/darky/", "/spolecenske-hry/", "/sberatelske-karty/", "/znacky/", "/postavicky/", "/jak-srovnavame/", "/obchody/", "/kontakt/", "/ochrana-osobnich-udaju/", "/hledat/?q=lego", ...products];
 const widths = [360, 390, 820, 1366];
 const browser = await puppeteer.launch({ executablePath: process.env.CHROME_PATH || "/usr/bin/google-chrome", args: ["--no-sandbox", "--disable-gpu", "--hide-scrollbars"] });
 const page = await browser.newPage();
