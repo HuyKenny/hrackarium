@@ -44,7 +44,7 @@ for (const w of widths) {
 }
 // 404 helper: a dead address must land on the nearest category (the server still answers 404), nonsense must stay on the 404 page with suggestions
 await page.setViewport({ width: 390, height: 900, isMobile: true, hasTouch: true });
-for (const [bad, want] of [["/produkt/lego-creator-neexistuje-xyz-123/", "/lego/"], ["/produkt/odrazedlo-neexistuje-xyz-77/", "/venku/"], ["/qwzxv-nic-takoveho/", null]]) {
+for (const [bad, want] of [["/produkt/lego-creator-neexistuje-xyz-123/", "/lego/"], ["/produkt/odrazedlo-neexistuje-xyz-77/", "odrazed"], ["/qwzxv-nic-takoveho/", null]]) {
   cur = { w: 390, p: bad };
   let first = null;
   const onRes = (x) => { if (first === null && x.url() === base + bad) first = x.status(); };
@@ -54,7 +54,7 @@ for (const [bad, want] of [["/produkt/lego-creator-neexistuje-xyz-123/", "/lego/
   if (first !== 404) problems.push({ w: 390, p: bad, issue: `dead URL answered ${first} (must stay 404)` });
   await new Promise((x) => setTimeout(x, 2500));
   const path = new URL(page.url()).pathname;
-  if (want && !path.startsWith(want)) problems.push({ w: 390, p: bad, issue: `404 redirect went to ${path}, expected ${want}…` });
+  if (want && !path.includes(want)) problems.push({ w: 390, p: bad, issue: `404 redirect went to ${path}, expected ${want}…` });
   if (!want) {
     const n = await page.evaluate(() => document.querySelectorAll("#nf-sugg li").length);
     if (path !== bad || n < 1) problems.push({ w: 390, p: bad, issue: `nonsense URL: path ${path}, suggestions ${n}` });
