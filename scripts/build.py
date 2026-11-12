@@ -835,7 +835,9 @@ def contact_page(S):
             f'<h2>Provozovatel webu</h2><table class="spec"><tr><th>Jméno</th><td>{o["name"]}</td></tr><tr><th>Sídlo</th><td>{o["address"]}</td></tr>'
             f'<tr><th>IČO</th><td>{o["ico"]}</td></tr><tr><th>DPH</th><td>{o["vat"][0].upper() + o["vat"][1:]}</td></tr>'
             f'<tr><th>Datová schránka</th><td>{o["ds"]}</td></tr><tr><th>E‑mail</th><td><a class="lnk" href="mailto:{o["email"]}">{o["email"]}</a></td></tr></table>'
-            '<h2>Co nám napsat</h2><p>Chybná cena nebo zařazení hračky, nefunkční odkaz, nevhodný popis, nebo návrh obchodu, který bychom měli srovnávat. U chyby prosím pošlete odkaz na stránku.</p></div>')
+            '<h2>Co nám napsat</h2><p>Chybná cena nebo zařazení hračky, nefunkční odkaz, nevhodný popis, nebo návrh obchodu, který bychom měli srovnávat. U chyby prosím pošlete odkaz na stránku.</p>'
+            '<h2>Kdo za webem stojí</h2><p>Hračkárium vytvořil a provozuje Ha Duy Huy (Kenny), SEO konzultant z Prahy, který si srovnávače cen staví sám. '
+            'Víc o autorovi najdete na <a class="lnk" href="https://huy.cz/" rel="nofollow noopener">huy.cz</a>.</p></div>')
     return S.layout("/kontakt/", "Kontakt a provozovatel" + SUFFIX, "Kontakt na provozovatele srovnávače cen hraček Hračkárium.", body,
                     crumbs=[("Hračkárium", "/"), ("Kontakt", "/kontakt/")])
 
@@ -910,7 +912,8 @@ def home_page(S, products, by_top, series, lic, gift):
 <li><h3>Koupíte v e‑shopu</h3><p>Odkaz vás pošle rovnou do obchodu. Platíte tam, za stejnou cenu jako bez nás.</p></li></ol></section></div>"""
     ld = [{"@context": "https://schema.org", "@type": "WebSite", "name": "Hračkárium", "url": BASE + "/",
            "potentialAction": {"@type": "SearchAction", "target": BASE + "/hledat/?q={q}", "query-input": "required name=q"}},
-          {"@context": "https://schema.org", "@type": "Organization", "name": "Hračkárium", "url": BASE + "/", "logo": BASE + "/favicon-512.png"}]
+          {"@context": "https://schema.org", "@type": "Organization", "name": "Hračkárium", "url": BASE + "/", "logo": BASE + "/favicon-512.png",
+           "founder": {"@type": "Person", "@id": "https://huy.cz/#kenny", "name": "Ha Duy Huy", "alternateName": "Kenny", "url": "https://huy.cz/", "jobTitle": "SEO konzultant"}}]
     return S.layout("/", "Hračkárium – srovnání cen hraček z českých e‑shopů", f"Srovnání cen hraček z {st['shops']} českých e‑shopů: LEGO, stavebnice, deskové hry, puzzle, panenky a dárky podle věku. Najděte nejlevnější nabídku.",
                     body, jsonld=ld, preload_img="/img/ui/hero-1200.webp", full=True)
 
