@@ -28,6 +28,8 @@ jobs:
       - name: SEO lint
         continue-on-error: true
         run: mkdir -p /tmp/audit && python3 scripts/seo_lint.py dist /tmp/audit/seo-report.json
+      - name: Landing list (which pages exist after the build)
+        run: mkdir -p /tmp/audit && cp data/state/landings.tsv /tmp/audit/landings.tsv && grep -E "landings" /dev/null || true
       - name: Pages check with real headers (CSP violations, horizontal scroll)
         continue-on-error: true
         run: |
