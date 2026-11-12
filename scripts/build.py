@@ -145,6 +145,7 @@ def main():
     products = [p for p in products if p["offers"]]
     new_slugs = C.assign_slugs(products, state)
     C.price_history(products, state)
+    C.collect_study_data(products, state)
     present = sorted({o["shop"] for p in products for o in p["offers"]})
     multi = sum(1 for p in products if len(p["offers"]) > 1)
     log(f"{len(products)} products ({multi} in 2+ shops), {bad} price errors dropped, {new_slugs} new slugs")

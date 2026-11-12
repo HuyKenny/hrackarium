@@ -256,6 +256,41 @@ def price_history(products, state):
             ph.pop(k)
 
 
+AGG_DAYS = 120
+
+
+def collect_study_data(products, state):
+    """Daily aggregates for the data studies (huy.cz/barometr, /studie/): how many products carry a claimed original price ("was"), how big the
+    claimed discounts are, and for how many of them the claimed price is higher than anything we saw as a selling price in the last 14 days.
+    Aggregates only (the public repo and the studies never carry shop-level prices). One entry per day, idempotent for the same day."""
+    agg = state.setdefault("agg", {})
+    rows = []
+    for p in products:
+        o = p["offers"][0]
+        claim = o.get("was") or 0
+        if claim <= o["price"] or (claim - o["price"]) / claim > 0.8:
+            continue
+        h = p.get("hist") or [[DAY, p["price"]]]
+        seen = h[0][0] <= DAY - 7                      # at least a week of our own observations
+        recent = [x[1] for x in h if x[0] >= DAY - 14]
+        before = [x[1] for x in h if x[0] < DAY - 14]
+        top = max(recent + before[-1:] or [p["price"]])
+        rows.append((p["cat"].split("/")[0], round((claim - o["price"]) / claim * 100), seen, claim > top * 1.01))
+    pct = sorted(r[1] for r in rows)
+    eligible = [r for r in rows if r[2]]
+    by_cat = {}
+    for top in {p["cat"].split("/")[0] for p in products}:
+        n = sum(1 for p in products if p["cat"].split("/")[0] == top)
+        c = [r for r in rows if r[0] == top]
+        by_cat[top] = [n, len(c), sorted(r[1] for r in c)[len(c) // 2] if c else 0]
+    agg[str(DAY)] = {"n": len(products), "multi": sum(1 for p in products if len(p["offers"]) > 1), "claim": len(rows),
+                     "med": pct[len(pct) // 2] if pct else 0, "p25": pct[len(pct) // 4] if pct else 0, "p75": pct[len(pct) * 3 // 4] if pct else 0,
+                     "elig": len(eligible), "unseen": sum(1 for r in eligible if r[3]), "cat": by_cat}
+    for k in list(agg):
+        if int(k) < DAY - AGG_DAYS:
+            agg.pop(k)
+
+
 def gone_products(products, state, last_seen_snapshot):
     """Products that disappeared keep a "momentálně nedostupné" page for GONE_DAYS (search engines and links keep
     working; the page points to similar toys), then they 404."""
