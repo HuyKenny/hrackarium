@@ -231,6 +231,7 @@ def main():
     dup_titles = Counter((L.get("title") or L["h1"]) for L in landings)
     log(f"landings: duplicate titles: {[t for t, c in dup_titles.items() if c > 1][:8]}")
     log(f"landings: {len(landings)} pages ({sum(1 for L in landings if L['index'])} indexable), dropped {dropped}")
+    log("landings by group: " + ", ".join(f"{g} {sum(1 for L in landings if L['group'] == g)}/{sum(1 for L in landings if L['group'] == g and L['index'])}" for g in ("kw2", "lic-cat", "brand-cat", "vek", "gap") if any(L["group"] == g for L in landings)))
 
     # ---------------- product pages
     for p in products:

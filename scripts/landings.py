@@ -89,9 +89,11 @@ def compile_rules(r):
     return pred
 
 
-def load_records():
+def load_records(only_kw2=False):
     recs = []
     for f in sorted((APP / "content/landings").glob("*.json")):
+        if f.name.startswith("kw2") != only_kw2:      # keyword-wave candidates (kw2*.json) come last, after every hand-written and generated page
+            continue
         data = json.loads(f.read_text())
         recs += data if isinstance(data, list) else data.get("pages", [])
     return recs
@@ -207,8 +209,9 @@ def plan(products, reserved=()):
         by_cat[p["cat"]].append(p)
         if "/" in p["cat"]:
             by_cat[p["cat"].split("/")[0]].append(p)
-    recs = load_records() + generated_records(products, by_cat, reserved)
+    recs = load_records() + generated_records(products, by_cat, reserved) + load_records(only_kw2=True)
     seen_paths, groups, out, dropped = set(reserved), defaultdict(list), [], defaultdict(int)
+    all_sets = []        # product-id sets of every accepted page: records with "dedupe_all" must differ from all of them
     for r in recs:
         path = "/" + r["slug"].strip("/") + "/"
         if path in seen_paths:
@@ -230,6 +233,10 @@ def plan(products, reserved=()):
         if any(jaccard(ids, o) > 0.9 for o in groups[g]):
             dropped["duplicate of a sibling"] += 1
             continue
+        if r.get("dedupe_all") and any(0.85 <= len(ids) / max(1, len(o)) <= 1 / 0.85 and jaccard(ids, o) > 0.85 for o in all_sets):
+            dropped["same products as an existing page"] += 1
+            continue
+        all_sets.append(ids)
         groups[g].append(ids)
         seen_paths.add(path)
         prices = sorted(p["price"] for p in items)
