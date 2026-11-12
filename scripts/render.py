@@ -110,6 +110,19 @@ OPERATOR = {"name": "Ha Duy Huy", "address": "Bartáková 36, 140 00 Praha", "ic
 LOGO = ('<img src="/img/ui/robot-96.webp" alt="" width="44" height="44"><span class="wm">Hračk<b>árium</b></span>')
 
 
+def shop_logo(m, big=False):
+    """<img> of a shop's logo (kuponmat library, trimmed WebP in static/img/shops) with the display size balanced by sqrt of the aspect ratio
+    (same idea as eroka/sporteka shopLogo(): wide logos are not huge, square ones not tiny); "" when the shop has no logo."""
+    if not m.get("logo"):
+        return ""
+    w, h = m["lw"], m["lh"]
+    area, mw, mh = (6200, 170, 56) if big else (3600, 112, 38)
+    k = (area / (w * h)) ** 0.5
+    dw, dh = w * k, h * k
+    f = min(1, mw / dw, mh / dh)
+    return (f'<img class="slogo{" slogo--big" if big else ""}" src="{m["logo"]}" alt="{E(m["name"])}" width="{round(dw * f)}" height="{round(dh * f)}" loading="lazy" decoding="async">')
+
+
 class Site:
     def __init__(self, base, env, ga, css, js, shops, stats):
         self.base, self.env, self.ga, self.css, self.js = base, env, ga, css, js

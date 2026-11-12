@@ -9,7 +9,11 @@
    "advertiser": "4949011",
    "color": "#E2402B",
    "exclude": "^(E-knihy|Knihy|Dětské oblečení|Dětská kosmetika|Papírnictví|Akce a katalogy)",
-   "budget": 2700
+   "budget": 2700,
+   "logo": "/img/shops/bambule.webp",
+   "lw": 321,
+   "lh": 120,
+   "logo_src": 22561
   },
   {
    "id": "4kids",
@@ -29,7 +33,11 @@
    "network": "cj",
    "advertiser": "5417788",
    "color": "#2E9D57",
-   "include": "(^|\\| )(Dětské zboží > (Hračky|Kreativní)|Hobby > Sběratel|Hračky)"
+   "include": "(^|\\| )(Dětské zboží > (Hračky|Kreativní)|Hobby > Sběratel|Hračky)",
+   "logo": "/img/shops/veselydrak.webp",
+   "lw": 307,
+   "lh": 120,
+   "logo_src": 23137
   },
   {
    "id": "albi",
@@ -38,7 +46,11 @@
    "network": "cj",
    "advertiser": "5343940",
    "color": "#F28C28",
-   "include": "(^|\\| )(Hry|Stavebnice|Hračky a tvoření|Kvído|Kouzelné čtení|Mementerra)"
+   "include": "(^|\\| )(Hry|Stavebnice|Hračky a tvoření|Kvído|Kouzelné čtení|Mementerra)",
+   "logo": "/img/shops/albi.webp",
+   "lw": 267,
+   "lh": 120,
+   "logo_src": 22531
   },
   {
    "id": "feedo",
@@ -47,7 +59,11 @@
    "network": "cj",
    "advertiser": "4901154",
    "color": "#7B4BC4",
-   "include": "Hračky"
+   "include": "Hračky",
+   "logo": "/img/shops/feedo.webp",
+   "lw": 360,
+   "lh": 96,
+   "logo_src": 22726
   },
   {
    "id": "bruderland",
@@ -56,7 +72,11 @@
    "network": "cj",
    "advertiser": "7424533",
    "color": "#F2B705",
-   "exclude": "^(Náhradní díly)"
+   "exclude": "^(Náhradní díly)",
+   "logo": "/img/shops/bruderland.webp",
+   "lw": 360,
+   "lh": 110,
+   "logo_src": 22598
   },
   {
    "id": "activa",
@@ -75,7 +95,11 @@
    "network": "ehub",
    "a_bid": "1f76de4d",
    "feed_key": "eh00",
-   "color": "#E2402B"
+   "color": "#E2402B",
+   "logo": "/img/shops/pidilidi.webp",
+   "lw": 338,
+   "lh": 120,
+   "logo_src": 22993
   },
   {
    "id": "wikyhracky",
@@ -84,7 +108,11 @@
    "network": "ehub",
    "a_bid": "36a77eb5",
    "feed_key": "eh01",
-   "color": "#2E9D57"
+   "color": "#2E9D57",
+   "logo": "/img/shops/wikyhracky.webp",
+   "lw": 314,
+   "lh": 120,
+   "logo_src": 23161
   },
   {
    "id": "sevt",
@@ -94,7 +122,11 @@
    "a_bid": "22691232",
    "feed_key": "eh02",
    "color": "#F28C28",
-   "include": "Hračk|Hry|Puzzle|Stavebnic|Kreativ|Výtvarn|Modelín|Omalov"
+   "include": "Hračk|Hry|Puzzle|Stavebnic|Kreativ|Výtvarn|Modelín|Omalov",
+   "logo": "/img/shops/sevt.webp",
+   "lw": 268,
+   "lh": 120,
+   "logo_src": 23051
   },
   {
    "id": "tlamagames",
@@ -103,7 +135,11 @@
    "network": "ehub",
    "a_bid": "3de0bfba",
    "feed_key": "eh03",
-   "color": "#7B4BC4"
+   "color": "#7B4BC4",
+   "logo": "/img/shops/tlamagames.webp",
+   "lw": 284,
+   "lh": 120,
+   "logo_src": 23114
   },
   {
    "id": "kidtown",
@@ -113,7 +149,11 @@
    "a_bid": "9f3c5814",
    "feed_key": "eh04",
    "color": "#2C7BE5",
-   "include": "Hračk|Hry|Puzzle|Stavebnic|Učení hrou|Kreativ"
+   "include": "Hračk|Hry|Puzzle|Stavebnic|Učení hrou|Kreativ",
+   "logo": "/img/shops/kidtown.webp",
+   "lw": 352,
+   "lh": 120,
+   "logo_src": 8125
   },
   {
    "id": "littleshoes",
@@ -123,7 +163,11 @@
    "a_bid": "31e2654e",
    "feed_key": "eh05",
    "color": "#D6336C",
-   "include": "Hračk"
+   "include": "Hračk",
+   "logo": "/img/shops/littleshoes.webp",
+   "lw": 213,
+   "lh": 120,
+   "logo_src": 22871
   },
   {
    "id": "najada",
@@ -133,7 +177,11 @@
    "a_bid": "23c81a0f",
    "feed_key": "eh06",
    "color": "#0E8C8C",
-   "include": "Společenské hry|Karetní|Sběratel|Doplňky ke|Miniatur|Puzzle|Hlavolam"
+   "include": "Společenské hry|Karetní|Sběratel|Doplňky ke|Miniatur|Puzzle|Hlavolam",
+   "logo": "/img/shops/najada.webp",
+   "lw": 133,
+   "lh": 120,
+   "logo_src": 22923
   },
   {
    "id": "museumofbricks",
@@ -142,7 +190,11 @@
    "network": "ehub",
    "a_bid": "21a527e2",
    "feed_key": "eh07",
-   "color": "#B45309"
+   "color": "#B45309",
+   "logo": "/img/shops/museumofbricks.webp",
+   "lw": 236,
+   "lh": 120,
+   "logo_src": 22708
   },
   {
    "id": "ministerstvohracek",
@@ -151,7 +203,11 @@
    "network": "ehub",
    "a_bid": "bfe5db0e",
    "feed_key": "eh08",
-   "color": "#5B5BD6"
+   "color": "#5B5BD6",
+   "logo": "/img/shops/ministerstvohracek.webp",
+   "lw": 336,
+   "lh": 120,
+   "logo_src": 18041
   },
   {
    "id": "detskeboty",
@@ -161,7 +217,11 @@
    "a_bid": "1e2adf08",
    "feed_key": "eh09",
    "color": "#1D7A4C",
-   "include": "Hračk"
+   "include": "Hračk",
+   "logo": "/img/shops/detskeboty.webp",
+   "lw": 360,
+   "lh": 77,
+   "logo_src": 17844
   },
   {
    "id": "okhracky",
@@ -170,7 +230,11 @@
    "network": "ehub",
    "a_bid": "20372289",
    "feed_key": "eh10",
-   "color": "#C2410C"
+   "color": "#C2410C",
+   "logo": "/img/shops/okhracky.webp",
+   "lw": 360,
+   "lh": 76,
+   "logo_src": 18098
   },
   {
    "id": "mrakyhracek",
@@ -180,7 +244,11 @@
    "a_bid": "dbc15c2d",
    "feed_key": "eh12",
    "color": "#0369A1",
-   "budget": 1500
+   "budget": 1500,
+   "logo": "/img/shops/mrakyhracek.webp",
+   "lw": 315,
+   "lh": 120,
+   "logo_src": 18057
   },
   {
    "id": "balonkypraha",
@@ -190,7 +258,11 @@
    "a_bid": "eacf1102",
    "feed_key": "eh13",
    "color": "#E2402B",
-   "include": "Hračk|Párty|Party|Karneval|Kostým"
+   "include": "Hračk|Párty|Party|Karneval|Kostým",
+   "logo": "/img/shops/balonkypraha.webp",
+   "lw": 292,
+   "lh": 120,
+   "logo_src": 17773
   },
   {
    "id": "baglik",
@@ -211,7 +283,11 @@
    "network": "ehub",
    "a_bid": "193ec796",
    "feed_key": "eh15",
-   "color": "#F28C28"
+   "color": "#F28C28",
+   "logo": "/img/shops/legenio.webp",
+   "lw": 360,
+   "lh": 112,
+   "logo_src": 18051
   },
   {
    "id": "kokiskashop",
@@ -221,7 +297,11 @@
    "a_bid": "21673a32",
    "feed_key": "eh16",
    "color": "#7B4BC4",
-   "include": "Hračk|Hry |Hry>|Dětsk.*hr|Puzzle|Stavebnic"
+   "include": "Hračk|Hry |Hry>|Dětsk.*hr|Puzzle|Stavebnic",
+   "logo": "/img/shops/kokiskashop.webp",
+   "lw": 360,
+   "lh": 87,
+   "logo_src": 17977
   },
   {
    "id": "modadeti",
@@ -231,7 +311,11 @@
    "a_bid": "98fb9307",
    "feed_key": "eh17",
    "color": "#2C7BE5",
-   "include": "^Hračky"
+   "include": "^Hračky",
+   "logo": "/img/shops/modadeti.webp",
+   "lw": 340,
+   "lh": 120,
+   "logo_src": 18044
   },
   {
    "id": "pompo",
@@ -240,7 +324,11 @@
    "network": "ehub",
    "a_bid": "ce6cff81",
    "feed_key": "eh18",
-   "color": "#D6336C"
+   "color": "#D6336C",
+   "logo": "/img/shops/pompo.webp",
+   "lw": 245,
+   "lh": 120,
+   "logo_src": 22997
   },
   {
    "id": "bscom",
@@ -252,7 +340,11 @@
    "color": "#0E8C8C",
    "include": "Hračk|Hry a zábava|Stavebnic|Puzzle",
    "no_images": true,
-   "note_images": "browsers cannot display bscom.cz images (decode error in Chrome, curl works) - 10. 11. 2026"
+   "note_images": "browsers cannot display bscom.cz images (decode error in Chrome, curl works) - 10. 11. 2026",
+   "logo": "/img/shops/bscom.webp",
+   "lw": 292,
+   "lh": 120,
+   "logo_src": 24684
   },
   {
    "id": "modroocko",
@@ -261,7 +353,11 @@
    "network": "ehub",
    "a_bid": "fc3b0ed1",
    "feed_key": "eh20",
-   "color": "#B45309"
+   "color": "#B45309",
+   "logo": "/img/shops/modroocko.webp",
+   "lw": 333,
+   "lh": 120,
+   "logo_src": 18047
   },
   {
    "id": "woodisio",
@@ -280,7 +376,11 @@
    "network": "ehub",
    "a_bid": "4477a62d",
    "feed_key": "eh22",
-   "color": "#1D7A4C"
+   "color": "#1D7A4C",
+   "logo": "/img/shops/dvedeti.webp",
+   "lw": 181,
+   "lh": 120,
+   "logo_src": 22680
   },
   {
    "id": "ababu",
@@ -290,7 +390,11 @@
    "a_bid": "92f2453c",
    "feed_key": "eh23",
    "color": "#C2410C",
-   "include": "Hračk|Muchl|Hry"
+   "include": "Hračk|Muchl|Hry",
+   "logo": "/img/shops/ababu.webp",
+   "lw": 297,
+   "lh": 120,
+   "logo_src": 17736
   },
   {
    "id": "chrusticek",
@@ -300,7 +404,11 @@
    "a_bid": "2542a903",
    "feed_key": "eh24",
    "color": "#0369A1",
-   "include": "^Hračky"
+   "include": "^Hračky",
+   "logo": "/img/shops/chrusticek.webp",
+   "lw": 360,
+   "lh": 96,
+   "logo_src": 17817
   },
   {
    "id": "littleangel",
@@ -333,7 +441,11 @@
    "network": "ehub",
    "a_bid": "508c468c",
    "feed_key": "eh28",
-   "color": "#F28C28"
+   "color": "#F28C28",
+   "logo": "/img/shops/sparkys.webp",
+   "lw": 360,
+   "lh": 115,
+   "logo_src": 18196
   },
   {
    "id": "zuriel",
@@ -355,7 +467,11 @@
    "a_bid": "210c832b",
    "feed_key": "eh31",
    "color": "#2C7BE5",
-   "include": "Hračk|Dětské hry|Stavebnic|Puzzle"
+   "include": "Hračk|Dětské hry|Stavebnic|Puzzle",
+   "logo": "/img/shops/gigamat.webp",
+   "lw": 252,
+   "lh": 120,
+   "logo_src": 17914
   },
   {
    "id": "benito",
@@ -377,7 +493,11 @@
    "a_bid": "faf9efc5",
    "feed_key": "eh33",
    "color": "#0E8C8C",
-   "include": "HRY|STAVEBNICE|PUZZLE|MODEL|Hry|Stavebnic"
+   "include": "HRY|STAVEBNICE|PUZZLE|MODEL|Hry|Stavebnic",
+   "logo": "/img/shops/fyft.webp",
+   "lw": 258,
+   "lh": 120,
+   "logo_src": 25837
   },
   {
    "id": "gengar",
@@ -387,7 +507,11 @@
    "a_bid": "07e497e9",
    "feed_key": "eh34",
    "color": "#B45309",
-   "exclude": "Kusové karty"
+   "exclude": "Kusové karty",
+   "logo": "/img/shops/gengar.webp",
+   "lw": 360,
+   "lh": 96,
+   "logo_src": 34125
   },
   {
    "id": "rcmodelarka",
@@ -397,7 +521,11 @@
    "a_bid": "fefb6dc8",
    "feed_key": "eh35",
    "color": "#5B5BD6",
-   "exclude": "Náhradní díly|Příslušenství|Baterie|Nabíječ"
+   "exclude": "Náhradní díly|Příslušenství|Baterie|Nabíječ",
+   "logo": "/img/shops/rcmodelarka.webp",
+   "lw": 340,
+   "lh": 120,
+   "logo_src": 25845
   },
   {
    "id": "legocom",
@@ -409,7 +537,11 @@
    "color": "#E3000B",
    "setno_from_url": true,
    "fallback_cat": "lego",
-   "brand": "LEGO"
+   "brand": "LEGO",
+   "logo": "/img/shops/legocom.webp",
+   "lw": 120,
+   "lh": 120,
+   "logo_src": 22857
   },
   {
    "id": "skibi",
@@ -419,7 +551,11 @@
    "offer": "483",
    "feed_key": "ap_skibi",
    "color": "#0F766E",
-   "include": "\\| Hračky"
+   "include": "\\| Hračky",
+   "logo": "/img/shops/skibi.webp",
+   "lw": 151,
+   "lh": 120,
+   "logo_src": 23062
   },
   {
    "id": "allegro",
@@ -451,7 +587,11 @@
     "Jellycat"
    ],
    "per_keyword": 2500,
-   "budget": 2700
+   "budget": 2700,
+   "logo": "/img/shops/allegro.webp",
+   "lw": 312,
+   "lh": 120,
+   "logo_src": 22533
   }
  ]
 }

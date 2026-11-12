@@ -162,7 +162,8 @@ def main():
         p["dup"] = name_count[p["nkey"]] > 1
     gone = C.gone_products(products, state, state.get("snap", {}))
 
-    shop_meta = {s["id"]: {"name": s["name"], "color": s.get("color", "#888"), "domain": s["domain"]} for s in shops}
+    shop_meta = {s["id"]: {"name": s["name"], "color": s.get("color", "#888"), "domain": s["domain"],
+                           **({"logo": s["logo"], "lw": s["lw"], "lh": s["lh"]} if s.get("logo") else {})} for s in shops}
     stats = {"products": len(products), "shops": len(present), "offers": sum(len(p["offers"]) for p in products), "updated": TODAY_CZ}
 
     if DIST.exists():
@@ -474,7 +475,7 @@ def product_page(S, p):
     save = ""
     if n > 1 and p["offers"][-1]["price"] > p["price"]:
         save = f' Rozdíl mezi obchody: <b>{R.kc(p["offers"][-1]["price"] - p["price"])}</b>.'
-    bestbox = (f'<div class="best"><div class="best__top">{S.tag(p["price"], "od" if n > 1 else "", big=True)}<div><b>{"Nejlevněji v obchodě" if n > 1 else "V obchodě"} {E(bs["name"])}</b></div>'
+    bestbox = (f'<div class="best"><div class="best__top">{S.tag(p["price"], "od" if n > 1 else "", big=True)}<div class="best__shop">{R.shop_logo(bs)}<b>{"Nejlevněji v obchodě" if n > 1 else "V obchodě"} {E(bs["name"])}</b></div>'
                f'<a class="btn btn--lg" href="{E(best["go"])}" {S.go_attrs(best["shop"])}>Do obchodu</a></div>{low.replace("</p>", save + "</p>", 1) if save else low}</div>')
 
     rows = []
@@ -483,7 +484,7 @@ def product_page(S, p):
         was = f'<s>{R.kc(o["was"])}</s>' if o.get("was") and o["was"] > o["price"] else ""
         diff = f'<small>o {R.kc(o["price"] - p["price"])} dráž</small>' if i else '<small>nejlepší cena</small>' if n > 1 else ""
         rows.append(f'<li class="ticket{" best1" if i == 0 and n > 1 else ""}"><span class="stripe" style="background:{m["color"]}"></span>'
-                    f'<span class="sname"><b>{E(m["name"])}{"<span class=tag-best>nejlevněji</span>" if i == 0 and n > 1 else ""}</b>{diff}</span>'
+                    f'<span class="sname">{R.shop_logo(m)}<span class="stxt"><b>{E(m["name"])}{"<span class=tag-best>nejlevněji</span>" if i == 0 and n > 1 else ""}</b>{diff}</span></span>'
                     f'<span class="tprice">{was}{R.kc(o["price"])}</span><a class="btn{" btn--g" if i else ""}" href="{E(o["go"])}" {S.go_attrs(o["shop"])}>Do obchodu</a></li>')
     offers_html = f'<h2 id="nabidky">{"Ceny v obchodech" if n > 1 else "Kde koupit"}</h2><ul class="offers">{"".join(rows)}</ul>'
 
@@ -818,9 +819,9 @@ def categories_index(S, by_top, by_cat):
 
 def shops_page(S, shops, present, products):
     cnt = Counter(o["shop"] for p in products for o in p["offers"])
-    lis = "".join(f'<li style="--c:{s.get("color", "#888")}"><h3>{E(s["name"])}</h3><p class="muted">{cnt.get(s["id"], 0)} hraček skladem</p><p><a class="lnk" href="https://{s["domain"]}/" rel="nofollow noopener" target="_blank">{E(s["domain"])}</a></p></li>'
+    lis = "".join(f'<li style="--c:{s.get("color", "#888")}">{R.shop_logo(S.shop(s["id"]), big=True)}<h3>{E(s["name"])}</h3><p class="muted">{cnt.get(s["id"], 0)} hraček skladem</p><p><a class="lnk" href="https://{s["domain"]}/" rel="nofollow noopener" target="_blank">{E(s["domain"])}</a></p></li>'
                   for s in shops if s["id"] in present)
-    body = f'<h1>Obchody, které srovnáváme</h1><p class="lead">Ceny a dostupnost bereme z produktových feedů těchto e‑shopů a ceny aktualizujeme každý den, nabídku produktů jednou týdně.</p><ul class="shoplist">{lis}</ul>'
+    body = f'<h1>Obchody, které srovnáváme</h1><p class="lead">Ceny a dostupnost bereme z produktových feedů těchto e‑shopů a ceny aktualizujeme každý den, nabídku produktů jednou týdně.</p><ul class="shoplist">{lis}</ul><p class="muted" style="margin-top:18px;font-size:.88rem">Loga a názvy obchodů patří jejich majitelům a uvádíme je jen k označení obchodu, jehož nabídku porovnáváme. Nejde o oficiální doporučení ani partnerství. Odstranění loga na žádost: <a class="lnk" href="/kontakt/">kontakt</a>.</p>'
     return S.layout("/obchody/", "Obchody s hračkami, které srovnáváme" + SUFFIX, "Seznam českých e‑shopů s hračkami, jejichž ceny Hračkárium srovnává.", body,
                     crumbs=[("Hračkárium", "/"), ("Obchody", "/obchody/")])
 
@@ -903,6 +904,9 @@ def home_page(S, products, by_top, series, lic, gift):
     feat = [L for L in S.landings.values() if L["home"]]
     featured = (f'<section class="sec"><div class="sec__h"><h2>Hledáte nejčastěji</h2></div>' + S.chips([(L["path"], L["h1"], L["n"]) for L in sorted(feat, key=lambda L: -L["n"])[:12]]) + "</section>") if feat else ""
     guides_sec = (f'<section class="sec"><div class="sec__h"><h2>Z blogu</h2><a href="/pruvodce/">Všechny články →</a></div>' + S.chips([(p, g["h1"], 0) for p, g in list(S.guides.items())[:8]]) + "</section>") if getattr(S, "guides", None) else ""
+    cnt = Counter(o["shop"] for p in products for o in p["offers"])
+    logos = [R.shop_logo(S.shop(sid)) for sid, _ in cnt.most_common() if S.shop(sid).get("logo")][:14]
+    shop_strip = (f'<section class="sec"><div class="sec__h"><h2>Obchody, které srovnáváme</h2><a href="/obchody/">Všechny obchody →</a></div><ul class="shopstrip">' + "".join(f"<li>{l}</li>" for l in logos) + "</ul></section>") if len(logos) >= 6 else ""
     row = lambda ps: '<ul class="grid grid--5">' + "".join(S.card(p) for p in ps) + "</ul>"
     body = f"""<section class="hero"><div class="wrap"><div><h1>Hračky za <em>nejlepší cenu</em>, bez běhání po obchodech</h1>
 <p class="lead">Porovnáváme ceny {R.plural(st['products'], 'hračky', 'hraček', 'hraček')} z {st['shops']} českých e‑shopů. Najděte LEGO, deskovku nebo dárek k Vánocům a kupte tam, kde je to nejlevnější.</p>
@@ -913,6 +917,7 @@ def home_page(S, products, by_top, series, lic, gift):
 <section class="sec"><div class="sec__h"><h2>Dárek podle věku</h2><a href="/darky/">Další tipy →</a></div><ul class="ages">{ages}</ul></section>
 <section class="sec"><div class="sec__h"><h2>Nejvíc srovnávané</h2><a href="/kategorie/">Procházet →</a></div>{row(hot)}</section>
 {f'<section class="sec"><div class="sec__h"><h2>Teď ve slevě</h2><a href="/slevy/">Všechny slevy →</a></div>{row(sale)}</section>' if sale else ''}
+{shop_strip}
 {featured}<section class="sec"><div class="sec__h"><h2>LEGO podle řady</h2><a href="/lego/">Všechno LEGO →</a></div>{lego}</section>
 <section class="sec"><div class="sec__h"><h2>Oblíbené postavičky</h2><a href="/postavicky/">Všechny →</a></div>{chars}</section>
 {guides_sec}
