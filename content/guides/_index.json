@@ -782,5 +782,185 @@
   "rules": {
    "offers": 4
   }
+ },
+ {
+  "slug": "jak-slozit-rubikovu-kostku-navod",
+  "h1": "Jak složit Rubikovu kostku 3×3: návod pro začátečníky",
+  "related": [
+   "/spolecenske-hry/hlavolamy/"
+  ],
+  "rules": {
+   "cat": [
+    "spolecenske-hry"
+   ]
+  }
+ },
+ {
+  "slug": "hraci-deka-pro-miminka-jak-vybrat",
+  "h1": "Hrací deka pro miminka: jak vybrat",
+  "related": [
+   "/pro-nejmensi/hraci-deky/",
+   "/pro-nejmensi/"
+  ],
+  "rules": {
+   "cat": [
+    "pro-nejmensi"
+   ]
+  }
+ },
+ {
+  "slug": "houpacka-pro-deti-jak-vybrat",
+  "h1": "Houpačka pro děti: jak vybrat do bytu i na zahradu",
+  "related": [
+   "/venku/zahrada/",
+   "/venku/"
+  ],
+  "rules": {
+   "cat": [
+    "venku"
+   ]
+  }
+ },
+ {
+  "slug": "detska-skluzavka-jak-vybrat",
+  "h1": "Dětská skluzavka: jak vybrat na zahradu i do bytu",
+  "related": [
+   "/venku/zahrada/",
+   "/venku/"
+  ],
+  "rules": {
+   "cat": [
+    "venku"
+   ]
+  }
+ },
+ {
+  "slug": "elektricke-auticko-pro-deti-jak-vybrat",
+  "h1": "Elektrické autíčko pro děti: jak vybrat",
+  "related": [
+   "/venku/zahrada/",
+   "/venku/"
+  ],
+  "rules": {
+   "cat": [
+    "venku"
+   ]
+  }
+ },
+ {
+  "slug": "magneticke-kostky-a-stavebnice-jak-vybrat",
+  "h1": "Magnetické kostky a stavebnice: čím se liší a jak vybrat",
+  "related": [
+   "/stavebnice/",
+   "/lego/"
+  ],
+  "rules": {
+   "cat": [
+    "stavebnice"
+   ]
+  }
+ },
+ {
+  "slug": "funko-pop-co-to-je-a-jak-sbirat",
+  "h1": "Funko Pop: co to je a jak začít sbírat",
+  "related": [
+   "/figurky-a-zviratka/sberatelske/",
+   "/sberatelske-karty/"
+  ],
+  "rules": {
+   "cat": [
+    "figurky-a-zviratka"
+   ]
+  }
+ },
+ {
+  "slug": "zazehlovaci-koralky-navod-a-napady",
+  "h1": "Zažehlovací korálky: návod, žehlení a nápady",
+  "related": [
+   "/kreativni/koralky-a-sperky/",
+   "/kreativni/"
+  ],
+  "rules": {
+   "cat": [
+    "kreativni"
+   ]
+  }
+ },
+ {
+  "slug": "lego-botanicals-jak-vybrat-a-slozit",
+  "h1": "LEGO Botanicals: jak vybrat a co čekat od skládání",
+  "related": [
+   "/lego/",
+   "/lego/botanicals/",
+   "/lego/pro-dospele/"
+  ],
+  "rules": {
+   "cat": [
+    "lego"
+   ]
+  }
+ },
+ {
+  "slug": "jak-poznat-vzacne-pokemon-karty-a-kde-koupit",
+  "h1": "Pokémon karty: jak poznat vzácné a jak nakupovat bezpečně",
+  "related": [
+   "/sberatelske-karty/"
+  ],
+  "rules": {
+   "cat": [
+    "sberatelske-karty"
+   ]
+  }
+ },
+ {
+  "slug": "schleich-figurky-jak-vybirat-a-sbirat",
+  "h1": "Schleich figurky: jak vybírat a sbírat zvířátka a koně",
+  "related": [
+   "/figurky-a-zviratka/",
+   "/figurky-a-zviratka/zviratka/"
+  ],
+  "rules": {
+   "cat": [
+    "figurky-a-zviratka"
+   ]
+  }
+ },
+ {
+  "slug": "dinosauri-hracky-jak-vybrat",
+  "h1": "Dinosauři jako hračky: figurky, stavebnice a hry podle věku",
+  "related": [
+   "/figurky-a-zviratka/dinosauri/",
+   "/stavebnice/"
+  ],
+  "rules": {
+   "cat": [
+    "figurky-a-zviratka"
+   ]
+  }
+ },
+ {
+  "slug": "detske-naradi-a-dilna-jak-vybrat",
+  "h1": "Dětské nářadí a dílna: co vybrat podle věku",
+  "related": [
+   "/hrajeme-si-na/naradi/",
+   "/hrajeme-si-na/"
+  ],
+  "rules": {
+   "cat": [
+    "hrajeme-si-na"
+   ]
+  }
+ },
+ {
+  "slug": "panenky-baby-born-rainbow-high-monster-high-rozdily",
+  "h1": "Baby Born, Rainbow High, Monster High: čím se panenky liší a komu se hodí",
+  "related": [
+   "/panenky/"
+  ],
+  "rules": {
+   "cat": [
+    "panenky"
+   ]
+  }
  }
 ]

@@ -29,7 +29,7 @@ IGNORE = set("pro na do od a s se z ze v ve u k o po za je to jak co kde kdy kol
              "vyprodej darek darky vanocni vanoce tipy napady rok roky roku let lete leta letou leteho letych mesicu mesice rocni miminko miminka miminek holky holka holcicky holcicka "
              "divky kluky kluka kluk chlapce chlapec nejprodavanejsi dospele pravidla navod recenze cz online eshop obchod koupit".split())
 # words that mean the phrase is not about toys we sell (people, food, cosmetics, other shops/brands, adult)
-NOISE = re.compile(r"(kosmetic|kosmetik|makova|salad|red ?bull|douglas|rituals|essence|sephora|lindt|kinder|mixit|balea|caj|cokolad|muze|muz |zeny|zena|erotick|sexual|tereza|petr |kostkova|tesla|portal|stavebnik|veprov|"
+NOISE = re.compile(r"(ford model|kosmetic|kosmetik|makova|salad|red ?bull|douglas|rituals|essence|sephora|lindt|kinder|mixit|balea|caj|cokolad|muze|muz |zeny|zena|erotick|sexual|tereza|petr |kostkova|tesla|portal|stavebnik|veprov|"
                    r"recept|marinad|pepr|v troube|woody|harrelson|lena |salish|mattes|requiem|bazen intex|intex|virivk|free spin|coin master|dlazebni|veprove|marcipan|3d tisk|3d print|3d model|"
                    r"papirove|bazar|museum|store|lego cz|model o|glorious|skoda|modely aut|modely letad|modelova zeleznice|pandora|miyuki|komponenty|f1 ?lego|lego f1|barad|minas|roklinka|dungeons|"
                    r"spike|world cup|kostky jsou|hrac(i)? kostk|dlazebn|tesla|ok hracky|wiki hracky|wiky|daruj|mcdonald|happy meal|bambule|mrakyhracek|pompo|4kids|dracik|maxikov)")
@@ -40,6 +40,9 @@ CATS = {  # stem -> (parent path, category prefix for the rule or None)
     "robot": ("/naucne/roboti-a-programovani/", None), "pokus": ("/naucne/experimenty/", None), "funko": ("/figurky-a-zviratka/sberatelske/", None), "pop figur": ("/figurky-a-zviratka/sberatelske/", None),
     "dinosaur": ("/figurky-a-zviratka/dinosauri/", None), "stavebnic": ("/stavebnice/", ["stavebnice"]), "panenk": ("/panenky/", ["panenky"]), "kuchy": ("/hrajeme-si-na/kuchynky/", None), "figurk": ("/figurky-a-zviratka/", None),
 }
+
+
+SKIP_SLUGS = {"kostky-pravidla", "ford-model-t", "box-na-hracky", "regal-na-hracky", "plysak", "plysaci", "hracky", "lego", "stavebnice", "panenky", "puzzle", "plysove-hracky"}   # too generic or duplicates of a category
 
 
 def stems(text):
@@ -109,6 +112,8 @@ def main():
         if cat:
             rules["cat"] = cat
         h1 = r["phrase"][:1].upper() + r["phrase"][1:]
+        if slugify(r["phrase"]) in SKIP_SLUGS:
+            continue
         rec = {"slug": slugify(r["phrase"]), "h1": h1, "parent": parent, "hubs": [parent], "group": "kw2", "dedupe_all": True, "rules": rules, "min": 8, "index_min": 15,
                "evidence": vol, "intent": r["intent"], "title": f"{h1} – srovnání cen"}
         seen[sig] = rec

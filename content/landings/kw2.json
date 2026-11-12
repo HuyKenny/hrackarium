@@ -221,29 +221,6 @@
   "title": "Lego kočka – srovnání cen"
  },
  {
-  "slug": "plysak",
-  "h1": "Plyšák",
-  "parent": "/plysaci/",
-  "hubs": [
-   "/plysaci/"
-  ],
-  "group": "kw2",
-  "dedupe_all": true,
-  "rules": {
-   "all": [
-    "\\bplys\\w*"
-   ],
-   "cat": [
-    "plysaci"
-   ]
-  },
-  "min": 8,
-  "index_min": 15,
-  "evidence": 6720,
-  "intent": "type",
-  "title": "Plyšák – srovnání cen"
- },
- {
   "slug": "lego-adventni-kalendar",
   "h1": "Lego adventní kalendář",
   "parent": "/lego/",
@@ -612,26 +589,6 @@
   "title": "Deskové hry pro děti – srovnání cen"
  },
  {
-  "slug": "box-na-hracky",
-  "h1": "Box na hračky",
-  "parent": "/kategorie/",
-  "hubs": [
-   "/kategorie/"
-  ],
-  "group": "kw2",
-  "dedupe_all": true,
-  "rules": {
-   "all": [
-    "\\bbox\\w*"
-   ]
-  },
-  "min": 8,
-  "index_min": 15,
-  "evidence": 3900,
-  "intent": "type",
-  "title": "Box na hračky – srovnání cen"
- },
- {
   "slug": "funko-pop-figurky",
   "h1": "Funko pop figurky",
   "parent": "/figurky-a-zviratka/sberatelske/",
@@ -807,26 +764,6 @@
   "evidence": 4220,
   "intent": "type",
   "title": "Autíčko pro děti – srovnání cen"
- },
- {
-  "slug": "regal-na-hracky",
-  "h1": "Regál na hračky",
-  "parent": "/kategorie/",
-  "hubs": [
-   "/kategorie/"
-  ],
-  "group": "kw2",
-  "dedupe_all": true,
-  "rules": {
-   "all": [
-    "\\brega\\w*"
-   ]
-  },
-  "min": 8,
-  "index_min": 15,
-  "evidence": 2490,
-  "intent": "type",
-  "title": "Regál na hračky – srovnání cen"
  },
  {
   "slug": "magneticka-stavebnice-connetix",
@@ -1452,26 +1389,6 @@
   "evidence": 680,
   "intent": "occasion",
   "title": "Pivní adventní kalendář – srovnání cen"
- },
- {
-  "slug": "kostky-pravidla",
-  "h1": "Kostky pravidla",
-  "parent": "/stavebnice/kostky-a-kompatibilni/",
-  "hubs": [
-   "/stavebnice/kostky-a-kompatibilni/"
-  ],
-  "group": "kw2",
-  "dedupe_all": true,
-  "rules": {
-   "all": [
-    "\\bkost\\w*"
-   ]
-  },
-  "min": 8,
-  "index_min": 15,
-  "evidence": 2600,
-  "intent": "type",
-  "title": "Kostky pravidla – srovnání cen"
  },
  {
   "slug": "magneticka-stavebnice-minecraft",
@@ -4675,27 +4592,6 @@
   "title": "Lego fortnite battle bus – srovnání cen"
  },
  {
-  "slug": "ford-model-t",
-  "h1": "Ford model t",
-  "parent": "/kategorie/",
-  "hubs": [
-   "/kategorie/"
-  ],
-  "group": "kw2",
-  "dedupe_all": true,
-  "rules": {
-   "all": [
-    "\\bford\\w*",
-    "\\bmode\\w*"
-   ]
-  },
-  "min": 8,
-  "index_min": 15,
-  "evidence": 1590,
-  "intent": "type",
-  "title": "Ford model t – srovnání cen"
- },
- {
   "slug": "bruder-odtahovka",
   "h1": "Bruder odtahovka",
   "parent": "/znacky/bruder/",
@@ -5094,6 +4990,26 @@
   "evidence": 820,
   "intent": "type",
   "title": "Eduard model – srovnání cen"
+ },
+ {
+  "slug": "kostky-pro-deti",
+  "h1": "Kostky pro děti",
+  "parent": "/stavebnice/kostky-a-kompatibilni/",
+  "hubs": [
+   "/stavebnice/kostky-a-kompatibilni/"
+  ],
+  "group": "kw2",
+  "dedupe_all": true,
+  "rules": {
+   "all": [
+    "\\bkost\\w*"
+   ]
+  },
+  "min": 8,
+  "index_min": 15,
+  "evidence": 1300,
+  "intent": "type",
+  "title": "Kostky pro děti – srovnání cen"
  },
  {
   "slug": "adventni-kalendar-stitch",
@@ -6807,29 +6723,6 @@
   "title": "Kostka petr – srovnání cen"
  },
  {
-  "slug": "plysove-hracky",
-  "h1": "Plyšové hračky",
-  "parent": "/plysaci/",
-  "hubs": [
-   "/plysaci/"
-  ],
-  "group": "kw2",
-  "dedupe_all": true,
-  "rules": {
-   "all": [
-    "\\bplyso\\w*"
-   ],
-   "cat": [
-    "plysaci"
-   ]
-  },
-  "min": 8,
-  "index_min": 15,
-  "evidence": 550,
-  "intent": "feature",
-  "title": "Plyšové hračky – srovnání cen"
- },
- {
   "slug": "rizky-z-panenky",
   "h1": "Řízky z panenky",
   "parent": "/panenky/",
@@ -8381,7 +8274,7 @@
   },
   "min": 8,
   "index_min": 15,
-  "evidence": 410,
+  "evidence": 670,
   "intent": "type",
   "title": "Hračky na zahradu pro děti – srovnání cen"
  },
@@ -15891,6 +15784,116 @@
   "evidence": 130,
   "intent": "type",
   "title": "Sparkys slevový kupon – srovnání cen"
+ },
+ {
+  "slug": "lego-harry-potter-kniha",
+  "h1": "Lego harry potter kniha",
+  "parent": "/lego/",
+  "hubs": [
+   "/lego/"
+  ],
+  "group": "kw2",
+  "dedupe_all": true,
+  "rules": {
+   "all": [
+    "\\blego\\w*",
+    "\\bharr\\w*",
+    "\\bpott\\w*",
+    "\\bknih\\w*"
+   ],
+   "cat": [
+    "lego"
+   ]
+  },
+  "min": 8,
+  "index_min": 15,
+  "evidence": 210,
+  "intent": "type",
+  "title": "Lego harry potter kniha – srovnání cen"
+ },
+ {
+  "slug": "population-pyramid",
+  "h1": "Population pyramid",
+  "parent": "/kategorie/",
+  "hubs": [
+   "/kategorie/"
+  ],
+  "group": "kw2",
+  "dedupe_all": true,
+  "rules": {
+   "all": [
+    "\\bpopulati\\w*",
+    "\\bpyram\\w*"
+   ]
+  },
+  "min": 8,
+  "index_min": 15,
+  "evidence": 390,
+  "intent": "type",
+  "title": "Population pyramid – srovnání cen"
+ },
+ {
+  "slug": "odrazedlo-decathlon",
+  "h1": "Odrážedlo decathlon",
+  "parent": "/venku/odrazedla/",
+  "hubs": [
+   "/venku/odrazedla/"
+  ],
+  "group": "kw2",
+  "dedupe_all": true,
+  "rules": {
+   "all": [
+    "\\bodrazed\\w*",
+    "\\bdecathl\\w*"
+   ]
+  },
+  "min": 8,
+  "index_min": 15,
+  "evidence": 460,
+  "intent": "type",
+  "title": "Odrážedlo decathlon – srovnání cen"
+ },
+ {
+  "slug": "karel-kostka",
+  "h1": "Karel kostka",
+  "parent": "/stavebnice/kostky-a-kompatibilni/",
+  "hubs": [
+   "/stavebnice/kostky-a-kompatibilni/"
+  ],
+  "group": "kw2",
+  "dedupe_all": true,
+  "rules": {
+   "all": [
+    "\\bkare\\w*",
+    "\\bkost\\w*"
+   ]
+  },
+  "min": 8,
+  "index_min": 15,
+  "evidence": 470,
+  "intent": "type",
+  "title": "Karel kostka – srovnání cen"
+ },
+ {
+  "slug": "detske-naradi-na-zahradu",
+  "h1": "Dětské nářadí na zahradu",
+  "parent": "/kategorie/",
+  "hubs": [
+   "/kategorie/"
+  ],
+  "group": "kw2",
+  "dedupe_all": true,
+  "rules": {
+   "all": [
+    "\\bnara\\w*",
+    "\\bzahra\\w*"
+   ]
+  },
+  "min": 8,
+  "index_min": 15,
+  "evidence": 320,
+  "intent": "type",
+  "title": "Dětské nářadí na zahradu – srovnání cen"
  },
  {
   "slug": "hracky-minecraft/stavebnice",
