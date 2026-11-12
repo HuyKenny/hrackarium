@@ -24,6 +24,8 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import catalog as C  # noqa: E402
 import render as R  # noqa: E402
+import studie as ST  # noqa: E402
+import studie_data as SD  # noqa: E402
 import taxonomy as X  # noqa: E402
 import landings as LD  # noqa: E402
 import texts as TX  # noqa: E402
@@ -287,6 +289,12 @@ def main():
         out.page(path, guide_page(S, g, LD.guide_picks(products, g), out.seen), "guides")
     if S.guides:
         paged(out, S, "/pruvodce/", list(S.guides.items()), lambda: guides_index(S, S.guides), "pages", per=BLOG_PER_PAGE)
+
+    # ---------------- data studies (/studie/, content/studies): only aggregates of state["agg"]
+    SITE = {"name": "Hračkárium.cz", "publisher": {"@type": "Organization", "name": "Hračkárium", "url": BASE + "/", "logo": BASE + "/favicon-512.png"}}
+    studies = ST.build(out, S, APP, BASE, SITE, {"black-friday-2026": SD.black_friday}, state.get("agg", {}), SUFFIX, ("Hračkárium", "/"), TODAY, log)
+    if studies:
+        log(f"studies: {studies}")
 
     # ---------------- static pages, search, home, 404
     out.page("/kategorie/", categories_index(S, by_top, by_cat), "pages")

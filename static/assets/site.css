@@ -240,3 +240,13 @@ footer .fine{font-size:.8rem;color:#a9a8c4;margin-top:24px;border-top:1px solid 
 .nf{display:flex;justify-content:space-between;align-items:center;gap:10px;background:var(--sun);border-bottom:2px solid var(--ink);padding:10px 16px;font-weight:600;font-size:.92rem}
 .nf button{border:0;background:none;font:800 1.3rem/1 var(--hd);cursor:pointer;color:var(--ink)}
 .nf-sugg{margin-top:12px}.nf-sugg .chips{margin-bottom:0}
+
+/* ---------- data studies ---------- */
+.study{max-width:760px;margin:28px auto 10px}.study__h{text-align:center;margin-bottom:18px}.study__h h1{margin:.15em 0 .3em}.study__h .lead{font-size:1.08rem;color:var(--ink2);margin:0 auto}
+.kpis{list-style:none;margin:0 0 22px;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.kpis li{border:2px solid var(--ink);border-radius:16px;background:#fff;padding:12px 14px;box-shadow:4px 4px 0 var(--ink)}.kpis b{display:block;font:800 1.7rem/1.1 var(--hd);color:var(--tom-d)}.kpis span{font-size:.85rem;color:var(--ink2)}
+.study__fig{margin:0 0 22px;border:2px solid var(--ink);border-radius:18px;background:#fff;padding:12px}.study__fig figcaption{font-size:.8rem;color:var(--mute);margin-top:6px}
+.schart{width:100%;height:auto;display:block}.sc-l{font:600 12px var(--tx);fill:var(--ink2)}.sc-v{font:800 12px var(--tx);fill:var(--ink)}.sc-b{fill:var(--tom)}
+.sc-line{stroke-width:3;stroke-linejoin:round}.sc-l1{stroke:var(--tom);fill:var(--tom)}.sc-l2{stroke:var(--sky);fill:var(--sky)}.sc-line{fill:none}
+.study h2{margin-top:1.4em}.study p,.study li{color:var(--ink2)}.study__cite{border:2px dashed var(--ink);border-radius:16px;padding:6px 16px 14px;margin:26px 0;background:#fffdf6}
+.study .ct{width:100%;border-collapse:collapse;font-size:.92rem}.study .ct th,.study .ct td{border-bottom:1px solid #d9d8e6;padding:6px 8px;text-align:left}.study .ct th{font-weight:800}

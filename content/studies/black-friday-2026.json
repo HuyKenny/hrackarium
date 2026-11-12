@@ -1,0 +1,63 @@
+{
+ "slug": "black-friday-2026",
+ "publish": "2026-11-24",
+ "title": "Black Friday 2026: kolik slev u hraček je opravdu sleva",
+ "h1": "Black Friday 2026: kolik slev u hraček je opravdu sleva",
+ "desc": "Sledujeme ceny {n} hraček v českých e-shopech od {first}. Podle našich měření má uvedenou slevu {share} % z nich, medián slevy je {med} %.",
+ "lead": "Od {first} sledujeme ceny {n} hraček ve 40 českých e-shopech. K {last} má uvedenou původní cenu a tedy slevu <b>{share} %</b> z nich, medián uvedené slevy je <b>{med} %</b>. {unseen_sentence}",
+ "kpis": [
+  {
+   "label": "hraček v měření",
+   "value": "{n}"
+  },
+  {
+   "label": "má uvedenou slevu",
+   "value": "{share} %"
+  },
+  {
+   "label": "medián uvedené slevy",
+   "value": "{med} %"
+  },
+  {
+   "label": "slev s nevidenou původní cenou",
+   "value": "{unseen} %"
+  }
+ ],
+ "chart_caption": "Podíl produktů s uvedenou původní cenou v čase. Zdroj: Hračkárium.cz, denní měření od {first}.",
+ "sections": [
+  {
+   "h2": "Co jsme zjistili",
+   "html": "<p>Z {n} hraček má {claim} uvedenou původní cenu vyšší než aktuální. Čtvrtina uvedených slev je nižší než {p25} %, čtvrtina vyšší než {p75} %.</p><p>{unseen_sentence} Neznamená to automaticky, že obchod něco zkresluje: původní cena může platit v jiném období, než měříme, nebo jde o doporučenou cenu výrobce. Je to ale důvod porovnat cenu v několika obchodech a podívat se na historii ceny, než se při akci rozhodnete.</p>"
+  },
+  {
+   "h2": "Jak si ohlídat skutečnou slevu",
+   "html": "<ul><li>Porovnejte stejnou hračku ve více obchodech, rozdíl bývá větší než samotná sleva.</li><li>Podívejte se na historii ceny: na stránce produktu ukazujeme nejnižší cenu za posledních 30 dní.</li><li>Sledujte uvedenou slevu u kusů, které znáte z předchozích týdnů, ne u novinek.</li><li>U drahých hraček si cenu uložte několik dní předem a po akci ji porovnejte.</li></ul>"
+  }
+ ],
+ "method": "<p>Každý den stahujeme nabídky českých e-shopů s hračkami a ukládáme cenu a uvedenou původní cenu (pokud ji obchod uvádí). Počítáme jen nabídky, kde je původní cena vyšší než aktuální a sleva nepřesahuje 80 % (vyšší bývá chyba ve zdroji dat). Produkt počítáme jako „s nevidenou původní cenou“, jestliže jeho uvedená původní cena je vyšší než jakákoli cena, kterou jsme u něj za posledních 14 dní pozorovali, a zároveň ho sledujeme alespoň 7 dní. Měření začalo {first}, proto je historie krátká a čísla berte jako orientační. Zveřejňujeme jen souhrnná čísla, ne ceny a jména jednotlivých obchodů. Hračka = nabídka zařazená do našich kategorií hraček.</p>",
+ "quote": "Podle měření Hračkária.cz od {first} má uvedenou slevu {share} % hraček, medián slevy je {med} %.",
+ "faq": [
+  [
+   "Je sleva nad touto hodnotou podvod?",
+   "Ne. Ukazujeme, u kolika slev jsme původní cenu nikdy neviděli. Důvodem může být doporučená cena výrobce nebo starší období, než měříme."
+  ],
+  [
+   "Jak často se čísla aktualizují?",
+   "Každý den při nové aktualizaci cen. Studii doplníme po Black Friday o srovnání cen před akcí a po ní."
+  ],
+  [
+   "Mohu data použít v článku?",
+   "Ano, s uvedením zdroje Hračkárium.cz a odkazu na tuto stránku. CSV je pod licencí CC BY 4.0."
+  ]
+ ],
+ "dataset": {
+  "name": "Uváděné slevy hraček v českých e-shopech (agregovaná denní data)",
+  "description": "Denní agregáty: počet sledovaných hraček, počet s uvedenou původní cenou, medián uvedené slevy a počet slev s původní cenou, kterou jsme za 14 dní neviděli. Zdroj: Hračkárium.cz, měření od {first}.",
+  "variables": [
+   "datum",
+   "produktu",
+   "s_uvedenou_slevou",
+   "median_slevy_procent"
+  ]
+ }
+}
