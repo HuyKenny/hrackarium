@@ -17,3 +17,9 @@ __pycache__/
 tmp/
 content/keywords-*.tsv
 static/img/blog/
+
+# Marketing Miner data (licence: keep out of the public repo; kept in reports/hrackarium/kw-2026-11 of the workspace)
+content/keywords/cache/
+content/keywords/universe.tsv
+content/keywords/backlog.tsv
+content/keywords/seeds.txt
