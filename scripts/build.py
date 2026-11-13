@@ -19,6 +19,7 @@ import sys
 import time
 from collections import Counter, defaultdict
 from datetime import date
+from urllib.parse import quote
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -130,6 +131,73 @@ def price_stats(items):
 
 # ======================================================================= main
 
+GO_JS = r"""(function(){var b=document.body.dataset,q=new URLSearchParams(location.search),u=q.get("u")||"",g=q.get("g")||"",to="",d=[];
+try{d=JSON.parse(b.d)}catch(e){}
+function ok(x){try{var h=new URL(x).hostname;return d.some(function(n){return h===n||h.slice(-n.length-1)==="."+n})}catch(e){return false}}
+if(g){if(ok(g))to=g}else if(u){var t=/^https?:\/\//.test(u)?u:b.h+u;if(ok(t))to=b.p+(b.m==="e"?encodeURIComponent(t):t)+b.s}
+var a=document.getElementById("go");if(to){a.href=to;location.replace(to)}})();
+"""
+
+
+def local_go(products):
+    """Shop links as /go/<shop>/?u=/product-path instead of the raw affiliate deeplink (Kenny 12. 11. 2026: the network
+    links are long and ugly). Each shop has one template, prefix + product URL (+ suffix), read off its own links;
+    /go/<shop>/ is a tiny static page whose script rebuilds the deeplink and redirects (no Worker code, 0 $). An offer
+    whose link does not follow the shop's template keeps its exact link as ?g=. The page redirects only to hosts that
+    the shop's own links use, so /go/ is no open redirect. Returns {shop: template} for the pages."""
+    offers = [o for p in products for o in p["offers"]] + [o for p in products for v in p.get("variants") or [] for o in v.get("offers") or []]
+
+    def split(o):
+        go, url = o.get("go") or "", o.get("url") or ""
+        if not go.startswith("http") or not url.startswith("http"):
+            return None
+        for mode, needle in (("e", quote(url, safe="")), ("r", url)):
+            i = go.find(needle)
+            if i >= 0:
+                suf = go[i + len(needle):]
+                if re.fullmatch(r"&cjsku=[^&]*", suf):      # CJ's optional SKU (reporting only): one template for the shop
+                    suf = ""
+                # CJ rotates five equivalent click hosts; one of them serves every shop's links
+                return re.sub(r"^https://www\.(kqzyfj|tkqlhce|jdoqocy|dpbolvw|anrdoezrs)\.(com|net)/", "https://www.anrdoezrs.net/", go[:i]), suf, mode
+        return None
+    keys, hosts, doms = defaultdict(Counter), defaultdict(Counter), defaultdict(set)
+    for o in offers:
+        k = split(o)
+        if k:
+            keys[o["shop"]][k] += 1
+        if o.get("url", "").startswith("http"):
+            hosts[o["shop"]][re.match(r"https?://[^/?#]+", o["url"]).group(0)] += 1
+        for u in (o.get("go"), o.get("url")):
+            m = re.match(r"https?://([^/?#:]+)", u or "")
+            if m:
+                doms[o["shop"]].add(m.group(1).lower())
+    tpl = {}
+    for sid in set(keys) | set(hosts) | set(doms):
+        k = keys[sid].most_common(1)[0][0] if keys[sid] else ("", "", "r")
+        tpl[sid] = {"p": k[0], "s": k[1], "m": k[2], "h": hosts[sid].most_common(1)[0][0] if hosts[sid] else "", "d": sorted(doms[sid])}
+    for o in offers:
+        t, sid = tpl.get(o["shop"]), o["shop"]
+        k = split(o)
+        if t and k == (t["p"], t["s"], t["m"]):
+            u = o["url"][len(t["h"]):] if t["h"] and o["url"].startswith(t["h"] + "/") else o["url"]
+            o["go"] = f"/go/{sid}/?u=" + quote(u, safe="/-_.~")
+        elif o.get("go", "").startswith("http"):
+            o["go"] = f"/go/{sid}/?g=" + quote(o["go"], safe="")
+    return tpl
+
+
+def go_page(sid, t, name, js_name):
+    dom = t["d"]
+    home = t["h"] or (f"https://{dom[0]}" if dom else "/")
+    return ('<!doctype html><html lang="cs"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
+            '<meta name="robots" content="noindex,nofollow"><title>Přesměrování do obchodu ' + E(name) + '</title>'
+            '<style>body{font:16px/1.5 system-ui,sans-serif;margin:0;display:grid;place-items:center;min-height:90vh;background:#f4efe6;color:#1e2420}'
+            'a{color:#2f5d4c;font-weight:700}</style></head>'
+            f'<body data-p="{E(t["p"])}" data-s="{E(t["s"])}" data-m="{t["m"]}" data-h="{E(t["h"])}" data-d="{E(json.dumps(dom))}">'
+            f'<p>Přesměrováváme vás do obchodu <b>{E(name)}</b>… <a id="go" href="{E(home)}" rel="sponsored nofollow">Pokračovat</a></p>'
+            f'<script src="/assets/{js_name}"></script></body></html>')
+
+
 def main():
     import faulthandler
     faulthandler.dump_traceback_later(int(os.environ.get("HRK_BUILD_WATCHDOG", "1200")), exit=True)   # a hung build prints where it is stuck, then stops
@@ -145,6 +213,7 @@ def main():
     products = C.cluster(offers, rank)
     bad = C.sanity(products)
     products = [p for p in products if p["offers"]]
+    go_tpl = local_go(products)
     new_slugs = C.assign_slugs(products, state)
     C.price_history(products, state)
     C.collect_study_data(products, state)
@@ -182,6 +251,10 @@ def main():
     out.write("assets/" + css_name, css)
     out.write("assets/" + js_name, js)
     S = R.Site(BASE, ENV, GA4, css_name, js_name, shop_meta, stats)
+    go_js = f"go.{hashlib.md5(GO_JS.encode()).hexdigest()[:8]}.js"
+    out.write("assets/" + go_js, GO_JS)
+    for sid, t in go_tpl.items():
+        out.write(f"go/{sid}/index.html", go_page(sid, t, shop_meta.get(sid, {}).get("name", sid), go_js))
     S.nav_ok = {p["cat"].split("/")[0] for p in products}
 
     # ---------------- groupings
@@ -324,7 +397,7 @@ def main():
     out.write("sitemap_index.xml", '<?xml version="1.0" encoding="UTF-8"?><sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
               + "".join(f"<sitemap><loc>{BASE}/{n}</loc><lastmod>{TODAY.isoformat()}</lastmod></sitemap>" for n in sm) + "</sitemapindex>")
     if ENV == "production":
-        out.write("robots.txt", f"User-agent: *\nDisallow: /data/\nDisallow: /hledat/\n\nSitemap: {BASE}/sitemap_index.xml\n")
+        out.write("robots.txt", f"User-agent: *\nDisallow: /data/\nDisallow: /hledat/\nDisallow: /go/\n\nSitemap: {BASE}/sitemap_index.xml\n")
         out.write("llms.txt", llms_txt(stats, by_top, series_pages))
     else:
         out.write("robots.txt", "User-agent: *\nDisallow: /\n")
@@ -343,6 +416,7 @@ def main():
     html_cache = "  Cache-Control: public, max-age=300, stale-while-revalidate=86400\n"
     out.write("_headers", "/assets/*\n  Cache-Control: public, max-age=31536000, immutable\n/fonts/*\n  Cache-Control: public, max-age=31536000, immutable\n"
               "/data/*\n  Cache-Control: public, max-age=3600\n  X-Robots-Tag: noindex\n"
+              "/go/*\n  X-Robots-Tag: noindex, nofollow\n"
               "/img/*\n  Cache-Control: public, max-age=604800, stale-while-revalidate=2592000\n"
               "/favicon*\n  Cache-Control: public, max-age=604800\n"
               "/*.xml\n  Cache-Control: public, max-age=3600\n"
