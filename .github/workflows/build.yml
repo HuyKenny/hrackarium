@@ -14,6 +14,10 @@ on:
         description: "Fetch fresh feeds (off = rebuild from the last saved feeds)"
         type: boolean
         default: true
+      quick:
+        description: "Quick fix: skip the visual, image and SEO checks (the nightly audit still runs them) - for CSS/JS/template/text fixes"
+        type: boolean
+        default: false
       full:
         description: "Full run: also add new and remove vanished products (off = prices only)"
         type: boolean
@@ -74,6 +78,7 @@ jobs:
         env:
           INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
       - name: Visual check (no horizontal scrolling; screenshots as artifact)
+        if: ${{ !(github.event_name == 'workflow_dispatch' && inputs.quick) }}
         continue-on-error: true
         run: |
           npm i --no-save --silent puppeteer-core@23.11.1 >/dev/null
@@ -81,9 +86,11 @@ jobs:
           sleep 2
           CHROME_PATH=$(command -v google-chrome || command -v chromium) node scripts/check_pages.mjs http://localhost:8765 /tmp/shots
       - name: Image check in real Chrome (shop images, CSP, placeholder swaps)
+        if: ${{ !(github.event_name == 'workflow_dispatch' && inputs.quick) }}
         continue-on-error: true
         run: CHROME_PATH=$(command -v google-chrome || command -v chromium) node scripts/check_images.mjs /tmp/shots
       - name: SEO lint (structured data, canonicals, sitemaps, links)
+        if: ${{ !(github.event_name == 'workflow_dispatch' && inputs.quick) }}
         continue-on-error: true      # report only until the first runs are clean; then make it a hard gate
         run: mkdir -p /tmp/shots && python3 scripts/seo_lint.py dist /tmp/shots/seo-report.json
       - name: Upload screenshots
