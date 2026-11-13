@@ -255,5 +255,5 @@ footer .fine{font-size:.8rem;color:#a9a8c4;margin-top:24px;border-top:1px solid 
 .slogo{box-sizing:content-box;background:#fff;border:1px solid #d9d8e6;border-radius:8px;padding:4px 7px;object-fit:contain;flex:none}.slogo--big{padding:6px 10px;margin-bottom:8px;display:block}
 .ticket .sname{flex-direction:row;align-items:center;gap:10px}.ticket .stxt{display:flex;flex-direction:column;line-height:1.2}
 .best__shop{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.shopstrip{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px 12px}.shopstrip .slogo{display:block}
-@media(max-width:720px){.slogo{max-width:96px;height:auto}.slogo--big{max-width:150px}}
+.shopstrip{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(128px,1fr));gap:10px 12px}.shopstrip li{margin:0}.shopstrip .slogo{display:block;box-sizing:border-box;width:100%;max-width:none;height:56px;padding:9px 14px;object-fit:contain}
+@media(max-width:720px){.slogo{max-width:96px;height:auto}.slogo--big{max-width:150px}.shopstrip{grid-template-columns:repeat(auto-fill,minmax(104px,1fr))}.shopstrip .slogo{max-width:none;height:48px;padding:7px 10px}}
