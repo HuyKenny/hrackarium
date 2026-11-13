@@ -32,7 +32,7 @@
   "rules": {
    "all": [
     "\\blego\\w*",
-    "\\bkytk\\w*"
+    "\\bkytky\\w*"
    ],
    "cat": [
     "lego"
@@ -55,7 +55,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bfunk\\w*",
+    "\\bfunko\\w*",
     "\\bpop\\w*"
    ]
   },
@@ -98,7 +98,7 @@
    "all": [
     "\\blego\\w*",
     "\\bstrang\\w*",
-    "\\bthin\\w*"
+    "\\bthing\\w*"
    ],
    "cat": [
     "lego"
@@ -208,7 +208,7 @@
   "rules": {
    "all": [
     "\\blego\\w*",
-    "\\bkock\\w*"
+    "\\bkocka\\w*"
    ],
    "cat": [
     "lego"
@@ -257,7 +257,7 @@
   "rules": {
    "all": [
     "\\brubiko\\w*",
-    "\\bkost\\w*"
+    "\\bkostk\\w*"
    ]
   },
   "min": 8,
@@ -322,7 +322,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bbrud\\w*"
+    "\\bbrude\\w*"
    ]
   },
   "min": 8,
@@ -343,7 +343,7 @@
   "rules": {
    "all": [
     "\\blego\\w*",
-    "\\bbons\\w*"
+    "\\bbonsa\\w*"
    ],
    "cat": [
     "lego"
@@ -366,8 +366,8 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bpuzz\\w*",
-    "\\bfotk\\w*"
+    "\\bpuzzl\\w*",
+    "\\bfotky\\w*"
    ],
    "cat": [
     "puzzle"
@@ -391,7 +391,7 @@
   "rules": {
    "all": [
     "\\bmagnetic\\w*",
-    "\\bkost\\w*"
+    "\\bkostk\\w*"
    ]
   },
   "min": 8,
@@ -460,7 +460,7 @@
   "rules": {
    "all": [
     "\\blego\\w*",
-    "\\bdupl\\w*",
+    "\\bduplo\\w*",
     "\\bvlak\\w*"
    ],
    "cat": [
@@ -505,8 +505,8 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bstit\\w*",
-    "\\bplys\\w*"
+    "\\bstitc\\w*",
+    "\\bplysa\\w*"
    ],
    "cat": [
     "plysaci"
@@ -599,7 +599,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bfunk\\w*",
+    "\\bfunko\\w*",
     "\\bpop\\w*",
     "\\bfigur\\w*"
    ]
@@ -621,10 +621,10 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bfunk\\w*",
+    "\\bfunko\\w*",
     "\\bpop\\w*",
     "\\bstrang\\w*",
-    "\\bthin\\w*"
+    "\\bthing\\w*"
    ]
   },
   "min": 8,
@@ -690,7 +690,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bhrac\\w*",
+    "\\bhraci\\w*",
     "\\bdeka\\w*"
    ],
    "age": [
@@ -802,7 +802,7 @@
   "rules": {
    "all": [
     "\\bminecra\\w*",
-    "\\bkost\\w*"
+    "\\bkostk\\w*"
    ]
   },
   "min": 8,
@@ -843,7 +843,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bhrac\\w*",
+    "\\bhraci\\w*",
     "\\bdeka\\w*"
    ]
   },
@@ -907,7 +907,7 @@
   "rules": {
    "all": [
     "\\bmagnetic\\w*",
-    "\\bkost\\w*",
+    "\\bkostk\\w*",
     "\\bminecra\\w*"
    ]
   },
@@ -928,7 +928,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bchev\\w*",
+    "\\bcheva\\w*",
     "\\bstavebni\\w*"
    ],
    "cat": [
@@ -1228,8 +1228,8 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bbrud\\w*",
-    "\\bhasi\\w*"
+    "\\bbrude\\w*",
+    "\\bhasic\\w*"
    ]
   },
   "min": 8,
@@ -1249,7 +1249,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bbrud\\w*",
+    "\\bbrude\\w*",
     "\\btrakt\\w*"
    ]
   },
@@ -1313,7 +1313,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\blero\\w*",
+    "\\bleros\\w*",
     "\\badvent\\w*",
     "\\bkalend\\w*"
    ]
@@ -1323,26 +1323,6 @@
   "evidence": 800,
   "intent": "occasion",
   "title": "Leros adventní kalendář – srovnání cen"
- },
- {
-  "slug": "detske-naradi",
-  "h1": "Dětské nářadí",
-  "parent": "/kategorie/",
-  "hubs": [
-   "/kategorie/"
-  ],
-  "group": "kw2",
-  "dedupe_all": true,
-  "rules": {
-   "all": [
-    "\\bnara\\w*"
-   ]
-  },
-  "min": 8,
-  "index_min": 15,
-  "evidence": 1470,
-  "intent": "type",
-  "title": "Dětské nářadí – srovnání cen"
  },
  {
   "slug": "kapybara-plysak",
@@ -1356,7 +1336,7 @@
   "rules": {
    "all": [
     "\\bkapyba\\w*",
-    "\\bplys\\w*"
+    "\\bplysa\\w*"
    ],
    "cat": [
     "plysaci"
@@ -1379,7 +1359,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bpivn\\w*",
+    "\\bpivni\\w*",
     "\\badvent\\w*",
     "\\bkalend\\w*"
    ]
@@ -1427,7 +1407,7 @@
   "rules": {
    "all": [
     "\\blego\\w*",
-    "\\bdupl\\w*",
+    "\\bduplo\\w*",
     "\\bzvirat\\w*"
    ],
    "cat": [
@@ -1451,7 +1431,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\brobl\\w*"
+    "\\broblo\\w*"
    ]
   },
   "min": 8,
@@ -1472,7 +1452,7 @@
   "rules": {
    "all": [
     "\\bdr\\w*",
-    "\\boetk\\w*",
+    "\\boetke\\w*",
     "\\badvent\\w*",
     "\\bkalend\\w*"
    ]
@@ -1494,7 +1474,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bbrud\\w*",
+    "\\bbrude\\w*",
     "\\bauta\\w*"
    ]
   },
@@ -1516,7 +1496,7 @@
   "rules": {
    "all": [
     "\\bstrang\\w*",
-    "\\bthin\\w*",
+    "\\bthing\\w*",
     "\\bfigur\\w*"
    ]
   },
@@ -1537,7 +1517,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bgara\\w*",
+    "\\bgaraz\\w*",
     "\\bautic\\w*"
    ]
   },
@@ -1559,7 +1539,7 @@
   "rules": {
    "all": [
     "\\bstrang\\w*",
-    "\\bthin\\w*",
+    "\\bthing\\w*",
     "\\badvent\\w*",
     "\\bkalend\\w*"
    ]
@@ -1581,7 +1561,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bvodn\\w*",
+    "\\bvodni\\w*",
     "\\bskluzav\\w*"
    ]
   },
@@ -1647,7 +1627,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bgriz\\w*",
+    "\\bgrizl\\w*",
     "\\badvent\\w*",
     "\\bkalend\\w*"
    ]
@@ -1670,7 +1650,7 @@
   "rules": {
    "all": [
     "\\bcba\\w*",
-    "\\beduc\\w*"
+    "\\beduca\\w*"
    ]
   },
   "min": 8,
@@ -1802,7 +1782,7 @@
   "rules": {
    "all": [
     "\\bmolitano\\w*",
-    "\\bkost\\w*"
+    "\\bkostk\\w*"
    ]
   },
   "min": 8,
@@ -1822,7 +1802,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bboff\\w*",
+    "\\bboffi\\w*",
     "\\bstavebni\\w*"
    ],
    "cat": [
@@ -1846,8 +1826,8 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\blabu\\w*",
-    "\\bplys\\w*"
+    "\\blabub\\w*",
+    "\\bplysa\\w*"
    ],
    "cat": [
     "plysaci"
@@ -1870,8 +1850,8 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bbrud\\w*",
-    "\\bjera\\w*"
+    "\\bbrude\\w*",
+    "\\bjerab\\w*"
    ]
   },
   "min": 8,
@@ -1912,7 +1892,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bpoku\\w*"
+    "\\bpokus\\w*"
    ]
   },
   "min": 8,
@@ -2001,7 +1981,7 @@
    "all": [
     "\\bautodra\\w*",
     "\\bhot\\w*",
-    "\\bwhee\\w*"
+    "\\bwheel\\w*"
    ]
   },
   "min": 8,
@@ -2021,7 +2001,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\brebo\\w*",
+    "\\brebor\\w*",
     "\\bpanen\\w*"
    ],
    "cat": [
@@ -2045,8 +2025,8 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bkost\\w*",
-    "\\bskol\\w*"
+    "\\bkostk\\w*",
+    "\\bskola\\w*"
    ]
   },
   "min": 8,
@@ -2090,7 +2070,7 @@
     "\\bpop\\w*",
     "\\bfigur\\w*",
     "\\bstrang\\w*",
-    "\\bthin\\w*"
+    "\\bthing\\w*"
    ]
   },
   "min": 8,
@@ -2111,7 +2091,7 @@
   "rules": {
    "all": [
     "\\bjellyc\\w*",
-    "\\bplys\\w*"
+    "\\bplysa\\w*"
    ],
    "cat": [
     "plysaci"
@@ -2136,8 +2116,8 @@
    "all": [
     "\\badvent\\w*",
     "\\bkalend\\w*",
-    "\\bharr\\w*",
-    "\\bpott\\w*"
+    "\\bharry\\w*",
+    "\\bpotte\\w*"
    ]
   },
   "min": 8,
@@ -2158,7 +2138,7 @@
   "rules": {
    "all": [
     "\\bskluzav\\w*",
-    "\\bbaze\\w*"
+    "\\bbazen\\w*"
    ]
   },
   "min": 8,
@@ -2200,7 +2180,7 @@
   "rules": {
    "all": [
     "\\bdreve\\w*",
-    "\\bkost\\w*"
+    "\\bkostk\\w*"
    ]
   },
   "min": 8,
@@ -2243,7 +2223,7 @@
   "rules": {
    "all": [
     "\\bmagnetic\\w*",
-    "\\bpuzz\\w*"
+    "\\bpuzzl\\w*"
    ],
    "cat": [
     "puzzle"
@@ -2267,7 +2247,7 @@
   "rules": {
    "all": [
     "\\bpokem\\w*",
-    "\\bplys\\w*"
+    "\\bplysa\\w*"
    ],
    "cat": [
     "plysaci"
@@ -2310,7 +2290,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\brobo\\w*"
+    "\\brobot\\w*"
    ]
   },
   "min": 8,
@@ -2400,7 +2380,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bprod\\w*",
+    "\\bprode\\w*",
     "\\bstavebni\\w*",
     "\\bpozem\\w*"
    ]
@@ -2448,7 +2428,7 @@
   "rules": {
    "all": [
     "\\bplastiko\\w*",
-    "\\bmode\\w*"
+    "\\bmodel\\w*"
    ]
   },
   "min": 8,
@@ -2490,8 +2470,8 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bvelk\\w*",
-    "\\bplys\\w*"
+    "\\bvelky\\w*",
+    "\\bplysa\\w*"
    ],
    "cat": [
     "plysaci"
@@ -2514,8 +2494,8 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bzulo\\w*",
-    "\\bkost\\w*"
+    "\\bzulov\\w*",
+    "\\bkostk\\w*"
    ]
   },
   "min": 8,
@@ -2537,7 +2517,7 @@
    "all": [
     "\\badvent\\w*",
     "\\bkalend\\w*",
-    "\\bsazk\\w*"
+    "\\bsazka\\w*"
    ]
   },
   "min": 8,
@@ -2557,8 +2537,8 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\blitt\\w*",
-    "\\bdutc\\w*",
+    "\\blittl\\w*",
+    "\\bdutch\\w*",
     "\\bpanen\\w*"
    ],
    "cat": [
@@ -2582,8 +2562,8 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bcern\\w*",
-    "\\bkost\\w*"
+    "\\bcerna\\w*",
+    "\\bkostk\\w*"
    ]
   },
   "min": 8,
@@ -2604,7 +2584,7 @@
   "rules": {
    "all": [
     "\\blego\\w*",
-    "\\bdupl\\w*",
+    "\\bduplo\\w*",
     "\\bpodloz\\w*"
    ],
    "cat": [
@@ -2651,7 +2631,7 @@
   "rules": {
    "all": [
     "\\bstavebni\\w*",
-    "\\bkapl\\w*"
+    "\\bkapla\\w*"
    ],
    "cat": [
     "stavebnice"
@@ -2676,7 +2656,7 @@
    "all": [
     "\\bkaret\\w*",
     "\\bhry\\w*",
-    "\\bzdar\\w*"
+    "\\bzdarm\\w*"
    ]
   },
   "min": 8,
@@ -2697,7 +2677,7 @@
   "rules": {
    "all": [
     "\\bpanen\\w*",
-    "\\bakor\\w*"
+    "\\bakord\\w*"
    ],
    "cat": [
     "panenky"
@@ -2720,8 +2700,8 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bmatt\\w*",
-    "\\bbric\\w*",
+    "\\bmatte\\w*",
+    "\\bbrick\\w*",
     "\\bshop\\w*"
    ]
   },
@@ -2743,7 +2723,7 @@
   "rules": {
    "all": [
     "\\bortopedic\\w*",
-    "\\bpuzz\\w*"
+    "\\bpuzzl\\w*"
    ],
    "cat": [
     "puzzle"
@@ -2790,9 +2770,9 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bpuzz\\w*",
+    "\\bpuzzl\\w*",
     "\\bvlast\\w*",
-    "\\bfotk\\w*"
+    "\\bfotko\\w*"
    ],
    "cat": [
     "puzzle"
@@ -2816,7 +2796,7 @@
   "rules": {
    "all": [
     "\\bhot\\w*",
-    "\\bwhee\\w*",
+    "\\bwheel\\w*",
     "\\bautic\\w*"
    ]
   },
@@ -2837,7 +2817,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bmode\\w*",
+    "\\bmodel\\w*",
     "\\bletad\\w*"
    ]
   },
@@ -2882,7 +2862,7 @@
   "rules": {
    "all": [
     "\\btop\\w*",
-    "\\bmode\\w*"
+    "\\bmodel\\w*"
    ]
   },
   "min": 8,
@@ -2903,7 +2883,7 @@
   "rules": {
    "all": [
     "\\bdnd\\w*",
-    "\\bkost\\w*"
+    "\\bkostk\\w*"
    ]
   },
   "min": 8,
@@ -2924,7 +2904,7 @@
   "rules": {
    "all": [
     "\\blego\\w*",
-    "\\bavat\\w*"
+    "\\bavata\\w*"
    ],
    "cat": [
     "lego"
@@ -2948,7 +2928,7 @@
   "rules": {
    "all": [
     "\\bkolobez\\w*",
-    "\\bkost\\w*"
+    "\\bkostk\\w*"
    ]
   },
   "min": 8,
@@ -2989,7 +2969,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bkrte\\w*",
+    "\\bkrtek\\w*",
     "\\bautic\\w*"
    ]
   },
@@ -3011,8 +2991,8 @@
   "rules": {
    "all": [
     "\\blego\\w*",
-    "\\bdupl\\w*",
-    "\\bkole\\w*"
+    "\\bduplo\\w*",
+    "\\bkolej\\w*"
    ],
    "cat": [
     "lego"
@@ -3058,7 +3038,7 @@
   "rules": {
    "all": [
     "\\bkoral\\w*",
-    "\\bprah\\w*"
+    "\\bpraha\\w*"
    ]
   },
   "min": 8,
@@ -3101,7 +3081,7 @@
    "all": [
     "\\blego\\w*",
     "\\bminecra\\w*",
-    "\\bmovi\\w*"
+    "\\bmovie\\w*"
    ],
    "cat": [
     "lego"
@@ -3125,7 +3105,7 @@
   "rules": {
    "all": [
     "\\bkrtec\\w*",
-    "\\bplys\\w*"
+    "\\bplysa\\w*"
    ],
    "cat": [
     "plysaci"
@@ -3150,8 +3130,8 @@
    "all": [
     "\\bmagnetic\\w*",
     "\\bstavebni\\w*",
-    "\\bmagn\\w*",
-    "\\btile\\w*"
+    "\\bmagna\\w*",
+    "\\btiles\\w*"
    ],
    "cat": [
     "stavebnice"
@@ -3267,8 +3247,8 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\byank\\w*",
-    "\\bcand\\w*",
+    "\\byanke\\w*",
+    "\\bcandl\\w*",
     "\\badvent\\w*",
     "\\bkalend\\w*"
    ]
@@ -3336,7 +3316,7 @@
   "rules": {
    "all": [
     "\\bnahriva\\w*",
-    "\\bplys\\w*"
+    "\\bplysa\\w*"
    ],
    "cat": [
     "plysaci"
@@ -3360,7 +3340,7 @@
   "rules": {
    "all": [
     "\\bpanen\\w*",
-    "\\bgril\\w*"
+    "\\bgrilu\\w*"
    ],
    "cat": [
     "panenky"
@@ -3383,7 +3363,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bacti\\w*"
+    "\\bactio\\w*"
    ]
   },
   "min": 8,
@@ -3406,7 +3386,7 @@
     "\\blego\\w*",
     "\\bninja\\w*",
     "\\bdrago\\w*",
-    "\\brisi\\w*"
+    "\\brisin\\w*"
    ],
    "cat": [
     "lego"
@@ -3478,8 +3458,8 @@
   "rules": {
    "all": [
     "\\blego\\w*",
-    "\\bdupl\\w*",
-    "\\bblue\\w*"
+    "\\bduplo\\w*",
+    "\\bbluey\\w*"
    ],
    "cat": [
     "lego"
@@ -3502,7 +3482,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bcins\\w*",
+    "\\bcinsk\\w*",
     "\\bhoupac\\w*"
    ]
   },
@@ -3567,7 +3547,7 @@
   "rules": {
    "all": [
     "\\bvitri\\w*",
-    "\\bmode\\w*"
+    "\\bmodel\\w*"
    ]
   },
   "min": 8,
@@ -3588,7 +3568,7 @@
   "rules": {
    "all": [
     "\\bminecra\\w*",
-    "\\bplys\\w*"
+    "\\bplysa\\w*"
    ],
    "cat": [
     "plysaci"
@@ -3656,7 +3636,7 @@
   "rules": {
    "all": [
     "\\blego\\w*",
-    "\\bdupl\\w*",
+    "\\bduplo\\w*",
     "\\bbox\\w*"
    ],
    "cat": [
@@ -3681,7 +3661,7 @@
   "rules": {
    "all": [
     "\\blepid\\w*",
-    "\\bpuzz\\w*"
+    "\\bpuzzl\\w*"
    ],
    "cat": [
     "puzzle"
@@ -3748,8 +3728,8 @@
   "rules": {
    "all": [
     "\\blego\\w*",
-    "\\bdupl\\w*",
-    "\\bhasi\\w*"
+    "\\bduplo\\w*",
+    "\\bhasic\\w*"
    ],
    "cat": [
     "lego"
@@ -3792,8 +3772,8 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bkost\\w*",
-    "\\bhere\\w*"
+    "\\bkostk\\w*",
+    "\\bherec\\w*"
    ]
   },
   "min": 8,
@@ -3815,7 +3795,7 @@
    "all": [
     "\\bgabin\\w*",
     "\\bkouzel\\w*",
-    "\\bdome\\w*"
+    "\\bdomek\\w*"
    ]
   },
   "min": 8,
@@ -3883,7 +3863,7 @@
     "\\bwhat\\w*",
     "\\bis\\w*",
     "\\bdark\\w*",
-    "\\bmatt\\w*"
+    "\\bmatte\\w*"
    ]
   },
   "min": 8,
@@ -3903,8 +3883,8 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bmode\\w*",
-    "\\balad\\w*"
+    "\\bmodel\\w*",
+    "\\baladi\\w*"
    ]
   },
   "min": 8,
@@ -3924,8 +3904,8 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\breve\\w*",
-    "\\bmode\\w*"
+    "\\brevel\\w*",
+    "\\bmodel\\w*"
    ]
   },
   "min": 8,
@@ -3945,8 +3925,8 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bmuff\\w*",
-    "\\bpuzz\\w*"
+    "\\bmuffi\\w*",
+    "\\bpuzzl\\w*"
    ],
    "cat": [
     "puzzle"
@@ -3993,7 +3973,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bmode\\w*",
+    "\\bmodel\\w*",
     "\\bbiz\\w*"
    ]
   },
@@ -4036,7 +4016,7 @@
   "rules": {
    "all": [
     "\\bhrad\\w*",
-    "\\bkost\\w*"
+    "\\bkostk\\w*"
    ]
   },
   "min": 8,
@@ -4082,8 +4062,8 @@
   "rules": {
    "all": [
     "\\blego\\w*",
-    "\\bharr\\w*",
-    "\\bpott\\w*",
+    "\\bharry\\w*",
+    "\\bpotte\\w*",
     "\\bbradavi\\w*"
    ],
    "cat": [
@@ -4108,8 +4088,8 @@
   "rules": {
    "all": [
     "\\blego\\w*",
-    "\\bdupl\\w*",
-    "\\bpepp\\w*"
+    "\\bduplo\\w*",
+    "\\bpeppa\\w*"
    ],
    "cat": [
     "lego"
@@ -4200,7 +4180,7 @@
    "all": [
     "\\bgabin\\w*",
     "\\bkouzel\\w*",
-    "\\bdome\\w*",
+    "\\bdomek\\w*",
     "\\bfigur\\w*"
    ]
   },
@@ -4222,8 +4202,8 @@
   "rules": {
    "all": [
     "\\bodrazed\\w*",
-    "\\bfunn\\w*",
-    "\\bwhee\\w*"
+    "\\bfunny\\w*",
+    "\\bwheel\\w*"
    ]
   },
   "min": 8,
@@ -4243,8 +4223,8 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bpeno\\w*",
-    "\\bpuzz\\w*",
+    "\\bpenov\\w*",
+    "\\bpuzzl\\w*",
     "\\bzem\\w*"
    ],
    "cat": [
@@ -4313,8 +4293,8 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bplys\\w*",
-    "\\bkock\\w*"
+    "\\bplysa\\w*",
+    "\\bkocka\\w*"
    ],
    "cat": [
     "plysaci"
@@ -4337,9 +4317,9 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bhell\\w*",
-    "\\bkitt\\w*",
-    "\\bplys\\w*"
+    "\\bhello\\w*",
+    "\\bkitty\\w*",
+    "\\bplysa\\w*"
    ],
    "cat": [
     "plysaci"
@@ -4363,8 +4343,8 @@
   "rules": {
    "all": [
     "\\bstrang\\w*",
-    "\\bthin\\w*",
-    "\\bpuzz\\w*"
+    "\\bthing\\w*",
+    "\\bpuzzl\\w*"
    ],
    "cat": [
     "puzzle"
@@ -4387,7 +4367,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bmatt\\w*",
+    "\\bmatte\\w*",
     "\\bbocel\\w*"
    ]
   },
@@ -4409,7 +4389,7 @@
   "rules": {
    "all": [
     "\\bgfs\\w*",
-    "\\bmode\\w*"
+    "\\bmodel\\w*"
    ]
   },
   "min": 8,
@@ -4430,7 +4410,7 @@
   "rules": {
    "all": [
     "\\biq\\w*",
-    "\\bpuzz\\w*"
+    "\\bpuzzl\\w*"
    ],
    "cat": [
     "puzzle"
@@ -4478,7 +4458,7 @@
   "rules": {
    "all": [
     "\\bdemogorg\\w*",
-    "\\bplys\\w*"
+    "\\bplysa\\w*"
    ],
    "cat": [
     "plysaci"
@@ -4501,8 +4481,8 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bmagn\\w*",
-    "\\btile\\w*",
+    "\\bmagna\\w*",
+    "\\btiles\\w*",
     "\\bstavebni\\w*"
    ],
    "cat": [
@@ -4551,7 +4531,7 @@
   "rules": {
    "all": [
     "\\blego\\w*",
-    "\\bspee\\w*",
+    "\\bspeed\\w*",
     "\\bchampio\\w*",
     "\\bf1\\w*"
    ],
@@ -4578,7 +4558,7 @@
    "all": [
     "\\blego\\w*",
     "\\bfortni\\w*",
-    "\\bbatt\\w*",
+    "\\bbattl\\w*",
     "\\bbus\\w*"
    ],
    "cat": [
@@ -4602,7 +4582,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bbrud\\w*",
+    "\\bbrude\\w*",
     "\\bodtahov\\w*"
    ]
   },
@@ -4643,7 +4623,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bkniz\\w*",
+    "\\bknizn\\w*",
     "\\badvent\\w*",
     "\\bkalend\\w*"
    ]
@@ -4667,7 +4647,7 @@
    "all": [
     "\\blego\\w*",
     "\\bcity\\w*",
-    "\\bkole\\w*"
+    "\\bkolej\\w*"
    ],
    "cat": [
     "lego"
@@ -4760,9 +4740,9 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bvzac\\w*",
+    "\\bvzacn\\w*",
     "\\bpokem\\w*",
-    "\\bkart\\w*"
+    "\\bkarty\\w*"
    ]
   },
   "min": 8,
@@ -4782,10 +4762,10 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bkdyb\\w*",
+    "\\bkdyby\\w*",
     "\\btady\\w*",
     "\\bbyla\\w*",
-    "\\btako\\w*",
+    "\\btakov\\w*",
     "\\bpanen\\w*",
     "\\btext\\w*"
    ],
@@ -4835,7 +4815,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bbrud\\w*",
+    "\\bbrude\\w*",
     "\\bpolicej\\w*",
     "\\bauto\\w*"
    ]
@@ -4898,8 +4878,8 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bartu\\w*",
-    "\\bmode\\w*"
+    "\\bartur\\w*",
+    "\\bmodel\\w*"
    ]
   },
   "min": 8,
@@ -4981,8 +4961,8 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bedua\\w*",
-    "\\bmode\\w*"
+    "\\beduar\\w*",
+    "\\bmodel\\w*"
    ]
   },
   "min": 8,
@@ -5002,7 +4982,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bkost\\w*"
+    "\\bkostk\\w*"
    ]
   },
   "min": 8,
@@ -5024,7 +5004,7 @@
    "all": [
     "\\badvent\\w*",
     "\\bkalend\\w*",
-    "\\bstit\\w*"
+    "\\bstitc\\w*"
    ]
   },
   "min": 8,
@@ -5090,9 +5070,9 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bpuzz\\w*",
-    "\\bharr\\w*",
-    "\\bpott\\w*"
+    "\\bpuzzl\\w*",
+    "\\bharry\\w*",
+    "\\bpotte\\w*"
    ],
    "cat": [
     "puzzle"
@@ -5122,7 +5102,7 @@
   },
   "min": 8,
   "index_min": 15,
-  "evidence": 320,
+  "evidence": 440,
   "intent": "type",
   "title": "Autodráha carrera go – srovnání cen"
  },
@@ -5180,7 +5160,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bstav\\w*",
+    "\\bstavb\\w*",
     "\\bbez\\w*",
     "\\bstavebni\\w*",
     "\\bpovole\\w*"
@@ -5204,8 +5184,8 @@
   "rules": {
    "all": [
     "\\bprasat\\w*",
-    "\\bpepp\\w*",
-    "\\bplys\\w*"
+    "\\bpeppa\\w*",
+    "\\bplysa\\w*"
    ],
    "cat": [
     "plysaci"
@@ -5253,9 +5233,9 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bpenn\\w*",
+    "\\bpenny\\w*",
     "\\blane\\w*",
-    "\\bmode\\w*"
+    "\\bmodel\\w*"
    ]
   },
   "min": 8,
@@ -5276,7 +5256,7 @@
   "rules": {
    "all": [
     "\\bvolkswag\\w*",
-    "\\bmode\\w*"
+    "\\bmodel\\w*"
    ]
   },
   "min": 8,
@@ -5298,7 +5278,7 @@
    "all": [
     "\\badvent\\w*",
     "\\bkalend\\w*",
-    "\\bknih\\w*"
+    "\\bknihy\\w*"
    ]
   },
   "min": 8,
@@ -5319,7 +5299,7 @@
   "rules": {
    "all": [
     "\\blego\\w*",
-    "\\bdupl\\w*",
+    "\\bduplo\\w*",
     "\\bdomec\\w*"
    ],
    "cat": [
@@ -5344,7 +5324,7 @@
   "rules": {
    "all": [
     "\\bstavebni\\w*",
-    "\\bgeom\\w*"
+    "\\bgeoma\\w*"
    ],
    "cat": [
     "stavebnice"
@@ -5368,7 +5348,7 @@
   "rules": {
    "all": [
     "\\bdoktors\\w*",
-    "\\bkufr\\w*"
+    "\\bkufri\\w*"
    ]
   },
   "min": 8,
@@ -5409,7 +5389,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bbrud\\w*",
+    "\\bbrude\\w*",
     "\\bkomba\\w*"
    ]
   },
@@ -5431,7 +5411,7 @@
   "rules": {
    "all": [
     "\\blego\\w*",
-    "\\bdupl\\w*",
+    "\\bduplo\\w*",
     "\\bzvira\\w*"
    ],
    "cat": [
@@ -5480,7 +5460,7 @@
   "rules": {
    "all": [
     "\\bkia\\w*",
-    "\\bmode\\w*"
+    "\\bmodel\\w*"
    ]
   },
   "min": 8,
@@ -5501,7 +5481,7 @@
   "rules": {
    "all": [
     "\\bbox\\w*",
-    "\\boffi\\w*",
+    "\\boffic\\w*",
     "\\bmojo\\w*"
    ]
   },
@@ -5523,7 +5503,7 @@
   "rules": {
    "all": [
     "\\bdreve\\w*",
-    "\\bpuzz\\w*"
+    "\\bpuzzl\\w*"
    ],
    "cat": [
     "puzzle"
@@ -5593,8 +5573,8 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bcern\\w*",
-    "\\bkost\\w*",
+    "\\bcerna\\w*",
+    "\\bkostk\\w*",
     "\\bostra\\w*"
    ]
   },
@@ -5669,7 +5649,7 @@
   "rules": {
    "all": [
     "\\bmtb\\w*",
-    "\\bmode\\w*"
+    "\\bmodel\\w*"
    ]
   },
   "min": 8,
@@ -5738,8 +5718,8 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bastr\\w*",
-    "\\bmode\\w*"
+    "\\bastra\\w*",
+    "\\bmodel\\w*"
    ]
   },
   "min": 8,
@@ -5760,7 +5740,7 @@
   "rules": {
    "all": [
     "\\bucitel\\w*",
-    "\\bskol\\w*"
+    "\\bskolk\\w*"
    ]
   },
   "min": 8,
@@ -5780,7 +5760,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bhrac\\w*",
+    "\\bhraci\\w*",
     "\\bdeka\\w*",
     "\\bhrazd\\w*"
    ]
@@ -5848,8 +5828,8 @@
   "rules": {
    "all": [
     "\\brubiko\\w*",
-    "\\bkost\\w*",
-    "\\bpost\\w*"
+    "\\bkostk\\w*",
+    "\\bpostu\\w*"
    ]
   },
   "min": 8,
@@ -5870,8 +5850,8 @@
   "rules": {
    "all": [
     "\\bpokem\\w*",
-    "\\bkart\\w*",
-    "\\bener\\w*"
+    "\\bkarty\\w*",
+    "\\benerg\\w*"
    ]
   },
   "min": 8,
@@ -5892,8 +5872,8 @@
   "rules": {
    "all": [
     "\\blangweil\\w*",
-    "\\bmode\\w*",
-    "\\bprah\\w*"
+    "\\bmodel\\w*",
+    "\\bprahy\\w*"
    ]
   },
   "min": 8,
@@ -5914,7 +5894,7 @@
   "rules": {
    "all": [
     "\\bnumeric\\w*",
-    "\\bmode\\w*"
+    "\\bmodel\\w*"
    ]
   },
   "min": 8,
@@ -5935,7 +5915,7 @@
   "rules": {
    "all": [
     "\\bcar\\w*",
-    "\\bmode\\w*",
+    "\\bmodel\\w*",
     "\\bkit\\w*"
    ]
   },
@@ -5957,7 +5937,7 @@
   "rules": {
    "all": [
     "\\bhra\\w*",
-    "\\bkost\\w*"
+    "\\bkostk\\w*"
    ]
   },
   "min": 8,
@@ -5997,8 +5977,8 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bjigs\\w*",
-    "\\bpuzz\\w*"
+    "\\bjigsa\\w*",
+    "\\bpuzzl\\w*"
    ],
    "cat": [
     "puzzle"
@@ -6021,8 +6001,8 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bjigi\\w*",
-    "\\bpuzz\\w*"
+    "\\bjigid\\w*",
+    "\\bpuzzl\\w*"
    ],
    "cat": [
     "puzzle"
@@ -6055,27 +6035,6 @@
   "title": "Letadlo hračka – srovnání cen"
  },
  {
-  "slug": "detska-sada-naradi",
-  "h1": "Dětská sada nářadí",
-  "parent": "/kategorie/",
-  "hubs": [
-   "/kategorie/"
-  ],
-  "group": "kw2",
-  "dedupe_all": true,
-  "rules": {
-   "all": [
-    "\\bsada\\w*",
-    "\\bnara\\w*"
-   ]
-  },
-  "min": 8,
-  "index_min": 15,
-  "evidence": 380,
-  "intent": "type",
-  "title": "Dětská sada nářadí – srovnání cen"
- },
- {
   "slug": "bruder-policie",
   "h1": "Bruder policie",
   "parent": "/znacky/bruder/",
@@ -6086,7 +6045,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bbrud\\w*",
+    "\\bbrude\\w*",
     "\\bpolic\\w*"
    ]
   },
@@ -6129,7 +6088,7 @@
   "rules": {
    "all": [
     "\\bkokoso\\w*",
-    "\\bkost\\w*"
+    "\\bkostk\\w*"
    ]
   },
   "min": 8,
@@ -6149,7 +6108,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bhrac\\w*",
+    "\\bhraci\\w*",
     "\\bdeka\\w*",
     "\\bhrazdick\\w*"
    ]
@@ -6180,26 +6139,6 @@
   "evidence": 730,
   "intent": "type",
   "title": "Houpačka kruh – srovnání cen"
- },
- {
-  "slug": "organizer-na-hracky",
-  "h1": "Organizér na hračky",
-  "parent": "/kategorie/",
-  "hubs": [
-   "/kategorie/"
-  ],
-  "group": "kw2",
-  "dedupe_all": true,
-  "rules": {
-   "all": [
-    "\\borganiz\\w*"
-   ]
-  },
-  "min": 8,
-  "index_min": 15,
-  "evidence": 630,
-  "intent": "type",
-  "title": "Organizér na hračky – srovnání cen"
  },
  {
   "slug": "lego-star-wars-casopis",
@@ -6240,7 +6179,7 @@
    "all": [
     "\\bkaret\\w*",
     "\\bhry\\w*",
-    "\\bspid\\w*",
+    "\\bspide\\w*",
     "\\bsolitai\\w*"
    ]
   },
@@ -6305,7 +6244,7 @@
    "all": [
     "\\bbaby\\w*",
     "\\byoda\\w*",
-    "\\bplys\\w*"
+    "\\bplysa\\w*"
    ],
    "cat": [
     "plysaci"
@@ -6369,7 +6308,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\btruh\\w*"
+    "\\btruhl\\w*"
    ]
   },
   "min": 8,
@@ -6414,7 +6353,7 @@
   "rules": {
    "all": [
     "\\bpushe\\w*",
-    "\\bplys\\w*"
+    "\\bplysa\\w*"
    ],
    "cat": [
     "plysaci"
@@ -6458,7 +6397,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bcesk\\w*",
+    "\\bceske\\w*",
     "\\bkoral\\w*"
    ]
   },
@@ -6481,7 +6420,7 @@
    "all": [
     "\\blego\\w*",
     "\\bcity\\w*",
-    "\\bhasi\\w*"
+    "\\bhasic\\w*"
    ],
    "cat": [
     "lego"
@@ -6504,7 +6443,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bvood\\w*",
+    "\\bvoodo\\w*",
     "\\bpanen\\w*"
    ],
    "cat": [
@@ -6555,7 +6494,7 @@
    "all": [
     "\\badvent\\w*",
     "\\bkalend\\w*",
-    "\\blabu\\w*"
+    "\\blabub\\w*"
    ]
   },
   "min": 8,
@@ -6647,7 +6586,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\banim\\w*",
+    "\\banime\\w*",
     "\\bfigur\\w*"
    ]
   },
@@ -6668,7 +6607,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bpuzz\\w*"
+    "\\bpuzzl\\w*"
    ],
    "cat": [
     "puzzle"
@@ -6692,7 +6631,7 @@
   "rules": {
    "all": [
     "\\bbranisl\\w*",
-    "\\bkost\\w*"
+    "\\bkostk\\w*"
    ]
   },
   "min": 8,
@@ -6712,7 +6651,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bkost\\w*",
+    "\\bkostk\\w*",
     "\\bpetr\\w*"
    ]
   },
@@ -6733,7 +6672,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\brizk\\w*",
+    "\\brizky\\w*",
     "\\bpanen\\w*"
    ],
    "cat": [
@@ -6758,7 +6697,7 @@
   "rules": {
    "all": [
     "\\brk\\w*",
-    "\\bmode\\w*"
+    "\\bmodel\\w*"
    ]
   },
   "min": 8,
@@ -6779,7 +6718,7 @@
   "rules": {
    "all": [
     "\\bspark\\w*",
-    "\\bleta\\w*"
+    "\\bletak\\w*"
    ]
   },
   "min": 8,
@@ -6820,7 +6759,7 @@
   "rules": {
    "all": [
     "\\bcry\\w*",
-    "\\bbabi\\w*",
+    "\\bbabie\\w*",
     "\\bpanen\\w*"
    ],
    "cat": [
@@ -6866,8 +6805,8 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bpeno\\w*",
-    "\\bkost\\w*"
+    "\\bpenov\\w*",
+    "\\bkostk\\w*"
    ]
   },
   "min": 8,
@@ -6887,7 +6826,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bmatt\\w*",
+    "\\bmatte\\w*",
     "\\bmarta\\w*"
    ]
   },
@@ -6909,7 +6848,7 @@
   "rules": {
    "all": [
     "\\bfuggl\\w*",
-    "\\bplys\\w*"
+    "\\bplysa\\w*"
    ],
    "cat": [
     "plysaci"
@@ -6932,7 +6871,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bdrah\\w*",
+    "\\bdraha\\w*",
     "\\bautic\\w*"
    ]
   },
@@ -6977,7 +6916,7 @@
    "all": [
     "\\b3d\\w*",
     "\\bdreve\\w*",
-    "\\bpuzz\\w*"
+    "\\bpuzzl\\w*"
    ],
    "cat": [
     "puzzle"
@@ -7001,7 +6940,7 @@
   "rules": {
    "all": [
     "\\bpure\\w*",
-    "\\bmode\\w*"
+    "\\bmodel\\w*"
    ]
   },
   "min": 8,
@@ -7049,7 +6988,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bbrud\\w*",
+    "\\bbrude\\w*",
     "\\bpopela\\w*"
    ]
   },
@@ -7071,7 +7010,7 @@
   "rules": {
    "all": [
     "\\bbmw\\w*",
-    "\\bmode\\w*"
+    "\\bmodel\\w*"
    ]
   },
   "min": 8,
@@ -7112,8 +7051,8 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bhapp\\w*",
-    "\\bmode\\w*"
+    "\\bhappy\\w*",
+    "\\bmodel\\w*"
    ]
   },
   "min": 8,
@@ -7134,7 +7073,7 @@
   "rules": {
    "all": [
     "\\bporter\\w*",
-    "\\bmode\\w*",
+    "\\bmodel\\w*",
     "\\bsil\\w*"
    ]
   },
@@ -7155,8 +7094,8 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bpuzz\\w*",
-    "\\bdilk\\w*"
+    "\\bpuzzl\\w*",
+    "\\bdilku\\w*"
    ],
    "cat": [
     "puzzle"
@@ -7180,7 +7119,7 @@
   "rules": {
    "all": [
     "\\bpodloz\\w*",
-    "\\bpuzz\\w*"
+    "\\bpuzzl\\w*"
    ],
    "cat": [
     "puzzle"
@@ -7204,7 +7143,7 @@
   "rules": {
    "all": [
     "\\bvw\\w*",
-    "\\bmode\\w*"
+    "\\bmodel\\w*"
    ]
   },
   "min": 8,
@@ -7247,7 +7186,7 @@
    "all": [
     "\\biso\\w*",
     "\\bosi\\w*",
-    "\\bmode\\w*"
+    "\\bmodel\\w*"
    ]
   },
   "min": 8,
@@ -7268,7 +7207,7 @@
   "rules": {
    "all": [
     "\\bhreji\\w*",
-    "\\bplys\\w*"
+    "\\bplysa\\w*"
    ],
    "cat": [
     "plysaci"
@@ -7292,8 +7231,8 @@
   "rules": {
    "all": [
     "\\blego\\w*",
-    "\\bdupl\\w*",
-    "\\bkost\\w*"
+    "\\bduplo\\w*",
+    "\\bkostk\\w*"
    ],
    "cat": [
     "lego"
@@ -7317,7 +7256,7 @@
   "rules": {
    "all": [
     "\\blego\\w*",
-    "\\bsimb\\w*"
+    "\\bsimba\\w*"
    ],
    "cat": [
     "lego"
@@ -7340,9 +7279,9 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bstmn\\w*",
-    "\\bmatt\\w*",
-    "\\bpast\\w*"
+    "\\bstmnt\\w*",
+    "\\bmatte\\w*",
+    "\\bpaste\\w*"
    ]
   },
   "min": 8,
@@ -7384,8 +7323,8 @@
   "rules": {
    "all": [
     "\\blego\\w*",
-    "\\bdupl\\w*",
-    "\\bfarm\\w*"
+    "\\bduplo\\w*",
+    "\\bfarma\\w*"
    ],
    "cat": [
     "lego"
@@ -7408,7 +7347,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bbrud\\w*",
+    "\\bbrude\\w*",
     "\\bbagr\\w*"
    ]
   },
@@ -7429,7 +7368,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bgroo\\w*",
+    "\\bgroot\\w*",
     "\\bfigur\\w*"
    ]
   },
@@ -7453,7 +7392,7 @@
     "\\bkaret\\w*",
     "\\bhry\\w*",
     "\\bsolitai\\w*",
-    "\\bzdar\\w*"
+    "\\bzdarm\\w*"
    ]
   },
   "min": 8,
@@ -7497,7 +7436,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bpuzz\\w*",
+    "\\bpuzzl\\w*",
     "\\bfotograf\\w*"
    ],
    "cat": [
@@ -7522,7 +7461,7 @@
   "rules": {
    "all": [
     "\\bpyramido\\w*",
-    "\\bdrah\\w*"
+    "\\bdraha\\w*"
    ]
   },
   "min": 8,
@@ -7545,7 +7484,7 @@
     "\\bmagnetic\\w*",
     "\\bstavebni\\w*",
     "\\bkulicko\\w*",
-    "\\bdrah\\w*"
+    "\\bdraha\\w*"
    ],
    "cat": [
     "stavebnice"
@@ -7569,7 +7508,7 @@
   "rules": {
    "all": [
     "\\bpragero\\w*",
-    "\\bkost\\w*"
+    "\\bkostk\\w*"
    ]
   },
   "min": 8,
@@ -7589,8 +7528,8 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bmode\\w*",
-    "\\batom\\w*"
+    "\\bmodel\\w*",
+    "\\batomu\\w*"
    ]
   },
   "min": 8,
@@ -7611,7 +7550,7 @@
   "rules": {
    "all": [
     "\\bsiku\\w*",
-    "\\bmode\\w*"
+    "\\bmodel\\w*"
    ]
   },
   "min": 8,
@@ -7632,7 +7571,7 @@
   "rules": {
    "all": [
     "\\bsdv\\w*",
-    "\\bmode\\w*"
+    "\\bmodel\\w*"
    ]
   },
   "min": 8,
@@ -7654,7 +7593,7 @@
    "all": [
     "\\bnejvzacnej\\w*",
     "\\bpokem\\w*",
-    "\\bkart\\w*"
+    "\\bkarty\\w*"
    ]
   },
   "min": 8,
@@ -7727,7 +7666,7 @@
   "rules": {
    "all": [
     "\\bcapyba\\w*",
-    "\\bplys\\w*"
+    "\\bplysa\\w*"
    ],
    "cat": [
     "plysaci"
@@ -7772,8 +7711,8 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bblue\\w*",
-    "\\bplys\\w*"
+    "\\bbluey\\w*",
+    "\\bplysa\\w*"
    ],
    "cat": [
     "plysaci"
@@ -7848,7 +7787,7 @@
    "all": [
     "\\bpani\\w*",
     "\\bucitel\\w*",
-    "\\bskol\\w*"
+    "\\bskolk\\w*"
    ]
   },
   "min": 8,
@@ -7869,7 +7808,7 @@
   "rules": {
    "all": [
     "\\bbike\\w*",
-    "\\bpuzz\\w*"
+    "\\bpuzzl\\w*"
    ],
    "cat": [
     "puzzle"
@@ -7894,7 +7833,7 @@
    "all": [
     "\\bpujcov\\w*",
     "\\bstavebni\\w*",
-    "\\bstro\\w*"
+    "\\bstroj\\w*"
    ],
    "cat": [
     "stavebnice"
@@ -7917,7 +7856,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\buloz\\w*",
+    "\\bulozn\\w*",
     "\\bbox\\w*"
    ]
   },
@@ -7938,7 +7877,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bmatt\\w*",
+    "\\bmatte\\w*",
     "\\bcreatio\\w*"
    ]
   },
@@ -7959,8 +7898,8 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bmatt\\w*",
-    "\\bbaro\\w*"
+    "\\bmatte\\w*",
+    "\\bbaros\\w*"
    ]
   },
   "min": 8,
@@ -8009,7 +7948,7 @@
   "rules": {
    "all": [
     "\\bdon\\w*",
-    "\\bmatt\\w*"
+    "\\bmatte\\w*"
    ]
   },
   "min": 8,
@@ -8052,8 +7991,8 @@
   "rules": {
    "all": [
     "\\blego\\w*",
-    "\\bdupl\\w*",
-    "\\bvelk\\w*",
+    "\\bduplo\\w*",
+    "\\bvelky\\w*",
     "\\bbox\\w*"
    ],
    "cat": [
@@ -8079,7 +8018,7 @@
    "all": [
     "\\bkocar\\w*",
     "\\bpanen\\w*",
-    "\\bvelk\\w*"
+    "\\bvelky\\w*"
    ],
    "cat": [
     "panenky"
@@ -8103,9 +8042,9 @@
   "rules": {
    "all": [
     "\\b3d\\w*",
-    "\\bpuzz\\w*",
-    "\\bharr\\w*",
-    "\\bpott\\w*"
+    "\\bpuzzl\\w*",
+    "\\bharry\\w*",
+    "\\bpotte\\w*"
    ],
    "cat": [
     "puzzle"
@@ -8129,7 +8068,7 @@
   "rules": {
    "all": [
     "\\blego\\w*",
-    "\\bdupl\\w*",
+    "\\bduplo\\w*",
     "\\brodin\\w*",
     "\\bdum\\w*"
    ],
@@ -8200,7 +8139,7 @@
    "all": [
     "\\blego\\w*",
     "\\btechn\\w*",
-    "\\bjera\\w*"
+    "\\bjerab\\w*"
    ],
    "cat": [
     "lego"
@@ -8248,7 +8187,7 @@
   "rules": {
    "all": [
     "\\bsviti\\w*",
-    "\\bkost\\w*",
+    "\\bkostk\\w*",
     "\\bvody\\w*"
    ]
   },
@@ -8289,7 +8228,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bplys\\w*",
+    "\\bplysa\\w*",
     "\\banglic\\w*"
    ],
    "cat": [
@@ -8313,7 +8252,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\balic\\w*",
+    "\\balica\\w*",
     "\\bschmi\\w*"
    ]
   },
@@ -8335,7 +8274,7 @@
   "rules": {
    "all": [
     "\\bpikac\\w*",
-    "\\bplys\\w*"
+    "\\bplysa\\w*"
    ],
    "cat": [
     "plysaci"
@@ -8358,7 +8297,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bzdra\\w*",
+    "\\bzdrav\\w*",
     "\\badvent\\w*",
     "\\bkalend\\w*"
    ]
@@ -8409,7 +8348,7 @@
   "rules": {
    "all": [
     "\\bspark\\w*",
-    "\\bprah\\w*"
+    "\\bpraha\\w*"
    ]
   },
   "min": 8,
@@ -8429,7 +8368,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bbrud\\w*",
+    "\\bbrude\\w*",
     "\\bsanit\\w*"
    ]
   },
@@ -8451,7 +8390,7 @@
   "rules": {
    "all": [
     "\\bpv\\w*",
-    "\\bmode\\w*"
+    "\\bmodel\\w*"
    ]
   },
   "min": 8,
@@ -8537,8 +8476,8 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bkost\\w*",
-    "\\bcukr\\w*"
+    "\\bkostk\\w*",
+    "\\bcukru\\w*"
    ]
   },
   "min": 8,
@@ -8579,7 +8518,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\benjo\\w*",
+    "\\benjoy\\w*",
     "\\bthe\\w*",
     "\\bmoveme\\w*"
    ]
@@ -8622,7 +8561,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bfunk\\w*",
+    "\\bfunko\\w*",
     "\\bpop\\w*",
     "\\badvent\\w*",
     "\\bkalend\\w*"
@@ -8666,7 +8605,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bplys\\w*",
+    "\\bplysa\\w*",
     "\\bpes\\w*"
    ],
    "cat": [
@@ -8713,7 +8652,7 @@
   "rules": {
    "all": [
     "\\blego\\w*",
-    "\\bdupl\\w*"
+    "\\bduplo\\w*"
    ],
    "sex": "f",
    "cat": [
@@ -8737,7 +8676,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\beduc\\w*",
+    "\\beduca\\w*",
     "\\bpardubi\\w*"
    ]
   },
@@ -8782,8 +8721,8 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bbrud\\w*",
-    "\\bauto\\w*"
+    "\\bbrude\\w*",
+    "\\bautos\\w*"
    ]
   },
   "min": 8,
@@ -8804,7 +8743,7 @@
   "rules": {
    "all": [
     "\\bdeagosti\\w*",
-    "\\bmode\\w*"
+    "\\bmodel\\w*"
    ]
   },
   "min": 8,
@@ -8825,7 +8764,7 @@
   "rules": {
    "all": [
     "\\bec\\w*",
-    "\\bmode\\w*"
+    "\\bmodel\\w*"
    ]
   },
   "min": 8,
@@ -8845,7 +8784,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bmatt\\w*",
+    "\\bmatte\\w*",
     "\\bfranzo\\w*"
    ]
   },
@@ -8866,8 +8805,8 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bacti\\w*",
-    "\\bmatt\\w*"
+    "\\bactiv\\w*",
+    "\\bmatte\\w*"
    ]
   },
   "min": 8,
@@ -8888,7 +8827,7 @@
   "rules": {
    "all": [
     "\\bdreve\\w*",
-    "\\bnado\\w*",
+    "\\bnadob\\w*",
     "\\bkuchyn\\w*"
    ]
   },
@@ -8910,7 +8849,7 @@
   "rules": {
    "all": [
     "\\bfigur\\w*",
-    "\\bzvir\\w*"
+    "\\bzvira\\w*"
    ]
   },
   "min": 8,
@@ -8952,7 +8891,7 @@
   "rules": {
    "all": [
     "\\brubiko\\w*",
-    "\\bkost\\w*",
+    "\\bkostk\\w*",
     "\\b3x3\\w*"
    ]
   },
@@ -8974,7 +8913,7 @@
   "rules": {
    "all": [
     "\\bodrazed\\w*",
-    "\\bfunn\\w*"
+    "\\bfunny\\w*"
    ]
   },
   "min": 8,
@@ -8996,7 +8935,7 @@
    "all": [
     "\\bdepec\\w*",
     "\\bmode\\w*",
-    "\\benjo\\w*",
+    "\\benjoy\\w*",
     "\\bthe\\w*",
     "\\bsilen\\w*"
    ]
@@ -9019,7 +8958,7 @@
   "rules": {
    "all": [
     "\\bmerced\\w*",
-    "\\bmode\\w*"
+    "\\bmodel\\w*"
    ]
   },
   "min": 8,
@@ -9064,7 +9003,7 @@
   "rules": {
    "all": [
     "\\bdreve\\w*",
-    "\\bgara\\w*",
+    "\\bgaraz\\w*",
     "\\bautic\\w*"
    ]
   },
@@ -9154,7 +9093,7 @@
   "rules": {
    "all": [
     "\\bbezzub\\w*",
-    "\\bplys\\w*"
+    "\\bplysa\\w*"
    ],
    "cat": [
     "plysaci"
@@ -9245,7 +9184,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bplys\\w*"
+    "\\bplysa\\w*"
    ],
    "age": [
     0,
@@ -9300,8 +9239,8 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bpuzz\\w*",
-    "\\bgara\\w*"
+    "\\bpuzzl\\w*",
+    "\\bgarag\\w*"
    ],
    "cat": [
     "puzzle"
@@ -9324,7 +9263,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bpuzz\\w*",
+    "\\bpuzzl\\w*",
     "\\bbox\\w*"
    ],
    "cat": [
@@ -9349,7 +9288,7 @@
   "rules": {
    "all": [
     "\\bstavebni\\w*",
-    "\\bprac\\w*"
+    "\\bpraci\\w*"
    ],
    "cat": [
     "stavebnice"
@@ -9453,7 +9392,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\benjo\\w*",
+    "\\benjoy\\w*",
     "\\bprekl\\w*"
    ]
   },
@@ -9495,8 +9434,8 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\btoyo\\w*",
-    "\\bmode\\w*"
+    "\\btoyot\\w*",
+    "\\bmodel\\w*"
    ]
   },
   "min": 8,
@@ -9516,8 +9455,8 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bpuzz\\w*",
-    "\\bstit\\w*"
+    "\\bpuzzl\\w*",
+    "\\bstitc\\w*"
    ],
    "cat": [
     "puzzle"
@@ -9561,8 +9500,8 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bsoni\\w*",
-    "\\bplys\\w*"
+    "\\bsonic\\w*",
+    "\\bplysa\\w*"
    ],
    "cat": [
     "plysaci"
@@ -9651,7 +9590,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bslub\\w*",
+    "\\bsluba\\w*",
     "\\bstavebni\\w*"
    ],
    "cat": [
@@ -9701,7 +9640,7 @@
   "rules": {
    "all": [
     "\\bfoto\\w*",
-    "\\bpuzz\\w*"
+    "\\bpuzzl\\w*"
    ],
    "cat": [
     "puzzle"
@@ -9867,7 +9806,7 @@
   "rules": {
    "all": [
     "\\blego\\w*",
-    "\\bdupl\\w*",
+    "\\bduplo\\w*",
     "\\bmasin\\w*"
    ],
    "cat": [
@@ -9891,7 +9830,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bfurb\\w*"
+    "\\bfurby\\w*"
    ]
   },
   "min": 8,
@@ -9913,7 +9852,7 @@
    "all": [
     "\\blego\\w*",
     "\\bninja\\w*",
-    "\\brobo\\w*"
+    "\\brobot\\w*"
    ],
    "cat": [
     "lego"
@@ -9936,8 +9875,8 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bpuzz\\w*",
-    "\\bzdar\\w*"
+    "\\bpuzzl\\w*",
+    "\\bzdarm\\w*"
    ],
    "cat": [
     "puzzle"
@@ -9983,7 +9922,7 @@
   "rules": {
    "all": [
     "\\bjiri\\w*",
-    "\\bkost\\w*"
+    "\\bkostk\\w*"
    ]
   },
   "min": 8,
@@ -10051,9 +9990,9 @@
   "rules": {
    "all": [
     "\\belektric\\w*",
-    "\\bvlac\\w*",
+    "\\bvlace\\w*",
     "\\bdreve\\w*",
-    "\\bkole\\w*"
+    "\\bkolej\\w*"
    ]
   },
   "min": 8,
@@ -10073,7 +10012,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bozdo\\w*",
+    "\\bozdob\\w*",
     "\\bkoral\\w*"
    ]
   },
@@ -10120,7 +10059,7 @@
   "rules": {
    "all": [
     "\\bodrazed\\w*",
-    "\\btoot\\w*"
+    "\\btooto\\w*"
    ]
   },
   "min": 8,
@@ -10140,8 +10079,8 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bjord\\w*",
-    "\\bmatt\\w*"
+    "\\bjorda\\w*",
+    "\\bmatte\\w*"
    ]
   },
   "min": 8,
@@ -10161,9 +10100,9 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bstev\\w*",
+    "\\bsteve\\w*",
     "\\bharringt\\w*",
-    "\\bfunk\\w*",
+    "\\bfunko\\w*",
     "\\bpop\\w*"
    ]
   },
@@ -10186,7 +10125,7 @@
    "all": [
     "\\blego\\w*",
     "\\bcity\\w*",
-    "\\bkami\\w*"
+    "\\bkamio\\w*"
    ],
    "cat": [
     "lego"
@@ -10209,7 +10148,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bdjec\\w*"
+    "\\bdjeco\\w*"
    ]
   },
   "min": 8,
@@ -10256,7 +10195,7 @@
    "all": [
     "\\bdesko\\w*",
     "\\bhry\\w*",
-    "\\bprah\\w*"
+    "\\bpraha\\w*"
    ]
   },
   "min": 8,
@@ -10302,7 +10241,7 @@
   "rules": {
    "all": [
     "\\brenau\\w*",
-    "\\bmode\\w*"
+    "\\bmodel\\w*"
    ]
   },
   "min": 8,
@@ -10344,9 +10283,9 @@
   "rules": {
    "all": [
     "\\blego\\w*",
-    "\\bmarv\\w*",
-    "\\bsupe\\w*",
-    "\\bhero\\w*"
+    "\\bmarve\\w*",
+    "\\bsuper\\w*",
+    "\\bheroe\\w*"
    ],
    "cat": [
     "lego"
@@ -10391,7 +10330,7 @@
   "rules": {
    "all": [
     "\\bvlast\\w*",
-    "\\bpuzz\\w*"
+    "\\bpuzzl\\w*"
    ],
    "cat": [
     "puzzle"
@@ -10414,7 +10353,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bsach\\w*",
+    "\\bsachy\\w*",
     "\\bfigur\\w*"
    ]
   },
@@ -10436,7 +10375,7 @@
   "rules": {
    "all": [
     "\\bnafukova\\w*",
-    "\\bbaze\\w*"
+    "\\bbazen\\w*"
    ]
   },
   "min": 8,
@@ -10478,7 +10417,7 @@
   "rules": {
    "all": [
     "\\bzahrad\\w*",
-    "\\bnara\\w*"
+    "\\bnarad\\w*"
    ]
   },
   "min": 8,
@@ -10499,7 +10438,7 @@
   "rules": {
    "all": [
     "\\bai\\w*",
-    "\\bmode\\w*"
+    "\\bmodel\\w*"
    ]
   },
   "min": 8,
@@ -10520,7 +10459,7 @@
   "rules": {
    "all": [
     "\\bhyund\\w*",
-    "\\bmode\\w*"
+    "\\bmodel\\w*"
    ]
   },
   "min": 8,
@@ -10541,7 +10480,7 @@
   "rules": {
    "all": [
     "\\bonlyfa\\w*",
-    "\\bmode\\w*"
+    "\\bmodel\\w*"
    ]
   },
   "min": 8,
@@ -10562,7 +10501,7 @@
   "rules": {
    "all": [
     "\\breicha\\w*",
-    "\\bmode\\w*"
+    "\\bmodel\\w*"
    ]
   },
   "min": 8,
@@ -10604,7 +10543,7 @@
   "rules": {
    "all": [
     "\\bdycha\\w*",
-    "\\bplys\\w*"
+    "\\bplysa\\w*"
    ],
    "cat": [
     "plysaci"
@@ -10627,8 +10566,8 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bplys\\w*",
-    "\\bjmen\\w*"
+    "\\bplysa\\w*",
+    "\\bjmene\\w*"
    ],
    "cat": [
     "plysaci"
@@ -10652,7 +10591,7 @@
   "rules": {
    "all": [
     "\\blego\\w*",
-    "\\bdupl\\w*",
+    "\\bduplo\\w*",
     "\\bsanit\\w*"
    ],
    "cat": [
@@ -10677,7 +10616,7 @@
   "rules": {
    "all": [
     "\\bfnaf\\w*",
-    "\\bfunk\\w*",
+    "\\bfunko\\w*",
     "\\bpop\\w*"
    ]
   },
@@ -10721,7 +10660,7 @@
   "rules": {
    "all": [
     "\\blego\\w*",
-    "\\bdupl\\w*",
+    "\\bduplo\\w*",
     "\\bdum\\w*"
    ],
    "cat": [
@@ -10766,8 +10705,8 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bgrin\\w*",
-    "\\bplys\\w*"
+    "\\bgrinc\\w*",
+    "\\bplysa\\w*"
    ],
    "cat": [
     "plysaci"
@@ -10790,7 +10729,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\brvac\\w*",
+    "\\brvaco\\w*",
     "\\bpanen\\w*"
    ],
    "cat": [
@@ -10815,7 +10754,7 @@
   "rules": {
    "all": [
     "\\bpokem\\w*",
-    "\\bkart\\w*",
+    "\\bkarty\\w*",
     "\\bbox\\w*"
    ]
   },
@@ -10837,7 +10776,7 @@
   "rules": {
    "all": [
     "\\bhoupac\\w*",
-    "\\btera\\w*"
+    "\\bteras\\w*"
    ]
   },
   "min": 8,
@@ -10907,8 +10846,8 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bkuro\\w*",
-    "\\bplys\\w*"
+    "\\bkurom\\w*",
+    "\\bplysa\\w*"
    ],
    "cat": [
     "plysaci"
@@ -10931,7 +10870,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bandr\\w*",
+    "\\bandre\\w*",
     "\\bschmidto\\w*"
    ]
   },
@@ -11018,7 +10957,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bpart\\w*",
+    "\\bparty\\w*",
     "\\bdopln\\w*"
    ]
   },
@@ -11039,8 +10978,8 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\btata\\w*",
-    "\\bpuzz\\w*"
+    "\\btatam\\w*",
+    "\\bpuzzl\\w*"
    ],
    "cat": [
     "puzzle"
@@ -11087,8 +11026,8 @@
   "rules": {
    "all": [
     "\\bdreve\\w*",
-    "\\bpuzz\\w*",
-    "\\bkock\\w*"
+    "\\bpuzzl\\w*",
+    "\\bkocka\\w*"
    ],
    "cat": [
     "puzzle"
@@ -11225,7 +11164,7 @@
   "rules": {
    "all": [
     "\\bbing\\w*",
-    "\\bplys\\w*"
+    "\\bplysa\\w*"
    ],
    "cat": [
     "plysaci"
@@ -11249,9 +11188,9 @@
   "rules": {
    "all": [
     "\\blego\\w*",
-    "\\bharr\\w*",
-    "\\bpott\\w*",
-    "\\bdobb\\w*"
+    "\\bharry\\w*",
+    "\\bpotte\\w*",
+    "\\bdobby\\w*"
    ],
    "cat": [
     "lego"
@@ -11274,7 +11213,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bblue\\w*",
+    "\\bbluey\\w*",
     "\\bfigur\\w*"
    ]
   },
@@ -11295,7 +11234,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bfunk\\w*",
+    "\\bfunko\\w*",
     "\\bpop\\w*",
     "\\bpokem\\w*"
    ]
@@ -11317,7 +11256,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bretr\\w*",
+    "\\bretro\\w*",
     "\\bstavebni\\w*"
    ],
    "cat": [
@@ -11342,7 +11281,7 @@
   "rules": {
    "all": [
     "\\bdreve\\w*",
-    "\\bkost\\w*",
+    "\\bkostk\\w*",
     "\\bobraz\\w*"
    ]
   },
@@ -11459,7 +11398,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bnado\\w*",
+    "\\bnadob\\w*",
     "\\bkuchyn\\w*"
    ]
   },
@@ -11506,7 +11445,7 @@
   "rules": {
    "all": [
     "\\bjednoroz\\w*",
-    "\\bplys\\w*"
+    "\\bplysa\\w*"
    ],
    "cat": [
     "plysaci"
@@ -11673,7 +11612,7 @@
   "rules": {
    "all": [
     "\\bstanisl\\w*",
-    "\\bkost\\w*",
+    "\\bkostk\\w*",
     "\\bneuma\\w*"
    ]
   },
@@ -11694,8 +11633,8 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bstit\\w*",
-    "\\bplys\\w*",
+    "\\bstitc\\w*",
+    "\\bplysa\\w*",
     "\\bcm\\w*"
    ],
    "cat": [
@@ -11721,7 +11660,7 @@
    "all": [
     "\\bkocar\\w*",
     "\\bpanen\\w*",
-    "\\bgolf\\w*"
+    "\\bgolfk\\w*"
    ],
    "cat": [
     "panenky"
@@ -11769,8 +11708,8 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bbraw\\w*",
-    "\\bstar\\w*",
+    "\\bbrawl\\w*",
+    "\\bstars\\w*",
     "\\bfigur\\w*"
    ]
   },
@@ -11814,7 +11753,7 @@
   "rules": {
    "all": [
     "\\bspongeb\\w*",
-    "\\bplys\\w*"
+    "\\bplysa\\w*"
    ],
    "cat": [
     "plysaci"
@@ -11837,7 +11776,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bbrud\\w*",
+    "\\bbrude\\w*",
     "\\bbuldoz\\w*"
    ]
   },
@@ -11882,7 +11821,7 @@
    "all": [
     "\\bvyrob\\w*",
     "\\bkoral\\w*",
-    "\\bnavo\\w*"
+    "\\bnavod\\w*"
    ]
   },
   "min": 8,
@@ -12040,7 +11979,7 @@
   "rules": {
    "all": [
     "\\bmasa\\w*",
-    "\\bmedv\\w*"
+    "\\bmedve\\w*"
    ]
   },
   "min": 8,
@@ -12082,7 +12021,7 @@
   "rules": {
    "all": [
     "\\brubiko\\w*",
-    "\\bkost\\w*",
+    "\\bkostk\\w*",
     "\\b2x2\\w*"
    ]
   },
@@ -12105,7 +12044,7 @@
    "all": [
     "\\blego\\w*",
     "\\btechn\\w*",
-    "\\bmoto\\w*"
+    "\\bmotor\\w*"
    ],
    "cat": [
     "lego"
@@ -12202,10 +12141,10 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bfunk\\w*",
+    "\\bfunko\\w*",
     "\\bpop\\w*",
     "\\bstrang\\w*",
-    "\\bthin\\w*",
+    "\\bthing\\w*",
     "\\bmax\\w*"
    ]
   },
@@ -12275,7 +12214,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bpuzz\\w*",
+    "\\bpuzzl\\w*",
     "\\bminecra\\w*"
    ],
    "cat": [
@@ -12385,7 +12324,7 @@
   "rules": {
    "all": [
     "\\bplaymob\\w*",
-    "\\bhasi\\w*"
+    "\\bhasic\\w*"
    ]
   },
   "min": 8,
@@ -12406,7 +12345,7 @@
   "rules": {
    "all": [
     "\\bcrosswo\\w*",
-    "\\bpuzz\\w*"
+    "\\bpuzzl\\w*"
    ],
    "cat": [
     "puzzle"
@@ -12453,7 +12392,7 @@
     "\\blego\\w*",
     "\\bfrien\\w*",
     "\\bdum\\w*",
-    "\\bstro\\w*"
+    "\\bstrom\\w*"
    ],
    "cat": [
     "lego"
@@ -12545,7 +12484,7 @@
   "rules": {
    "all": [
     "\\bbetono\\w*",
-    "\\bkost\\w*"
+    "\\bkostk\\w*"
    ]
   },
   "min": 8,
@@ -12629,7 +12568,7 @@
   "rules": {
    "all": [
     "\\baxolo\\w*",
-    "\\bplys\\w*"
+    "\\bplysa\\w*"
    ],
    "cat": [
     "plysaci"
@@ -12678,7 +12617,7 @@
   "rules": {
    "all": [
     "\\bblok\\w*",
-    "\\bpuzz\\w*"
+    "\\bpuzzl\\w*"
    ],
    "cat": [
     "puzzle"
@@ -12703,7 +12642,7 @@
    "all": [
     "\\bpodloz\\w*",
     "\\bpod\\w*",
-    "\\bpuzz\\w*"
+    "\\bpuzzl\\w*"
    ],
    "cat": [
     "puzzle"
@@ -12726,7 +12665,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bcobl\\w*",
+    "\\bcoblo\\w*",
     "\\bstavebni\\w*"
    ],
    "cat": [
@@ -12750,8 +12689,8 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bzame\\w*",
-    "\\bkost\\w*"
+    "\\bzamek\\w*",
+    "\\bkostk\\w*"
    ]
   },
   "min": 8,
@@ -12772,7 +12711,7 @@
   "rules": {
    "all": [
     "\\bosi\\w*",
-    "\\bmode\\w*"
+    "\\bmodel\\w*"
    ]
   },
   "min": 8,
@@ -12793,7 +12732,7 @@
   "rules": {
    "all": [
     "\\bodrazed\\w*",
-    "\\bfirs\\w*",
+    "\\bfirst\\w*",
     "\\bbike\\w*"
    ]
   },
@@ -12814,7 +12753,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bpuzz\\w*",
+    "\\bpuzzl\\w*",
     "\\bzem\\w*"
    ],
    "cat": [
@@ -12839,7 +12778,7 @@
   "rules": {
    "all": [
     "\\bbetono\\w*",
-    "\\bscho\\w*",
+    "\\bschod\\w*",
     "\\bstavebni\\w*"
    ],
    "cat": [
@@ -12885,8 +12824,8 @@
   "rules": {
    "all": [
     "\\bpokem\\w*",
-    "\\bkart\\w*",
-    "\\bprod\\w*"
+    "\\bkarty\\w*",
+    "\\bprode\\w*"
    ]
   },
   "min": 8,
@@ -12949,7 +12888,7 @@
    "all": [
     "\\bzahrad\\w*",
     "\\bhoupac\\w*",
-    "\\bkovo\\w*"
+    "\\bkovov\\w*"
    ]
   },
   "min": 8,
@@ -12969,7 +12908,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\byedo\\w*",
+    "\\byedoo\\w*",
     "\\bodrazed\\w*"
    ]
   },
@@ -13037,7 +12976,7 @@
     "\\bstar\\w*",
     "\\bwars\\w*",
     "\\bmillenni\\w*",
-    "\\bfalc\\w*"
+    "\\bfalco\\w*"
    ],
    "cat": [
     "lego"
@@ -13061,8 +13000,8 @@
   "rules": {
    "all": [
     "\\bupperc\\w*",
-    "\\bmatt\\w*",
-    "\\bpoma\\w*"
+    "\\bmatte\\w*",
+    "\\bpomad\\w*"
    ]
   },
   "min": 8,
@@ -13084,7 +13023,7 @@
    "all": [
     "\\badvent\\w*",
     "\\bkalend\\w*",
-    "\\bpuzz\\w*"
+    "\\bpuzzl\\w*"
    ],
    "cat": [
     "puzzle"
@@ -13129,7 +13068,7 @@
   "rules": {
    "all": [
     "\\blego\\w*",
-    "\\bdupl\\w*",
+    "\\bduplo\\w*",
     "\\bdinosau\\w*"
    ],
    "cat": [
@@ -13174,8 +13113,8 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bplys\\w*",
-    "\\bpand\\w*"
+    "\\bplysa\\w*",
+    "\\bpanda\\w*"
    ],
    "cat": [
     "plysaci"
@@ -13223,8 +13162,8 @@
   "rules": {
    "all": [
     "\\blego\\w*",
-    "\\bharr\\w*",
-    "\\bpott\\w*"
+    "\\bharry\\w*",
+    "\\bpotte\\w*"
    ],
    "cat": [
     "lego"
@@ -13365,7 +13304,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bhris\\w*",
+    "\\bhrist\\w*",
     "\\bskluzavk\\w*"
    ]
   },
@@ -13387,8 +13326,8 @@
   "rules": {
    "all": [
     "\\bpokem\\w*",
-    "\\bkuso\\w*",
-    "\\bkart\\w*"
+    "\\bkusov\\w*",
+    "\\bkarty\\w*"
    ]
   },
   "min": 8,
@@ -13409,7 +13348,7 @@
   "rules": {
    "all": [
     "\\bschlei\\w*",
-    "\\bjezd\\w*"
+    "\\bjezdc\\w*"
    ]
   },
   "min": 8,
@@ -13429,7 +13368,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bpost\\w*",
+    "\\bposte\\w*",
     "\\bskluzavk\\w*"
    ]
   },
@@ -13495,8 +13434,8 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bkrte\\w*",
-    "\\bplys\\w*"
+    "\\bkrtek\\w*",
+    "\\bplysa\\w*"
    ],
    "cat": [
     "plysaci"
@@ -13519,7 +13458,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bpuzz\\w*",
+    "\\bpuzzl\\w*",
     "\\byou\\w*"
    ],
    "cat": [
@@ -13635,7 +13574,7 @@
    "all": [
     "\\bmaybelli\\w*",
     "\\bsuperst\\w*",
-    "\\bmatt\\w*",
+    "\\bmatte\\w*",
     "\\bink\\w*"
    ]
   },
@@ -13853,7 +13792,7 @@
   "rules": {
    "all": [
     "\\binteraktiv\\w*",
-    "\\bplys\\w*"
+    "\\bplysa\\w*"
    ],
    "cat": [
     "plysaci"
@@ -13903,10 +13842,10 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bfunk\\w*",
+    "\\bfunko\\w*",
     "\\bpop\\w*",
-    "\\bharr\\w*",
-    "\\bpott\\w*"
+    "\\bharry\\w*",
+    "\\bpotte\\w*"
    ]
   },
   "min": 8,
@@ -13950,7 +13889,7 @@
    "all": [
     "\\bdigitaliza\\w*",
     "\\bstavebni\\w*",
-    "\\brize\\w*"
+    "\\brizen\\w*"
    ]
   },
   "min": 8,
@@ -13971,7 +13910,7 @@
   "rules": {
    "all": [
     "\\blego\\w*",
-    "\\bdupl\\w*",
+    "\\bduplo\\w*",
     "\\bbagr\\w*"
    ],
    "cat": [
@@ -13996,7 +13935,7 @@
   "rules": {
    "all": [
     "\\blego\\w*",
-    "\\bdupl\\w*"
+    "\\bduplo\\w*"
    ],
    "age": [
     9,
@@ -14023,7 +13962,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bkosi\\w*",
+    "\\bkosik\\w*",
     "\\bodrazed\\w*"
    ]
   },
@@ -14044,7 +13983,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bretr\\w*",
+    "\\bretro\\w*",
     "\\bkocar\\w*",
     "\\bpanen\\w*"
    ],
@@ -14069,7 +14008,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bmarv\\w*",
+    "\\bmarve\\w*",
     "\\bfigur\\w*"
    ]
   },
@@ -14090,7 +14029,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bdome\\w*",
+    "\\bdomek\\w*",
     "\\bskluzavk\\w*"
    ]
   },
@@ -14112,7 +14051,7 @@
   "rules": {
    "all": [
     "\\blego\\w*",
-    "\\bdupl\\w*",
+    "\\bduplo\\w*",
     "\\bletad\\w*"
    ],
    "cat": [
@@ -14137,9 +14076,9 @@
   "rules": {
    "all": [
     "\\blego\\w*",
-    "\\bharr\\w*",
-    "\\bpott\\w*",
-    "\\byear\\w*"
+    "\\bharry\\w*",
+    "\\bpotte\\w*",
+    "\\byears\\w*"
    ],
    "cat": [
     "lego"
@@ -14188,7 +14127,7 @@
   "rules": {
    "all": [
     "\\bram\\w*",
-    "\\bpuzz\\w*"
+    "\\bpuzzl\\w*"
    ],
    "cat": [
     "puzzle"
@@ -14211,8 +14150,8 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bnake\\w*",
-    "\\bmode\\w*"
+    "\\bnaked\\w*",
+    "\\bmodel\\w*"
    ]
   },
   "min": 8,
@@ -14233,7 +14172,7 @@
   "rules": {
    "all": [
     "\\bnude\\w*",
-    "\\bmode\\w*"
+    "\\bmodel\\w*"
    ]
   },
   "min": 8,
@@ -14275,8 +14214,8 @@
   "rules": {
    "all": [
     "\\blego\\w*",
-    "\\bdupl\\w*",
-    "\\bledo\\w*",
+    "\\bduplo\\w*",
+    "\\bledov\\w*",
     "\\bkralovst\\w*"
    ],
    "cat": [
@@ -14325,7 +14264,7 @@
   "rules": {
    "all": [
     "\\belis\\w*",
-    "\\bdesi\\w*",
+    "\\bdesig\\w*",
     "\\bhoupac\\w*"
    ]
   },
@@ -14371,9 +14310,9 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bhugg\\w*",
-    "\\bwugg\\w*",
-    "\\bplys\\w*"
+    "\\bhuggy\\w*",
+    "\\bwuggy\\w*",
+    "\\bplysa\\w*"
    ],
    "cat": [
     "plysaci"
@@ -14396,9 +14335,9 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bnove\\w*",
+    "\\bnovel\\w*",
     "\\bstavebni\\w*",
-    "\\bzako\\w*"
+    "\\bzakon\\w*"
    ]
   },
   "min": 8,
@@ -14439,7 +14378,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\btaha\\w*"
+    "\\btahac\\w*"
    ]
   },
   "min": 8,
@@ -14459,7 +14398,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bpani\\w*",
+    "\\bpanin\\w*",
     "\\bgril\\w*"
    ]
   },
@@ -14547,7 +14486,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bradi\\w*",
+    "\\bradim\\w*",
     "\\bpanen\\w*"
    ],
    "cat": [
@@ -14572,7 +14511,7 @@
   "rules": {
    "all": [
     "\\bschlei\\w*",
-    "\\bhors\\w*",
+    "\\bhorse\\w*",
     "\\bclub\\w*"
    ]
   },
@@ -14685,9 +14624,9 @@
   "rules": {
    "all": [
     "\\blego\\w*",
-    "\\bdupl\\w*",
-    "\\bparn\\w*",
-    "\\bvlac\\w*"
+    "\\bduplo\\w*",
+    "\\bparni\\w*",
+    "\\bvlace\\w*"
    ],
    "cat": [
     "lego"
@@ -14781,7 +14720,7 @@
    "all": [
     "\\bzazehlova\\w*",
     "\\bkoral\\w*",
-    "\\bstit\\w*"
+    "\\bstitc\\w*"
    ]
   },
   "min": 8,
@@ -14822,7 +14761,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bkost\\w*",
+    "\\bkostk\\w*",
     "\\bhry\\w*"
    ]
   },
@@ -14868,8 +14807,8 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\byerb\\w*",
-    "\\bmatt\\w*"
+    "\\byerba\\w*",
+    "\\bmatte\\w*"
    ]
   },
   "min": 8,
@@ -14890,9 +14829,9 @@
   "rules": {
    "all": [
     "\\bpokem\\w*",
-    "\\bkart\\w*",
-    "\\bprvn\\w*",
-    "\\bedic\\w*"
+    "\\bkarty\\w*",
+    "\\bprvni\\w*",
+    "\\bedice\\w*"
    ]
   },
   "min": 8,
@@ -14958,7 +14897,7 @@
   "rules": {
    "all": [
     "\\bodrazed\\w*",
-    "\\bvets\\w*"
+    "\\bvetsi\\w*"
    ]
   },
   "min": 8,
@@ -14979,7 +14918,7 @@
   "rules": {
    "all": [
     "\\blego\\w*",
-    "\\bdisn\\w*",
+    "\\bdisne\\w*",
     "\\bprince\\w*"
    ],
    "cat": [
@@ -15005,7 +14944,7 @@
    "all": [
     "\\blego\\w*",
     "\\bfortni\\w*",
-    "\\bklom\\w*"
+    "\\bklomb\\w*"
    ],
    "cat": [
     "lego"
@@ -15053,8 +14992,8 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bbrud\\w*",
-    "\\bkami\\w*"
+    "\\bbrude\\w*",
+    "\\bkamio\\w*"
    ]
   },
   "min": 8,
@@ -15121,7 +15060,7 @@
   "rules": {
    "all": [
     "\\blego\\w*",
-    "\\bdupl\\w*"
+    "\\bduplo\\w*"
    ],
    "sex": "m",
    "cat": [
@@ -15146,7 +15085,7 @@
   "rules": {
    "all": [
     "\\bkuchyn\\w*",
-    "\\bzvuk\\w*"
+    "\\bzvuky\\w*"
    ]
   },
   "min": 8,
@@ -15215,7 +15154,7 @@
   "rules": {
    "all": [
     "\\bvany\\w*",
-    "\\bvets\\w*"
+    "\\bvetsi\\w*"
    ]
   },
   "min": 8,
@@ -15235,7 +15174,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bruzo\\w*",
+    "\\bruzov\\w*",
     "\\bautic\\w*"
    ]
   },
@@ -15305,7 +15244,7 @@
   "rules": {
    "all": [
     "\\bantistreso\\w*",
-    "\\bkost\\w*"
+    "\\bkostk\\w*"
    ]
   },
   "min": 8,
@@ -15354,8 +15293,8 @@
     "\\blego\\w*",
     "\\bstar\\w*",
     "\\bwars\\w*",
-    "\\bhvez\\w*",
-    "\\bsmrt\\w*"
+    "\\bhvezd\\w*",
+    "\\bsmrti\\w*"
    ],
    "cat": [
     "lego"
@@ -15403,8 +15342,8 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bkost\\w*",
-    "\\bmode\\w*"
+    "\\bkostk\\w*",
+    "\\bmodel\\w*"
    ]
   },
   "min": 8,
@@ -15424,7 +15363,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bchyt\\w*"
+    "\\bchytr\\w*"
    ]
   },
   "min": 8,
@@ -15468,7 +15407,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bbaze\\w*",
+    "\\bbazen\\w*",
     "\\bskluzavk\\w*"
    ]
   },
@@ -15532,7 +15471,7 @@
   "rules": {
    "all": [
     "\\brole\\w*",
-    "\\bmode\\w*"
+    "\\bmodel\\w*"
    ]
   },
   "min": 8,
@@ -15553,7 +15492,7 @@
   "rules": {
    "all": [
     "\\blego\\w*",
-    "\\bmarv\\w*",
+    "\\bmarve\\w*",
     "\\bavenge\\w*"
    ],
    "cat": [
@@ -15602,7 +15541,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bdjec\\w*",
+    "\\bdjeco\\w*",
     "\\bkreativ\\w*",
     "\\bsada\\w*"
    ]
@@ -15625,8 +15564,8 @@
   "rules": {
    "all": [
     "\\bmolitano\\w*",
-    "\\bkost\\w*",
-    "\\bskol\\w*"
+    "\\bkostk\\w*",
+    "\\bskolk\\w*"
    ]
   },
   "min": 8,
@@ -15648,7 +15587,7 @@
    "all": [
     "\\blego\\w*",
     "\\bninja\\w*",
-    "\\bchra\\w*"
+    "\\bchram\\w*"
    ],
    "cat": [
     "lego"
@@ -15671,7 +15610,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bpuzz\\w*",
+    "\\bpuzzl\\w*",
     "\\bfacto\\w*"
    ],
    "cat": [
@@ -15749,8 +15688,8 @@
   "rules": {
    "all": [
     "\\blego\\w*",
-    "\\bharr\\w*",
-    "\\bpott\\w*",
+    "\\bharry\\w*",
+    "\\bpotte\\w*",
     "\\bautob\\w*"
    ],
    "cat": [
@@ -15776,7 +15715,7 @@
    "all": [
     "\\bspark\\w*",
     "\\bslevo\\w*",
-    "\\bkupo\\w*"
+    "\\bkupon\\w*"
    ]
   },
   "min": 8,
@@ -15797,9 +15736,9 @@
   "rules": {
    "all": [
     "\\blego\\w*",
-    "\\bharr\\w*",
-    "\\bpott\\w*",
-    "\\bknih\\w*"
+    "\\bharry\\w*",
+    "\\bpotte\\w*",
+    "\\bkniha\\w*"
    ],
    "cat": [
     "lego"
@@ -15864,8 +15803,8 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bkare\\w*",
-    "\\bkost\\w*"
+    "\\bkarel\\w*",
+    "\\bkostk\\w*"
    ]
   },
   "min": 8,
@@ -15885,7 +15824,7 @@
   "dedupe_all": true,
   "rules": {
    "all": [
-    "\\bnara\\w*",
+    "\\bnarad\\w*",
     "\\bzahra\\w*"
    ]
   },
@@ -15894,6 +15833,80 @@
   "evidence": 320,
   "intent": "type",
   "title": "Dětské nářadí na zahradu – srovnání cen"
+ },
+ {
+  "slug": "lego-friends-skola",
+  "h1": "Lego friends skola",
+  "parent": "/lego/",
+  "hubs": [
+   "/lego/"
+  ],
+  "group": "kw2",
+  "dedupe_all": true,
+  "rules": {
+   "all": [
+    "\\blego\\w*",
+    "\\bfrien\\w*",
+    "\\bskola\\w*"
+   ],
+   "cat": [
+    "lego"
+   ]
+  },
+  "min": 8,
+  "index_min": 15,
+  "evidence": 300,
+  "intent": "occasion",
+  "title": "Lego friends skola – srovnání cen"
+ },
+ {
+  "slug": "puzzle-svitici",
+  "h1": "Puzzle svítící",
+  "parent": "/puzzle/",
+  "hubs": [
+   "/puzzle/"
+  ],
+  "group": "kw2",
+  "dedupe_all": true,
+  "rules": {
+   "all": [
+    "\\bpuzzl\\w*",
+    "\\bsviti\\w*"
+   ],
+   "cat": [
+    "puzzle"
+   ]
+  },
+  "min": 8,
+  "index_min": 15,
+  "evidence": 200,
+  "intent": "feature",
+  "title": "Puzzle svítící – srovnání cen"
+ },
+ {
+  "slug": "domecek-pro-panenky-barbie",
+  "h1": "Domeček pro panenky barbie",
+  "parent": "/panenky/",
+  "hubs": [
+   "/panenky/"
+  ],
+  "group": "kw2",
+  "dedupe_all": true,
+  "rules": {
+   "all": [
+    "\\bdomec\\w*",
+    "\\bpanen\\w*",
+    "\\bbarbi\\w*"
+   ],
+   "cat": [
+    "panenky"
+   ]
+  },
+  "min": 8,
+  "index_min": 15,
+  "evidence": 160,
+  "intent": "type",
+  "title": "Domeček pro panenky barbie – srovnání cen"
  },
  {
   "slug": "hracky-minecraft/stavebnice",

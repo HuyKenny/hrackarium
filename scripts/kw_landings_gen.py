@@ -42,7 +42,7 @@ CATS = {  # stem -> (parent path, category prefix for the rule or None)
 }
 
 
-SKIP_SLUGS = {"kostky-pravidla", "ford-model-t", "box-na-hracky", "regal-na-hracky", "plysak", "plysaci", "hracky", "lego", "stavebnice", "panenky", "puzzle", "plysove-hracky"}   # too generic or duplicates of a category
+SKIP_SLUGS = {"kostky-pravidla", "ford-model-t", "box-na-hracky", "regal-na-hracky", "plysak", "plysaci", "hracky", "lego", "stavebnice", "panenky", "puzzle", "plysove-hracky", "organizer-na-hracky", "detska-sada-naradi", "detske-naradi", "sada-naradi"}   # too generic or duplicates of a category
 
 
 def stems(text):
@@ -55,7 +55,7 @@ def stems(text):
 
 
 def rx(w):
-    return r"\b" + (w[: max(4, len(w) - 2)] if len(w) > 4 else w) + r"\w*"
+    return r"\b" + (w[: max(5, len(w) - 2)] if len(w) > 5 else w) + r"\w*"
 
 
 def age_window(key):
