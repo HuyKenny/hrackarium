@@ -1,0 +1,23 @@
+{
+ "key": "cat:rc-modely/auta",
+ "intro": "Auta na dálkové ovládání: terénní, závodní i drifty. Jak vybírat podle věku, měřítka, baterie a dosahu ovladače.",
+ "body": "<h2>Typy RC aut</h2><p>Auta na dálkové ovládání se liší účelem. Terénní modely mají vysoké kapoty, velká kola a zvládnou trávu i štěrk. Silniční a závodní modely jsou nízké a rychlé, vhodné na hladký povrch. Drifty mají tvrdé pneumatiky, se kterými se dobře klouže. Nejmenší dětské modely s jednoduchým ovladačem jsou určeny pro hru v bytě.</p><h2>Věk a bezpečnost</h2><p>Doporučený věk na krabici berte vážně. Jednodušší auta bývají pro děti od tří až čtyř let, rychlejší modely pro školní děti a pokročilé jsou určeny starším. Baterie a nabíječky musí mít označení CE. Malé děti by neměly dobíjet akumulátory samy a lithiové články vyžadují dohled dospělého.</p><h2>Na co se dívat při výběru</h2><ul><li>Měřítko: čím větší číslo ve jmenovateli (1:24 je menší než 1:10), tím menší auto. Větší modely se lépe řídí venku.</li><li>Pohon: čtyřkolka lépe zvládá terén, zadní náhon se hodí na asfalt.</li><li>Baterie a doba jízdy: akumulátor obvykle vydrží desítky minut, proto se vyplatí náhradní.</li><li>Dosah ovladače a frekvence 2,4 GHz, která snižuje rušení mezi více auty.</li><li>Odolnost: pružné nárazníky a odpružení pomáhají při nárazech.</li></ul><h2>Kde a jak jezdit</h2><p>Auto pro byt by mělo být malé a pomalejší, ať nepoškodí nábytek. Terénní modely patří na zahradu nebo hřiště. Při jízdě venku dávejte pozor na vodu, protože ne všechna auta jsou vodotěsná. V popisu hledejte údaj o odolnosti proti stříkající vodě.</p><h2>Náhradní díly a údržba</h2><p>Lepší modely mají dostupné náhradní díly, třeba kola, nárazníky nebo servo. U levnějších aut se oprava někdy nevyplatí. Po jízdě v prachu nebo bahně očistěte kola a převodovku suchým štětcem. Baterie skladujte částečně nabité a mimo mráz. Pro srovnání s jinými typy navštivte <a href=\"/rc-modely/\">kategorii RC modelů</a> nebo <a href=\"/auta-a-vlacky/\">auta a vláčky</a>.</p><h2>Typické chyby při nákupu</h2><ul><li>Koupě příliš rychlého modelu pro malé dítě.</li><li>Přehlédnutí, že baterie do ovladače nejsou součástí balení.</li><li>Jízda v terénu s autem určeným jen na hladké podlahy.</li><li>Nákup bez ověření, zda existují náhradní díly.</li></ul><h2>Jak začít</h2><p>Pro prvního RC modelu je rozumné vybrat střední velikost a střední rychlost. Příliš malé auto se v trávě ztratí, příliš rychlé narazí a rozbije se. Před jízdou vždy zkontrolujte baterie, ovladač a zda je kolem dost místa. Po první jízdě se ukáže, zda dítě baví jízda sama, nebo i údržba a úpravy. Podle toho se pak vyplatí volit další model.</p><p>Sledujte také, zda je v balení přiložen šroubovák nebo nářadí na výměnu baterií. Pokud auto jezdí po tvrdém povrchu, hlídejte opotřebení pneumatik. Ovladač i auto by měly mít vypínač, který umožní šetřit baterie. U vybraných modelů se hodí i krytí proti prachu a vodě, zejména venku.</p><p>Na hrackarium.cz porovnáváme nabídku českých obchodů a u každého modelu uvádíme měřítko a věk podle popisu prodejce.</p>",
+ "faq": [
+  [
+   "Od kolika let se hodí RC auto?",
+   "Jednoduché modely od tří až čtyř let, rychlejší pro školní děti. Řiďte se údajem na krabici."
+  ],
+  [
+   "Co znamená měřítko 1:16?",
+   "Auto je šestnáctkrát menší než skutečné. Čím větší číslo, tím menší model."
+  ],
+  [
+   "Je RC auto vhodné venku v dešti?",
+   "Jen když to výrobce uvádí. Většina modelů není vodotěsná, proto se kaluže vyhněte."
+  ],
+  [
+   "Jak dlouho jezdí na jedno nabití?",
+   "Záleží na modelu a baterii, obvykle desítky minut. Doba je uvedena v popisu."
+  ]
+ ]
+}

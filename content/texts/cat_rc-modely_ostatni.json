@@ -1,0 +1,23 @@
+{
+ "key": "cat:rc-modely/ostatni",
+ "intro": "RC hračky na ovladač: auta, drony, lodě a další. Jak vybrat podle věku, dosahu a baterie a na co se zaměřit při koupi.",
+ "body": "<h2>Co jsou RC hračky</h2><p>RC je zkratka pro rádiově řízené hračky, které se ovládají dálkovým ovladačem. Do této části patří modely, které neřadíme do hlavních kategorií, například lodě, tanky, roboti, transformovatelná vozidla a další. Širší přehled najdete v kategorii <a href=\"/rc-modely/\">RC modely</a>.</p><h2>Typy</h2><ul><li>Vozidla na silnici i do terénu, často s pohonem všech kol.</li><li>Lodě a čluny určené do vody, bazénu nebo rybníka.</li><li>Tanky a pásová vozidla s otočnou věží.</li><li>Roboti a transformovatelné modely s programovatelnými funkcemi.</li><li>Jednoduché modely pro menší děti s velkými tlačítky na ovladači.</li></ul><h2>Věk</h2><p>Jednodušší RC modely s velkými tlačítky jsou obvykle od 3 až 5 let. Rychlejší vozidla a modely s nastavitelnými funkcemi bývají od 8 nebo 14 let, protože vyžadují jemnější ovládání a zacházení s akumulátorem. Věk na obalu je třeba dodržet i kvůli lithium-iontovým článkům, které s sebou nesou riziko při špatném nabíjení.</p><h2>Jak vybírat</h2><p>Zaměřte se na dosah ovládání, dobu provozu na jedno nabití a rychlost. Doba jízdy je u levnějších modelů často pouze v řádu desítek minut a nabíjení trvá déle, proto se vyplatí náhradní baterie. Velikost modelu a typ povrchu určují, kde se s ním dá hrát: malá auta se hodí do bytu, větší terénní modely patří na zahradu.</p><p>Důležitý je také ovladač. Sledujte, zda používá pásmo 2,4 GHz, které umožňuje jezdit více modelů vedle sebe bez rušení. Starší ovladače na jiných frekvencích se mohou navzájem rušit.</p><h2>Baterie a nabíjení</h2><p>Modely se napájejí tužkovými bateriemi nebo nabíjecími články. Nabíjet se má jen původní nabíječkou a pod dohledem. Nikdy nenechávejte nabíjení bez dozoru přes noc. Nafouklý nebo poškozený akumulátor přestaňte používat.</p><h2>Na co si dát pozor</h2><ul><li>Voděodolnost: pouze lodě jsou do vody určeny, pozemní auta ne.</li><li>Náhradní díly, například kola nebo baterie, ověřte předem.</li><li>Hlučnost a rychlost, které se hodí do venkovního prostředí.</li><li>Dětské modely se zpomalenou rychlostí bývají bezpečnější do bytu.</li></ul><h2>Údržba</h2><p>Po jízdě v terénu očistěte kola a hnací ústrojí od písku a trávy. Po vyjetí z vlhka model osušte. Baterie skladujte částečně nabité, v suchu a mimo mráz. Rozšířením o podobné hračky jsou také <a href=\"/auta-a-vlacky/\">auta a vláčky</a> bez ovladače.</p><h2>Jaký model zvolit</h2><p>Při rozhodování pomůže odpovědět na tři otázky: kde se bude hrát, jak dlouho a kdo bude ovládat. Pro hru v bytě stačí malý, pomalý model, venku se uplatní terénní vozy a lodě. Pokud model používá více dětí, zvažte náhradní baterii nebo rychlonabíječku. U modelů s kamerou nebo programovatelnými funkcemi počítejte s tím, že se dítě bude muset naučit i aplikaci. Starší ovladače s vlastní anténou vydrží lépe než levné plastové. Menší děti ocení jednoduchý ovladač s několika tlačítky.</p>",
+ "faq": [
+  [
+   "Od kolika let jsou RC hračky?",
+   "Jednoduché od 3 až 5 let, rychlejší modely od 8 až 14 let podle výrobce."
+  ],
+  [
+   "Můžou RC auta do vody?",
+   "Jen modely výslovně označené jako vodotěsné nebo lodě. Běžná auta by se zničila."
+  ],
+  [
+   "Jak dlouho se model nabíjí?",
+   "Záleží na baterii, obvykle desítky minut až několik hodin. Údaj je v návodu."
+  ],
+  [
+   "Rozumí si ovladače mezi sebou?",
+   "Moderní pásmo 2,4 GHz umožňuje jezdit s více modely současně bez vzájemného rušení."
+  ]
+ ]
+}
