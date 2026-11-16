@@ -130,6 +130,36 @@ def price_stats(items):
     return ps[0], int(statistics.median(ps)), ps[-1]
 
 
+def top_brands(items, n=3):
+    c = Counter(p["brand"] for p in items if p["brand"])
+    return [b for b, _ in c.most_common(n)]
+
+
+def age_phrase(items):
+    """'od 3 let' from the recommended ages of the items (months), only when most of them state one."""
+    ages = sorted(p["age"] for p in items if p.get("age") is not None)
+    if len(ages) < max(8, len(items) * 0.4):
+        return ""
+    y = ages[len(ages) // 10] // 12
+    return f"od {y} {R.plural(y, 'roku', 'let', 'let')}" if y >= 1 else "i pro nejmenší"
+
+
+def fit(parts, limit=170):
+    """Join sentences while the result stays within the meta description budget."""
+    out = ""
+    for x in parts:
+        if x and len(out) + len(x) + (1 if out else 0) <= limit:
+            out = (out + " " + x).strip()
+    return out
+
+
+def facts_desc(items, lo, med, shops, head):
+    b = top_brands(items)
+    ap = age_phrase(items)
+    return fit([head, f"Nejčastěji {', '.join(b[:-1]) + ' a ' + b[-1] if len(b) > 1 else b[0]}." if b else "", f"Polovina stojí méně než {R.kc(med)}.", f"Pro děti {ap}." if ap and ap != "i pro nejmenší" else ("I pro nejmenší." if ap else ""),
+               "Porovnejte ceny a kupte nejlevněji."])
+
+
 # ======================================================================= main
 
 def main():
@@ -222,6 +252,7 @@ def main():
     landings, dropped = LD.plan(products, reserved)
     S.landings = {L["path"]: L for L in landings}
     S.kids = LD.kids_map(landings)
+    S.ev = {L["path"]: L.get("ev", 0) for L in landings}      # monthly searches behind a landing page (0 = generated family)
     S.footer_links = [(L["path"], L["h1"]) for L in landings if L["slug"] in ("adventni-kalendare", "vanocni-darky")]
     guides = LD.load_guides()
     S.guides = {f"/pruvodce/{g['slug']}/": g for g in guides}
@@ -550,7 +581,23 @@ def gone_page(S, g):
                     body, crumbs=crumbs_for(k) + [(g["name"][:60], f"/produkt/{g['slug']}/")], noindex=True)
 
 
-def listing_body(S, path, h1, lead, items, jsn, icon, chips="", texts_key=None, extra_ld=None, links=None):
+def discover_html(S, path, items, kids):
+    """Crawlable blocks under a category listing: the searched-for selections (by monthly searches, not by size) and the popular brands there.
+    They concentrate internal links on the pages that have demand."""
+    ev = getattr(S, "ev", {})
+    sel = sorted((k for k in kids if k[0] != path), key=lambda k: (-ev.get(k[0], 0), -k[2]))[:8]
+    bn = S.ctx["brand_name"]
+    bc = Counter(X.slugify(p["brand"]) for p in items if p["brand"])
+    brands = [(f"/znacky/{b}/", bn[b], 0) for b, _ in bc.most_common(12) if b in bn][:8]
+    out = ""
+    if sel:
+        out += '<h2 class="disc__h">Často hledané výběry</h2>' + S.chips([(u, t, 0) for u, t, _ in sel])
+    if brands:
+        out += '<h2 class="disc__h">Oblíbené značky</h2>' + S.chips(brands)
+    return f'<section class="disc">{out}</section>' if out else ""
+
+
+def listing_body(S, path, h1, lead, items, jsn, icon, chips="", texts_key=None, extra_ld=None, links=None, disc=False):
     t = TX.get(texts_key) if texts_key else None
     intro = t["intro"] if t and t.get("intro") else ""
     lead_html = intro or lead
@@ -570,6 +617,7 @@ def listing_body(S, path, h1, lead, items, jsn, icon, chips="", texts_key=None, 
         qa = t["faq"]
     faq_html, faq_ld = S.faq(qa)
     body = band + f'<div class="wrap">{S.listing(items, jsn, facets=dict(facets(items, S), cats=cats))}' + \
+        (discover_html(S, path, items, kids) if disc and (not S.pg or S.pg[1] == 1) else "") + \
         (f'<div class="prose">{prose}</div><!--/prose-->' if prose else "") + faq_html + "</div>"
     return body, [faq_ld] + (extra_ld or [])
 
@@ -578,8 +626,9 @@ def category_page(S, k, items, subs, jsn):
     name, parent, h1, blurb = X.TREE[k]
     lo, med, hi = price_stats(items)
     n = len(items)
-    title = f"{h1} – srovnání cen ({n} {R.plural(n, 'hračka', 'hračky', 'hraček')})" + SUFFIX
-    desc = f"{h1}: {n} {R.plural(n, 'hračka', 'hračky', 'hraček')} z {S.stats['shops']} českých e‑shopů, ceny od {R.kc(lo)}. Porovnejte a kupte nejlevněji."
+    title = f"{h1} – srovnání cen od {R.kc(lo)}"
+    title = (title if len(title) + len(SUFFIX) <= 72 else f"{h1} – ceny od {R.kc(lo)}") + SUFFIX
+    desc = facts_desc(items, lo, med, S.stats["shops"], f"{h1}: {n} {R.plural(n, 'hračka', 'hračky', 'hraček')} z {S.stats['shops']} e‑shopů od {R.kc(lo)}.")
     chips = []
     for sk, ps in subs:
         chips.append((f"/{sk}/", cat_name(sk), len(ps)))
@@ -588,8 +637,9 @@ def category_page(S, k, items, subs, jsn):
         chips += [(f"/{top}/{ab}/", lbl.replace("pro děti ", "").replace("pro ", ""), len(S.ctx["cat_age"][(top, ab)])) for ab, lbl, _, _ in X.AGE_BANDS if (top, ab) in S.ctx["cat_age"]]
     if k == "lego":
         chips = [(f"/lego/{s}/", series_name(s), len(ps)) for s, ps in sorted(S.ctx["series"].items(), key=lambda x: -len(x[1]))] + chips
-    lead = f"{blurb or h1}. {n} {R.plural(n, 'hračka', 'hračky', 'hraček')}, ceny od {R.kc(lo)}."
-    body, lds = listing_body(S, f"/{k}/", h1, lead, items, jsn, R.ICON.get(top), "", texts_key=f"cat:{k}", links=chips)
+    tb = top_brands(items, 3)
+    lead = f"{blurb or h1}. {n} {R.plural(n, 'hračka', 'hračky', 'hraček')}, ceny od {R.kc(lo)} do {R.kc(hi)}" + (f"; nejčastěji značky {', '.join(tb)}." if tb else ".")
+    body, lds = listing_body(S, f"/{k}/", h1, lead, items, jsn, R.ICON.get(top), "", texts_key=f"cat:{k}", links=chips, disc=True)
     return S.layout(f"/{k}/", title, desc, body, crumbs=crumbs_for(k), jsonld=lds, full=True)
 
 
@@ -598,7 +648,7 @@ def cat_age_page(S, top, ab, items, jsn):
     h1 = f"{X.TREE[top][2]} {band[1]}"
     lo, med, hi = price_stats(items)
     title = f"{h1} – ceny od {R.kc(lo)}" + SUFFIX
-    desc = f"{h1}: {len(items)} hraček s doporučeným věkem v tomto rozmezí, ceny od {R.kc(lo)} v českých e‑shopech."
+    desc = facts_desc(items, lo, med, S.stats["shops"], f"{h1}: {len(items)} hraček s doporučeným věkem {band[1].replace('pro děti ', '').replace('pro ', '')} od {R.kc(lo)}.")
     lead = f"Vybrali jsme hračky, u kterých výrobce nebo obchod uvádí doporučený věk v rozmezí {band[1].replace('pro děti ', '').replace('pro ', '')}."
     others = [(f"/{top}/{b[0]}/", b[1].replace("pro děti ", "").replace("pro ", ""), 0) for b in X.AGE_BANDS if (top, b[0]) in S.ctx["cat_age"] and b[0] != ab]
     body, lds = listing_body(S, f"/{top}/{ab}/", h1, lead, items, jsn, R.ICON.get(top), "", texts_key=f"age:{top}:{ab}", links=others)
@@ -613,7 +663,7 @@ def series_page(S, s, items, jsn):
     name = series_name(s)
     lo, med, hi = price_stats(items)
     title = f"{name} – srovnání cen setů od {R.kc(lo)}" + SUFFIX
-    desc = f"{name}: {len(items)} setů z českých e‑shopů, ceny od {R.kc(lo)}. Porovnejte ceny jednotlivých setů a kupte nejlevněji."
+    desc = fit([f"{name}: {len(items)} {R.plural(len(items), 'set', 'sety', 'setů')} od {R.kc(lo)} do {R.kc(hi)}.", f"Polovina stojí méně než {R.kc(med)}.", "Porovnejte ceny jednotlivých setů v českých e‑shopech a kupte nejlevněji."])
     lead = f"{len(items)} {R.plural(len(items), 'set', 'sety', 'setů')} řady {name.replace('LEGO ', '')} skladem v českých obchodech, ceny od {R.kc(lo)} do {R.kc(hi)}."
     others = [(f"/lego/{k}/", series_name(k), 0) for k, ps in sorted(S.ctx["series"].items(), key=lambda x: -len(x[1])) if k != s][:14]
     body, lds = listing_body(S, f"/lego/{s}/", name, lead, items, jsn, "kostky", "", texts_key=f"lego:{s}", links=others)
@@ -624,8 +674,8 @@ def brand_page(S, b, items, jsn):
     name = S.ctx["brand_name"][b]
     lo, med, hi = price_stats(items)
     cats = Counter(p["cat"].split("/")[0] for p in items).most_common(6)
-    title = f"Hračky {name} – srovnání cen" + SUFFIX
-    desc = f"{name}: {len(items)} {R.plural(len(items), 'hračka', 'hračky', 'hraček')} skladem v českých e‑shopech, ceny od {R.kc(lo)}. Porovnejte a kupte nejlevněji."
+    title = f"Hračky {name} – ceny od {R.kc(lo)}" + SUFFIX
+    desc = fit([f"{name}: {len(items)} {R.plural(len(items), 'hračka', 'hračky', 'hraček')} od {R.kc(lo)} v českých e‑shopech.", ("Nejčastěji " + ", ".join(cat_name(c).lower() for c, _ in cats[:3]) + ".") if cats else "", f"Polovina stojí méně než {R.kc(med)}.", "Porovnejte ceny a kupte nejlevněji."])
     lead = f"{len(items)} {R.plural(len(items), 'produkt', 'produkty', 'produktů')} značky {E(name)} skladem, nejčastěji v kategoriích " + \
         ", ".join(f'<a class="lnk" href="/{c}/">{E(cat_name(c).lower())}</a>' for c, _ in cats[:3]) + "."
     body, lds = listing_body(S, f"/znacky/{b}/", f"Hračky {E(name)}", lead, items, jsn, None, "", texts_key=f"brand:{b}")
@@ -636,10 +686,10 @@ def licence_page(S, s, items, jsn):
     name = S.lic_name[s]
     lo, med, hi = price_stats(items)
     title = f"{name} hračky – srovnání cen od {R.kc(lo)}" + SUFFIX
-    desc = f"Hračky {name}: {len(items)} produktů z českých e‑shopů – stavebnice, plyšáci, figurky a další, ceny od {R.kc(lo)}."
     cats = Counter(p["cat"].split("/")[0] for p in items).most_common(5)
+    desc = fit([f"Hračky {name}: {len(items)} produktů od {R.kc(lo)} v českých e‑shopech.", ("Nejvíc " + ", ".join(cat_name(c).lower() for c, _ in cats[:3]) + ".") if cats else "", "Porovnejte ceny a kupte nejlevněji."])
     lead = f"Všechno s motivem {E(name)} na jednom místě: " + ", ".join(cat_name(c).lower() for c, _ in cats) + f". Celkem {len(items)} hraček."
-    body, lds = listing_body(S, f"/hracky-{s}/", f"Hračky {E(name)}", lead, items, jsn, None, "", texts_key=f"lic:{s}")
+    body, lds = listing_body(S, f"/hracky-{s}/", f"Hračky {E(name)}", lead, items, jsn, None, "", texts_key=f"lic:{s}", disc=True)
     return S.layout(f"/hracky-{s}/", title, desc, body, crumbs=[("Hračkárium", "/"), ("Postavičky", "/postavicky/"), (name, f"/hracky-{s}/")], jsonld=lds, full=True)
 
 
@@ -710,8 +760,13 @@ def landing_page(S, L, items, jsn):
     title = (L.get("title") or f"{h1} – srovnání cen od {R.kc(lo)}") + (SUFFIX if "Hračkárium" not in (L.get("title") or "") else "")
     if len(title) > 72 and not L.get("title"):
         title = f"{h1} – ceny od {R.kc(lo)}" + SUFFIX
-    desc = L.get("desc") or f"{h1}: {n} {R.plural(n, 'hračka', 'hračky', 'hraček')} z {shops} českých e‑shopů, ceny od {R.kc(lo)}. Porovnejte nabídky a kupte nejlevněji."
+    desc = L.get("desc") or facts_desc(items, lo, med, shops, f"{h1}: {n} {R.plural(n, 'hračka', 'hračky', 'hraček')} z {shops} e‑shopů od {R.kc(lo)}.")
     lead = L.get("lead") or f"{n} {R.plural(n, 'hračka', 'hračky', 'hraček')} z {shops} {R.plural(shops, 'obchodu', 'obchodů', 'obchodů')}, ceny od {R.kc(lo)} do {R.kc(hi)}."
+    al = [a for a in (L.get("aliases") or []) if a.lower() != h1.lower()][:6]
+    if al and not L.get("desc"):
+        desc = fit([desc, "Hledáte také: " + ", ".join(a.lower() for a in al[:3]) + "."], 175)
+    if al and not L.get("lead"):
+        lead += " Hledáte také: " + ", ".join(a.lower() for a in al) + "."
     sibs = [k for k in S.kids.get(L["parent"], []) if k[0] != path] if L["parent"] and L["parent"] != "/kategorie/" else []
     chips = [(u, t, c) for u, t, c in sorted(sibs, key=lambda k: -k[2])[:16]]
     icon = L.get("icon") or (R.ICON.get(path.strip("/").split("/")[0]) if L["parent"] in (None, "/kategorie/") else None)
@@ -907,8 +962,10 @@ def home_page(S, products, by_top, series, lic, gift):
     ages = "".join(f'<li><a href="{p}">{v[3][1]}<small>{"rok" if v[3][1] == 1 else "roky" if v[3][1] < 5 else "let"}</small></a></li>' for p, v in gift.items() if v[3][0] == "age")
     lego = S.chips([(f"/lego/{s}/", series_name(s), len(ps)) for s, ps in sorted(series.items(), key=lambda x: -len(x[1]))[:14]])
     chars = S.chips([(f"/hracky-{s}/", S.lic_name[s], len(ps)) for s, ps in sorted(lic.items(), key=lambda x: -len(x[1]))[:16]])
-    feat = [L for L in S.landings.values() if L["home"]]
-    featured = (f'<section class="sec"><div class="sec__h"><h2>Hledáte nejčastěji</h2></div>' + S.chips([(L["path"], L["h1"], L["n"]) for L in sorted(feat, key=lambda L: -L["n"])[:12]]) + "</section>") if feat else ""
+    feat = sorted([L for L in S.landings.values() if L["home"]], key=lambda L: -L["n"])[:6]
+    demand = sorted([L for L in S.landings.values() if L["index"] and L.get("ev", 0) > 0 and L["n"] >= 20 and L not in feat], key=lambda L: -L["ev"])[:10]     # what people search most (Marketing Miner), not what is biggest
+    feat = feat + demand
+    featured = (f'<section class="sec"><div class="sec__h"><h2>Hledáte nejčastěji</h2></div>' + S.chips([(L["path"], L["h1"], L["n"]) for L in feat]) + "</section>") if feat else ""
     guides_sec = (f'<section class="sec"><div class="sec__h"><h2>Z blogu</h2><a href="/pruvodce/">Všechny články →</a></div>' + S.chips([(p, g["h1"], 0) for p, g in list(S.guides.items())[:8]]) + "</section>") if getattr(S, "guides", None) else ""
     cnt = Counter(o["shop"] for p in products for o in p["offers"])
     logos = [R.shop_logo(S.shop(sid)) for sid, _ in cnt.most_common() if S.shop(sid).get("logo")][:14]

@@ -1,0 +1,288 @@
+[
+ {
+  "slug": "lego-minecraft",
+  "h1": "LEGO Minecraft",
+  "parent": "/lego/",
+  "cat": "lego",
+  "hubs": [
+   "/lego/",
+   "/hracky-minecraft/"
+  ],
+  "group": "lego-lic",
+  "dedupe_all": true,
+  "rules": {
+   "cat": [
+    "lego"
+   ],
+   "lic": "minecraft"
+  },
+  "min": 6,
+  "index_min": 10,
+  "evidence": 38480,
+  "title": "LEGO Minecraft – sety a srovnání cen"
+ },
+ {
+  "slug": "lego-star-wars",
+  "h1": "LEGO Star Wars",
+  "parent": "/lego/",
+  "cat": "lego",
+  "hubs": [
+   "/lego/",
+   "/hracky-star-wars/"
+  ],
+  "group": "lego-lic",
+  "dedupe_all": true,
+  "rules": {
+   "cat": [
+    "lego"
+   ],
+   "lic": "star-wars"
+  },
+  "min": 6,
+  "index_min": 10,
+  "evidence": 37350,
+  "title": "LEGO Star Wars – sety a srovnání cen"
+ },
+ {
+  "slug": "lego-ninjago",
+  "h1": "LEGO Ninjago",
+  "parent": "/lego/",
+  "cat": "lego",
+  "hubs": [
+   "/lego/",
+   "/hracky-ninjago/"
+  ],
+  "group": "lego-lic",
+  "dedupe_all": true,
+  "rules": {
+   "cat": [
+    "lego"
+   ],
+   "lic": "ninjago"
+  },
+  "min": 6,
+  "index_min": 10,
+  "evidence": 35060,
+  "title": "LEGO Ninjago – sety a srovnání cen"
+ },
+ {
+  "slug": "lego-harry-potter",
+  "h1": "LEGO Harry Potter",
+  "parent": "/lego/",
+  "cat": "lego",
+  "hubs": [
+   "/lego/",
+   "/hracky-harry-potter/"
+  ],
+  "group": "lego-lic",
+  "dedupe_all": true,
+  "rules": {
+   "cat": [
+    "lego"
+   ],
+   "lic": "harry-potter"
+  },
+  "min": 6,
+  "index_min": 10,
+  "evidence": 28150,
+  "title": "LEGO Harry Potter – sety a srovnání cen"
+ },
+ {
+  "slug": "lego-stranger-things",
+  "h1": "LEGO Stranger Things",
+  "parent": "/lego/",
+  "cat": "lego",
+  "hubs": [
+   "/lego/",
+   "/hracky-stranger-things/"
+  ],
+  "group": "lego-lic",
+  "dedupe_all": true,
+  "rules": {
+   "cat": [
+    "lego"
+   ],
+   "lic": "stranger-things"
+  },
+  "min": 6,
+  "index_min": 10,
+  "evidence": 14340,
+  "title": "LEGO Stranger Things – sety a srovnání cen"
+ },
+ {
+  "slug": "lego-fortnite",
+  "h1": "LEGO Fortnite",
+  "parent": "/lego/",
+  "cat": "lego",
+  "hubs": [
+   "/lego/",
+   "/hracky-fortnite/"
+  ],
+  "group": "lego-lic",
+  "dedupe_all": true,
+  "rules": {
+   "cat": [
+    "lego"
+   ],
+   "lic": "fortnite"
+  },
+  "min": 6,
+  "index_min": 10,
+  "evidence": 11820,
+  "title": "LEGO Fortnite – sety a srovnání cen"
+ },
+ {
+  "slug": "lego-pokemon",
+  "h1": "LEGO Pokémon",
+  "parent": "/lego/",
+  "cat": "lego",
+  "hubs": [
+   "/lego/",
+   "/hracky-pokemon/"
+  ],
+  "group": "lego-lic",
+  "dedupe_all": true,
+  "rules": {
+   "cat": [
+    "lego"
+   ],
+   "lic": "pokemon"
+  },
+  "min": 6,
+  "index_min": 10,
+  "evidence": 9820,
+  "title": "LEGO Pokémon – sety a srovnání cen"
+ },
+ {
+  "slug": "lego-marvel",
+  "h1": "LEGO Marvel",
+  "parent": "/lego/",
+  "cat": "lego",
+  "hubs": [
+   "/lego/",
+   "/hracky-marvel/"
+  ],
+  "group": "lego-lic",
+  "dedupe_all": true,
+  "rules": {
+   "cat": [
+    "lego"
+   ],
+   "lic": "marvel"
+  },
+  "min": 6,
+  "index_min": 10,
+  "evidence": 9680,
+  "title": "LEGO Marvel – sety a srovnání cen"
+ },
+ {
+  "slug": "lego-batman",
+  "h1": "LEGO Batman",
+  "parent": "/lego/",
+  "cat": "lego",
+  "hubs": [
+   "/lego/",
+   "/hracky-batman/"
+  ],
+  "group": "lego-lic",
+  "dedupe_all": true,
+  "rules": {
+   "cat": [
+    "lego"
+   ],
+   "lic": "batman"
+  },
+  "min": 6,
+  "index_min": 10,
+  "evidence": 5480,
+  "title": "LEGO Batman – sety a srovnání cen"
+ },
+ {
+  "slug": "lego-bluey",
+  "h1": "LEGO Bluey",
+  "parent": "/lego/",
+  "cat": "lego",
+  "hubs": [
+   "/lego/",
+   "/hracky-bluey/"
+  ],
+  "group": "lego-lic",
+  "dedupe_all": true,
+  "rules": {
+   "cat": [
+    "lego"
+   ],
+   "lic": "bluey"
+  },
+  "min": 6,
+  "index_min": 10,
+  "evidence": 3510,
+  "title": "LEGO Bluey – sety a srovnání cen"
+ },
+ {
+  "slug": "lego-wednesday",
+  "h1": "LEGO Wednesday",
+  "parent": "/lego/",
+  "cat": "lego",
+  "hubs": [
+   "/lego/",
+   "/hracky-wednesday/"
+  ],
+  "group": "lego-lic",
+  "dedupe_all": true,
+  "rules": {
+   "cat": [
+    "lego"
+   ],
+   "lic": "wednesday"
+  },
+  "min": 6,
+  "index_min": 10,
+  "evidence": 3230,
+  "title": "LEGO Wednesday – sety a srovnání cen"
+ },
+ {
+  "slug": "lego-sonic",
+  "h1": "LEGO Sonic",
+  "parent": "/lego/",
+  "cat": "lego",
+  "hubs": [
+   "/lego/",
+   "/hracky-sonic/"
+  ],
+  "group": "lego-lic",
+  "dedupe_all": true,
+  "rules": {
+   "cat": [
+    "lego"
+   ],
+   "lic": "sonic"
+  },
+  "min": 6,
+  "index_min": 10,
+  "evidence": 2600,
+  "title": "LEGO Sonic – sety a srovnání cen"
+ },
+ {
+  "slug": "lego-super-mario",
+  "h1": "LEGO Super Mario",
+  "parent": "/lego/",
+  "cat": "lego",
+  "hubs": [
+   "/lego/",
+   "/hracky-super-mario/"
+  ],
+  "group": "lego-lic",
+  "dedupe_all": true,
+  "rules": {
+   "cat": [
+    "lego"
+   ],
+   "lic": "super-mario"
+  },
+  "min": 6,
+  "index_min": 10,
+  "evidence": 1550,
+  "title": "LEGO Super Mario – sety a srovnání cen"
+ }
+]

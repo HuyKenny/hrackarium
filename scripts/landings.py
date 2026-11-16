@@ -211,6 +211,7 @@ def plan(products, reserved=()):
             by_cat[p["cat"].split("/")[0]].append(p)
     recs = load_records() + generated_records(products, by_cat, reserved) + load_records(only_kw2=True)
     seen_paths, groups, out, dropped = set(reserved), defaultdict(list), [], defaultdict(int)
+    all_out = []         # index in `out` of the page behind each entry of all_sets
     all_sets = []        # product-id sets of every accepted page: records with "dedupe_all" must differ from all of them
     for r in recs:
         path = "/" + r["slug"].strip("/") + "/"
@@ -233,15 +234,21 @@ def plan(products, reserved=()):
         if any(jaccard(ids, o) > 0.9 for o in groups[g]):
             dropped["duplicate of a sibling"] += 1
             continue
-        if r.get("dedupe_all") and any(0.85 <= len(ids) / max(1, len(o)) <= 1 / 0.85 and jaccard(ids, o) > 0.85 for o in all_sets):
-            dropped["same products as an existing page"] += 1
-            continue
+        if r.get("dedupe_all"):
+            hit = next((j for j, o in enumerate(all_sets) if 0.85 <= len(ids) / max(1, len(o)) <= 1 / 0.85 and jaccard(ids, o) > 0.85), None)
+            if hit is not None:
+                dropped["same products as an existing page"] += 1
+                tgt = all_out[hit]
+                if tgt < len(out) and r["h1"] not in out[tgt].setdefault("aliases", []) and r["h1"] != out[tgt]["h1"]:
+                    out[tgt]["aliases"].append(r["h1"])       # the same selection searched under another phrase: say it on the surviving page
+                continue
         all_sets.append(ids)
+        all_out.append(len(out))
         groups[g].append(ids)
         seen_paths.add(path)
         prices = sorted(p["price"] for p in items)
         out.append({"path": path, "slug": r["slug"].strip("/"), "h1": r["h1"], "title": r.get("title"), "lead": r.get("lead"), "desc": r.get("desc"), "items": items,
-                    "parent": r.get("parent"), "hubs": r.get("hubs", []), "group": g, "icon": r.get("icon"), "home": r.get("home", False),
+                    "parent": r.get("parent"), "hubs": r.get("hubs", []), "group": g, "icon": r.get("icon"), "home": r.get("home", False), "ev": r.get("evidence", 0),
                     "index": len(items) >= r.get("index_min", INDEX_MIN_DEFAULT), "lo": prices[0], "n": len(items)})
     return out, dict(dropped)
 
