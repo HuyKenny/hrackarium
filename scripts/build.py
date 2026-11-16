@@ -588,7 +588,8 @@ def discover_html(S, path, items, kids):
     sel = sorted((k for k in kids if k[0] != path), key=lambda k: (-ev.get(k[0], 0), -k[2]))[:8]
     bn = S.ctx["brand_name"]
     bc = Counter(X.slugify(p["brand"]) for p in items if p["brand"])
-    brands = [(f"/znacky/{b}/", bn[b], 0) for b, _ in bc.most_common(12) if b in bn][:8]
+    live = S.ctx["brands"]       # only brands that have a page and are indexable (>= 5 items)
+    brands = [(f"/znacky/{b}/", bn[b], 0) for b, _ in bc.most_common(16) if b in bn and len(live.get(b, ())) >= 5][:8]
     out = ""
     if sel:
         out += '<h2 class="disc__h">Často hledané výběry</h2>' + S.chips([(u, t, 0) for u, t, _ in sel])
