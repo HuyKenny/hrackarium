@@ -1,0 +1,290 @@
+[
+ {
+  "slug": "interaktivni-zviratka",
+  "h1": "Interaktivní zvířátka",
+  "parent": "/kategorie/",
+  "hubs": [
+   "/kategorie/"
+  ],
+  "group": "kw4",
+  "dedupe_all": true,
+  "rules": {
+   "any": [
+    "interaktivn\\w* (zvirat|zviratk|pejsek|psik|kotat|kotek|krecek|medved|mazlicek)",
+    "bitzee",
+    "hatchimals",
+    "furreal",
+    "pets alive",
+    "magic mixies",
+    "mluvici (krecek|zviratk)"
+   ]
+  },
+  "min": 8,
+  "index_min": 15,
+  "evidence": 1963,
+  "intent": "ahrefs gap",
+  "title": "Interaktivní zvířátka – srovnání cen"
+ },
+ {
+  "slug": "interaktivni-pejsek",
+  "h1": "Interaktivní pejsek",
+  "parent": "/kategorie/",
+  "hubs": [
+   "/kategorie/"
+  ],
+  "group": "kw4",
+  "dedupe_all": true,
+  "rules": {
+   "all": [
+    "\\binterakt\\w*",
+    "\\b(pejsek|psik|pes|stene)\\w*"
+   ]
+  },
+  "min": 8,
+  "index_min": 15,
+  "evidence": 1553,
+  "intent": "ahrefs gap",
+  "title": "Interaktivní pejsek – srovnání cen"
+ },
+ {
+  "slug": "interaktivni-panenka",
+  "h1": "Interaktivní panenka",
+  "parent": "/kategorie/",
+  "hubs": [
+   "/kategorie/"
+  ],
+  "group": "kw4",
+  "dedupe_all": true,
+  "rules": {
+   "all": [
+    "\\binterakt\\w*",
+    "\\bpanenk\\w*"
+   ]
+  },
+  "min": 8,
+  "index_min": 15,
+  "evidence": 600,
+  "intent": "ahrefs gap",
+  "title": "Interaktivní panenka – srovnání cen"
+ },
+ {
+  "slug": "cesaci-hlava",
+  "h1": "Česací hlavy",
+  "parent": "/kategorie/",
+  "hubs": [
+   "/kategorie/"
+  ],
+  "group": "kw4",
+  "dedupe_all": true,
+  "rules": {
+   "any": [
+    "cesaci hlav",
+    "cesaci panenk",
+    "cesaci hlava"
+   ]
+  },
+  "min": 8,
+  "index_min": 15,
+  "evidence": 1489,
+  "intent": "ahrefs gap",
+  "title": "Česací hlavy – srovnání cen"
+ },
+ {
+  "slug": "chodici-panenka",
+  "h1": "Chodící panenky",
+  "parent": "/kategorie/",
+  "hubs": [
+   "/kategorie/"
+  ],
+  "group": "kw4",
+  "dedupe_all": true,
+  "rules": {
+   "any": [
+    "chodici panenk",
+    "panenk\\w* (chodici|chodi)",
+    "chodi a"
+   ]
+  },
+  "min": 8,
+  "index_min": 15,
+  "evidence": 205,
+  "intent": "ahrefs gap",
+  "title": "Chodící panenky – srovnání cen"
+ },
+ {
+  "slug": "chodici-pejsek",
+  "h1": "Chodící pejsek",
+  "parent": "/kategorie/",
+  "hubs": [
+   "/kategorie/"
+  ],
+  "group": "kw4",
+  "dedupe_all": true,
+  "rules": {
+   "all": [
+    "\\bchodic\\w*",
+    "\\b(pejsek|psik|pes)\\w*"
+   ]
+  },
+  "min": 8,
+  "index_min": 15,
+  "evidence": 190,
+  "intent": "ahrefs gap",
+  "title": "Chodící pejsek – srovnání cen"
+ },
+ {
+  "slug": "mluvici-krecek",
+  "h1": "Mluvící křeček",
+  "parent": "/kategorie/",
+  "hubs": [
+   "/kategorie/"
+  ],
+  "group": "kw4",
+  "dedupe_all": true,
+  "rules": {
+   "all": [
+    "\\b(mluvic|opakujic)\\w*",
+    "\\bkrece\\w*"
+   ]
+  },
+  "min": 8,
+  "index_min": 15,
+  "evidence": 240,
+  "intent": "ahrefs gap",
+  "title": "Mluvící křeček – srovnání cen"
+ },
+ {
+  "slug": "kosmeticky-kufrik-pro-deti",
+  "h1": "Kosmetický kufřík pro děti",
+  "parent": "/kategorie/",
+  "hubs": [
+   "/kategorie/"
+  ],
+  "group": "kw4",
+  "dedupe_all": true,
+  "rules": {
+   "any": [
+    "kosmetick\\w* kufr",
+    "detska kosmetika",
+    "kosmetick\\w* sada",
+    "kosmetick\\w* set"
+   ]
+  },
+  "min": 8,
+  "index_min": 15,
+  "evidence": 305,
+  "intent": "ahrefs gap",
+  "title": "Kosmetický kufřík pro děti – srovnání cen"
+ },
+ {
+  "slug": "parkovaci-dum-pro-deti",
+  "h1": "Parkovací domy a garáže pro děti",
+  "parent": "/kategorie/",
+  "hubs": [
+   "/kategorie/"
+  ],
+  "group": "kw4",
+  "dedupe_all": true,
+  "rules": {
+   "any": [
+    "parkovac\\w* dum",
+    "garaz\\w* (pro|na)",
+    "parkovac\\w* garaz",
+    "parkoviste"
+   ]
+  },
+  "min": 8,
+  "index_min": 15,
+  "evidence": 126,
+  "intent": "ahrefs gap",
+  "title": "Parkovací domy a garáže pro děti – srovnání cen"
+ },
+ {
+  "slug": "sroubovaci-stavebnice",
+  "h1": "Šroubovací stavebnice",
+  "parent": "/kategorie/",
+  "hubs": [
+   "/kategorie/"
+  ],
+  "group": "kw4",
+  "dedupe_all": true,
+  "rules": {
+   "any": [
+    "sroubovac\\w*",
+    "stavebnice\\w* se sroub",
+    "sroub\\w* stavebnic"
+   ]
+  },
+  "min": 8,
+  "index_min": 15,
+  "evidence": 102,
+  "intent": "ahrefs gap",
+  "title": "Šroubovací stavebnice – srovnání cen"
+ },
+ {
+  "slug": "detska-detektor-lzi",
+  "h1": "Detektor lži",
+  "parent": "/spolecenske-hry/",
+  "hubs": [
+   "/spolecenske-hry/"
+  ],
+  "group": "kw4",
+  "dedupe_all": true,
+  "rules": {
+   "all": [
+    "\\bdetektor\\w*",
+    "\\blz\\w*"
+   ]
+  },
+  "min": 8,
+  "index_min": 15,
+  "evidence": 377,
+  "intent": "ahrefs gap",
+  "title": "Detektor lži – srovnání cen"
+ },
+ {
+  "slug": "volant-pro-deti",
+  "h1": "Volant a simulátory pro děti",
+  "parent": "/kategorie/",
+  "hubs": [
+   "/kategorie/"
+  ],
+  "group": "kw4",
+  "dedupe_all": true,
+  "rules": {
+   "any": [
+    "volant pro",
+    "detsk\\w* volant",
+    "simulator\\w* (ridic|jizd)"
+   ]
+  },
+  "min": 8,
+  "index_min": 15,
+  "evidence": 93,
+  "intent": "ahrefs gap",
+  "title": "Volant a simulátory pro děti – srovnání cen"
+ },
+ {
+  "slug": "mystery-boxy",
+  "h1": "Mystery boxy",
+  "parent": "/kategorie/",
+  "hubs": [
+   "/kategorie/"
+  ],
+  "group": "kw4",
+  "dedupe_all": true,
+  "rules": {
+   "any": [
+    "mystery",
+    "prekvapeni box",
+    "surprise box",
+    "slepa krabick"
+   ]
+  },
+  "min": 8,
+  "index_min": 15,
+  "evidence": 1870,
+  "intent": "ahrefs gap",
+  "title": "Mystery boxy – srovnání cen"
+ }
+]

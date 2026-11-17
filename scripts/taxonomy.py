@@ -251,6 +251,15 @@ LICENCES = [
     ("wednesday", "Wednesday", r"wednesday"), ("jednorozci", "Jednorožci", r"jednorož|unicorn"), ("ninjago", "Ninjago", r"ninjago"),
     ("mimoni", "Mimoni", r"mimoň|minion"), ("pat-a-mat", "Pat a Mat", r"pat a mat"), ("tomas-a-pratele", "Tomáš a přátelé", r"tomáš a přátelé|thomas"),
     ("kapybara", "Kapybara", r"kapybar|capybar"), ("squishmallows", "Squishmallows", r"squishmallow"),
+    # added 17. 11. 2026 from the Ahrefs content gap (rank in the top 10 of >= 1 big competitor; the build keeps a page only with >= 6 products)
+    ("bitzee", "Bitzee", r"\bbitzee\b"), ("hatchimals", "Hatchimals", r"hatchimals"), ("magic-mixies", "Magic Mixies", r"magic mixies"),
+    ("furreal", "FurReal Friends", r"furreal|fur real"), ("robo-alive", "Robo Alive", r"robo alive"), ("littlest-pet-shop", "Littlest Pet Shop", r"littlest pet shop|little pet shop|\blps\b|petshop"),
+    ("miniverse", "Miniverse", r"miniverse"), ("unicorn-academy", "Unicorn Academy", r"unicorn academy|jednoro\w+ akademie"), ("rainbocorns", "Rainbocorns", r"rainbocorn"),
+    ("fuggler", "Fuggler", r"fuggler"), ("poopsie", "Poopsie", r"poopsie"), ("vip-pets", "VIP Pets", r"vip pets"), ("zuru-pets-alive", "Pets Alive", r"pets alive"),
+    ("jak-vycvicit-draka", "Jak vycvičit draka", r"jak vycvičit draka|\btoothless\b|bezzubka"),
+    ("poppy-playtime", "Poppy Playtime", r"poppy playtime|huggy wuggy|hagi vagi|kissy missy"), 
+    
+    ("mystery-box", "Mystery boxy", r"mystery box|mystery boxy|překvapení box"),
     ("bakugan", "Bakugan", r"bakugan"), ("lol-surprise", "L.O.L. Surprise", r"l\.?o\.?l\.? surprise|\blol surprise"), ("rainbow-high", "Rainbow High", r"rainbow high"),
     ("nerf", "Nerf", r"\bnerf\b"), ("gravitrax", "GraviTrax", r"gravitrax"), ("tonies", "Tonies", r"\btonies\b|toniebox"), ("monster-high", "Monster High", r"monster high"),
     ("roblox", "Roblox", r"\broblox"), ("five-nights-at-freddys", "Five Nights at Freddy's", r"five nights|\bfnaf\b"), ("kpop-demon-hunters", "K-Pop Demon Hunters", r"k-?pop demon hunters|demon hunters"),
