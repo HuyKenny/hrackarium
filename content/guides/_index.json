@@ -962,5 +962,21 @@
     "panenky"
    ]
   }
+ },
+ {
+  "slug": "vanocni-darky-pro-deti-do-500-kc",
+  "h1": "Vánoční dárky pro děti do 500 Kč podle věku",
+  "related": [
+   "/vanocni-darky/do-500-kc/",
+   "/hracky-do-500-kc/",
+   "/vanocni-darky/"
+  ],
+  "rules": {
+   "price": [
+    null,
+    500
+   ],
+   "offers": 3
+  }
  }
 ]
