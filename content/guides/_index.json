@@ -978,5 +978,45 @@
    ],
    "offers": 3
   }
+ },
+ {
+  "slug": "pokemon-karty-pod-stromecek",
+  "h1": "Pokémon karty pod stromeček: který box pro začátečníka a jak nenaletět na padělky",
+  "related": [
+   "/sberatelske-karty/pokemon/",
+   "/sberatelske-karty/starter-decky-a-boostery/",
+   "/vanocni-darky/"
+  ],
+  "rules": {
+   "cat": [
+    "sberatelske-karty"
+   ],
+   "any": [
+    "pokemon"
+   ]
+  },
+  "title": "Pokémon karty pod stromeček: který box koupit",
+  "date": "2026-11-21"
+ },
+ {
+  "slug": "vanocni-prazdniny-s-detmi-hry",
+  "h1": "Vánoční prázdniny s dětmi: hry na doma i do prohlížeče a kolik obrazovky je rozumné",
+  "related": [
+   "/spolecenske-hry/",
+   "/puzzle/",
+   "/prvni-deskovky-pro-deti/"
+  ],
+  "rules": {
+   "cat": [
+    "spolecenske-hry"
+   ],
+   "age": [
+    48,
+    144
+   ],
+   "offers": 2
+  },
+  "title": "Vánoční prázdniny s dětmi: hry a obrazovky",
+  "date": "2026-11-21"
  }
 ]

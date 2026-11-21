@@ -564,5 +564,19 @@
   "alt": "Chlapec si hraje s hračkami u vánočního stromku",
   "by": "Polesie Toys",
   "page": "https://www.pexels.com/photo/6130352/"
+ },
+ "pokemon-karty-pod-stromecek": {
+  "id": 37743085,
+  "src": "https://images.pexels.com/photos/37743085/pexels-photo-37743085.jpeg",
+  "alt": "Hromádka Pokémon karet rubem nahoru",
+  "by": "Tyler Mascola",
+  "page": "https://www.pexels.com/photo/37743085/"
+ },
+ "vanocni-prazdniny-s-detmi-hry": {
+  "id": 4691520,
+  "src": "https://images.pexels.com/photos/4691520/pexels-photo-4691520.jpeg",
+  "alt": "Tři kluci hrají deskovou hru na koberci v obýváku",
+  "by": "cottonbro studio",
+  "page": "https://www.pexels.com/photo/4691520/"
  }
 }
