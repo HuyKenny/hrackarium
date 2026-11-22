@@ -1,0 +1,489 @@
+[
+ {
+  "slug": "kolobezky-pro-deti",
+  "h1": "Koloběžky pro děti",
+  "parent": "/kategorie/",
+  "hubs": [
+   "/kategorie/"
+  ],
+  "group": "kw5",
+  "dedupe_all": true,
+  "rules": {
+   "any": [
+    "\\bkolobezk",
+    "\\bscooter"
+   ]
+  },
+  "min": 8,
+  "index_min": 15,
+  "evidence": 2200,
+  "intent": "ahrefs volume 22. 11.",
+  "title": "Koloběžky pro děti – srovnání cen"
+ },
+ {
+  "slug": "detske-trampoliny",
+  "h1": "Dětské trampolíny",
+  "parent": "/kategorie/",
+  "hubs": [
+   "/kategorie/"
+  ],
+  "group": "kw5",
+  "dedupe_all": true,
+  "rules": {
+   "any": [
+    "\\btrampolin"
+   ]
+  },
+  "min": 8,
+  "index_min": 15,
+  "evidence": 500,
+  "intent": "ahrefs volume 22. 11.",
+  "title": "Dětské trampolíny – srovnání cen"
+ },
+ {
+  "slug": "teepee-pro-deti",
+  "h1": "Teepee a indiánské stany pro děti",
+  "parent": "/kategorie/",
+  "hubs": [
+   "/kategorie/"
+  ],
+  "group": "kw5",
+  "dedupe_all": true,
+  "rules": {
+   "any": [
+    "\\bteepee",
+    "\\btipi\\b",
+    "\\bindiansk\\w* (stan|teepee|tipi)"
+   ]
+  },
+  "min": 8,
+  "index_min": 15,
+  "evidence": 1300,
+  "intent": "ahrefs volume 22. 11.",
+  "title": "Teepee a indiánské stany pro děti – srovnání cen"
+ },
+ {
+  "slug": "detske-brusle",
+  "h1": "Dětské brusle a kolečkové brusle",
+  "parent": "/kategorie/",
+  "hubs": [
+   "/kategorie/"
+  ],
+  "group": "kw5",
+  "dedupe_all": true,
+  "rules": {
+   "any": [
+    "\\bbrusl"
+   ]
+  },
+  "min": 8,
+  "index_min": 15,
+  "evidence": 1000,
+  "intent": "ahrefs volume 22. 11.",
+  "title": "Dětské brusle a kolečkové brusle – srovnání cen"
+ },
+ {
+  "slug": "detske-boby",
+  "h1": "Dětské boby a sáňky",
+  "parent": "/kategorie/",
+  "hubs": [
+   "/kategorie/"
+  ],
+  "group": "kw5",
+  "dedupe_all": true,
+  "rules": {
+   "any": [
+    "\\bboby\\b",
+    "\\bbob\\b",
+    "\\bsanky",
+    "\\bsanek",
+    "\\bklouzak"
+   ]
+  },
+  "min": 8,
+  "index_min": 15,
+  "evidence": 800,
+  "intent": "ahrefs volume 22. 11.",
+  "title": "Dětské boby a sáňky – srovnání cen"
+ },
+ {
+  "slug": "detske-mikroskopy",
+  "h1": "Dětské mikroskopy",
+  "parent": "/kategorie/",
+  "hubs": [
+   "/kategorie/"
+  ],
+  "group": "kw5",
+  "dedupe_all": true,
+  "rules": {
+   "any": [
+    "\\bmikroskop"
+   ]
+  },
+  "min": 8,
+  "index_min": 15,
+  "evidence": 1000,
+  "intent": "ahrefs volume 22. 11.",
+  "title": "Dětské mikroskopy – srovnání cen"
+ },
+ {
+  "slug": "detske-dalekohledy",
+  "h1": "Dětské dalekohledy",
+  "parent": "/kategorie/",
+  "hubs": [
+   "/kategorie/"
+  ],
+  "group": "kw5",
+  "dedupe_all": true,
+  "rules": {
+   "any": [
+    "\\bdalekohled",
+    "\\bteleskop"
+   ]
+  },
+  "min": 8,
+  "index_min": 15,
+  "evidence": 400,
+  "intent": "ahrefs volume 22. 11.",
+  "title": "Dětské dalekohledy – srovnání cen"
+ },
+ {
+  "slug": "detske-fotoaparaty",
+  "h1": "Dětské fotoaparáty a kamery",
+  "parent": "/kategorie/",
+  "hubs": [
+   "/kategorie/"
+  ],
+  "group": "kw5",
+  "dedupe_all": true,
+  "rules": {
+   "any": [
+    "detsk\\w* (fotoapar|foták|kamer)",
+    "\\bfotak\\w* pro deti",
+    "\\bfotoapar\\w* pro deti",
+    "\\bfotak\\b"
+   ]
+  },
+  "min": 8,
+  "index_min": 15,
+  "evidence": 800,
+  "intent": "ahrefs volume 22. 11.",
+  "title": "Dětské fotoaparáty a kamery – srovnání cen"
+ },
+ {
+  "slug": "detske-telefony",
+  "h1": "Dětské telefony a mobily na hraní",
+  "parent": "/kategorie/",
+  "hubs": [
+   "/kategorie/"
+  ],
+  "group": "kw5",
+  "dedupe_all": true,
+  "rules": {
+   "any": [
+    "detsk\\w* (telefon|mobil)",
+    "\\bhrackov\\w* (telefon|mobil)",
+    "\\btelefon pro deti",
+    "\\bmobil pro deti"
+   ]
+  },
+  "min": 8,
+  "index_min": 15,
+  "evidence": 400,
+  "intent": "ahrefs volume 22. 11.",
+  "title": "Dětské telefony a mobily na hraní – srovnání cen"
+ },
+ {
+  "slug": "detska-sluchatka",
+  "h1": "Dětská sluchátka",
+  "parent": "/kategorie/",
+  "hubs": [
+   "/kategorie/"
+  ],
+  "group": "kw5",
+  "dedupe_all": true,
+  "rules": {
+   "any": [
+    "\\bsluchatk"
+   ]
+  },
+  "min": 8,
+  "index_min": 15,
+  "evidence": 700,
+  "intent": "ahrefs volume 22. 11.",
+  "title": "Dětská sluchátka – srovnání cen"
+ },
+ {
+  "slug": "detska-nocni-svetla",
+  "h1": "Dětská noční světla a projektory",
+  "parent": "/kategorie/",
+  "hubs": [
+   "/kategorie/"
+  ],
+  "group": "kw5",
+  "dedupe_all": true,
+  "rules": {
+   "any": [
+    "\\bnocni svetl",
+    "\\bnocni lampick",
+    "\\bprojektor",
+    
+    "\\bsvitici lampick"
+   ]
+  },
+  "min": 8,
+  "index_min": 15,
+  "evidence": 600,
+  "intent": "ahrefs volume 22. 11.",
+  "title": "Dětská noční světla a projektory – srovnání cen"
+ },
+ {
+  "slug": "hraci-tunely-pro-deti",
+  "h1": "Hrací a prolézací tunely pro děti",
+  "parent": "/kategorie/",
+  "hubs": [
+   "/kategorie/"
+  ],
+  "group": "kw5",
+  "dedupe_all": true,
+  "rules": {
+   "any": [
+    "(hraci|prolezaci|plazici|skladaci) tunel",
+    "\\btunel (pro deti|na hrani|hraci)",
+    "\\btunel\\b.*\\bstan"
+   ]
+  },
+  "min": 8,
+  "index_min": 15,
+  "evidence": 800,
+  "intent": "ahrefs volume 22. 11.",
+  "title": "Hrací a prolézací tunely pro děti – srovnání cen"
+ },
+ {
+  "slug": "tanecni-podlozky",
+  "h1": "Taneční podložky pro děti",
+  "parent": "/kategorie/",
+  "hubs": [
+   "/kategorie/"
+  ],
+  "group": "kw5",
+  "dedupe_all": true,
+  "rules": {
+   "any": [
+    "\\btanecni podlozk",
+    "\\bdance mat",
+    "\\btanecni (hra|koberec)"
+   ]
+  },
+  "min": 8,
+  "index_min": 15,
+  "evidence": 700,
+  "intent": "ahrefs volume 22. 11.",
+  "title": "Taneční podložky pro děti – srovnání cen"
+ },
+ {
+  "slug": "3d-pera-pro-deti",
+  "h1": "3D pera pro děti",
+  "parent": "/kategorie/",
+  "hubs": [
+   "/kategorie/"
+  ],
+  "group": "kw5",
+  "dedupe_all": true,
+  "rules": {
+   "any": [
+    "\\b3d pero",
+    "\\b3d pera",
+    "\\b3d pen\\b"
+   ]
+  },
+  "min": 8,
+  "index_min": 15,
+  "evidence": 1000,
+  "intent": "ahrefs volume 22. 11.",
+  "title": "3D pera pro děti – srovnání cen"
+ },
+ {
+  "slug": "detska-hriste",
+  "h1": "Dětská hřiště a prolézačky",
+  "parent": "/kategorie/",
+  "hubs": [
+   "/kategorie/"
+  ],
+  "group": "kw5",
+  "dedupe_all": true,
+  "rules": {
+   "any": [
+    "\\bhriste",
+    "\\bprolezac",
+    "\\bhraci centrum",
+    "\\bhraci veze",
+    "\\blezeck",
+    "\\bhoupacka.*skluzavk"
+   ]
+  },
+  "min": 8,
+  "index_min": 15,
+  "evidence": 3000,
+  "intent": "ahrefs volume 22. 11.",
+  "title": "Dětská hřiště a prolézačky – srovnání cen"
+ },
+ {
+  "slug": "detske-tricykly",
+  "h1": "Dětské tříkolky",
+  "parent": "/kategorie/",
+  "hubs": [
+   "/kategorie/"
+  ],
+  "group": "kw5",
+  "dedupe_all": true,
+  "rules": {
+   "any": [
+    "\\btrikolk",
+    "\\btricykl"
+   ]
+  },
+  "min": 8,
+  "index_min": 15,
+  "evidence": 600,
+  "intent": "ahrefs volume 22. 11.",
+  "title": "Dětské tříkolky – srovnání cen"
+ },
+ {
+  "slug": "detska-kola",
+  "h1": "Dětská kola a balanční kola",
+  "parent": "/kategorie/",
+  "hubs": [
+   "/kategorie/"
+  ],
+  "group": "kw5",
+  "dedupe_all": true,
+  "rules": {
+   "any": [
+    "detsk\\w* kolo\\b",
+    "\\bkolo (14|16|18|20)\\b",
+    "\\bbalancni kolo",
+    "\\bkolo pro deti",
+    "\\bkola pro deti"
+   ]
+  },
+  "min": 8,
+  "index_min": 15,
+  "evidence": 2300,
+  "intent": "ahrefs volume 22. 11.",
+  "title": "Dětská kola a balanční kola – srovnání cen"
+ },
+ {
+  "slug": "hracky-na-kolecka-detske-motorky",
+  "h1": "Dětské elektrické motorky",
+  "parent": "/kategorie/",
+  "hubs": [
+   "/kategorie/"
+  ],
+  "group": "kw5",
+  "dedupe_all": true,
+  "rules": {
+   "any": [
+    "(elektrick\\w*|na baterie) motork",
+    "\\bmotork\\w* (na baterie|elektrick)"
+   ]
+  },
+  "min": 8,
+  "index_min": 15,
+  "evidence": 500,
+  "intent": "ahrefs volume 22. 11.",
+  "title": "Dětské elektrické motorky – srovnání cen"
+ },
+ {
+  "slug": "detske-ctecky-a-tablety",
+  "h1": "Dětské tablety a herní konzole",
+  "parent": "/kategorie/",
+  "hubs": [
+   "/kategorie/"
+  ],
+  "group": "kw5",
+  "dedupe_all": true,
+  "rules": {
+   "any": [
+    "detsk\\w* (tablet|konzol)",
+    "\\btablet pro deti",
+    "\\bvtech (tablet|kidipad|storio)",
+    "\\bkidizoom"
+   ]
+  },
+  "min": 8,
+  "index_min": 15,
+  "evidence": 600,
+  "intent": "ahrefs volume 22. 11.",
+  "title": "Dětské tablety a herní konzole – srovnání cen"
+ },
+ {
+  "slug": "detske-divadlo-a-loutky",
+  "h1": "Dětské divadlo, loutky a maňásci",
+  "parent": "/kategorie/",
+  "hubs": [
+   "/kategorie/"
+  ],
+  "group": "kw5",
+  "dedupe_all": true,
+  "rules": {
+   "any": [
+    "\\bloutk",
+    "\\bmanask",
+    "\\bmanasek",
+    "\\bdivadl\\w* (pro deti|loutk|stinov|kaspar)",
+    "\\bkaspar"
+   ]
+  },
+  "min": 8,
+  "index_min": 15,
+  "evidence": 300,
+  "intent": "ahrefs volume 22. 11.",
+  "title": "Dětské divadlo, loutky a maňásci – srovnání cen"
+ },
+ {
+  "slug": "detska-dopravni-hriste-a-hasici",
+  "h1": "Dopravní hřiště a dopravní značky pro děti",
+  "parent": "/kategorie/",
+  "hubs": [
+   "/kategorie/"
+  ],
+  "group": "kw5",
+  "dedupe_all": true,
+  "rules": {
+   "any": [
+    "dopravn\\w* (znack|hriste|policie|sada)",
+    "\\bsemafor"
+   ]
+  },
+  "min": 8,
+  "index_min": 15,
+  "evidence": 900,
+  "intent": "ahrefs volume 22. 11.",
+  "title": "Dopravní hřiště a dopravní značky pro děti – srovnání cen"
+ },
+ {
+  "slug": "detske-hodinky-na-hrani",
+  "h1": "Dětské hodinky a hodiny na učení času",
+  "parent": "/kategorie/",
+  "hubs": [
+   "/kategorie/"
+  ],
+  "group": "kw5",
+  "dedupe_all": true,
+  "rules": {
+   "any": [
+    "detsk\\w* hodinky",
+    "\\bhodinky pro deti",
+    "\\bhodiny na uceni",
+    "\\bucici hodiny",
+    "\\bhodinky.*(hrac|ucic)"
+   ]
+  },
+  "min": 8,
+  "index_min": 15,
+  "evidence": 3400,
+  "intent": "ahrefs volume 22. 11.",
+  "title": "Dětské hodinky a hodiny na učení času – srovnání cen"
+ }
+]
