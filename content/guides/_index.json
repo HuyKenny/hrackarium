@@ -1018,5 +1018,22 @@
   },
   "title": "Vánoční prázdniny s dětmi: hry a obrazovky",
   "date": "2026-11-21"
+ },
+ {
+  "slug": "prvni-telefon-pro-dite",
+  "h1": "První telefon pro dítě: kdy, jaký a jak ho nastavit",
+  "related": [
+   "/elektronika/",
+   "/naucne/roboti-a-programovani/",
+   "/darky/"
+  ],
+  "rules": {
+   "cat": [
+    "elektronika"
+   ],
+   "offers": 2
+  },
+  "title": "První telefon pro dítě: kdy, jaký a za kolik",
+  "date": "2026-11-25"
  }
 ]
